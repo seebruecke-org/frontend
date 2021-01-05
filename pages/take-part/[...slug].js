@@ -1,5 +1,5 @@
 import { RETURN_CODES } from '../../lib/constants';
-import { query } from '../../lib/cities';
+import { query } from '../../lib/take-part';
 
 import Header from '@/components/Header';
 
