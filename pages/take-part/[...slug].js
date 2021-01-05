@@ -1,24 +1,28 @@
+import { RETURN_CODES } from '../../lib/constants';
 import { query } from '../../lib/cities';
 
-export default function TakePartPage({ data }) {
+import Header from '@/components/Header';
+
+export default function TakePartPage(props) {
   return <div>
-    {JSON.stringify(data)}
+    <Header />
+    {JSON.stringify(props)}
   </div>
 }
 
-export async function getServerSideProps({ params: { slug } }) {
-  const data = await query(slug);
+export async function getServerSideProps({ locale, params: { slug } }) {
+  const { type, data, ...res } = await query(slug, locale);
 
-  if (data.type === 'redirect') {
+  if (type === RETURN_CODES.REDIRECT) {
     return {
       redirect: {
-        destination: data.destination,
+        destination: res.destination,
         permanent: true
       }
     }
   }
 
-  if (data.data === null) {
+  if (data === null) {
     return {
       notFound: true
     }
