@@ -4,15 +4,51 @@ html {
   font-size: 62.5%;
 }
 
+@layer base {
+  /* Brezel */
+
+  @font-face {
+    font-display: swap;
+    font-family: Brezel;
+    font-weight: 300;
+    font-style: italic;
+    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff2) format('woff2'),
+         url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff) format('woff');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Brezel;
+    font-weight: 400;
+    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-Regular.woff2) format('woff2'),
+         url(/fonts/BrezelGrotesk/BrezelGrotesk-Regular.woff) format('woff');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Brezel;
+    font-weight: 700;
+    font-style: italic;
+    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff2) format('woff2'),
+         url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff) format('woff');
+  }
+
+  /* Rubik */
+
+  @font-face {
+    font-display: swap;
+    font-family: Rubik;
+    font-style: normal;
+    src: url(/fonts/Rubik/Rubik-VariableFont_wght.woff2) format('woff2-variations');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Rubik;
+    font-style: italic;
+    src: url(/fonts/Rubik/Rubik-VariableFont-Italic_wght.woff2) format('woff2-variations');
+  }
+}
+
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-/*
-  @layer base {
-    @font-face {
-      font-family: Proxima Nova;
-      font-weight: 400;
-      src: url(/fonts/proxima-nova/400-regular.woff) format('woff');
-    }
-  }
-*/
