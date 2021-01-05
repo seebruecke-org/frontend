@@ -10,4 +10,12 @@ module.exports = {
 
     return config;
   },
+
+  images: {
+    domains: [process.env.NEXT_IMAGE_HOSTNAME]
+  },
+
+  env: {
+    WP_GRAPHQL_API: process.env.NEXT_WP_GRAPHQL_API
+  }
 };
