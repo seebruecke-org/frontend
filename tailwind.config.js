@@ -34,18 +34,18 @@ module.exports = {
     },
 
     fontSize: {
-      '5xl': '5.0625rem',
-      '4xl': '4.5rem',
-      '3xl': '3.8125rem',
-      '2xl': '3.125rem',
-      'xl': '2.5rem',
-      'large': '2rem',
-      'medium': '1.5625rem',
-      'base': '1.25rem',
-      'small': '1.125rem',
-      'xs': '1rem',
-      '2xs': '0.8125rem',
-      '3xs': '0.625rem'
+      '5xl': '8.1rem',    // 81
+      '4xl': '7.2rem',    // 72
+      '3xl': '6.1rem',    // 61
+      '2xl': '5rem',      // 50
+      'xl': '4rem',       // 40
+      'large': '3.2rem',  // 32
+      'medium': '2.5rem', // 25
+      'base': '2rem',     // 20
+      'small': '1.8rem',  // 18
+      'xs': '1.6rem',     // 16
+      '2xs': '1.3rem',    // 13
+      '3xs': '1rem'       // 10
     },
 
     maxWidth: {
