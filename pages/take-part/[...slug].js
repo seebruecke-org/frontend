@@ -6,10 +6,13 @@ import { query } from '../../lib/take-part';
 
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
+import SEO from '@/components/SEO';
 import VStack from '@/components/VStack';
 
 export default function TakePartPage({ city, page, siblings }) {
   return <VStack gap={20}>
+    <SEO title={`${page.title} ${city.title}`} />
+
     {city && (
       <StageMedium kicker={page.title} title={city.title} siblings={siblings} />
     )}

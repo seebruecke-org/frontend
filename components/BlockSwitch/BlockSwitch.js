@@ -1,4 +1,4 @@
-import * as gutenbergBlocks from '@/components/Blocks';
+import gutenbergBlocks from '@/components/Blocks';
 import VStack from '@/components/VStack';
 
 const firstBlocksWithMargin = [
@@ -8,9 +8,7 @@ const firstBlocksWithMargin = [
 
 export default function BlockSwitch({ blocks }) {
   const blockMap = Object.keys(gutenbergBlocks).reduce((acc, blockName) => {
-    if (!blockName.endsWith('FRAGMENT')) {
-      acc[`Core${blockName}Block`] = gutenbergBlocks[blockName];
-    }
+    acc[blockName] = gutenbergBlocks[blockName].Component;
 
     return acc;
   }, {});

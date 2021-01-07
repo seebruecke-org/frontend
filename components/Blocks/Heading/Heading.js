@@ -1,4 +1,4 @@
-export default function Heading({ attributes: { level, content }}) {
+export default function HeadingBlock({ attributes: { level, content }}) {
   const levels = {
     h1: 'font-brezel text-2xl md:text-4xl italic',
     h2: 'font-rubik text-large md:text-2xl font-bold',
