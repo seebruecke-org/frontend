@@ -34,62 +34,18 @@ module.exports = {
     },
 
     fontSize: {
-      'brezel-2xl': ['5.073rem', {
-        letterSpacing: '0',
-        lineHeight: '1.2'
-      }],
-
-      'brezel-xl': ['4.51rem', {
-        letterSpacing: '0',
-        lineHeight: '1.2'
-      }],
-
-      'brezel-l': ['3.167rem', {
-        lineHeight: '1.18'
-      }],
-
-      'brezel-base': ['2.503rem', {
-        letterSpacing: '0',
-        lineHeight: '1.12'
-      }],
-
-      'brezel-s': ['1.234rem', {
-        letterSpacing: '0.02rem',
-        lineHeight: '1.32'
-      }],
-
-
-      'rubik-2xl': ['3.815rem', {
-        letterSpacing: '0',
-        lineHeight: '1.14'
-      }],
-
-      'rubik-xl': ['1.953rem', {
-        letterSpacing: '0',
-        lineHeight: '1,125'
-      }],
-
-      'rubik-l': ['1.5625rem', {
-        letterSpacing: '0',
-        lineHeight: '1.15'
-      }],
-
-      'rubik-base': ['1.25rem', {
-        letterSpacing: '0',
-        lineHeight: '1.5'
-      }],
-
-      'rubik-s': ['1.125rem', {
-        letterSpacing: '0',
-        lineHeight: '1.3'
-      }],
-
-      'rubik-xs': ['1rem', {
-        letterSpacing: '0',
-        lineHeight: '1'
-      }],
-      'rubik-2xs': '0.8rem',
-      'rubik-3xs': '0.625rem'
+      '5xl': '5.0625rem',
+      '4xl': '4.5rem',
+      '3xl': '3.8125rem',
+      '2xl': '3.125rem',
+      'xl': '2.5rem',
+      'large': '2rem',
+      'medium': '1.5625rem',
+      'base': '1.25rem',
+      'small': '1.125rem',
+      'xs': '1rem',
+      '2xs': '0.8125rem',
+      '3xs': '0.625rem'
     },
 
     maxWidth: {
