@@ -6,12 +6,16 @@ import { query } from '../../lib/take-part';
 
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
+import VStack from '@/components/VStack';
 
-export default function TakePartPage({ city, page }) {
-  return <>
-    <StageMedium kicker={page.title} title={city.title} />
+export default function TakePartPage({ city, page, siblings }) {
+  return <VStack gap={20}>
+    {city && (
+      <StageMedium kicker={page.title} title={city.title} siblings={siblings} />
+    )}
+
     <BlockSwitch blocks={page.blocks} />
-  </>
+  </VStack>
 }
 
 export async function getServerSideProps({ locale, params: { slug } }) {

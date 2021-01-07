@@ -1,6 +1,9 @@
-export default function StageMedium({ kicker, title }) {
+import SectionNavigation from '@/components/SectionNavigation';
+import VStack from '@/components/VStack';
+
+export default function StageMedium({ kicker, title, siblings }) {
   return <div className="flex justify-center bg-orange-200">
-    <div className="max-w-regular w-full py-10">
+    <VStack gap={40} className="max-w-regular w-full py-10 px-10 md:px-0">
       <h1 className="font-brezel italic">
         <small className=" text-medium block leading-none">
           {kicker}
@@ -8,6 +11,10 @@ export default function StageMedium({ kicker, title }) {
 
         <span className="font-bold text-4xl leading-none">{title}</span>
       </h1>
-    </div>
+
+      {siblings && (
+        <SectionNavigation items={siblings} />
+      )}
+    </VStack>
   </div>
 }
