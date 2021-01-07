@@ -5,9 +5,13 @@ import { query as queryGlobalData } from '../../lib/global';
 import { query } from '../../lib/take-part';
 
 import { StageMedium } from '@/components/Stages';
+import BlockSwitch from '@/components/BlockSwitch';
 
 export default function TakePartPage({ city, page }) {
-  return <StageMedium kicker={page.title} title={city.title} />
+  return <>
+    <StageMedium kicker={page.title} title={city.title} />
+    <BlockSwitch blocks={page.blocks} />
+  </>
 }
 
 export async function getServerSideProps({ locale, params: { slug } }) {
