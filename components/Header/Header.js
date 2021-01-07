@@ -23,7 +23,7 @@ export default function Header() {
       {items && items?.nodes?.length > 0 && (
         <HStack as="nav" className="flex items-end ml-10">
           {items.nodes.map(node =>
-            <MenuItem key={`menu-${node.label}`} {...node} className="text-rubik-xl uppercase font-bold leading-none ml-4 hover:bg-white hover:text-orange-800 p-2" />)}
+            <MenuItem key={`menu-${node.label}`} {...node} className="font-rubik text-base uppercase font-bold leading-none ml-4 hover:bg-white hover:text-orange-800 p-2" />)}
         </HStack>
       )}
     </div>
