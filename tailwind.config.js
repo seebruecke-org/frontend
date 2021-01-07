@@ -58,6 +58,7 @@ module.exports = {
         lineHeight: '1.32'
       }],
 
+
       'rubik-2xl': ['3.815rem', {
         letterSpacing: '0',
         lineHeight: '1.14'
@@ -90,6 +91,12 @@ module.exports = {
       'rubik-2xs': '0.8rem',
       'rubik-3xs': '0.625rem'
     },
+
+    maxWidth: {
+      'wide': '120rem',
+      'regular': '85rem',
+    }
+
   },
   variants: {
     extend: {},

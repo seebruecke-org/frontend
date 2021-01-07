@@ -30,8 +30,10 @@
     "postcss-preset-env": "^6.7.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "simple-zustand-devtools": "^1.0.0",
     "swr": "^0.3.11",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "zustand": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
