@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 
-import Grid from '@/components/Grid';
 import HStack from '@/components/HStack';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
@@ -14,13 +13,13 @@ function Menu({ name, items }) {
     <h4 className="font-rubik text-xs uppercase font-bold">{name}</h4>
 
     {items?.nodes?.length > 0 && (
-      <VStack as="ul" gap={5}>
+      <ul className="grid grid-cols-2 md:grid-cols-1">
         {items.nodes.map(node => (
           <li>
-            <MenuItem className="font-rubik text-xs" {...node} />
+            <MenuItem className="font-rubik text-xs hover:underline block py-3 md:py-5" {...node} />
           </li>
         ))}
-      </VStack>
+      </ul>
     )}
   </VStack>
 }
@@ -28,9 +27,9 @@ function Menu({ name, items }) {
 export default function Footer() {
   const { menus: { footerTakePart, footerAbout, footerMeta } } = useStore();
 
-  return <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20">
-    <Grid className="gap-y-20 max-w-wide w-full">
-      <div className="col-start-1 col-span-3">
+  return <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-10 md:px-0">
+    <div className="grid gap-y-20 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
+      <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
         <Link href="/en/" locale="en">
           <a className="font-bold">
             English Version
@@ -38,15 +37,15 @@ export default function Footer() {
         </Link>
       </div>
 
-      <div className="col-start-4 col-span-3">
+      <div className="md:col-start-4 md:col-span-3">
         <Menu {...footerTakePart} />
       </div>
 
-      <div className="col-start-7 col-span-3">
+      <div className="md:col-start-7 md:col-span-3">
         <Menu {...footerAbout} />
       </div>
 
-      <div className="col-start-10 col-span-3">
+      <div className="md:col-start-10 md:col-span-3">
         <VStack gap={5}>
           <Logo />
 
@@ -55,16 +54,16 @@ export default function Footer() {
       </div>
 
       {footerMeta?.items?.nodes && (
-        <div className="flex justify-between col-start-1 col-span-12">
-          <HStack as="nav" gap={5}>
+        <div className="flex justify-between col-start-1 md:col-span-12">
+          <HStack as="nav" gap={10}>
             {footerMeta.items.nodes.map(node => (
-              <MenuItem className="font-rubik text-xs font-bold" {...node} />
+              <MenuItem className="font-rubik text-xs font-bold hover:underline" {...node} />
             ))}
           </HStack>
 
           [SOCIAL MEDIA ITEMS]
         </div>
       )}
-    </Grid>
+    </div>
   </footer>
 }
