@@ -45,7 +45,8 @@ module.exports = {
       'small': '1.8rem',  // 18
       'xs': '1.6rem',     // 16
       '2xs': '1.3rem',    // 13
-      '3xs': '1rem'       // 10
+      '3xs': '1rem',       // 10
+      'none': '0'
     },
 
     maxWidth: {

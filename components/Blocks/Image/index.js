@@ -6,6 +6,7 @@ export const FRAGMENT = `
     attributes {
       ... on CoreImageBlockAttributes {
         id
+        caption
       }
     }
   }
