@@ -1,3 +1,4 @@
+import { useI18n } from 'next-localization';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -13,6 +14,7 @@ import VStack from '../VStack';
 
 export default function Header() {
   const router = useRouter();
+  const i18n = useI18n();
   const { menus: { header: { items }, headerSecondary: { items: headerSecondaryItems } } } = useStore();
 
   const primaryItems = items?.nodes && items.nodes.slice(0, items.nodes.length - 2);
@@ -21,7 +23,7 @@ export default function Header() {
   return <header className="bg-orange-800 p-5 text-white flex flex-row justify-center">
     <div className="flex flex-row align-bottom max-w-wide w-full">
       <Link href={getLocalizedFrontpageSlug(router.locale)}>
-        <a class="flex items-end p-2 mr-5">
+        <a className="flex items-end p-2 mr-5">
           <Logo />
         </a>
       </Link>
@@ -29,11 +31,11 @@ export default function Header() {
       <VStack gap={5} as="nav">
         {headerSecondaryItems && headerSecondaryItems?.nodes?.length > 0 && (
           <HStack gap={3} className="flex justify-self-end ml-auto pr-48">
-            <MenuItem path="/" label="Suche" className="flex items-center font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2">
+            <MenuItem path="/" label={i18n.t('header.search')} className="flex items-center font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2">
               <SearchIcon className="w-7 h-7 ml-2" />
             </MenuItem>
 
-            <MenuItem path="/" label="Mein Ort" className="flex items-center font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2">
+            <MenuItem path="/" label={i18n.t('header.myPlace')} className="flex items-center font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2">
               <BookmarkIcon className="w-7 h-7 ml-2" />
             </MenuItem>
 

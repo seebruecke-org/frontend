@@ -1,3 +1,4 @@
+import { useI18n } from 'next-localization';
 import Link from 'next/link';
 import React from 'react';
 
@@ -25,6 +26,7 @@ function Menu({ name, items }) {
 }
 
 export default function Footer() {
+  const i18n = useI18n();
   const { menus: { footerTakePart, footerAbout, footerMeta } } = useStore();
 
   return <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-10 md:px-0">
@@ -32,7 +34,7 @@ export default function Footer() {
       <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
         <Link href="/en/" locale="en">
           <a className="font-bold">
-            English Version
+            {i18n.t('footer.langEn')}
           </a>
         </Link>
       </div>
@@ -49,7 +51,9 @@ export default function Footer() {
         <VStack gap={5}>
           <Logo />
 
-          <p className="font-rubik text-xs">Die SEEBRÜCKE ist eine internationale Bewegung, die sich für sichere Fluchtwege, für ungehinderte Seenotrettung und für ein Ende des Sterbens an den europäischen Grenzen engagiert.</p>
+          <p className="font-rubik text-xs">
+            {i18n.t('footer.tagline')}
+          </p>
         </VStack>
       </div>
 

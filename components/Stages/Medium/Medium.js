@@ -18,7 +18,7 @@ export default function StageMedium({ kicker, title, siblings, image }) {
     </div>
 
     {siblings && siblings.length > 1 && (
-      <div class="w-full">
+      <div className="w-full">
         <SectionNavigation items={siblings} />
       </div>
       )}

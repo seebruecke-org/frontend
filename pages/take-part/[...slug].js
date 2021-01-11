@@ -55,7 +55,7 @@ export async function getStaticPaths({ defaultLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const { type, data, ...res } = await query(slug, locale);
-  const globalData = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale);
 
   if (type === RETURN_CODES.REDIRECT) {
     return {
@@ -75,7 +75,9 @@ export async function getStaticProps({ locale, params: { slug } }) {
   return {
     props: {
       ...data,
-      initialState: globalData
+      ...globalData,
+
+      initialState
     }
   }
 }

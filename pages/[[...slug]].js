@@ -15,7 +15,7 @@ export async function getServerSideProps({ locale, params: { slug } }) {
   }
 
   const { data } = await query(slug, locale);
-  const globalData = await queryGlobalData(locale);
+  const { initialState, ... globalData } = await queryGlobalData(locale);
 
   if (data === null) {
     return {
@@ -26,7 +26,8 @@ export async function getServerSideProps({ locale, params: { slug } }) {
   return {
     props: {
       ...data,
-      initialState: globalData
+      ...globalData,
+      initialState
     }
   }
 }
