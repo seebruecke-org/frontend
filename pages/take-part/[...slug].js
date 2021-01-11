@@ -2,7 +2,7 @@ import React from 'react';
 
 import { RETURN_CODES } from '../../lib/constants';
 import { query as queryGlobalData } from '../../lib/global';
-import { query } from '../../lib/take-part';
+import { query, paths } from '../../lib/take-part';
 
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -36,7 +36,24 @@ export default function TakePartPage({ city, page, siblings }) {
   </>
 }
 
-export async function getServerSideProps({ locale, params: { slug } }) {
+export async function getStaticPaths({ defaultLocale }) {
+  const sidePaths = await paths();
+  const staticPaths = sidePaths.map(({ uri, language }) => {
+    return {
+      locale: language?.slug ?? defaultLocale,
+      params: {
+        slug: uri.split('/').slice(2)
+      }
+    }
+  });
+
+  return {
+    fallback: true,
+    paths: staticPaths
+  }
+}
+
+export async function getStaticProps({ locale, params: { slug } }) {
   const { type, data, ...res } = await query(slug, locale);
   const globalData = await queryGlobalData(locale);
 
