@@ -1,4 +1,5 @@
 import { useI18n } from 'next-localization';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React from 'react';
 
@@ -32,6 +33,7 @@ function Menu({ name, items }) {
 
 export default function Footer() {
   const i18n = useI18n();
+  const { locale } = useRouter();
   const {
     menus: { footerTakePart, footerAbout, footerMeta }
   } = useStore();
@@ -40,7 +42,7 @@ export default function Footer() {
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-10 md:px-0">
       <div className="grid gap-y-20 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
-          <Link href="/en/" locale="en">
+          <Link href="/" locale={locale === 'de' ? 'en' : 'de'}>
             <a className="font-bold">{i18n.t('footer.langEn')}</a>
           </Link>
         </div>

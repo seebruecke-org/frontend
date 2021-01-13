@@ -8,13 +8,13 @@ export default function Breadcrumbs({ crumbs }) {
           {crumbs.map((crumb, index) => (
             <li key={`breadcrumb-${index}`}>
               {index !== 0 && (
-                <span className="font-rubik text-gray-500 mx-2 uppercase text-xs">
+                <span className="font-rubik text-gray-500 mx-2 uppercase text-2xs md:text-xs">
                   &gt;
                 </span>
               )}
               <MenuItem
                 {...crumb}
-                className="font-rubik text-gray-600 uppercase text-xs hover:underline"
+                className="font-rubik text-gray-600 uppercase text-2xs md:text-xs hover:underline"
               />
             </li>
           ))}
