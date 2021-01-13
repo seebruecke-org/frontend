@@ -8,5 +8,5 @@ export default function MenuItem({ path, label, children, ...props }) {
         {children}
       </a>
     </Link>
-  )
+  );
 }

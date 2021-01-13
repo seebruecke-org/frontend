@@ -18,12 +18,10 @@ const HTML = ({ html }) => {
 
           return (
             <NextLink href={href} {...props}>
-              <a className="underline">
-                {domToReact(children, parseOptions)}
-              </a>
+              <a className="underline">{domToReact(children, parseOptions)}</a>
             </NextLink>
           );
-        },
+        }
       };
 
       if (node.type === 'tag' && defaultTransforms[node.name]) {
@@ -31,7 +29,7 @@ const HTML = ({ html }) => {
       }
 
       return undefined;
-    },
+    }
   };
 
   return parse(html || '', parseOptions);

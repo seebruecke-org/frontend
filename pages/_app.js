@@ -2,12 +2,12 @@ import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { I18nProvider } from 'next-localization';
 import { useRouter } from 'next/router';
 
-import { StoreProvider } from '../lib/store/store'
-import { useHydrate } from '../lib/store/zustand'
+import { StoreProvider } from '../lib/store/store';
+import { useHydrate } from '../lib/store/zustand';
 
 import Layout from '@/components/Layout';
 
-import "@/styles/tailwind.css";
+import '@/styles/tailwind.css';
 
 export default function SBApp({ Component, pageProps }) {
   const router = useRouter();
@@ -20,11 +20,13 @@ export default function SBApp({ Component, pageProps }) {
     mountStoreDevtool('Store', store);
   }
 
-  return <I18nProvider lngDict={translations} locale={router.locale}>
-    <StoreProvider store={store}>
-      <Layout>
-        <Component {...props} />
-      </Layout>
-    </StoreProvider>
-  </I18nProvider>
-};
+  return (
+    <I18nProvider lngDict={translations} locale={router.locale}>
+      <StoreProvider store={store}>
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      </StoreProvider>
+    </I18nProvider>
+  );
+}

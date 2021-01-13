@@ -7,10 +7,12 @@ import BlockSwitch from '@/components/BlockSwitch';
 import SEO from '@/components/SEO';
 
 export default function TakePartPage({ page }) {
-  return <article>
-    <SEO title={page.title} />
-    <BlockSwitch blocks={page.blocks} />
-  </article>
+  return (
+    <article>
+      <SEO title={page.title} />
+      <BlockSwitch blocks={page.blocks} />
+    </article>
+  );
 }
 
 export async function getServerSideProps({ locale, params: { slug } }) {
@@ -19,12 +21,12 @@ export async function getServerSideProps({ locale, params: { slug } }) {
   }
 
   const { data } = await query(slug, locale);
-  const { initialState, ... globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {
     return {
       notFound: true
-    }
+    };
   }
 
   return {
@@ -33,5 +35,5 @@ export async function getServerSideProps({ locale, params: { slug } }) {
       ...globalData,
       initialState
     }
-  }
+  };
 }

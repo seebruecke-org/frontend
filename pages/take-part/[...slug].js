@@ -10,37 +10,41 @@ import SectionNavigation from '@/components/SectionNavigation';
 import VStack from '@/components/VStack';
 
 export default function TakePartPage({ city, page, siblings }) {
-  return <article>
-    <SEO title={`${page.title} ${city.title}`} />
+  return (
+    <article>
+      <SEO title={`${page.title} ${city.title}`} />
 
-    <Breadcrumbs crumbs={[
-      {
-        path: '/mach-mit/',
-        label: 'Mach Mit'
-      },
+      <Breadcrumbs
+        crumbs={[
+          {
+            path: '/mach-mit/',
+            label: 'Mach Mit'
+          },
 
-      {
-        path: '/mach-mit/brandenburg/',
-        label: 'Brandenburg'
-      }
-    ]} />
+          {
+            path: '/mach-mit/brandenburg/',
+            label: 'Brandenburg'
+          }
+        ]}
+      />
 
-    <VStack gap={20}>
-      <section>
-        {city && (
-          <StageMedium kicker={page.title} title={city.title} image={page?.featuredImage?.node} />
-        )}
+      <VStack gap={20}>
+        <section>
+          {city && (
+            <StageMedium kicker={page.title} title={city.title} image={page?.featuredImage?.node} />
+          )}
 
-        {siblings && siblings.length > 1 && (
-          <div className="w-full">
-            <SectionNavigation items={siblings} />
-          </div>
-        )}
-      </section>
+          {siblings && siblings.length > 1 && (
+            <div className="w-full">
+              <SectionNavigation items={siblings} />
+            </div>
+          )}
+        </section>
 
-      <BlockSwitch blocks={page.blocks} />
-    </VStack>
-  </article>
+        <BlockSwitch blocks={page.blocks} />
+      </VStack>
+    </article>
+  );
 }
 
 export async function getStaticPaths({ defaultLocale }) {
@@ -51,13 +55,13 @@ export async function getStaticPaths({ defaultLocale }) {
       params: {
         slug: uri.split('/').slice(2)
       }
-    }
+    };
   });
 
   return {
     fallback: true,
     paths: staticPaths
-  }
+  };
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
@@ -70,13 +74,13 @@ export async function getStaticProps({ locale, params: { slug } }) {
         destination: res.destination,
         permanent: true
       }
-    }
+    };
   }
 
   if (data === null) {
     return {
       notFound: true
-    }
+    };
   }
 
   return {
@@ -86,5 +90,5 @@ export async function getStaticProps({ locale, params: { slug } }) {
 
       initialState
     }
-  }
+  };
 }

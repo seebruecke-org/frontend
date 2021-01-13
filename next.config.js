@@ -14,9 +14,9 @@ module.exports = withPlugins([withModules], {
       {
         source: '/de/mach-mit/:path*',
         destination: '/de/take-part/:path*',
-        locale: false,
-      },
-    ]
+        locale: false
+      }
+    ];
   },
 
   webpack(config) {
@@ -25,9 +25,9 @@ module.exports = withPlugins([withModules], {
     config.module.rules.push({
       test: /\.svg$/,
       issuer: {
-        test: /\.(js|ts)x?$/,
+        test: /\.(js|ts)x?$/
       },
-      use: ['@svgr/webpack'],
+      use: ['@svgr/webpack']
     });
 
     return config;

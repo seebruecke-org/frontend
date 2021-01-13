@@ -13,7 +13,7 @@ html {
     font-weight: 300;
     font-style: italic;
     src: url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff2) format('woff2'),
-         url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff) format('woff');
+      url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff) format('woff');
   }
 
   @font-face {
@@ -21,7 +21,7 @@ html {
     font-family: Brezel;
     font-weight: 400;
     src: url(/fonts/BrezelGrotesk/BrezelGrotesk-Regular.woff2) format('woff2'),
-         url(/fonts/BrezelGrotesk/BrezelGrotesk-Regular.woff) format('woff');
+      url(/fonts/BrezelGrotesk/BrezelGrotesk-Regular.woff) format('woff');
   }
 
   @font-face {
@@ -30,7 +30,7 @@ html {
     font-weight: 700;
     font-style: italic;
     src: url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff2) format('woff2'),
-         url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff) format('woff');
+      url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff) format('woff');
   }
 
   /* Rubik */

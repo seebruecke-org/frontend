@@ -11,18 +11,20 @@ export default function Heading({ children, level, as, kicker = null, className,
     h2: 'font-rubik text-xs uppercase',
     h3: 'font-rubik text-xs uppercase',
     h4: 'font-rubik text-xs uppercase'
-  }
+  };
 
   const Tag = `h${level}`;
 
-  return <Tag className={`${levels[`h${as ?? level}`]} px-10 md:px-0 ${className}`} {...props}>
-    {kicker && (
-      <small className={`${kickers[`h${as ?? level}`]} block font-normal leading-none`}>
-        {kicker}
-        <span className="sr-only">:</span>
-      </small>
-    )}
+  return (
+    <Tag className={`${levels[`h${as ?? level}`]} px-10 md:px-0 ${className}`} {...props}>
+      {kicker && (
+        <small className={`${kickers[`h${as ?? level}`]} block font-normal leading-none`}>
+          {kicker}
+          <span className="sr-only">:</span>
+        </small>
+      )}
 
-    <span className="leading-tight">{children}</span>
-  </Tag>
+      <span className="leading-tight">{children}</span>
+    </Tag>
+  );
 }
