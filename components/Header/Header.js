@@ -31,16 +31,16 @@ export default function Header() {
       <VStack gap={5} as="nav">
         {headerSecondaryItems && headerSecondaryItems?.nodes?.length > 0 && (
           <HStack gap={3} className="flex justify-self-end ml-auto pr-48">
-            <MenuItem path="/" label={i18n.t('header.search')} className="flex items-center font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2">
+            <MenuItem path="/" label={i18n.t('header.search')} className="flex items-center font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2">
               <SearchIcon className="w-7 h-7 ml-2" />
             </MenuItem>
 
-            <MenuItem path="/" label={i18n.t('header.myPlace')} className="flex items-center font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2">
+            <MenuItem path="/" label={i18n.t('header.myPlace')} className="flex items-center font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2">
               <BookmarkIcon className="w-7 h-7 ml-2" />
             </MenuItem>
 
             {headerSecondaryItems.nodes.map(node =>
-              <MenuItem key={`menu-${node.label}`} {...node} className="font-rubik text-xs uppercase leading-none text-gray-700 hover:text-white p-2" />)}
+              <MenuItem key={`menu-${node.label}`} {...node} className="font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2" />)}
           </HStack>
         )}
 

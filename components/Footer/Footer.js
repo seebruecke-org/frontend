@@ -15,8 +15,8 @@ function Menu({ name, items }) {
 
     {items?.nodes?.length > 0 && (
       <ul className="grid grid-cols-2 md:grid-cols-1">
-        {items.nodes.map(node => (
-          <li>
+        {items.nodes.map((node, index) => (
+          <li key={`footer-${name}-${index}`}>
             <MenuItem className="font-rubik text-xs hover:underline block py-3 md:py-5" {...node} />
           </li>
         ))}
@@ -60,8 +60,8 @@ export default function Footer() {
       {footerMeta?.items?.nodes && (
         <div className="flex justify-between col-start-1 md:col-span-12">
           <HStack as="nav" gap={10}>
-            {footerMeta.items.nodes.map(node => (
-              <MenuItem className="font-rubik text-xs font-bold hover:underline" {...node} />
+            {footerMeta.items.nodes.map((node, index) => (
+              <MenuItem className="font-rubik text-xs font-bold hover:underline" key={`footer-meta-${index}`} {...node} />
             ))}
           </HStack>
 

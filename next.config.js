@@ -12,12 +12,6 @@ module.exports = withPlugins([withModules], {
   async rewrites() {
     return [
       {
-        source: '/de/mach-mit/',
-        destination: '/de/take-part/',
-        locale: false,
-      },
-
-      {
         source: '/de/mach-mit/:path*',
         destination: '/de/take-part/:path*',
         locale: false,

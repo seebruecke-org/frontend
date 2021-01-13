@@ -4,9 +4,13 @@ import { query as queryGlobalData } from '../lib/global';
 import { query } from '../lib/pages';
 
 import BlockSwitch from '@/components/BlockSwitch';
+import SEO from '@/components/SEO';
 
 export default function TakePartPage({ page }) {
-  return <BlockSwitch blocks={page.blocks} />
+  return <article>
+    <SEO title={page.title} />
+    <BlockSwitch blocks={page.blocks} />
+  </article>
 }
 
 export async function getServerSideProps({ locale, params: { slug } }) {

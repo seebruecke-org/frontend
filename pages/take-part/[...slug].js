@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { RETURN_CODES } from '../../lib/constants';
 import { query as queryGlobalData } from '../../lib/global';
 import { query, paths } from '../../lib/take-part';
@@ -8,10 +6,11 @@ import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SEO from '@/components/SEO';
+import SectionNavigation from '@/components/SectionNavigation';
 import VStack from '@/components/VStack';
 
 export default function TakePartPage({ city, page, siblings }) {
-  return <>
+  return <article>
     <SEO title={`${page.title} ${city.title}`} />
 
     <Breadcrumbs crumbs={[
@@ -27,13 +26,21 @@ export default function TakePartPage({ city, page, siblings }) {
     ]} />
 
     <VStack gap={20}>
-      {city && (
-        <StageMedium kicker={page.title} title={city.title} siblings={siblings} image={page?.featuredImage?.node} />
-      )}
+      <section>
+        {city && (
+          <StageMedium kicker={page.title} title={city.title} image={page?.featuredImage?.node} />
+        )}
+
+        {siblings && siblings.length > 1 && (
+          <div className="w-full">
+            <SectionNavigation items={siblings} />
+          </div>
+        )}
+      </section>
 
       <BlockSwitch blocks={page.blocks} />
     </VStack>
-  </>
+  </article>
 }
 
 export async function getStaticPaths({ defaultLocale }) {
