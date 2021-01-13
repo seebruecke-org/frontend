@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useStore } from '@/lib/store';
-import { getLocalizedFrontpageSlug } from '../../lib/pages';
 
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
 import HStack from '@/components/HStack';
@@ -13,7 +12,7 @@ import SearchIcon from '@/public/icons/search-regular.svg';
 import VStack from '../VStack';
 
 export default function Header() {
-  const router = useRouter();
+  const { locale, locales } = useRouter();
   const i18n = useI18n();
   const {
     menus: {
@@ -22,14 +21,17 @@ export default function Header() {
     }
   } = useStore();
 
+  const otherLocales = locales.filter(
+    (currentLocale) => currentLocale !== locale
+  );
   const primaryItems =
-    items?.nodes && items.nodes.slice(0, items.nodes.length - 2);
+    items?.nodes && items.nodes.slice(0, items.nodes.length - 1);
   const cta = items?.nodes && items.nodes.slice(items.nodes.length - 1);
 
   return (
     <header className="bg-orange-800 p-5 text-white flex flex-row justify-center">
       <div className="flex flex-row align-bottom max-w-wide w-full">
-        <Link href={getLocalizedFrontpageSlug(router.locale)}>
+        <Link href="/">
           <a className="flex items-end p-2 mr-5">
             <Logo />
           </a>
@@ -38,6 +40,16 @@ export default function Header() {
         <VStack gap={5} as="nav">
           {headerSecondaryItems && headerSecondaryItems?.nodes?.length > 0 && (
             <HStack gap={3} className="flex justify-self-end ml-auto pr-48">
+              {otherLocales.map((currentLocale, index) => (
+                <MenuItem
+                  path="/"
+                  locale={currentLocale}
+                  label={currentLocale.toUpperCase()}
+                  key={`header-lang-nav-${index}`}
+                  className="flex items-center font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                />
+              ))}
+
               <MenuItem
                 path="/"
                 label={i18n.t('header.search')}

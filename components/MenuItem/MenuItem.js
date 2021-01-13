@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-export default function MenuItem({ path, label, children, ...props }) {
+export default function MenuItem({ path, label, children, locale, ...props }) {
   return (
-    <Link href={path}>
+    <Link href={path} locale={locale}>
       <a {...props}>
         {label}
         {children}
