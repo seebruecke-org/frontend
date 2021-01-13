@@ -1,10 +1,16 @@
-import { default as SbHeading, FRAGMENT as HEADING_FRAGMENT } from './SbHeading';
+import {
+  default as SbHeading,
+  FRAGMENT as HEADING_FRAGMENT
+} from './SbHeading';
 import {
   default as Image,
   FRAGMENT as IMAGE_FRAGMENT,
   transform as transformImageAttributes
 } from './Image';
-import { default as Paragraph, FRAGMENT as PARAGRAPH_FRAGMENT } from './Paragraph';
+import {
+  default as Paragraph,
+  FRAGMENT as PARAGRAPH_FRAGMENT
+} from './Paragraph';
 
 const blocks = {
   SbHeadingBlock: {

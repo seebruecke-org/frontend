@@ -10,7 +10,9 @@ export default function StageMedium({ kicker, title, image }) {
         </div>
       )}
 
-      <div className={`grid grid-cols-12 max-w-wide w-full ${image && 'py-56'}`}>
+      <div
+        className={`grid grid-cols-12 max-w-wide w-full ${image && 'py-56'}`}
+      >
         <div
           className={`col-start-2 col-span-5 w-full relative bg-orange-200 self-start ${
             image ? 'px-10 py-12' : 'my-20'

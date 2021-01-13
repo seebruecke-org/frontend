@@ -12,7 +12,8 @@ html {
     font-family: Brezel;
     font-weight: 300;
     font-style: italic;
-    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff2) format('woff2'),
+    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff2)
+        format('woff2'),
       url(/fonts/BrezelGrotesk/BrezelGrotesk-LightItalic.woff) format('woff');
   }
 
@@ -29,7 +30,8 @@ html {
     font-family: Brezel;
     font-weight: 700;
     font-style: italic;
-    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff2) format('woff2'),
+    src: url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff2)
+        format('woff2'),
       url(/fonts/BrezelGrotesk/BrezelGrotesk-BoldItalic.woff) format('woff');
   }
 
@@ -39,14 +41,16 @@ html {
     font-display: swap;
     font-family: Rubik;
     font-style: normal;
-    src: url(/fonts/Rubik/Rubik-VariableFont_wght.woff2) format('woff2-variations');
+    src: url(/fonts/Rubik/Rubik-VariableFont_wght.woff2)
+      format('woff2-variations');
   }
 
   @font-face {
     font-display: swap;
     font-family: Rubik;
     font-style: italic;
-    src: url(/fonts/Rubik/Rubik-Italic-VariableFont_wght.woff2) format('woff2-variations');
+    src: url(/fonts/Rubik/Rubik-Italic-VariableFont_wght.woff2)
+      format('woff2-variations');
   }
 }
 

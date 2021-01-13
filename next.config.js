@@ -20,7 +20,12 @@ module.exports = withPlugins([withModules], {
   },
 
   webpack(config) {
-    config.resolve.alias['react'] = path.resolve(__dirname, '.', 'node_modules', 'react');
+    config.resolve.alias['react'] = path.resolve(
+      __dirname,
+      '.',
+      'node_modules',
+      'react'
+    );
 
     config.module.rules.push({
       test: /\.svg$/,

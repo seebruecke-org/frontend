@@ -14,7 +14,9 @@ export default function Logo() {
         />
       </svg>
 
-      <span className="font-rubik text-base uppercase font-bold leading-none">SEEBRÜCKE</span>
+      <span className="font-rubik text-base uppercase font-bold leading-none">
+        SEEBRÜCKE
+      </span>
     </div>
   );
 }

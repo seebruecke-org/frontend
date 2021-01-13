@@ -1,4 +1,10 @@
-export default function VStack({ as = 'div', gap = 1, children, className, ...props }) {
+export default function VStack({
+  as = 'div',
+  gap = 1,
+  children,
+  className,
+  ...props
+}) {
   const Tag = as;
 
   return (

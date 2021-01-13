@@ -22,7 +22,8 @@ export default function Header() {
     }
   } = useStore();
 
-  const primaryItems = items?.nodes && items.nodes.slice(0, items.nodes.length - 2);
+  const primaryItems =
+    items?.nodes && items.nodes.slice(0, items.nodes.length - 2);
   const cta = items?.nodes && items.nodes.slice(items.nodes.length - 1);
 
   return (

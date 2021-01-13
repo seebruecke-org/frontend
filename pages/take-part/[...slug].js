@@ -31,7 +31,11 @@ export default function TakePartPage({ city, page, siblings }) {
       <VStack gap={20}>
         <section>
           {city && (
-            <StageMedium kicker={page.title} title={city.title} image={page?.featuredImage?.node} />
+            <StageMedium
+              kicker={page.title}
+              title={city.title}
+              image={page?.featuredImage?.node}
+            />
           )}
 
           {siblings && siblings.length > 1 && (

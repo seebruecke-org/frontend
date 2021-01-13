@@ -1,4 +1,10 @@
-export default function HStack({ as = 'div', gap = 1, children, className, ...props }) {
+export default function HStack({
+  as = 'div',
+  gap = 1,
+  children,
+  className,
+  ...props
+}) {
   const Tag = as;
 
   return (

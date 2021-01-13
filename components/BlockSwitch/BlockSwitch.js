@@ -11,7 +11,8 @@ export default function BlockSwitch({ blocks }) {
   }, {});
 
   const firstBlock = blocks && blocks.length > 0 && blocks[0].__typename;
-  const lastBlock = blocks && blocks.length > 0 && blocks[blocks.length - 1].__typename;
+  const lastBlock =
+    blocks && blocks.length > 0 && blocks[blocks.length - 1].__typename;
   const addMarginBottom = lastBlock && blocksWithMargin.includes(lastBlock);
   const addMarginTop = firstBlock && blocksWithMargin.includes(firstBlock);
 
@@ -27,7 +28,10 @@ export default function BlockSwitch({ blocks }) {
 
           if (!BlockComponent) {
             return (
-              <code key={`block-not-${index}`} className="col-start-2 col-span-9">
+              <code
+                key={`block-not-${index}`}
+                className="col-start-2 col-span-9"
+              >
                 The block &quot;{type}&quot; isn&apos;t implemented yet.
               </code>
             );
