@@ -16,7 +16,7 @@ export default function Header() {
   const i18n = useI18n();
   const store = useStore() || {};
 
-  const items = store?.menus?.header;
+  const items = store?.menus?.header?.items;
   const headerSecondaryItems = store?.menus?.headerSecondary?.items;
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
