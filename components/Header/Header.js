@@ -14,13 +14,10 @@ import VStack from '../VStack';
 export default function Header() {
   const { locale, locales } = useRouter();
   const i18n = useI18n();
-  const {
-    menus: {
-      header: { items },
-      headerSecondary: { items: headerSecondaryItems }
-    }
-  } = useStore();
+  const store = useStore() || {};
 
+  const items = store?.menus?.header;
+  const headerSecondaryItems = store?.menus?.headerSecondary?.items;
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
   );
@@ -76,7 +73,7 @@ export default function Header() {
             </HStack>
           )}
 
-          {primaryItems.length > 0 && (
+          {primaryItems && primaryItems.length > 0 && (
             <HStack gap={10} className="flex items-end ml-10">
               {primaryItems.map((node) => (
                 <MenuItem

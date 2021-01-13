@@ -14,7 +14,9 @@ export default function Breadcrumbs({ crumbs }) {
               )}
               <MenuItem
                 {...crumb}
-                className="font-rubik text-gray-600 uppercase text-2xs md:text-xs hover:underline"
+                className={`font-rubik text-gray-600 uppercase text-2xs md:text-xs ${
+                  crumb.path && 'hover:underline'
+                }`}
               />
             </li>
           ))}

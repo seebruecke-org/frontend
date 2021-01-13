@@ -6,15 +6,15 @@ const withModules = transpileModules(['html-react-parser']);
 module.exports = withPlugins([withModules], {
   i18n: {
     locales: ['en', 'de'],
-    defaultLocale: 'de'
+    defaultLocale: 'de',
+    localeDetection: false
   },
 
   async rewrites() {
     return [
       {
-        source: '/de/mach-mit/:path*',
-        destination: '/de/take-part/:path*',
-        locale: false
+        source: '/mach-mit/:path*',
+        destination: '/take-part/:path*'
       }
     ];
   },

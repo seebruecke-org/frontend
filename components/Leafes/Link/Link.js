@@ -1,8 +1,8 @@
 import NextLink from 'next/link';
 
-export default function Link({ children, ...props }) {
+export default function Link({ href, children, ...props }) {
   return (
-    <NextLink>
+    <NextLink href={href}>
       <a {...props}>{children}</a>
     </NextLink>
   );

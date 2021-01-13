@@ -8,7 +8,7 @@ const HTML = ({ html }) => {
     replace: (node) => {
       const defaultTransforms = {
         a: ({ attribs, children }) => {
-          let { href, ...props } = attribs;
+          let { href } = attribs;
 
           // TODO: check if the url pattern matches the frontend
           // e.g. /cities/sachsen/ -> /mach-mit/sachsen/
@@ -17,7 +17,7 @@ const HTML = ({ html }) => {
           }
 
           return (
-            <NextLink href={href} {...props}>
+            <NextLink href={`/${href}`}>
               <a className="underline">{domToReact(children, parseOptions)}</a>
             </NextLink>
           );

@@ -9,24 +9,26 @@ import SEO from '@/components/SEO';
 import SectionNavigation from '@/components/SectionNavigation';
 import VStack from '@/components/VStack';
 
-export default function TakePartPage({ city, page, siblings }) {
+export default function TakePartPage({ country, city, page, siblings }) {
+  const breadcrumbs = [
+    {
+      path: '/mach-mit/',
+      label: 'Mach Mit'
+    }
+  ];
+
+  if (country) {
+    breadcrumbs.push({
+      path: country?.blocks?.length > 0 ? country.uri : null,
+      label: country.title
+    });
+  }
+
   return (
     <article>
-      <SEO title={`${page.title} ${city.title}`} />
+      <SEO title={`${page.title} ${city?.title}`} />
 
-      <Breadcrumbs
-        crumbs={[
-          {
-            path: '/mach-mit/',
-            label: 'Mach Mit'
-          },
-
-          {
-            path: '/mach-mit/brandenburg/',
-            label: 'Brandenburg'
-          }
-        ]}
-      />
+      <Breadcrumbs crumbs={breadcrumbs} />
 
       <VStack gap={20}>
         <section>
