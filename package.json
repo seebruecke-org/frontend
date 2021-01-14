@@ -23,7 +23,7 @@
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
     "@tailwindcss/typography": "^0.3.1",
-    "autoprefixer": "^10.0.2",
+    "autoprefixer": "^10.2.1",
     "date-fns": "2.16.1",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
@@ -33,14 +33,14 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "graphql": "^15.4.0",
     "graphql-request": "^3.4.0",
-    "html-react-parser": "^1.1.1",
+    "html-react-parser": "^1.1.2",
     "is-relative-url": "^3.0.0",
     "next": "^10.0.5",
     "next-compose-plugins": "^2.2.1",
     "next-localization": "^0.11.0",
     "next-plugin-preact": "^3.0.3",
     "next-transpile-modules": "^6.0.0",
-    "postcss": "^8.1.7",
+    "postcss": "^8.2.4",
     "postcss-preset-env": "^6.7.0",
     "preact": "^10.5.10",
     "preact-render-to-string": "^5.1.12",
@@ -50,12 +50,12 @@
     "simple-zustand-devtools": "^1.0.0",
     "swr": "^0.4.0",
     "tailwindcss": "^2.0.2",
-    "zustand": "^3.3.0"
+    "zustand": "^3.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@storybook/addon-viewport": "^6.1.11",
-    "@storybook/react": "^6.1.11",
+    "@storybook/addon-viewport": "^6.1.14",
+    "@storybook/react": "^6.1.14",
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
     "prettier": "^2.2.1"
