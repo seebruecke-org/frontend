@@ -1,9 +1,10 @@
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
+const withPreact = require('next-plugin-preact');
 const transpileModules = require('next-transpile-modules');
 const withModules = transpileModules(['html-react-parser']);
 
-module.exports = withPlugins([withModules], {
+module.exports = withPlugins([withModules, withPreact], {
   i18n: {
     locales: ['en', 'de'],
     defaultLocale: 'de',
