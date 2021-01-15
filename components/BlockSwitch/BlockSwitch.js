@@ -1,11 +1,23 @@
-import gutenbergBlocks from '@/components/Blocks';
+import contentBlocks from '@/components/Blocks';
 import VStack from '@/components/VStack';
 
-const blocksWithMargin = ['CoreParagraphBlock', 'CoreHeadingBlock'];
+import styles from './BlockSwitch.module.css';
 
-export default function BlockSwitch({ blocks }) {
-  const blockMap = Object.keys(gutenbergBlocks).reduce((acc, blockName) => {
-    acc[blockName] = gutenbergBlocks[blockName].Component;
+const blocksWithMargin = [
+  'ComponentSharedBlocksHeading',
+  'ComponentSharedBlocksRichtext'
+];
+
+export default function BlockSwitch({
+  blocks,
+  prefix = 'ComponentSharedBlocks'
+}) {
+  if (!blocks) {
+    return null;
+  }
+
+  const blockMap = Object.keys(contentBlocks).reduce((acc, blockName) => {
+    acc[`${prefix}${blockName}`] = contentBlocks[blockName].Component;
 
     return acc;
   }, {});
@@ -18,11 +30,14 @@ export default function BlockSwitch({ blocks }) {
 
   return (
     <div
-      className={`flex justify-center ${addMarginTop && 'mt-10 md:mt-20'} ${
+      className={`${styles.blockSwitch} ${addMarginTop && 'mt-10 md:mt-20'} ${
         addMarginBottom && 'pb-20 md:pb-60'
       }`}
     >
-      <VStack gap={10} className="grid grid-cols-12 max-w-wide w-full">
+      <VStack
+        gap={10}
+        className={`${styles.content} grid grid-cols-12 max-w-wide w-full`}
+      >
         {blocks.map(({ __typename: type, ...props }, index) => {
           const BlockComponent = blockMap[type] || null;
 

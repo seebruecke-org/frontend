@@ -1,32 +1,30 @@
+import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
+import { default as Image, FRAGMENT as IMAGE_FRAGMENT } from './Image';
+import { default as Richtext, FRAGMENT as RICHTEXT_FRAGMENT } from './Richtext';
 import {
-  default as SbHeading,
-  FRAGMENT as HEADING_FRAGMENT
-} from './SbHeading';
-import {
-  default as Image,
-  FRAGMENT as IMAGE_FRAGMENT,
-  transform as transformImageAttributes
-} from './Image';
-import {
-  default as Paragraph,
-  FRAGMENT as PARAGRAPH_FRAGMENT
-} from './Paragraph';
+  default as StageMedium,
+  FRAGMENT as STAGE_MEDIUM_FRAGMENT
+} from './StageMedium';
 
 const blocks = {
-  SbHeadingBlock: {
-    Component: SbHeading,
+  Heading: {
+    Component: Heading,
     FRAGMENT: HEADING_FRAGMENT
   },
 
-  CoreImageBlock: {
+  Image: {
     Component: Image,
-    FRAGMENT: IMAGE_FRAGMENT,
-    transform: transformImageAttributes
+    FRAGMENT: IMAGE_FRAGMENT
   },
 
-  CoreParagraphBlock: {
-    Component: Paragraph,
-    FRAGMENT: PARAGRAPH_FRAGMENT
+  Richtext: {
+    Component: Richtext,
+    FRAGMENT: RICHTEXT_FRAGMENT
+  },
+
+  StageMedium: {
+    Component: StageMedium,
+    FRAGMENT: STAGE_MEDIUM_FRAGMENT
   }
 };
 

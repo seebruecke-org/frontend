@@ -1,10 +1,9 @@
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
-const withPreact = require('next-plugin-preact');
 const transpileModules = require('next-transpile-modules');
 const withModules = transpileModules(['html-react-parser']);
 
-module.exports = withPlugins([withModules, withPreact], {
+module.exports = withPlugins([withModules], {
   i18n: {
     locales: ['en', 'de'],
     defaultLocale: 'de',
@@ -14,8 +13,8 @@ module.exports = withPlugins([withModules, withPreact], {
   async rewrites() {
     return [
       {
-        source: '/mach-mit/:path*',
-        destination: '/take-part/:path*'
+        source: '/mach-mit/:slug*',
+        destination: '/take-part/:slug*'
       }
     ];
   },

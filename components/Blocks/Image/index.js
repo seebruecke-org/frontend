@@ -1,13 +1,13 @@
 export { default } from './Image';
-export { default as transform } from './transform';
 
 export const FRAGMENT = `
-  ... on CoreImageBlock {
-    attributes {
-      ... on CoreImageBlockAttributes {
-        id
-        caption
-      }
+  ... on ComponentSharedBlocksMedia {
+    media {
+      alternativeText
+      caption
+      width
+      height
+      url
     }
   }
 `;

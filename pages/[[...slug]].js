@@ -10,18 +10,19 @@ export default function TakePartPage({ page }) {
   return (
     <article>
       <SEO title={page.title} />
-      <BlockSwitch blocks={page.blocks} />
+      <BlockSwitch blocks={page.content} />
     </article>
   );
 }
 
 export async function getStaticPaths({ defaultLocale }) {
   const sidePaths = await paths();
-  const staticPaths = sidePaths.map(({ uri, language }) => {
+
+  const staticPaths = sidePaths.map(({ slug }) => {
     return {
-      locale: language?.slug ?? defaultLocale,
+      locale: defaultLocale,
       params: {
-        slug: uri.split('/').slice(2)
+        slug: [slug]
       }
     };
   });
@@ -32,10 +33,8 @@ export async function getStaticPaths({ defaultLocale }) {
   };
 }
 
-export async function getStaticProps({ locale, params: { slug } }) {
-  if (slug && slug[0] === 'take-part') {
-    slug[0] = 'mach-mit';
-  }
+export async function getStaticProps({ locale, params }) {
+  const { slug } = params;
 
   const { data } = await query(slug, locale);
   const { initialState, ...globalData } = await queryGlobalData(locale);

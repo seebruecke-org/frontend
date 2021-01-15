@@ -10,15 +10,15 @@ import VStack from '@/components/VStack';
 
 import { useStore } from '@/lib/store';
 
-function Menu({ name, items }) {
+function Menu({ title, items }) {
   return (
     <VStack as="div" gap={10}>
-      <h4 className="font-rubik text-xs uppercase font-bold">{name}</h4>
+      <h4 className="font-rubik text-xs uppercase font-bold">{title}</h4>
 
-      {items?.nodes?.length > 0 && (
+      {items.length > 0 && (
         <ul className="grid grid-cols-2 md:grid-cols-1">
-          {items.nodes.map((node, index) => (
-            <li key={`footer-${name}-${index}`}>
+          {items.map((node, index) => (
+            <li key={`footer-${title}-${index}`}>
               <MenuItem
                 className="font-rubik text-xs hover:underline block py-3 md:py-5"
                 {...node}
@@ -63,14 +63,14 @@ export default function Footer() {
           </VStack>
         </div>
 
-        {footerMeta?.items?.nodes && (
+        {footerMeta?.items && (
           <div className="flex justify-between col-start-1 md:col-span-12">
             <HStack as="nav" gap={10}>
-              {footerMeta.items.nodes.map((node, index) => (
+              {footerMeta.items.map((item, index) => (
                 <MenuItem
                   className="font-rubik text-xs font-bold hover:underline"
                   key={`footer-meta-${index}`}
-                  {...node}
+                  {...item}
                 />
               ))}
             </HStack>

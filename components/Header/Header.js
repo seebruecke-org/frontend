@@ -21,9 +21,8 @@ export default function Header() {
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
   );
-  const primaryItems =
-    items?.nodes && items.nodes.slice(0, items.nodes.length - 1);
-  const cta = items?.nodes && items.nodes.slice(items.nodes.length - 1);
+  const primaryItems = items && items.slice(0, items.length - 1);
+  const cta = items && items.slice(items.length - 1);
 
   return (
     <header className="bg-orange-800 p-5 text-white flex flex-row justify-center">
@@ -35,7 +34,7 @@ export default function Header() {
         </Link>
 
         <VStack gap={5} as="nav">
-          {headerSecondaryItems && headerSecondaryItems?.nodes?.length > 0 && (
+          {headerSecondaryItems && headerSecondaryItems?.length > 0 && (
             <HStack gap={3} className="flex justify-self-end ml-auto pr-48">
               {otherLocales.map((currentLocale, index) => (
                 <MenuItem
@@ -63,10 +62,10 @@ export default function Header() {
                 <BookmarkIcon className="w-7 h-7 ml-2" />
               </MenuItem>
 
-              {headerSecondaryItems.nodes.map((node) => (
+              {headerSecondaryItems.map((item) => (
                 <MenuItem
-                  key={`menu-${node.label}`}
-                  {...node}
+                  key={`menu-${item.label}`}
+                  {...item}
                   className="font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 />
               ))}
@@ -75,10 +74,10 @@ export default function Header() {
 
           {primaryItems && primaryItems.length > 0 && (
             <HStack gap={10} className="flex items-end ml-10">
-              {primaryItems.map((node) => (
+              {primaryItems.map((item) => (
                 <MenuItem
-                  key={`menu-${node.label}`}
-                  {...node}
+                  key={`menu-${item.label}`}
+                  {...item}
                   className="font-rubik text-base uppercase font-bold leading-none hover:bg-white hover:text-orange-800 p-2"
                 />
               ))}
