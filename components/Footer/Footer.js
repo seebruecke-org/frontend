@@ -28,7 +28,7 @@ function Menu({ title, items }) {
     <VStack as="div" gap={10}>
       <h4 className="font-rubik text-xs uppercase font-bold">{title}</h4>
 
-      {items.length > 0 && (
+      {items && items.length > 0 && (
         <ul className="grid grid-cols-2 md:grid-cols-1">
           {items.map((node, index) => (
             <li key={`footer-${title}-${index}`}>
@@ -47,9 +47,11 @@ function Menu({ title, items }) {
 export default function Footer() {
   const i18n = useI18n();
   const { locale } = useRouter();
-  const {
-    menus: { footerTakePart, footerAbout, footerMeta }
-  } = useStore();
+  const store = useStore() || {};
+
+  const footerTakePart = store?.menus?.footerTakePart;
+  const footerAbout = store?.menus?.footerAbout;
+  const footerMeta = store?.menus?.footerMeta;
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-10 md:px-0">

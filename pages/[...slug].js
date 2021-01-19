@@ -9,8 +9,8 @@ import SEO from '@/components/SEO';
 export default function TakePartPage({ page }) {
   return (
     <article>
-      <SEO title={page.title} />
-      <BlockSwitch blocks={page.content} />
+      <SEO title={page?.title} />
+      <BlockSwitch blocks={page?.content} />
     </article>
   );
 }
@@ -22,7 +22,7 @@ export async function getStaticPaths({ defaultLocale }) {
     return {
       locale: defaultLocale,
       params: {
-        slug: [slug]
+        slug: [slug || '/']
       }
     };
   });
