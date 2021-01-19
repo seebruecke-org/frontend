@@ -1,0 +1,9 @@
+.stage {
+  height: 60vh;
+}
+
+@media (min-width: theme('screens.md')) {
+  .stage {
+    height: 80vh;
+  }
+}

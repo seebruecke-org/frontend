@@ -1,32 +1,69 @@
 import {
-  default as SbHeading,
-  FRAGMENT as HEADING_FRAGMENT
-} from './SbHeading';
+  default as Accordion,
+  FRAGMENT as ACCORDION_FRAGMENT
+} from './Accordion';
+import { default as Contact, FRAGMENT as CONTACT_FRAGMENT } from './Contact';
+import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
+import { default as Material, FRAGMENT as MATERIAL_FRAGMENT } from './Material';
+import { default as Media, FRAGMENT as MEDIA_FRAGMENT } from './Media';
+import { default as Richtext, FRAGMENT as RICHTEXT_FRAGMENT } from './Richtext';
 import {
-  default as Image,
-  FRAGMENT as IMAGE_FRAGMENT,
-  transform as transformImageAttributes
-} from './Image';
+  default as StageMedium,
+  FRAGMENT as STAGE_MEDIUM_FRAGMENT
+} from './StageMedium';
 import {
-  default as Paragraph,
-  FRAGMENT as PARAGRAPH_FRAGMENT
-} from './Paragraph';
+  default as StageLarge,
+  FRAGMENT as STAGE_LARGE_FRAGMENT
+} from './StageLarge';
+import {
+  default as SubNavigation,
+  FRAGMENT as SUB_NAVIGATION_FRAGMENT
+} from './SubNavigation';
 
 const blocks = {
-  SbHeadingBlock: {
-    Component: SbHeading,
+  Accordion: {
+    Component: Accordion,
+    FRAGMENT: ACCORDION_FRAGMENT
+  },
+
+  Contact: {
+    Component: Contact,
+    FRAGMENT: CONTACT_FRAGMENT
+  },
+
+  Heading: {
+    Component: Heading,
     FRAGMENT: HEADING_FRAGMENT
   },
 
-  CoreImageBlock: {
-    Component: Image,
-    FRAGMENT: IMAGE_FRAGMENT,
-    transform: transformImageAttributes
+  Material: {
+    Component: Material,
+    FRAGMENT: MATERIAL_FRAGMENT
   },
 
-  CoreParagraphBlock: {
-    Component: Paragraph,
-    FRAGMENT: PARAGRAPH_FRAGMENT
+  Media: {
+    Component: Media,
+    FRAGMENT: MEDIA_FRAGMENT
+  },
+
+  Richtext: {
+    Component: Richtext,
+    FRAGMENT: RICHTEXT_FRAGMENT
+  },
+
+  StageMedium: {
+    Component: StageMedium,
+    FRAGMENT: STAGE_MEDIUM_FRAGMENT
+  },
+
+  StageLarge: {
+    Component: StageLarge,
+    FRAGMENT: STAGE_LARGE_FRAGMENT
+  },
+
+  SubNavigation: {
+    Component: SubNavigation,
+    FRAGMENT: SUB_NAVIGATION_FRAGMENT
   }
 };
 

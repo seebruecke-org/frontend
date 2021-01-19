@@ -7,7 +7,8 @@ export default function Heading({
   ...props
 }) {
   const levels = {
-    h1: 'font-brezel leading-tight text-2xl md:text-4xl font-bold italic',
+    h1:
+      'font-brezel leading-none md:leading-tight text-2xl md:text-4xl font-bold italic',
     h2: 'font-rubik text-large md:text-2xl font-bold',
     h3: 'font-rubik text-medium md:text-xl font-bold',
     h4: 'font-rubik text-base md:text-large font-bold'
@@ -23,10 +24,7 @@ export default function Heading({
   const Tag = `h${level}`;
 
   return (
-    <Tag
-      className={`${levels[`h${as ?? level}`]} px-10 md:px-0 ${className}`}
-      {...props}
-    >
+    <Tag className={`${levels[`h${as ?? level}`]} ${className}`} {...props}>
       {kicker && (
         <small
           className={`${
@@ -38,7 +36,7 @@ export default function Heading({
         </small>
       )}
 
-      <span className="leading-tight">{children}</span>
+      {children}
     </Tag>
   );
 }

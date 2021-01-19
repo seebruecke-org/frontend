@@ -1,11 +1,11 @@
 export { default } from './Image';
 
 export const FRAGMENT = `
-  caption
-  description
-  sourceUrl
-  details: mediaDetails {
-    height
+  ... on UploadFile {
+    caption
+    url
     width
+    height
+    alternativeText
   }
 `;

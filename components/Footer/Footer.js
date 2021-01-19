@@ -3,22 +3,35 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React from 'react';
 
+import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
 import HStack from '@/components/HStack';
+import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
+import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import VStack from '@/components/VStack';
 
 import { useStore } from '@/lib/store';
 
-function Menu({ name, items }) {
+function SocialMedia({ className = '' }) {
+  return (
+    <div className={`flex space-x-4 ${className}`}>
+      <FacebookIcon className="w-12 h-12" />
+      <InstagramIcon className="w-12 h-12" />
+      <TwitterIcon className="w-12 h-12" />
+    </div>
+  );
+}
+
+function Menu({ title, items }) {
   return (
     <VStack as="div" gap={10}>
-      <h4 className="font-rubik text-xs uppercase font-bold">{name}</h4>
+      <h4 className="font-rubik text-xs uppercase font-bold">{title}</h4>
 
-      {items?.nodes?.length > 0 && (
+      {items.length > 0 && (
         <ul className="grid grid-cols-2 md:grid-cols-1">
-          {items.nodes.map((node, index) => (
-            <li key={`footer-${name}-${index}`}>
+          {items.map((node, index) => (
+            <li key={`footer-${title}-${index}`}>
               <MenuItem
                 className="font-rubik text-xs hover:underline block py-3 md:py-5"
                 {...node}
@@ -60,21 +73,24 @@ export default function Footer() {
             <Logo />
 
             <p className="font-rubik text-xs">{i18n.t('footer.tagline')}</p>
+
+            <SocialMedia className="md:hidden pt-20" />
           </VStack>
         </div>
 
-        {footerMeta?.items?.nodes && (
-          <div className="flex justify-between col-start-1 md:col-span-12">
+        {footerMeta?.items && (
+          <div className="flex items-center justify-between col-start-1 md:col-span-12">
             <HStack as="nav" gap={10}>
-              {footerMeta.items.nodes.map((node, index) => (
+              {footerMeta.items.map((item, index) => (
                 <MenuItem
                   className="font-rubik text-xs font-bold hover:underline"
                   key={`footer-meta-${index}`}
-                  {...node}
+                  {...item}
                 />
               ))}
             </HStack>
-            [SOCIAL MEDIA ITEMS]
+
+            <SocialMedia className="hidden md:flex mr-72" />
           </div>
         )}
       </div>
