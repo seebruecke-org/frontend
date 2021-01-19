@@ -8,7 +8,7 @@ export default function Image({
   ...props
 }) {
   const imageProps = {
-    src: `http://localhost:1337${url}`,
+    src: `${process.env.NEXT_CMS_DOMAIN}${url}`,
     width: props?.layout === 'fill' ? undefined : width,
     height: props?.layout === 'fill' ? undefined : height,
     ...props
