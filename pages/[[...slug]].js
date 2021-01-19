@@ -22,7 +22,7 @@ export async function getStaticPaths({ defaultLocale }) {
     return {
       locale: defaultLocale,
       params: {
-        slug: [slug || '/']
+        slug: [slug]
       }
     };
   });
@@ -46,6 +46,8 @@ export async function getStaticProps({ locale, params }) {
   }
 
   return {
+    // TODO: find a good magic number here
+    revalidate: 60,
     props: {
       ...data,
       ...globalData,
