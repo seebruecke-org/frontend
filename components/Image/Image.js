@@ -8,7 +8,7 @@ export default function Image({
   ...props
 }) {
   const imageProps = {
-    src: url,
+    src: `http://localhost:1337${url}`,
     width: props?.layout === 'fill' ? undefined : width,
     height: props?.layout === 'fill' ? undefined : height,
     ...props

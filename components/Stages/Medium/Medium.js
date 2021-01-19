@@ -1,28 +1,41 @@
 import Heading from '@/components/Heading';
 import Image from '@/components/Image';
 
-export default function StageMedium({ kicker, title, image }) {
+export default function StageMedium({
+  kicker,
+  title,
+  intro,
+  image,
+  className
+}) {
   return (
-    <div className="flex flex-col items-center bg-orange-200 relative">
+    <section
+      className={`grid grid-layout-primary bg-orange-200 relative ${className}`}
+    >
       {image && (
-        <div className="max-w-wide absolute w-full h-full">
-          <Image image={image} objectFit="cover" layout="fill" />
-        </div>
+        <Image
+          image={image}
+          objectFit="cover"
+          layout="fill"
+          className="col-span-full h-96 md:h-full w-full relative md:static"
+        />
       )}
 
       <div
-        className={`grid grid-cols-12 max-w-wide w-full ${image && 'py-56'}`}
+        className={`col-span-full md:col-start-3 md:col-span-6 relative bg-orange-200 ${
+          image ? 'py-8 md:px-12 md:my-40 md:-ml-12' : 'md:my-20'
+        }`}
       >
-        <div
-          className={`col-start-2 col-span-5 w-full relative bg-orange-200 self-start ${
-            image ? 'px-10 py-12' : 'my-20'
-          }`}
-        >
-          <Heading level={1} kicker={kicker} className="py-5">
-            {title}
-          </Heading>
-        </div>
+        <Heading level={1} kicker={kicker} className="py-5">
+          {title}
+        </Heading>
+
+        {intro && (
+          <p className="font-brezel text-base md:text-medium leading-normal px-10 md:px-0">
+            {intro}
+          </p>
+        )}
       </div>
-    </div>
+    </section>
   );
 }

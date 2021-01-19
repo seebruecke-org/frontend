@@ -5,7 +5,7 @@ export default function HeadingBlock({ level, text, kicker }) {
     <Heading
       level={parseInt(level.substr(1), 10)}
       kicker={kicker}
-      className="pt-20 col-start-2 col-span-9"
+      className="pt-20 col-span-full md:col-start-3 md:col-span-9"
     >
       {text}
     </Heading>

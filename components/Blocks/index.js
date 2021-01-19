@@ -1,20 +1,49 @@
+import {
+  default as Accordion,
+  FRAGMENT as ACCORDION_FRAGMENT
+} from './Accordion';
+import { default as Contact, FRAGMENT as CONTACT_FRAGMENT } from './Contact';
 import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
-import { default as Image, FRAGMENT as IMAGE_FRAGMENT } from './Image';
+import { default as Material, FRAGMENT as MATERIAL_FRAGMENT } from './Material';
+import { default as Media, FRAGMENT as MEDIA_FRAGMENT } from './Media';
 import { default as Richtext, FRAGMENT as RICHTEXT_FRAGMENT } from './Richtext';
 import {
   default as StageMedium,
   FRAGMENT as STAGE_MEDIUM_FRAGMENT
 } from './StageMedium';
+import {
+  default as StageLarge,
+  FRAGMENT as STAGE_LARGE_FRAGMENT
+} from './StageLarge';
+import {
+  default as SubNavigation,
+  FRAGMENT as SUB_NAVIGATION_FRAGMENT
+} from './SubNavigation';
 
 const blocks = {
+  Accordion: {
+    Component: Accordion,
+    FRAGMENT: ACCORDION_FRAGMENT
+  },
+
+  Contact: {
+    Component: Contact,
+    FRAGMENT: CONTACT_FRAGMENT
+  },
+
   Heading: {
     Component: Heading,
     FRAGMENT: HEADING_FRAGMENT
   },
 
-  Image: {
-    Component: Image,
-    FRAGMENT: IMAGE_FRAGMENT
+  Material: {
+    Component: Material,
+    FRAGMENT: MATERIAL_FRAGMENT
+  },
+
+  Media: {
+    Component: Media,
+    FRAGMENT: MEDIA_FRAGMENT
   },
 
   Richtext: {
@@ -25,6 +54,16 @@ const blocks = {
   StageMedium: {
     Component: StageMedium,
     FRAGMENT: STAGE_MEDIUM_FRAGMENT
+  },
+
+  StageLarge: {
+    Component: StageLarge,
+    FRAGMENT: STAGE_LARGE_FRAGMENT
+  },
+
+  SubNavigation: {
+    Component: SubNavigation,
+    FRAGMENT: SUB_NAVIGATION_FRAGMENT
   }
 };
 

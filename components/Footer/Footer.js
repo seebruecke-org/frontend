@@ -3,12 +3,25 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React from 'react';
 
+import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
 import HStack from '@/components/HStack';
+import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
+import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import VStack from '@/components/VStack';
 
 import { useStore } from '@/lib/store';
+
+function SocialMedia({ className = '' }) {
+  return (
+    <div className={`flex space-x-4 ${className}`}>
+      <FacebookIcon className="w-12 h-12" />
+      <InstagramIcon className="w-12 h-12" />
+      <TwitterIcon className="w-12 h-12" />
+    </div>
+  );
+}
 
 function Menu({ title, items }) {
   return (
@@ -60,11 +73,13 @@ export default function Footer() {
             <Logo />
 
             <p className="font-rubik text-xs">{i18n.t('footer.tagline')}</p>
+
+            <SocialMedia className="md:hidden pt-20" />
           </VStack>
         </div>
 
         {footerMeta?.items && (
-          <div className="flex justify-between col-start-1 md:col-span-12">
+          <div className="flex items-center justify-between col-start-1 md:col-span-12">
             <HStack as="nav" gap={10}>
               {footerMeta.items.map((item, index) => (
                 <MenuItem
@@ -74,7 +89,8 @@ export default function Footer() {
                 />
               ))}
             </HStack>
-            [SOCIAL MEDIA ITEMS]
+
+            <SocialMedia className="hidden md:flex mr-72" />
           </div>
         )}
       </div>

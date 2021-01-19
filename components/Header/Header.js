@@ -25,7 +25,7 @@ export default function Header() {
   const cta = items && items.slice(items.length - 1);
 
   return (
-    <header className="bg-orange-800 p-5 text-white flex flex-row justify-center">
+    <header className="bg-orange-800 p-5 text-white flex flex-row justify-center w-full overflow-x-hidden">
       <div className="flex flex-row align-bottom max-w-wide w-full">
         <Link href="/">
           <a className="flex items-end p-2 mr-5">
@@ -35,7 +35,10 @@ export default function Header() {
 
         <VStack gap={5} as="nav">
           {headerSecondaryItems && headerSecondaryItems?.length > 0 && (
-            <HStack gap={3} className="flex justify-self-end ml-auto pr-48">
+            <HStack
+              gap={3}
+              className="justify-self-end ml-auto pr-48 hidden md:flex"
+            >
               {otherLocales.map((currentLocale, index) => (
                 <MenuItem
                   path="/"
@@ -78,13 +81,13 @@ export default function Header() {
                 <MenuItem
                   key={`menu-${item.label}`}
                   {...item}
-                  className="font-rubik text-base uppercase font-bold leading-none hover:bg-white hover:text-orange-800 p-2"
+                  className="font-rubik text-base uppercase font-bold leading-none hover:bg-white hover:text-orange-800 p-2 whitespace-nowrap"
                 />
               ))}
 
               <MenuItem
                 {...cta[0]}
-                className="font-rubik text-2xs uppercase leading-none text-gray-700 hover:text-white px-7 py-4 bg-white rounded-3xl"
+                className="font-rubik text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 py-4 bg-white rounded-3xl whitespace-nowrap"
               />
             </HStack>
           )}

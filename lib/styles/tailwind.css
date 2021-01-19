@@ -1,7 +1,17 @@
 @import 'tailwindcss/base';
 
+:root {
+  --grid-primary: calc( 50vw - 60rem ) repeat( 12, 1fr ) calc( 50vw - 60rem );
+}
+
 html {
   font-size: 62.5%;
+}
+
+@layer utilities {
+  .grid-layout-primary {
+    grid-template-columns: var(--grid-primary);
+  }
 }
 
 @layer base {
