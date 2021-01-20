@@ -21,12 +21,12 @@ export default function AccordionBlock({ item = [] }) {
 
         return (
           <AccordionItem>
-            <AccordionItemHeading
-              className={`p-6 border-black border-t ${
-                isLast && 'border-b'
-              } hover:bg-gray-200 cursor-pointer`}
-            >
-              <AccordionItemButton className="font-rubik text-medium md:text-l font-bold flex items-center">
+            <AccordionItemHeading>
+              <AccordionItemButton
+                className={`p-6 border-black border-t ${
+                  isLast && 'border-b'
+                } hover:bg-gray-200 cursor-pointer font-rubik text-medium md:text-l font-bold flex items-center`}
+              >
                 <span>{title}</span>
 
                 <PlusIcon className="w-8 h-8 flex-shrink-0 ml-auto" />
