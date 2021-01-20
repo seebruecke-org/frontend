@@ -5,11 +5,9 @@ import Link from 'next/link';
 import { useStore } from '@/lib/store';
 
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
-import HStack from '@/components/HStack';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
 import SearchIcon from '@/public/icons/search-regular.svg';
-import VStack from '../VStack';
 
 export default function Header() {
   const { locale, locales } = useRouter();
@@ -33,12 +31,9 @@ export default function Header() {
           </a>
         </Link>
 
-        <VStack gap={5} as="nav">
+        <nav className="flex flex-col space-y-5">
           {headerSecondaryItems && headerSecondaryItems?.length > 0 && (
-            <HStack
-              gap={3}
-              className="justify-self-end ml-auto pr-48 hidden md:flex"
-            >
+            <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-48 hidden md:flex">
               {otherLocales.map((currentLocale, index) => (
                 <MenuItem
                   path="/"
@@ -72,11 +67,11 @@ export default function Header() {
                   className="font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 />
               ))}
-            </HStack>
+            </div>
           )}
 
           {primaryItems && primaryItems.length > 0 && (
-            <HStack gap={10} className="flex items-end ml-10">
+            <div className="flex flex-row space-x-10 items-end ml-10">
               {primaryItems.map((item) => (
                 <MenuItem
                   key={`menu-${item.label}`}
@@ -89,9 +84,9 @@ export default function Header() {
                 {...cta[0]}
                 className="font-rubik text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 py-4 bg-white rounded-3xl whitespace-nowrap"
               />
-            </HStack>
+            </div>
           )}
-        </VStack>
+        </nav>
       </div>
     </header>
   );
