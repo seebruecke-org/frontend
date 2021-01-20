@@ -18,11 +18,13 @@ export default function TakePartPage({ page }) {
 export async function getStaticPaths({ defaultLocale }) {
   const sidePaths = await paths();
 
-  const staticPaths = sidePaths.map(({ slug }) => {
+  const staticPaths = sidePaths.map(({ slug, parent }) => {
+    const path = [parent?.slug, slug].filter(Boolean);
+
     return {
       locale: defaultLocale,
       params: {
-        slug: [slug]
+        slug: path
       }
     };
   });
