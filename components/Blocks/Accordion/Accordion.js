@@ -11,14 +11,20 @@ import Richtext from '../Richtext';
 
 export default function AccordionBlock({ item = [] }) {
   return (
-    <Accordion className="col-start-3 col-span-9 py-20">
+    <Accordion
+      className="col-start-3 col-span-9 py-20"
+      allowMultipleExpanded
+      allowZeroExpanded
+    >
       {item.map(({ title, content }, index) => {
         const isLast = index + 1 === item.length;
 
         return (
           <AccordionItem>
             <AccordionItemHeading
-              className={`p-6 border-black border-t ${isLast && 'border-b'} hover:bg-gray-200`}
+              className={`p-6 border-black border-t ${
+                isLast && 'border-b'
+              } hover:bg-gray-200 cursor-pointer`}
             >
               <AccordionItemButton className="font-rubik text-medium md:text-l font-bold flex items-center">
                 <span>{title}</span>
