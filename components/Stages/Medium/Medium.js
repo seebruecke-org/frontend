@@ -22,8 +22,10 @@ export default function StageMedium({
       )}
 
       <div
-        className={`col-span-full md:col-start-3 md:col-span-6 relative bg-orange-200 ${
-          image ? 'py-8 md:px-12 md:my-40 md:-ml-12' : 'md:my-20'
+        className={`col-span-full md:col-start-3 relative bg-orange-200 ${
+          image
+            ? 'py-8 md:px-12 md:my-40 md:-ml-12 md:col-span-6'
+            : 'md:my-20 md:col-span-9'
         }`}
       >
         <Heading level={1} kicker={kicker} className="py-5">
