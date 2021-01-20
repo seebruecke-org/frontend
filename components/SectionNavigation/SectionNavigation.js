@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 
-import HStack from '@/components/HStack';
 import MenuItem from '@/components/MenuItem';
 
 export default function SectionNavigation({ items, className }) {
@@ -10,11 +9,7 @@ export default function SectionNavigation({ items, className }) {
     <div
       className={`border-t border-gray-400 bg-orange-200 grid grid-layout-primary col-span-full sticky top-0 z-30 ${className}`}
     >
-      <HStack
-        as="nav"
-        gap={5}
-        className="py-8 px-8 md:px-0 col-span-full md:col-start-3 md:col-span-10 flex flex-nowrap overflow-x-auto w-full"
-      >
+      <nav className="py-8 px-8 md:px-0 col-span-full md:col-start-3 md:col-span-10 flex flex-row space-x-5 flex-nowrap overflow-x-auto w-full">
         {items.map((item, index) => {
           const isActive = asPath === item.path;
 
@@ -30,7 +25,7 @@ export default function SectionNavigation({ items, className }) {
             />
           );
         })}
-      </HStack>
+      </nav>
     </div>
   );
 }
