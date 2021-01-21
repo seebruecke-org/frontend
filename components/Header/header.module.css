@@ -1,0 +1,47 @@
+.item {
+  @apply hidden;
+}
+
+@media (min-width: 430px) {
+  .item--1 {
+    @apply block;
+  }
+}
+
+@media (min-width: 560px) {
+  .item--2 {
+    @apply block;
+  }
+}
+
+@media (min-width: 680px) {
+  .item--3 {
+    @apply block;
+  }
+
+  .burger {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 830px) {
+  .item--4 {
+    @apply block;
+  }
+}
+
+@media (min-width: 1010px) {
+  .item--5 {
+    @apply block;
+  }
+
+  .burger {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 1150px) {
+  .item--6 {
+    @apply block;
+  }
+}
