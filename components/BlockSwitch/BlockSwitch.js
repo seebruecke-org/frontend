@@ -8,7 +8,8 @@ const blocksWithOuterMargin = [
 
 export default function BlockSwitch({
   blocks,
-  prefix = 'ComponentSharedBlocks'
+  prefix = 'ComponentSharedBlocks',
+  className
 }) {
   if (!blocks) {
     return null;
@@ -31,7 +32,7 @@ export default function BlockSwitch({
     <div
       className={`grid grid-layout-primary ${
         addMarginTop && 'mt-10 md:mt-20'
-      } ${addMarginBottom && 'pb-20 md:pb-60'}`}
+      } ${addMarginBottom && 'pb-20 md:pb-60'} ${className}`}
     >
       {blocks.map(({ __typename: type, ...props }, index) => {
         const BlockComponent = blockMap[type] || null;

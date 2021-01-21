@@ -10,6 +10,15 @@ module.exports = withPlugins([withModules], {
     localeDetection: false
   },
 
+  async rewrites() {
+    return [
+      {
+        source: '/mach-mit/:slug*',
+        destination: '/take-part/:slug*'
+      }
+    ];
+  },
+
   webpack(config) {
     config.resolve.alias['react'] = path.resolve(
       __dirname,

@@ -6,7 +6,7 @@ import { query, paths } from '../lib/pages';
 import BlockSwitch from '@/components/BlockSwitch';
 import SEO from '@/components/SEO';
 
-export default function TakePartPage({ page }) {
+export default function GenericPage({ page }) {
   return (
     <article>
       <SEO title={page?.title} />
