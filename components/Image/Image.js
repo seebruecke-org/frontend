@@ -19,7 +19,7 @@ export default function Image({
       <NextImage {...imageProps} />
 
       {caption && (
-        <figcaption className="font-rubik italic text-2xs p-5 text-gray-600">
+        <figcaption className="font-rubik italic text-2xs px-10 md:p-5 text-gray-600">
           <HTML html={caption} />
         </figcaption>
       )}
