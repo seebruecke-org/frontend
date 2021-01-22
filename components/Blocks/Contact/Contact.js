@@ -24,7 +24,7 @@ export default function ContactBlock({
       {telephone && (
         <li className="w-full">
           <NextLink href={`tel:${telephone}`}>
-            <a className="font-rubik text-medium">{telephone}</a>
+            <a className="font-rubik text-base md:text-medium">{telephone}</a>
           </NextLink>
         </li>
       )}
