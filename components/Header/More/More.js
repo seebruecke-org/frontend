@@ -22,7 +22,7 @@ function Footer() {
 
 export default function More({ children, onDismiss = () => {} }) {
   return (
-    <div className="flex flex-col bg-gray-800 absolute top-0 right-0 w-screen h-screen pt-5">
+    <div className="flex flex-col bg-gray-800 absolute top-0 right-0 w-screen h-screen pt-5 z-40">
       <button
         type="button"
         className="justify-end ml-auto mr-5 mb-20"
