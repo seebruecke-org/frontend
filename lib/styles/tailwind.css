@@ -1,7 +1,7 @@
 @import 'tailwindcss/base';
 
 :root {
-  --grid-primary: calc( 50vw - 60rem ) repeat( 12, 1fr ) calc( 50vw - 60rem );
+  --grid-primary: calc(50vw - 60rem) repeat(12, 1fr) calc(50vw - 60rem);
 }
 
 html {
