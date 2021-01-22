@@ -25,7 +25,7 @@ export default function AccordionBlock({ item = [] }) {
               <AccordionItemButton
                 className={`px-10 py-4 md:p-6 border-black border-t ${
                   isLast && 'border-b'
-                } hover:bg-gray-200 cursor-pointer font-rubik text:base  md:text-medium lg:text-l font-bold flex items-center`}
+                } hover:bg-gray-200 cursor-pointer font-rubik text-base  md:text-medium lg:text-l font-bold flex items-center`}
               >
                 <span>{title}</span>
 
