@@ -33,7 +33,7 @@ export default function AccordionBlock({ item = [] }) {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="border-black border-t py-6 md:py-10 px-10 md:px-6">
+              <div className="border-black border-t py-6 md:py-10 md:px-6">
                 <Richtext richtext={content} />
               </div>
             </AccordionItemPanel>
