@@ -120,9 +120,10 @@ export default function Header() {
                         <MenuItem
                           key={`menu-${item.label}`}
                           {...item}
-                          className={`font-rubik text-small uppercase font-bold leading-none py-7 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
+                          className={`font-rubik text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
                             styles.itemMore
                           } ${styles[`item--more-${index + 1}`]}`}
+                          onClick={() => setmoreIsOpen(false)}
                         />
                       ))}
                     </div>
