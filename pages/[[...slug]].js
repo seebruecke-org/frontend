@@ -39,7 +39,7 @@ export async function getStaticProps({ locale, params }) {
   const { slug } = params;
 
   const { data } = await query(slug, locale);
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {
     return {
