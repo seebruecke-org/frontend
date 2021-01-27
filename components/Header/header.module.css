@@ -1,0 +1,110 @@
+.item {
+  @apply hidden;
+}
+
+.itemMore {
+  @apply block;
+}
+
+.primaryItemsContainer {
+  @apply self-center;
+  @apply items-center;
+  @apply py-5;
+  @apply mb-auto;
+}
+
+.cta {
+  @apply ml-auto;
+}
+
+.logoContainer {
+  @apply py-5;
+}
+
+@media (min-width: 430px) {
+  .item--1 {
+    @apply block;
+  }
+
+  .item--more-1 {
+    @apply hidden;
+  }
+
+  .primaryItemsContainer {
+    @apply self-end;
+    @apply items-end;
+    @apply pb-5;
+    @apply mb-0;
+  }
+
+  .logoContainer {
+    @apply py-7;
+  }
+}
+
+@media (min-width: 560px) {
+  .item--2 {
+    @apply block;
+  }
+
+  .item--more-2 {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 680px) {
+  .item--3 {
+    @apply block;
+  }
+
+  .item--more-3 {
+    @apply hidden;
+  }
+
+  .burger {
+    @apply hidden;
+  }
+
+  .primaryItemsContainer {
+    @apply pt-0;
+  }
+
+  .cta {
+    @apply ml-0;
+    @apply self-auto;
+  }
+}
+
+@media (min-width: 820px) {
+  .item--4 {
+    @apply block;
+  }
+
+  .item--more-4 {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 1010px) {
+  .item--5 {
+    @apply block;
+  }
+
+  .item--more-5 {
+    @apply hidden;
+  }
+
+  .burger {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 1150px) {
+  .item--6 {
+    @apply block;
+  }
+
+  .item--more-6 {
+    @apply hidden;
+  }
+}

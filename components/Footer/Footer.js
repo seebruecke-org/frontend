@@ -4,12 +4,10 @@ import Link from 'next/link';
 import React from 'react';
 
 import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
-import HStack from '@/components/HStack';
 import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
-import VStack from '@/components/VStack';
 
 import { useStore } from '@/lib/store';
 
@@ -25,7 +23,7 @@ function SocialMedia({ className = '' }) {
 
 function Menu({ title, items }) {
   return (
-    <VStack as="div" gap={10}>
+    <div className="flex flex-col space-y-10">
       <h4 className="font-rubik text-xs uppercase font-bold">{title}</h4>
 
       {items && items.length > 0 && (
@@ -40,7 +38,7 @@ function Menu({ title, items }) {
           ))}
         </ul>
       )}
-    </VStack>
+    </div>
   );
 }
 
@@ -71,18 +69,18 @@ export default function Footer() {
         </div>
 
         <div className="md:col-start-10 md:col-span-3">
-          <VStack gap={5}>
+          <div className="flex flex-col space-y-5">
             <Logo />
 
             <p className="font-rubik text-xs">{i18n.t('footer.tagline')}</p>
 
             <SocialMedia className="md:hidden pt-20" />
-          </VStack>
+          </div>
         </div>
 
         {footerMeta?.items && (
           <div className="flex items-center justify-between col-start-1 md:col-span-12">
-            <HStack as="nav" gap={10}>
+            <nav className="flex space-x-10">
               {footerMeta.items.map((item, index) => (
                 <MenuItem
                   className="font-rubik text-xs font-bold hover:underline"
@@ -90,7 +88,7 @@ export default function Footer() {
                   {...item}
                 />
               ))}
-            </HStack>
+            </nav>
 
             <SocialMedia className="hidden md:flex mr-72" />
           </div>

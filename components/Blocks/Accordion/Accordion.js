@@ -12,7 +12,7 @@ import Richtext from '../Richtext';
 export default function AccordionBlock({ item = [] }) {
   return (
     <Accordion
-      className="col-start-3 col-span-9 py-20"
+      className="col-span-full md:col-start-3 md:col-span-9 py-20"
       allowMultipleExpanded
       allowZeroExpanded
     >
@@ -23,9 +23,9 @@ export default function AccordionBlock({ item = [] }) {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton
-                className={`p-6 border-black border-t ${
+                className={`px-10 py-4 md:p-6 border-black border-t ${
                   isLast && 'border-b'
-                } hover:bg-gray-200 cursor-pointer font-rubik text-medium md:text-l font-bold flex items-center`}
+                } hover:bg-gray-200 cursor-pointer font-rubik text-base  md:text-medium lg:text-l font-bold flex items-center`}
               >
                 <span>{title}</span>
 
@@ -33,7 +33,7 @@ export default function AccordionBlock({ item = [] }) {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="border-black border-t py-10 px-6">
+              <div className="border-black border-t py-6 md:py-10 md:px-6">
                 <Richtext richtext={content} />
               </div>
             </AccordionItemPanel>

@@ -1,11 +1,17 @@
 @import 'tailwindcss/base';
 
 :root {
-  --grid-primary: calc( 50vw - 60rem ) repeat( 12, 1fr ) calc( 50vw - 60rem );
+  --grid-primary: calc(50vw - 60rem) repeat(12, 1fr) calc(50vw - 60rem);
 }
 
 html {
   font-size: 62.5%;
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 @layer utilities {

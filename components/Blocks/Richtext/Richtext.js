@@ -1,6 +1,6 @@
 import Markdown from '@/components/Markdown';
 
-import Heading from '@/components/Heading';
+import Heading from '../Heading';
 import Link from './Link';
 import Paragraph from './Paragraph';
 
