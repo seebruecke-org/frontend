@@ -9,45 +9,49 @@ import SectionNavigation from '@/components/SectionNavigation';
 
 export default function TakePartPage({ pageType, ...props }) {
   if (pageType === 'cities-overview') {
-    const { cities } = props;
+    const { cities, page } = props;
 
     return (
-      <article className="grid grid-layout-primary">
-        <Map />
+      <article>
+        <BlockSwitch blocks={page?.content} />
 
-        <ul className="col-start-7 col-span-7">
-          {Object.keys(cities).map((countryName) => (
-            <li key={`country-${countryName}`}>
-              <Country name={countryName} />
+        <div className="grid grid-layout-primary">
+          <Map />
 
-              <ul className="flex flex-col space-y-10">
-                {Object.keys(cities[countryName].countries).map(
-                  (federalCountryName) => (
-                    <li key={`federalCountry-${federalCountryName}`}>
-                      <FederalCountry
-                        count={
-                          cities[countryName].countries[federalCountryName]
-                            .cities.length
-                        }
-                        name={federalCountryName}
-                      />
+          <ul className="col-start-7 col-span-7">
+            {Object.keys(cities).map((countryName) => (
+              <li key={`country-${countryName}`}>
+                <Country name={countryName} />
 
-                      <ul className="flex flex-col space-y-10">
-                        {cities[countryName].countries[
-                          federalCountryName
-                        ].cities.map((city) => (
-                          <li key={`city-${city.name}`}>
-                            <Group uri={city.uri} name={city.name} />
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  )
-                )}
-              </ul>
-            </li>
-          ))}
-        </ul>
+                <ul className="flex flex-col space-y-10">
+                  {Object.keys(cities[countryName].countries).map(
+                    (federalCountryName) => (
+                      <li key={`federalCountry-${federalCountryName}`}>
+                        <FederalCountry
+                          count={
+                            cities[countryName].countries[federalCountryName]
+                              .cities.length
+                          }
+                          name={federalCountryName}
+                        />
+
+                        <ul className="flex flex-col space-y-10">
+                          {cities[countryName].countries[
+                            federalCountryName
+                          ].cities.map((city) => (
+                            <li key={`city-${city.name}`}>
+                              <Group uri={city.uri} name={city.name} />
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </article>
     );
   }
