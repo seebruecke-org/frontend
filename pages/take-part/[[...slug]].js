@@ -1,10 +1,9 @@
-import NextLink from 'next/link';
-
 import { RETURN_CODES } from '@/lib/constants';
 import { query, paths } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 
 import { StageMedium } from '@/components/Stages';
+import { Group, FederalCountry, Country, Map } from '@/components/Map';
 import BlockSwitch from '@/components/BlockSwitch';
 import SectionNavigation from '@/components/SectionNavigation';
 
@@ -14,43 +13,31 @@ export default function TakePartPage({ pageType, ...props }) {
 
     return (
       <article className="grid grid-layout-primary">
-        <div className="bg-gray-400 col-start-1 col-span-7 h-screen">Karte</div>
+        <Map />
 
-        <ul className="col-start-9 col-span-5">
+        <ul className="col-start-7 col-span-7">
           {Object.keys(cities).map((countryName) => (
             <li key={`country-${countryName}`}>
-              <h2 className="font-brezel text-2xl font-bold italic leading-none bg-gray-200 px-5 py-10">
-                {countryName}
-              </h2>
+              <Country name={countryName} />
 
-              <ul>
+              <ul className="flex flex-col space-y-10">
                 {Object.keys(cities[countryName].countries).map(
                   (federalCountryName) => (
                     <li key={`federalCountry-${federalCountryName}`}>
-                      <h3 className="font-brezel text-xl font-bold italic p-5">
-                        {federalCountryName}
+                      <FederalCountry
+                        count={
+                          cities[countryName].countries[federalCountryName]
+                            .cities.length
+                        }
+                        name={federalCountryName}
+                      />
 
-                        <small className="block not-italic font-normal text-small">
-                          {
-                            cities[countryName].countries[federalCountryName]
-                              .cities.length
-                          }{' '}
-                          Lokalgruppen
-                        </small>
-                      </h3>
-
-                      <ul>
+                      <ul className="flex flex-col space-y-10">
                         {cities[countryName].countries[
                           federalCountryName
                         ].cities.map((city) => (
                           <li key={`city-${city.name}`}>
-                            <h4 className="font-brezel text-base font-bold italic">
-                              <NextLink href={city.uri}>
-                                <a className="bg-orange-200 hover:bg-orange-800 cursor-pointer p-5 block">
-                                  {city.name}
-                                </a>
-                              </NextLink>
-                            </h4>
+                            <Group uri={city.uri} name={city.name} />
                           </li>
                         ))}
                       </ul>
