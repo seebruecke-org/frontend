@@ -67,12 +67,25 @@ const blocks = {
   }
 };
 
-export function getFragments() {
-  return Object.keys(blocks).map((blockName) => {
-    const { FRAGMENT } = blocks[blockName];
+export function getFragments(options = {}) {
+  const { exclude } = options;
+  const fragments = Object.keys(blocks)
+    .filter((blockName) => {
+      const hasExludes = Array.isArray(exclude);
 
-    return FRAGMENT;
-  });
+      if (hasExludes) {
+        return !exclude.includes(blockName);
+      }
+
+      return true;
+    })
+    .map((blockName) => {
+      const { FRAGMENT } = blocks[blockName];
+
+      return FRAGMENT;
+    });
+
+  return fragments;
 }
 
 export default blocks;

@@ -17,6 +17,7 @@ body {
 @layer utilities {
   .grid-layout-primary {
     grid-template-columns: var(--grid-primary);
+    grid-column-gap: 3rem;
   }
 }
 
