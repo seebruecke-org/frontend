@@ -22,7 +22,7 @@ export default function Richtext({ richtext }) {
   return (
     <Markdown
       renderers={RENDERERS}
-      className="col-span-full md:col-start-3 md:col-span-9 flex flex-col space-y-10"
+      className="col-span-full md:col-start-3 md:col-span-9 flex flex-col space-y-10 my-5 md:my-10"
     >
       {richtext}
     </Markdown>

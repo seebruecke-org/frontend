@@ -9,7 +9,7 @@ export default function SectionNavigation({ items, className }) {
 
   return (
     <div
-      className={`bg-orange-200 grid grid-layout-primary col-span-full sticky top-0 z-30 ${styles.navigation} ${className}`}
+      className={`bg-orange-200 grid grid-layout-primary col-span-full sticky top-0 z-30 mb-10 ${styles.navigation} ${className}`}
     >
       <span
         className={`w-full bg-gray-400 absolute top-0 left-0 ${styles.border}`}
