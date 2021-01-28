@@ -14,7 +14,7 @@ export default function Heading({
   };
 
   const kickers = {
-    h1: 'font-brezel italic text-base md:text-medium',
+    h1: 'font-brezel italic text-base md:text-medium block mb-2',
     h2: 'font-rubik text-xs uppercase',
     h3: 'font-rubik text-xs uppercase',
     h4: 'font-rubik text-xs uppercase'

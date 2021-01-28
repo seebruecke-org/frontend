@@ -30,7 +30,7 @@ export default function StageMedium({
             : 'md:my-20 md:col-span-9'
         }`}
       >
-        <Heading level={1} kicker={kicker} className="py-5 px-10 md:px-0">
+        <Heading level={1} kicker={kicker} className="pb-3 px-10 md:px-0">
           {title}
         </Heading>
 
