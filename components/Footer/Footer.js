@@ -55,9 +55,9 @@ export default function Footer() {
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-10 md:px-0">
       <div className="grid gap-y-20 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
-          <Link href="/" locale={locale === 'de' ? 'en' : 'de'}>
-            <a className="font-bold">{i18n.t('footer.langEn')}</a>
-          </Link>
+          <a href="/" className="font-bold">
+            {i18n.t('footer.langEn')}
+          </a>
         </div>
 
         <div className="md:col-start-4 md:col-span-3">
