@@ -1,6 +1,8 @@
 import Heading from '@/components/Heading';
 import Image from '@/components/Image';
 
+import * as styles from './medium.module.css';
+
 export default function StageMedium({
   kicker,
   title,
@@ -10,7 +12,7 @@ export default function StageMedium({
 }) {
   return (
     <section
-      className={`grid grid-layout-primary bg-orange-200 relative ${className}`}
+      className={`grid grid-layout-primary bg-orange-200 relative ${styles.stage} ${className}`}
     >
       {image && (
         <Image
