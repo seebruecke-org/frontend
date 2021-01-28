@@ -60,13 +60,14 @@ export default function Header() {
           {headerSecondaryItems && headerSecondaryItems?.length > 0 && (
             <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-52 hidden md:flex md:mb-3 pt-5">
               {otherLocales.map((currentLocale, index) => (
-                <MenuItem
-                  path="/"
+                <a
+                  href="/"
                   locale={currentLocale}
-                  label={currentLocale.toUpperCase()}
                   key={`header-lang-nav-${index}`}
                   className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                />
+                >
+                  {currentLocale.toUpperCase()}
+                </a>
               ))}
 
               <MenuItem
@@ -104,7 +105,8 @@ export default function Header() {
                   key={`menu-${item.label}`}
                   {...item}
                   className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
-                    isPartiallyActive(asPath, item.path) && 'bg-white text-orange-800'
+                    isPartiallyActive(asPath, item.path) &&
+                    'bg-white text-orange-800'
                   } hover:text-orange-800 p-2 whitespace-nowrap ${
                     styles.item
                   } ${styles[`item--${index + 1}`]}`}
