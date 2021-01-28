@@ -44,7 +44,6 @@ function Menu({ title, items }) {
 
 export default function Footer() {
   const i18n = useI18n();
-  const { locale } = useRouter();
   const store = useStore() || {};
 
   const footerTakePart = store?.menus?.footerTakePart;

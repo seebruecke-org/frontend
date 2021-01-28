@@ -5,7 +5,7 @@ const withModules = transpileModules(['html-react-parser']);
 
 module.exports = withPlugins([withModules], {
   i18n: {
-    locales: ['en', 'de'],
+    locales: ['de'],
     defaultLocale: 'de',
     localeDetection: false
   },
