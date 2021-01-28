@@ -26,11 +26,15 @@ export default function StageMedium({
       <div
         className={`col-span-full md:col-start-3 relative bg-orange-200 ${
           image
-            ? 'py-8 md:px-12 md:my-40 md:-ml-12 md:col-span-6'
-            : 'md:my-20 md:col-span-9'
+            ? 'py-12 md:px-12 md:my-40 md:-ml-12 md:col-span-6'
+            : 'md:my-24 md:col-span-9'
         }`}
       >
-        <Heading level={1} kicker={kicker} className="pb-3 px-10 md:px-0">
+        <Heading
+          level={1}
+          kicker={kicker}
+          className={`${image ? 'py-5' : 'mb-5'} px-10 md:px-0`}
+        >
           {title}
         </Heading>
 
