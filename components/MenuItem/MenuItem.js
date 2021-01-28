@@ -1,13 +1,6 @@
 import Link from 'next/link';
 
-export default function MenuItem({
-  path,
-  label,
-  children,
-  locale,
-  prefetch = true,
-  ...props
-}) {
+export default function MenuItem({ path, label, children, locale, ...props }) {
   if (!path) {
     return (
       <span {...props}>
@@ -18,7 +11,7 @@ export default function MenuItem({
   }
 
   return (
-    <Link href={path} locale={locale} prefetch={prefetch}>
+    <Link href={path} locale={locale}>
       <a {...props}>
         {label}
         {children}

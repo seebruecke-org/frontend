@@ -62,7 +62,6 @@ export default function Header() {
               {otherLocales.map((currentLocale, index) => (
                 <MenuItem
                   path="/"
-                  prefetch={false}
                   locale={currentLocale}
                   label={currentLocale.toUpperCase()}
                   key={`header-lang-nav-${index}`}
@@ -73,7 +72,6 @@ export default function Header() {
               <MenuItem
                 path="/"
                 label={i18n.t('header.search')}
-                prefetch={false}
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
               >
                 <SearchIcon className="w-7 h-7 ml-2" />
@@ -82,7 +80,6 @@ export default function Header() {
               <MenuItem
                 path="/"
                 label={i18n.t('header.myPlace')}
-                prefetch={false}
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
               >
                 <BookmarkIcon className="w-7 h-7 ml-2" />
@@ -91,7 +88,6 @@ export default function Header() {
               {headerSecondaryItems.map((item) => (
                 <MenuItem
                   key={`menu-${item.label}`}
-                  prefetch={false}
                   {...item}
                   className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 />
@@ -107,7 +103,6 @@ export default function Header() {
                 <MenuItem
                   key={`menu-${item.label}`}
                   {...item}
-                  prefetch={false}
                   className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
                     isPartiallyActive(asPath, item.path) && 'bg-white text-orange-800'
                   } hover:text-orange-800 p-2 whitespace-nowrap ${
@@ -130,7 +125,6 @@ export default function Header() {
                       {primaryItems.map((item, index) => (
                         <MenuItem
                           key={`menu-${item.label}`}
-                          prefetch={false}
                           {...item}
                           className={`font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
                             styles.itemMore
