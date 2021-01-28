@@ -12,7 +12,7 @@ export default function SectionNavigation({ items, className }) {
       className={`bg-orange-200 grid grid-layout-primary col-span-full sticky top-0 z-30 mb-10 ${styles.navigation} ${className}`}
     >
       <span
-        className={`w-full bg-gray-400 absolute top-0 left-0 ${styles.border}`}
+        className={`w-full bg-gray-400 absolute top-0 left-0 opacity-50 ${styles.border}`}
       />
 
       <nav className="py-8 px-8 md:px-0 col-span-full md:col-start-3 md:col-span-10 flex flex-row space-x-5 flex-nowrap overflow-x-auto w-full">
