@@ -24,7 +24,12 @@ export default function Heading({
   const Tag = `h${level}`;
 
   return (
-    <Tag className={`${levels[`h${as ?? level}`]} ${className}`} {...props}>
+    <Tag
+      className={`font-rubik-features ${
+        levels[`h${as ?? level}`]
+      } ${className}`}
+      {...props}
+    >
       {kicker && (
         <small
           className={`${

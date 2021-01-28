@@ -19,6 +19,10 @@ body {
     grid-template-columns: var(--grid-primary);
     grid-column-gap: 3rem;
   }
+
+  .font-rubik-features {
+    font-feature-settings: "liga" on,"kern" on;
+  }
 }
 
 @layer base {

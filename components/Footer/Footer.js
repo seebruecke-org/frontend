@@ -72,7 +72,9 @@ export default function Footer() {
           <div className="flex flex-col space-y-5">
             <Logo />
 
-            <p className="font-rubik text-xs">{i18n.t('footer.tagline')}</p>
+            <p className="font-rubik text-xs font-rubik-features">
+              {i18n.t('footer.tagline')}
+            </p>
 
             <SocialMedia className="md:hidden pt-20" />
           </div>

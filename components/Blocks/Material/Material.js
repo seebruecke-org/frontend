@@ -31,13 +31,13 @@ export default function MaterialBlock({ item }) {
                 <>
                   {file && (
                     <VStack gap={2}>
-                      <h3 className="font-rubik text-xs md:text-base font-bold">
+                      <h3 className="font-rubik font-rubik-features text-xs md:text-base font-bold">
                         <a href={file.url} className="underline break-all">
                           {file.name}
                         </a>
                       </h3>
 
-                      <p className="font-rubik text-xs md:text-base uppercase flex items-center">
+                      <p className="font-rubik font-rubik-features text-xs md:text-base uppercase flex items-center">
                         <FileDownloadIcon className="w-8 h-8 mr-2" />
                         {file.mime} {file.size}kb
                       </p>
@@ -47,7 +47,7 @@ export default function MaterialBlock({ item }) {
               )}
 
               {description && (
-                <p className="font-rubik text-xs md:text-base w-full">
+                <p className="font-rubik font-rubik-features text-xs md:text-base w-full">
                   {description}
                 </p>
               )}

@@ -62,7 +62,7 @@ export default function Header() {
                   locale={currentLocale}
                   label={currentLocale.toUpperCase()}
                   key={`header-lang-nav-${index}`}
-                  className="flex items-center font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                  className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 />
               ))}
 
@@ -70,7 +70,7 @@ export default function Header() {
                 path="/"
                 label={i18n.t('header.search')}
                 prefetch={false}
-                className="flex items-center font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
               >
                 <SearchIcon className="w-7 h-7 ml-2" />
               </MenuItem>
@@ -79,7 +79,7 @@ export default function Header() {
                 path="/"
                 label={i18n.t('header.myPlace')}
                 prefetch={false}
-                className="flex items-center font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
               >
                 <BookmarkIcon className="w-7 h-7 ml-2" />
               </MenuItem>
@@ -89,7 +89,7 @@ export default function Header() {
                   key={`menu-${item.label}`}
                   prefetch={false}
                   {...item}
-                  className="font-rubik text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                  className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 />
               ))}
             </div>
@@ -104,7 +104,7 @@ export default function Header() {
                   key={`menu-${item.label}`}
                   {...item}
                   prefetch={false}
-                  className={`font-rubik text-small md:text-base uppercase font-bold leading-none hover:bg-white hover:text-orange-800 p-2 whitespace-nowrap ${
+                  className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white hover:text-orange-800 p-2 whitespace-nowrap ${
                     styles.item
                   } ${styles[`item--${index + 1}`]}`}
                 />
@@ -112,7 +112,7 @@ export default function Header() {
 
               <MenuItem
                 {...cta[0]}
-                className={`${styles.cta} font-rubik text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-4 bg-white rounded-3xl whitespace-nowrap tracking-wide self-end`}
+                className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-4 bg-white rounded-3xl whitespace-nowrap tracking-wide self-end`}
               />
 
               <Burger onClick={() => setmoreIsOpen(!moreIsOpen)} />
@@ -126,7 +126,7 @@ export default function Header() {
                           key={`menu-${item.label}`}
                           prefetch={false}
                           {...item}
-                          className={`font-rubik text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
+                          className={`font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
                             styles.itemMore
                           } ${styles[`item--more-${index + 1}`]}`}
                           onClick={() => setmoreIsOpen(false)}

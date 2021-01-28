@@ -17,7 +17,7 @@ export default function SectionNavigation({ items, className }) {
             <MenuItem
               {...item}
               key={`secondary-${item.path}`}
-              className={`block py-2 px-3 md:p-3 uppercase font-rubik font-bold text-xs md:text-base leading-none whitespace-nowrap ${
+              className={`block py-2 px-3 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap ${
                 isActive && 'bg-white'
               } hover:bg-white col-span-2 text-center ${
                 index === 0 && 'col-start-2'

@@ -29,7 +29,7 @@ export default function AccordionBlock({ item = [] }) {
                   <AccordionItemButton
                     className={`px-10 py-4 md:p-6 border-black border-t ${
                       isLast && 'border-b'
-                    } ${expanded ? 'bg-orange-800' : 'hover:bg-gray-200'} cursor-pointer font-rubik text-base  md:text-medium lg:text-l font-bold flex items-center`}
+                    } ${expanded ? 'bg-orange-800' : 'hover:bg-gray-200'} cursor-pointer font-rubik font-rubik-features text-base  md:text-medium lg:text-l font-bold flex items-center`}
                   >
                     <span>{title}</span>
 
