@@ -7,8 +7,7 @@ export default function Heading({
   ...props
 }) {
   const levels = {
-    h1:
-      'font-brezel leading-none md:leading-tight text-2xl md:text-4xl font-bold italic',
+    h1: 'font-brezel leading-none text-2xl md:text-4xl font-bold italic',
     h2: 'font-rubik text-large md:text-2xl font-bold',
     h3: 'font-rubik text-medium md:text-xl font-bold',
     h4: 'font-rubik text-base md:text-large font-bold'
