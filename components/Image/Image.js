@@ -5,6 +5,8 @@ import HTML from '@/components/HTML';
 export default function Image({
   image: { caption, url, width, height },
   className,
+  classNameImage,
+  classNameCaption,
   ...props
 }) {
   const imageProps = {
@@ -16,10 +18,14 @@ export default function Image({
 
   return (
     <figure className={`leading-none text-none ${className}`}>
-      <NextImage {...imageProps} />
+      <div className={classNameImage}>
+        <NextImage {...imageProps} />
+      </div>
 
       {caption && (
-        <figcaption className="font-rubik italic text-2xs px-10 py-5 md:p-5 text-gray-600 font-rubik-features">
+        <figcaption
+          className={`font-rubik italic text-2xs px-10 py-5 md:p-5 text-gray-600 font-rubik-features ${classNameCaption}`}
+        >
           <HTML html={caption} />
         </figcaption>
       )}
