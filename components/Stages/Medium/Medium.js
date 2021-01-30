@@ -27,7 +27,7 @@ export default function StageMedium({
         className={`col-span-full md:col-start-3 relative bg-orange-200 ${
           image
             ? 'py-12 md:px-12 md:my-40 md:-ml-12 md:col-span-6'
-            : 'md:my-24 md:col-span-9'
+            : 'my-12 md:my-24 md:col-span-9'
         }`}
       >
         <Heading
