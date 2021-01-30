@@ -1,0 +1,5 @@
+.triangle {
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent currentColor transparent;
+  top: -10px;
+}

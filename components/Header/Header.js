@@ -7,6 +7,8 @@ import { useStore } from '@/lib/store';
 
 import BarsIcon from '@/public/icons/bars.svg';
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
+import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
+import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
 import More from './More';
@@ -16,6 +18,21 @@ import * as styles from './header.module.css';
 
 function isPartiallyActive(fullPath, path) {
   return fullPath.startsWith(path);
+}
+
+function MoreToggle({ onClick = () => {}, isOpen }) {
+  const Icon = isOpen ? ChevronUpIcon : ChevronDownIcon;
+
+  return (
+    <button
+      type="button"
+      className={`font-rubik text-small items-center text-white leading-none p-2 ${styles.moreToggle}`}
+      onClick={onClick}
+    >
+      mehr
+      <Icon className="w-6 h-6 ml-2" />
+    </button>
+  );
 }
 
 function Burger({ onClick = () => {} }) {
@@ -112,6 +129,11 @@ export default function Header() {
                   } ${styles[`item--${index + 1}`]}`}
                 />
               ))}
+
+              <MoreToggle
+                onClick={() => setmoreIsOpen(!moreIsOpen)}
+                isOpen={moreIsOpen}
+              />
 
               <MenuItem
                 {...cta[0]}
