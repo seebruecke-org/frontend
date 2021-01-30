@@ -42,7 +42,7 @@ function Burger({ onClick = () => {} }) {
       className={`font-rubik text-3xs uppercase text-white text-center p-0 leading-none ml-auto justify-end tracking-wide ${styles.burger}`}
       onClick={onClick}
     >
-      <BarsIcon className="w-14 h-14" />
+      <BarsIcon className="w-12 h-12" />
       Menu
     </button>
   );
