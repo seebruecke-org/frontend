@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import React from 'react';
 
 import { query as queryGlobalData } from '../../lib/global';
@@ -14,6 +15,11 @@ import Form, {
 import Heading from '@/components/Heading';
 
 export default function FormPage() {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => console.log(data);
+
+  console.log(errors);
+
   return (
     <article className="grid grid-layout-primary pt-20">
       <Heading
@@ -24,11 +30,13 @@ export default function FormPage() {
         Aktions&shy;formular
       </Heading>
 
-      <Form highlight>
+      <Form onSubmit={handleSubmit(onSubmit)} highlight>
         <Row>
           <TextInput
             name="city"
             label="In welcher Stadt findet die Demo oder Aktion statt?"
+            ref={register({ required: 'Bitte gibt eine Stadt ein' })}
+            error={errors?.city}
           />
         </Row>
 
@@ -40,6 +48,7 @@ export default function FormPage() {
           <TextInput
             name="contact"
             label="Ansprechpartner*in"
+            ref={register}
             help="Bei Großveranstaltungen: Wen können wir als  Presseansprech- partner*in nennen, wenn uns Presse dazu kontaktiert? (opt.)"
           />
         </Row>
@@ -58,11 +67,21 @@ export default function FormPage() {
             name="remarks"
             label="Sonst noch etwas von deiner Seite?"
             rows={6}
+            ref={register({
+              required: 'Hast du gar nichts zu sagen?'
+            })}
+            error={errors?.remarks}
           />
         </Row>
 
         <Row>
-          <Checkbox name="remarks">
+          <Checkbox
+            name="privacy"
+            ref={register({
+              required: 'Bitte akzeptiere die Datenschutzerklärung.'
+            })}
+            error={errors?.privacy}
+          >
             Ich akzeptiere die Datenschutzerklärung.
           </Checkbox>
         </Row>

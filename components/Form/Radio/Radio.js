@@ -17,7 +17,7 @@ export default function Radio({ children, id = null, ...props }) {
       {children && (
         <label
           htmlFor={htmlFor}
-          className={`font-rubik text-base md:text-medium relative inline-block cursor-pointer py-2 ${styles.label}`}
+          className={`font-rubik text-base md:text-medium relative inline-block cursor-pointer py-2 leading-tight md:leading-normal ${styles.label}`}
         >
           {children}
         </label>

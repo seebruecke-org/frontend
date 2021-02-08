@@ -1,23 +1,27 @@
+import { forwardRef } from 'react';
 import { v4 as uuid } from 'uuid';
+
+import FormError from '../Error';
 
 import * as styles from './checkbox.module.css';
 
-export default function Checkbox({ children, id = null, ...props }) {
+function Checkbox({ children, id = null, error = null, ...props }, ref) {
   const htmlFor = id ?? uuid();
 
   return (
-    <div className="flex items-start">
+    <div className={`flex items-start ${error && 'text-orange-900'}`}>
       <input
         type="checkbox"
-        className={`font-rubik text-base text-gray-600 leading-none p-6 mt-2 rounded border border-gray-600 ${styles.checkbox}`}
+        className={styles.checkbox}
         id={htmlFor}
+        ref={ref}
         {...props}
       />
 
       {children && (
         <label
           htmlFor={htmlFor}
-          className={`font-rubik text-base md:text-medium relative inline-block cursor-pointer py-2 ${styles.label}`}
+          className={`font-rubik text-base md:text-medium relative inline-block cursor-pointer py-2 leading-tight md:leading-normal ${styles.label}`}
         >
           {children}
         </label>
@@ -25,3 +29,5 @@ export default function Checkbox({ children, id = null, ...props }) {
     </div>
   );
 }
+
+export default forwardRef(Checkbox);
