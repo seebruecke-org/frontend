@@ -104,13 +104,6 @@ export async function getStaticPaths() {
   return {
     fallback: true,
     paths: [
-      {
-        locale: 'de',
-        params: {
-          slug: []
-        }
-      },
-
       ...sitePaths.map(({ slug }) => ({
         locale: 'de',
         params: {

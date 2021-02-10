@@ -13,8 +13,15 @@ module.exports = withPlugins([withModules], {
   async rewrites() {
     return [
       {
-        source: '/mach-mit/:slug*',
-        destination: '/take-part/:slug*'
+        source: '/de/mach-mit/:slug*',
+        destination: '/de/take-part/:slug*',
+        locale: false
+      },
+
+      {
+        source: '/de/aktionen/:slug*',
+        destination: '/de/actions/:slug*',
+        locale: false
       }
     ];
   },
