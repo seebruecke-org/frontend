@@ -16,7 +16,8 @@ module.exports = {
 
       orange: {
         200: '#F5B511',
-        800: '#F55511'
+        800: '#F55511',
+        900: '#D90202'
       },
 
       turquoise: {
