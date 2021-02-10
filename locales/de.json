@@ -6,6 +6,13 @@
 
   "footer": {
     "langEn": "English Version",
-    "tagline": "Die SEEBRÜCKE ist eine internationale Bewegung, die sich für sichere Fluchtwege, für ungehinderte Seenotrettung und für ein Ende des Sterbens an den europäischen Grenzen engagiert."
+    "tagline": "Die SEEBRÜCKE ist eine internationale Bewegung, die sich für sichere Fluchtwege, für ungehinderte Seenotrettung und für ein Ende des Sterbens an den europäischen Grenzen engagiert.",
+    "austria": "SEEBRÜCKE Österreich",
+    "switzerland": "SEEBRÜCKE Schweiz"
+  },
+
+  "localgroup": {
+    "singleTitle": "Lokalgruppe",
+    "pluralTitle": "Lokalgruppen"
   }
 }

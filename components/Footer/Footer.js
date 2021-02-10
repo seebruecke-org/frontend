@@ -75,6 +75,22 @@ export default function Footer() {
               {i18n.t('footer.tagline')}
             </p>
 
+            <div className="flex flex-col space-y-6 md:space-y-6 pt-6 md:pt-10">
+              <a
+                href="https://www.seebruecke.at"
+                className="font-rubik text-xs font-rubik-features hover:underline"
+              >
+                {i18n.t('footer.austria')}
+              </a>
+
+              <a
+                href="https://seebruecke.ch"
+                className="font-rubik text-xs font-rubik-features hover:underline"
+              >
+                {i18n.t('footer.switzerland')}
+              </a>
+            </div>
+
             <SocialMedia className="md:hidden pt-20" />
           </div>
         </div>
