@@ -55,14 +55,14 @@ export default function FormPage() {
         </Row>
 
         <Fieldset legend="Was trifft auf dich zu?">
-          <Radio name="match" checked>
+          <Radio name="match[]" checked>
             Wir sind eine SEEBRÜCKE-Lokalgruppe
           </Radio>
-          <Radio name="match">
+          <Radio name="match[]">
             Wir sind neu dabei, möchten eventuell eine Lokalgruppe gründen.
             Bitte kontaktiert uns.
           </Radio>
-          <Radio name="match">Wir sind keine SEEBRÜCKE-Lokalgruppe.</Radio>
+          <Radio name="match[]">Wir sind keine SEEBRÜCKE-Lokalgruppe.</Radio>
         </Fieldset>
 
         <Row>
