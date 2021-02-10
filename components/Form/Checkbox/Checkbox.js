@@ -9,23 +9,34 @@ function Checkbox({ children, id = null, error = null, ...props }, ref) {
   const htmlFor = id ?? uuid();
 
   return (
-    <div className={`flex items-start ${error && 'text-orange-900'}`}>
-      <input
-        type="checkbox"
-        className={styles.checkbox}
-        id={htmlFor}
-        ref={ref}
-        {...props}
-      />
-
-      {children && (
-        <label
-          htmlFor={htmlFor}
-          className={`font-rubik text-base md:text-medium relative inline-block cursor-pointer py-2 leading-tight md:leading-normal ${styles.label}`}
-        >
-          {children}
-        </label>
+    <div className="relative py-2">
+      {error && (
+        <div
+          className={`absolute top-0 left-0 w-full h-full z-0 bg-gray-300 -ml-4 rounded-md ${styles.background}`}
+        />
       )}
+      <div
+        className={`flex items-start relative ${error && 'text-orange-900'}`}
+      >
+        <input
+          type="checkbox"
+          className={`${styles.checkbox} z-10 relative`}
+          id={htmlFor}
+          ref={ref}
+          {...props}
+        />
+
+        {children && (
+          <label
+            htmlFor={htmlFor}
+            className={`font-rubik text-base md:text-medium relative inline-block cursor-pointer py-2 leading-tight md:leading-normal z-10 ${styles.label}`}
+          >
+            <span className="text-black">{children}</span>
+          </label>
+        )}
+
+        {error?.message && <FormError message={error.message} />}
+      </div>
     </div>
   );
 }

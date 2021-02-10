@@ -21,7 +21,7 @@ function Textarea(
       {help && <Help>{help}</Help>}
 
       <div className="relative mt-2">
-        {error?.message && <FormError message={error.message} />}
+        {error?.message && <FormError message={error.message} align="top" />}
 
         <div className="relative">
           <textarea

@@ -39,3 +39,8 @@
   height: 1.5rem;
   background-size: 100% 100%;
 }
+
+.background {
+  mix-blend-mode: multiply;
+  width: calc(100% + theme('spacing.8'));
+}

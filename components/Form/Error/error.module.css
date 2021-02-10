@@ -1,0 +1,12 @@
+.container::before {
+  border-color: transparent theme('colors.orange.900') transparent transparent;
+  border-style: solid;
+  border-width: 6px 10.4px 6px 0;
+  content: '';
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  width: 0;
+}

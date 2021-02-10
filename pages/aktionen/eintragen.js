@@ -50,11 +50,14 @@ export default function FormPage() {
             label="Ansprechpartner*in"
             ref={register}
             help="Bei Großveranstaltungen: Wen können wir als  Presseansprech- partner*in nennen, wenn uns Presse dazu kontaktiert? (opt.)"
+            placeholder="Name, Adresse, ..."
           />
         </Row>
 
         <Fieldset legend="Was trifft auf dich zu?">
-          <Radio name="match">Wir sind eine SEEBRÜCKE-Lokalgruppe</Radio>
+          <Radio name="match" checked>
+            Wir sind eine SEEBRÜCKE-Lokalgruppe
+          </Radio>
           <Radio name="match">
             Wir sind neu dabei, möchten eventuell eine Lokalgruppe gründen.
             Bitte kontaktiert uns.
