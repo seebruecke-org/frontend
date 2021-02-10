@@ -16,7 +16,9 @@ function Checkbox({ children, id = null, error = null, ...props }, ref) {
         />
       )}
       <div
-        className={`flex items-start relative ${error && 'text-orange-900'}`}
+        className={`flex items-start relative ${
+          error && 'mb-4 md:mb-0 text-orange-900'
+        }`}
       >
         <input
           type="checkbox"
@@ -34,9 +36,9 @@ function Checkbox({ children, id = null, error = null, ...props }, ref) {
             <span className="text-black">{children}</span>
           </label>
         )}
-
-        {error?.message && <FormError message={error.message} />}
       </div>
+
+      {error?.message && <FormError message={error.message} />}
     </div>
   );
 }

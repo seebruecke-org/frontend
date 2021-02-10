@@ -10,7 +10,7 @@ export default function FormError({ message, align = 'middle' }) {
       } mb-2 md:mb-0`}
     >
       <p
-        className={`text-orange-900 md:text-white md:bg-orange-900 md:p-8 rounded-2xl md:ml-12 relative ${styles.container}`}
+        className={`text-white bg-orange-900 py-4 px-6 md:p-8 rounded-2xl md:ml-12 relative ${styles.container}`}
       >
         {message}
       </p>
