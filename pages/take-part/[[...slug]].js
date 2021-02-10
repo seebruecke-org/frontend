@@ -32,7 +32,7 @@ export default function TakePartPage({ pageType, ...props }) {
                           name={federalCountryName}
                         />
 
-                        <ul className="grid md:grid-cols-3 gap-8 px-6">
+                        <ul className="grid md:grid-cols-2 gap-8 px-6">
                           {cities[countryName].countries[
                             federalCountryName
                           ].cities.map((city) => (
