@@ -18,7 +18,7 @@ export default function TakePartPage({ pageType, ...props }) {
         <div className="grid grid-layout-primary">
           <Map />
 
-          <ul className="col-start-7 col-span-7">
+          <ul className="col-span-full md:col-start-7 md:col-span-7 md:pl-10">
             {Object.keys(cities).map((countryName) => (
               <li key={`country-${countryName}`}>
                 <Country name={countryName} />
@@ -28,14 +28,11 @@ export default function TakePartPage({ pageType, ...props }) {
                     (federalCountryName) => (
                       <li key={`federalCountry-${federalCountryName}`}>
                         <FederalCountry
-                          count={
-                            cities[countryName].countries[federalCountryName]
-                              .cities.length
-                          }
+                          count={`${cities[countryName].countries[federalCountryName].cities.length} Lokalgruppen`}
                           name={federalCountryName}
                         />
 
-                        <ul className="flex flex-col space-y-10">
+                        <ul className="grid md:grid-cols-3 gap-8 px-6">
                           {cities[countryName].countries[
                             federalCountryName
                           ].cities.map((city) => (
