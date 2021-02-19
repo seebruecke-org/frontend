@@ -24,13 +24,17 @@ export default function ActionPage({
   const i18n = useI18n();
 
   const formatDate = (date, prevDate = null) => {
-    const start = new Date(date);
+    const start = date && new Date(date);
     const end = prevDate && new Date(prevDate);
 
     if (end && isSameDay(start, end)) {
       return `${format(start, `${i18n.t('action.timeFormat')}`)} ${i18n.t(
         'action.timePostfix'
       )}`;
+    }
+
+    if (!start && !end) {
+      return '';
     }
 
     return `${format(
