@@ -19,6 +19,10 @@ import {
   default as SubNavigation,
   FRAGMENT as SUB_NAVIGATION_FRAGMENT
 } from './SubNavigation';
+import {
+  default as Unterbrecher,
+  FRAGMENT as UNTERBRECHER_FRAGMENT
+} from './Unterbrecher';
 
 const blocks = {
   Accordion: {
@@ -64,6 +68,11 @@ const blocks = {
   SubNavigation: {
     Component: SubNavigation,
     FRAGMENT: SUB_NAVIGATION_FRAGMENT
+  },
+
+  Unterbrecher: {
+    Component: Unterbrecher,
+    FRAGMENT: UNTERBRECHER_FRAGMENT
   }
 };
 
