@@ -67,7 +67,7 @@ export default function ActionPage({
             level={2}
             className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0"
           >
-            Organisiert von der Lokalgruppe
+            {i18n.t('action.organizedBy')}
           </Heading>
 
           <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">

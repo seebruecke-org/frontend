@@ -5,19 +5,22 @@ import { format } from 'date-fns';
 
 import { FederalCountry, Action, Map } from '@/components/Map';
 import Form, { Row, TextInput } from '@/components/Form';
+import SEO from '@/components/SEO';
 
 export default function TakePartPage({ actions }) {
   const i18n = useI18n();
 
   return (
     <article>
+      <SEO title={i18n.t('actions.title')} />
+
       <div className="grid grid-layout-primary">
         <Map />
 
         <div className="col-span-full md:col-start-7 md:col-span-7 md:pl-10 pb-10 md:pb-36">
           <Form primaryGrid={false} className="grid-cols-6">
             <Row primaryGrid={false} className="md:col-span-5">
-              <TextInput name="filter" placeholder="Aktionen filtern ..." />
+              <TextInput name="filter" placeholder={i18n.t('actions.filter')} />
             </Row>
           </Form>
 

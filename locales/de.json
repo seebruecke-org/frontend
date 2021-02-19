@@ -23,6 +23,12 @@
     "slug": "aktionen",
     "dateFormat": "dd. LLL yyy",
     "timeFormat": "hh:mm",
-    "timePostfix": "Uhr"
+    "timePostfix": "Uhr",
+    "organizedBy": "Organisiert von der Lokalgruppe"
+  },
+
+  "actions": {
+    "title": "Aktionen",
+    "filter": "Aktionen filtern ..."
   }
 }
