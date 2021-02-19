@@ -1,9 +1,10 @@
+import CTA from '@/components/CTA';
 import Heading from '@/components/Heading';
 import Image from '@/components/Image';
 
 import * as styles from './large.module.css';
 
-export default function StageLarge({ image, className, title }) {
+export default function StageLarge({ image, className, title, cta = null }) {
   return (
     <div className={`relative mb-32 md:mb-52 ${styles.stage} ${className}`}>
       <Image
@@ -18,6 +19,12 @@ export default function StageLarge({ image, className, title }) {
           <Heading kicker="Kampagne" level={1}>
             {title}
           </Heading>
+
+          {cta && (
+            <div className="mt-12">
+              <CTA {...cta} />
+            </div>
+          )}
         </div>
       </div>
     </div>
