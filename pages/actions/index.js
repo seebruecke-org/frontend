@@ -39,10 +39,10 @@ export default function TakePartPage({ actions }) {
 
                 <ul className="grid grid-cols-1 md:grid-cols-3 gap-10">
                   {actions[key].map(
-                    ({ city, start, intro, title, slug }, actionIndex) => (
+                    ({ location, start, intro, title, slug }, actionIndex) => (
                       <li key={`action-${actionIndex}`} className="h-full">
                         <Action
-                          title={city?.name}
+                          title={location}
                           meta={`${format(
                             new Date(start),
                             `${i18n.t('action.dateFormat')}, ${i18n.t(

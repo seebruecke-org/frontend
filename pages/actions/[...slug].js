@@ -18,7 +18,8 @@ export default function ActionPage({
   content,
   start,
   end,
-  where,
+  location,
+  location_detail,
   group
 }) {
   const i18n = useI18n();
@@ -58,7 +59,7 @@ export default function ActionPage({
         <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
           <Action
             title={`${formatDate(start)} - ${formatDate(end, start)}`}
-            intro={where}
+            intro={`${location} ${location_detail}`}
           />
         </div>
       </div>
