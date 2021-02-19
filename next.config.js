@@ -19,6 +19,12 @@ module.exports = withPlugins([withModules], {
       },
 
       {
+        source: '/de/aktionen/',
+        destination: '/de/actions/',
+        locale: false
+      },
+
+      {
         source: '/de/aktionen/:slug',
         destination: '/de/actions/:slug',
         locale: false
