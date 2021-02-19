@@ -13,6 +13,16 @@
 
   "localgroup": {
     "singleTitle": "Lokalgruppe",
-    "pluralTitle": "Lokalgruppen"
+    "pluralTitle": "Lokalgruppen",
+    "slug": "mach-mit"
+  },
+
+  "action": {
+    "singleTitle": "Aktion",
+    "pluralTitle": "Aktionen",
+    "slug": "aktionen",
+    "dateFormat": "dd. LLL yyy",
+    "timeFormat": "hh:mm",
+    "timePostfix": "Uhr"
   }
 }
