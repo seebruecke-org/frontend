@@ -1,27 +1,78 @@
-import { fetchAllActions } from '@/lib/actions';
-import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 import { format } from 'date-fns';
+import { useState, useEffect, memo } from 'react';
+
+import { fetchAllActions } from '@/lib/actions';
+import { query as queryGlobalData } from '@/lib/global';
+import { getPage } from '@/lib/pages';
 
 import { FederalCountry, Map } from '@/components/Map';
 import Action from '@/components/Teaser/Action';
+import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
 import SEO from '@/components/SEO';
 
-export default function TakePartPage({ actions }) {
+function filterActions(actions, term) {
+  return Object.keys(actions).reduce((acc, key) => {
+    const keyedActions = actions[key];
+    const matchingActions = keyedActions.filter(
+      ({ location, title }) => location.includes(term) || title.includes(term)
+    );
+
+    if (matchingActions.length > 0) {
+      acc[key] = matchingActions;
+    }
+
+    return acc;
+  }, {});
+}
+
+const MemoizedMap = memo(Map);
+
+export default function TakePartPage({ actions: defaultActions, page }) {
   const i18n = useI18n();
+  const [filterValue, setFilterValue] = useState(null);
+  const [actions, setActions] = useState(defaultActions);
+
+  useEffect(() => {
+    if (filterValue) {
+      setActions(filterActions(defaultActions, filterValue));
+    } else {
+      setActions(defaultActions);
+    }
+  }, [filterValue]);
 
   return (
     <article>
       <SEO title={i18n.t('actions.pluralTitle')} />
 
-      <div className="grid grid-layout-primary">
-        <Map />
+      <BlockSwitch blocks={page?.content} />
 
-        <div className="col-span-full md:col-start-7 md:col-span-7 md:pl-10 pb-10 md:pb-36">
+      <div className="grid grid-layout-primary">
+        <MemoizedMap />
+
+        <div className="col-span-full md:col-start-7 md:col-span-8 md:pl-10 pb-10 md:pb-36">
           <Form primaryGrid={false} className="grid-cols-6">
             <Row primaryGrid={false} className="md:col-span-5">
-              <TextInput name="filter" placeholder={i18n.t('action.filter')} />
+              <TextInput
+                name="filter"
+                placeholder={i18n.t('action.filter')}
+                value={filterValue}
+                onChange={(event) => {
+                  setFilterValue(event.target.value);
+                }}
+                autocomplete="off"
+              />
+
+              {filterValue && (
+                <button
+                  type="button"
+                  onClick={() => setFilterValue('')}
+                  className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
+                >
+                  Filter zurücksetzen
+                </button>
+              )}
             </Row>
           </Form>
 
@@ -68,6 +119,7 @@ export default function TakePartPage({ actions }) {
 
 export async function getStaticProps({ locale }) {
   const actions = await fetchAllActions(locale);
+  const page = await getPage('aktionen');
   const { initialState, ...globalData } = await queryGlobalData(locale);
 
   return {
@@ -75,6 +127,7 @@ export async function getStaticProps({ locale }) {
     revalidate: 60,
     props: {
       actions,
+      page,
       ...globalData,
       initialState
     }

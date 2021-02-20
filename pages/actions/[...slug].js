@@ -7,9 +7,9 @@ import { fetchAllActionPaths } from '@/lib/actions';
 import { query as queryGlobalData } from '../../lib/global';
 import { fetchActionBySlug } from '../../lib/actions';
 
-import Action from '@/components/Map/Action';
+import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
-import Group from '@/components/Map/Group';
+import Group from '@/components/Teaser/Group';
 import Heading from '@/components/Heading';
 import SEO from '@/components/SEO';
 

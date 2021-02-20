@@ -8,10 +8,8 @@ export default function Form({
   return (
     <form
       {...props}
-      className={`col-span-full grid ${
-        primaryGrid && 'grid-layout-primary'
-      } mt-20 ${
-        highlight ? 'bg-turquoise-300 pt-20 pb-32' : 'pb-20'
+      className={`col-span-full grid ${primaryGrid && 'grid-layout-primary'} ${
+        highlight && 'bg-turquoise-300'
       } ${className}`}
     >
       {children}

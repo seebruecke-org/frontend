@@ -1,3 +1,5 @@
+import { useState, useEffect, memo } from 'react';
+
 import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
@@ -8,23 +10,81 @@ import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
 
-export default function TakePartOverview({ cities, page }) {
+function filterCities(cities, term) {
+  return Object.keys(cities).reduce((acc, countryName) => {
+    const federalCountries = cities[countryName].countries;
+    const matchingFederalCountries = {};
+
+    Object.keys(federalCountries).forEach((federalCountryName) => {
+      const federalCountry = federalCountries[federalCountryName];
+
+      federalCountry.cities.forEach((city) => {
+        const { name: cityName } = city;
+
+        if (cityName.includes(term)) {
+          if (!matchingFederalCountries[federalCountryName]) {
+            matchingFederalCountries[federalCountryName] = { cities: [] };
+          }
+
+          matchingFederalCountries[federalCountryName].cities.push(city);
+        }
+      });
+    });
+
+    if (Object.keys(matchingFederalCountries).length > 0) {
+      acc[countryName] = {
+        countries: matchingFederalCountries
+      };
+    }
+
+    return acc;
+  }, {});
+}
+
+const MemoizedMap = memo(Map);
+
+export default function TakePartOverview({ cities: defaultCities, page }) {
   const i18n = useI18n();
+  const [filterValue, setFilterValue] = useState(null);
+  const [cities, setCities] = useState(defaultCities);
+
+  useEffect(() => {
+    if (filterValue) {
+      setCities(filterCities(defaultCities, filterValue));
+    } else {
+      setCities(defaultCities);
+    }
+  }, [filterValue]);
 
   return (
     <article>
       <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
-        <Map />
+        <MemoizedMap />
 
-        <div className="col-span-full md:col-start-7 md:col-span-7 md:pl-10 pb-10 md:pb-36">
+        <div className="col-span-full md:col-start-7 md:col-span-8 md:pl-10 pb-10 md:pb-36">
           <Form primaryGrid={false} className="grid-cols-6">
-            <Row primaryGrid={false} className="md:col-span-5">
+            <Row primaryGrid={false} className="md:col-span-5 flex-nowrap">
               <TextInput
                 name="filter"
                 placeholder={i18n.t('group.searchCity')}
+                value={filterValue}
+                onChange={(event) => {
+                  setFilterValue(event.target.value);
+                }}
+                autocomplete="off"
               />
+
+              {filterValue && (
+                <button
+                  type="button"
+                  onClick={() => setFilterValue('')}
+                  className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
+                >
+                  Filter zurücksetzen
+                </button>
+              )}
             </Row>
           </Form>
 

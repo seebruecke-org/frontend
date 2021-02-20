@@ -18,7 +18,7 @@ export default function SafeHarboursOverview({ cities, page }) {
       <div className="grid grid-layout-primary">
         <Map />
 
-        <div className="col-span-full md:col-start-7 md:col-span-7 md:pl-10 pb-10 md:pb-36">
+        <div className="col-span-full md:col-start-7 md:col-span-8 md:pl-10 pb-10 md:pb-36">
           <Form primaryGrid={false} className="grid-cols-6">
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput

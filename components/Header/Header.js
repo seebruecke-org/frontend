@@ -124,7 +124,7 @@ export default function Header() {
                   className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
                     isPartiallyActive(asPath, item.path) &&
                     'bg-white text-orange-800'
-                  } hover:text-orange-800 p-2 whitespace-nowrap ${
+                  } hover:text-orange-800 py-2 px-3 whitespace-nowrap ${
                     styles.item
                   } ${styles[`item--${index + 1}`]}`}
                 />
