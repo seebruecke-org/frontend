@@ -3,7 +3,8 @@ import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 
-import { Group, FederalCountry, Country, Map } from '@/components/Map';
+import { FederalCountry, Country, Map } from '@/components/Map';
+import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
 
@@ -40,7 +41,10 @@ export default function TakePartOverview({ cities, page }) {
                     (federalCountryName) => (
                       <li key={`federalCountry-${federalCountryName}`}>
                         <FederalCountry
-                          count={`${cities[countryName].countries[federalCountryName].cities.length}`}
+                          count={
+                            cities[countryName].countries[federalCountryName]
+                              .cities.length
+                          }
                           singularKicker={i18n.t('group.singleTitle')}
                           pluralKicker={i18n.t('group.pluralTitle')}
                           name={federalCountryName}

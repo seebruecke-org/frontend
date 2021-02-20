@@ -14,7 +14,7 @@ export default function ContactBlock({
   facebook
 }) {
   return (
-    <VStack as="ul" gap={2} className="col-start-3 col-span-10 pb-20">
+    <VStack as="ul" gap={2} className="col-start-3 col-span-10 py-20">
       {email && (
         <li className="w-full">
           <Link href={`mailto:${email}`}>{email}</Link>

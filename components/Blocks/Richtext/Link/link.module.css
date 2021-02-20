@@ -1,8 +1,8 @@
 .link {
-  box-shadow: inset 0 -0.8rem theme('colors.orange.200');
+  box-shadow: inset 0 -0.6rem theme('colors.orange.200');
 }
 
 .link:hover,
 .link:focus {
-  box-shadow: inset 0 -0.8rem theme('colors.gray.400');
+  box-shadow: inset 0 -0.6rem theme('colors.orange.800');
 }

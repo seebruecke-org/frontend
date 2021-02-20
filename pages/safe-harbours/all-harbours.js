@@ -3,7 +3,8 @@ import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 
-import { Group, FederalCountry, Country, Map } from '@/components/Map';
+import { FederalCountry, Country, Map } from '@/components/Map';
+import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
 
@@ -40,9 +41,12 @@ export default function SafeHarboursOverview({ cities, page }) {
                     (federalCountryName) => (
                       <li key={`federalCountry-${federalCountryName}`}>
                         <FederalCountry
-                          count={`${cities[countryName].countries[federalCountryName].cities.length}`}
-                          singularKicker={i18n.t('group.singleTitle')}
-                          pluralKicker={i18n.t('group.pluralTitle')}
+                          count={
+                            cities[countryName].countries[federalCountryName]
+                              .cities.length
+                          }
+                          singularKicker={i18n.t('safeHarbour.singleTitle')}
+                          pluralKicker={i18n.t('safeHarbour.pluralTitle')}
                           name={federalCountryName}
                         />
 
@@ -51,7 +55,12 @@ export default function SafeHarboursOverview({ cities, page }) {
                             federalCountryName
                           ].cities.map((city) => (
                             <li key={`city-${city.name}`}>
-                              <Group uri={city.uri} name={city.name} />
+                              <SafeHarbour
+                                uri={`${city.uri}/sicherer-hafen`}
+                                name={city.name}
+                                description="2 / 8 Forderungen"
+                                since="19. Mai 2018"
+                              />
                             </li>
                           ))}
                         </ul>

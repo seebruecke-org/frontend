@@ -3,7 +3,8 @@ import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 import { format } from 'date-fns';
 
-import { FederalCountry, Action, Map } from '@/components/Map';
+import { FederalCountry, Map } from '@/components/Map';
+import Action from '@/components/Teaser/Action';
 import Form, { Row, TextInput } from '@/components/Form';
 import SEO from '@/components/SEO';
 
@@ -31,7 +32,7 @@ export default function TakePartPage({ actions }) {
                 className={`${index > 0 && 'mt-20'}`}
               >
                 <FederalCountry
-                  count={`${actions[key].length}`}
+                  count={actions[key].length}
                   singularKicker={i18n.t('action.singleTitle')}
                   pluralKicker={i18n.t('action.pluralTitle')}
                   name={key}
