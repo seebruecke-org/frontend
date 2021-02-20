@@ -22,6 +22,12 @@ module.exports = withPlugins([withModules], {
         source: '/de/aktionen/:path*',
         destination: '/de/actions/:path*',
         locale: false
+      },
+
+      {
+        source: '/de/sichere-haefen/alle-haefen',
+        destination: '/de/safe-harbours/all-harbours',
+        locale: false
       }
     ];
   },

@@ -12,7 +12,7 @@ export default function TakePartPage({ actions }) {
 
   return (
     <article>
-      <SEO title={i18n.t('actions.title')} />
+      <SEO title={i18n.t('actions.pluralTitle')} />
 
       <div className="grid grid-layout-primary">
         <Map />
@@ -20,7 +20,7 @@ export default function TakePartPage({ actions }) {
         <div className="col-span-full md:col-start-7 md:col-span-7 md:pl-10 pb-10 md:pb-36">
           <Form primaryGrid={false} className="grid-cols-6">
             <Row primaryGrid={false} className="md:col-span-5">
-              <TextInput name="filter" placeholder={i18n.t('actions.filter')} />
+              <TextInput name="filter" placeholder={i18n.t('action.filter')} />
             </Row>
           </Form>
 

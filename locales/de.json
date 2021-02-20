@@ -11,10 +11,11 @@
     "switzerland": "SEEBRÜCKE Schweiz"
   },
 
-  "localgroup": {
+  "group": {
     "singleTitle": "Lokalgruppe",
     "pluralTitle": "Lokalgruppen",
-    "slug": "mach-mit"
+    "slug": "mach-mit",
+    "searchCity": "Stadt suchen ..."
   },
 
   "action": {
@@ -24,11 +25,12 @@
     "dateFormat": "dd. LLL yyy",
     "timeFormat": "hh:mm",
     "timePostfix": "Uhr",
-    "organizedBy": "Organisiert von der Lokalgruppe"
+    "organizedBy": "Organisiert von der Lokalgruppe",
+    "filter": "Aktionen filtern ..."
   },
 
-  "actions": {
-    "title": "Aktionen",
-    "filter": "Aktionen filtern ..."
+  "safeHarbour": {
+    "singleTitle": "Sicherer Hafen",
+    "pluralTitle": "Sichere Häfen"
   }
 }
