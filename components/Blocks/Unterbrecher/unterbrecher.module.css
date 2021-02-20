@@ -1,0 +1,7 @@
+.square {
+  padding-bottom: 100%;
+}
+
+.contentContainer {
+  height: calc(100% + theme('spacing.16'));
+}

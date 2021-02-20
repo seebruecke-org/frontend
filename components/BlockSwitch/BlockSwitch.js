@@ -48,7 +48,16 @@ export default function BlockSwitch({
           );
         }
 
-        return <BlockComponent key={`block-${type}-${index}`} {...props} />;
+        return (
+          <BlockComponent
+            key={`block-${type}-${index}`}
+            blockContext={{
+              previous: index > 1 && blocks[index - 1].__typename,
+              next: blocks.length > index + 1 && blocks[index + 1].__typename
+            }}
+            {...props}
+          />
+        );
       })}
     </div>
   );
