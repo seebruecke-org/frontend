@@ -27,9 +27,13 @@ export default function AccordionBlock({ item = [] }) {
               <AccordionItemState>
                 {({ expanded }) => (
                   <AccordionItemButton
-                    className={`px-10 py-4 md:p-7 border-black border-t ${
+                    className={`px-10 py-4 md:p-7 border-gray-400 border-t ${
                       isLast && 'border-b'
-                    } ${expanded ? 'bg-orange-800' : 'hover:bg-gray-200'} cursor-pointer font-rubik font-rubik-features text-base  md:text-medium lg:text-l font-bold flex items-center`}
+                    } ${
+                      expanded
+                        ? 'bg-orange-800 text-white border-b-0'
+                        : 'hover:bg-gray-200'
+                    } cursor-pointer font-rubik font-rubik-features text-base  md:text-medium lg:text-l font-bold flex items-center`}
                   >
                     <span>{title}</span>
 
@@ -43,7 +47,7 @@ export default function AccordionBlock({ item = [] }) {
               </AccordionItemState>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="border-black border-t py-6 md:py-10 md:px-6">
+              <div className="py-6 md:py-10 md:px-6">
                 <Richtext richtext={content} />
               </div>
             </AccordionItemPanel>
