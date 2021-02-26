@@ -28,6 +28,12 @@ module.exports = withPlugins([withModules], {
         source: '/de/sichere-haefen/alle-haefen',
         destination: '/de/safe-harbours/all-harbours',
         locale: false
+      },
+
+      {
+        source: '/de/aktuelles/:path*',
+        destination: '/de/news/:path*',
+        locale: false
       }
     ];
   },

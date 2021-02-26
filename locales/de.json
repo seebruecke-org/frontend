@@ -32,5 +32,10 @@
   "safeHarbour": {
     "singleTitle": "Sicherer Hafen",
     "pluralTitle": "Sichere Häfen"
+  },
+
+  "news": {
+    "slug": "aktuelles",
+    "dateFormat": "dd. LLLL yyy"
   }
 }
