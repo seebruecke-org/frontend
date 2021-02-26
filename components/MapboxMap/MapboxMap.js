@@ -8,7 +8,7 @@ export default function MapboxMap({ factory = {}, ...props }) {
 
   return (
     <Map
-      style="mapbox://styles/mapbox/streets-v8"
+      style="mapbox://styles/gustavpursche/cklm62sl630z117nn1lcg83e1"
       className="h-full"
       {...props}
     />
