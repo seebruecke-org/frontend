@@ -1,6 +1,13 @@
 import Link from 'next/link';
 
-export default function MenuItem({ path, label, children, locale, ...props }) {
+export default function MenuItem({
+  path,
+  label,
+  children,
+  locale,
+  scroll = true,
+  ...props
+}) {
   if (!path) {
     return (
       <span {...props}>
@@ -11,7 +18,7 @@ export default function MenuItem({ path, label, children, locale, ...props }) {
   }
 
   return (
-    <Link href={path} locale={locale}>
+    <Link href={path} locale={locale} scroll={scroll}>
       <a {...props}>
         {label}
         {children}
