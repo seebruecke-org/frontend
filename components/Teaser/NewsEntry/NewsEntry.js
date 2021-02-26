@@ -17,10 +17,10 @@ export default function NewsEntry({
 
   return (
     <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
-      <a className="block">
-        <article className="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-gray-300 pb-10 pt-10">
+      <a className="block col-span-full md:col-start-3 md:col-span-9 border-b border-gray-300 pb-20 pt-20">
+        <article className="grid grid-cols-1 md:grid-cols-12 gap-16">
           {image && (
-            <div className="col-span-full md:col-start-1 md:col-span-4">
+            <div className="col-span-full md:col-start-1 md:col-span-4 md:-ml-28">
               <Image image={image.image} />
             </div>
           )}
@@ -29,7 +29,7 @@ export default function NewsEntry({
             className={`col-span-full ${
               image
                 ? 'md:col-start-5 md:col-span-8'
-                : 'md:col-start-2 md:col-span-11'
+                : 'md:col-start-0 md:col-span-11'
             }`}
           >
             <header className="font-rubik text-xs text-gray-600 flex space-x-8">
@@ -40,7 +40,9 @@ export default function NewsEntry({
             </header>
             <Heading level={3}>{title}</Heading>
 
-            <p>{excerpt}</p>
+            {excerpt && (
+              <p className="font-rubik text-medium mt-6">{excerpt}</p>
+            )}
           </div>
         </article>
       </a>
