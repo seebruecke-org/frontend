@@ -20,6 +20,10 @@ import {
   FRAGMENT as SUB_NAVIGATION_FRAGMENT
 } from './SubNavigation';
 import {
+  default as TeaserLarge,
+  FRAGMENT as TEASER_LARGE_FRAGMENT
+} from './TeaserLarge';
+import {
   default as Unterbrecher,
   FRAGMENT as UNTERBRECHER_FRAGMENT
 } from './Unterbrecher';
@@ -68,6 +72,11 @@ const blocks = {
   SubNavigation: {
     Component: SubNavigation,
     FRAGMENT: SUB_NAVIGATION_FRAGMENT
+  },
+
+  TeaserLarge: {
+    Component: TeaserLarge,
+    FRAGMENT: TEASER_LARGE_FRAGMENT
   },
 
   Unterbrecher: {
