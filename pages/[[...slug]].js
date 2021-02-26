@@ -17,13 +17,18 @@ export default function GenericPage({ page }) {
 
 export async function getStaticPaths({ defaultLocale }) {
   const sidePaths = await paths();
-  const customPages = ['mach-mit', 'aktionen'];
+  const customPages = [
+    'mach-mit',
+    'aktionen',
+    'aktuelles',
+    'sichere-haefen/alle-haefen'
+  ];
 
   const staticPaths = sidePaths
     .map(({ slug, parent }) => {
       const path = [parent?.slug, slug].filter(Boolean);
 
-      if (customPages.includes(slug)) {
+      if (customPages.includes(path.join('/'))) {
         return null;
       }
 
