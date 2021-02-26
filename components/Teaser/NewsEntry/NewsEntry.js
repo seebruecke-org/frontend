@@ -16,7 +16,7 @@ export default function NewsEntry({
   const i18n = useI18n();
 
   return (
-    <article className="grid grid-layout-primary col-span-full border-b border-gray-300 pb-20 pt-20 relative">
+    <article className="grid grid-layout-primary col-span-full pt-20 relative">
       {image && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
           <Image image={image.image} />
@@ -55,6 +55,8 @@ export default function NewsEntry({
           <Heading level={3}>{title}</Heading>
         </a>
       </NextLink>
+
+      <span className="col-start-2 col-span-10 h-1 border-b border-gray-300 mt-20" />
     </article>
   );
 }
