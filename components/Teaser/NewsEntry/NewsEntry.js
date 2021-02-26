@@ -25,7 +25,13 @@ export default function NewsEntry({
             </div>
           )}
 
-          <div className="col-span-full md:col-start-5 md:col-span-8">
+          <div
+            className={`col-span-full ${
+              image
+                ? 'md:col-start-5 md:col-span-8'
+                : 'md:col-start-2 md:col-span-11'
+            }`}
+          >
             <header className="font-rubik text-xs text-gray-600 flex space-x-8">
               <span>
                 {format(new Date(publishedAt), i18n.t('news.dateFormat'))}
