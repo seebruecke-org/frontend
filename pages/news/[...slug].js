@@ -1,9 +1,8 @@
 import { useI18n } from 'next-localization';
 import format from 'date-fns/format';
 
-import { fetchAllActionPaths } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
-import { fetchNewsBySlug } from '@/lib/news';
+import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
 
 import BlockSwitch from '@/components/BlockSwitch';
 import Heading from '@/components/Heading';
@@ -11,6 +10,9 @@ import SEO from '@/components/SEO';
 
 export default function NewsEntryPage({ title, content, publishedAt }) {
   const i18n = useI18n();
+  const date = publishedAt
+    ? format(new Date(publishedAt), i18n.t('news.dateFormat'))
+    : '';
 
   return (
     <article>
@@ -19,7 +21,7 @@ export default function NewsEntryPage({ title, content, publishedAt }) {
       <div className="grid grid-layout-primary">
         <Heading
           level={1}
-          kicker={format(new Date(publishedAt), i18n.t('news.dateFormat'))}
+          kicker={date}
           className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0 w-full"
         >
           {title}
@@ -32,7 +34,7 @@ export default function NewsEntryPage({ title, content, publishedAt }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await fetchAllActionPaths();
+  const paths = await fetchAllNewsPaths();
 
   return {
     fallback: true,
@@ -43,7 +45,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ locale, params }) {
   const { slug } = params;
 
-  const { data } = await fetchNewsBySlug(slug);
+  const { data } = await fetchNewsBySlug(slug[0]);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {
