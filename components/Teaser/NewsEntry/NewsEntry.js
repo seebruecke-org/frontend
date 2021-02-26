@@ -16,36 +16,45 @@ export default function NewsEntry({
   const i18n = useI18n();
 
   return (
-    <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
-      <a className="block col-span-full md:col-start-3 md:col-span-9 border-b border-gray-300 pb-20 pt-20">
-        <article className="grid grid-cols-1 md:grid-cols-12 gap-16">
-          {image && (
-            <div className="col-span-full md:col-start-1 md:col-span-4 md:-ml-28">
-              <Image image={image.image} />
-            </div>
-          )}
+    <article className="grid grid-layout-primary col-span-full border-b border-gray-300 pb-20 pt-20 relative">
+      {image && (
+        <div className="col-span-full md:col-start-2 md:col-span-4">
+          <Image image={image.image} />
+        </div>
+      )}
 
-          <div
-            className={`col-span-full ${
-              image
-                ? 'md:col-start-5 md:col-span-8'
-                : 'md:col-start-0 md:col-span-11'
-            }`}
-          >
-            <header className="font-rubik text-xs text-gray-600 flex space-x-8">
-              <span>
-                {format(new Date(publishedAt), i18n.t('news.dateFormat'))}
-              </span>
-              <span>{type}</span>
-            </header>
+      <div
+        className={`col-span-full ${
+          image
+            ? 'md:col-start-6 md:col-span-8'
+            : 'md:col-start-3 md:col-span-11'
+        }`}
+      >
+        <header className="font-rubik text-xs text-gray-600 flex space-x-8">
+          <span>
+            {format(new Date(publishedAt), i18n.t('news.dateFormat'))}
+          </span>
+          <span>{type}</span>
+        </header>
+
+        <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
+          <a>
             <Heading level={3}>{title}</Heading>
+          </a>
+        </NextLink>
 
-            {excerpt && (
-              <p className="font-rubik text-medium mt-6">{excerpt}</p>
-            )}
-          </div>
-        </article>
-      </a>
-    </NextLink>
+        {excerpt && <p className="font-rubik text-medium mt-6">{excerpt}</p>}
+      </div>
+
+      <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
+        <a
+          className="absolute top-0 left-0 h-full w-full z-10 opacity-0"
+          tabIndex="-1"
+          aria-hidden
+        >
+          <Heading level={3}>{title}</Heading>
+        </a>
+      </NextLink>
+    </article>
   );
 }
