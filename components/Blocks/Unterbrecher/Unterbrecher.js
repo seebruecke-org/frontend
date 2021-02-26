@@ -40,7 +40,7 @@ export default function Unterbrecher({
         reversed && 'flex-col-reverse md:flex-row-reverse'
       } md:flex-row md:items-center col-span-full ${
         size === 'small' && 'md:col-start-3 md:col-span-9'
-      } ${size === 'large' && 'md:col-start-2 md:col-span-11'}`}
+      } ${size === 'large' && 'md:col-start-2 md:col-span-12'}`}
     >
       <div
         className={`${background} ${styles.contentContainer} flex flex-col justify-center md:min-h-full w-full md:w-2/4 px-10 md:px-16 py-32`}
