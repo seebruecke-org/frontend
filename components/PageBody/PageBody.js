@@ -1,8 +1,15 @@
 import { normalizeBlockName } from '@/lib/blocks';
 
-const BLOCKS_WITH_OUTER_MARGIN = ['Heading', 'Richtext', 'Accordion'].map(
-  normalizeBlockName
-);
+const BLOCKS_WITH_OUTER_MARGIN = [
+  'Heading',
+  'Richtext',
+  'Accordion',
+  'Contact',
+  'Media',
+  'Unterbrecher',
+  'TeasersSmall',
+  'TeaserLarge'
+].map(normalizeBlockName);
 
 function blocksWithOuterMarginContain(blockName) {
   if (!blockName) {
