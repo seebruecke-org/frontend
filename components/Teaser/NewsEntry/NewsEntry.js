@@ -43,7 +43,9 @@ export default function NewsEntry({
           </a>
         </NextLink>
 
-        {excerpt && <p className="font-rubik text-medium mt-6">{excerpt}</p>}
+        {excerpt && (
+          <p className="font-rubik text-base md:text-medium mt-6">{excerpt}</p>
+        )}
       </div>
 
       <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
