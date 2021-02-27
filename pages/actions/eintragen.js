@@ -27,7 +27,12 @@ export default function FormPage() {
         Aktions&shy;formular
       </Heading>
 
-      <Form onSubmit={handleSubmit(onSubmit)} highlight>
+      <Form
+        onSubmit={handleSubmit(onSubmit)}
+        highlight
+        padded
+        className="mt-10"
+      >
         <Row>
           <TextInput
             name="city"

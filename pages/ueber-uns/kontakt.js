@@ -23,7 +23,7 @@ export default function FormPage() {
         Aktions&shy;formular
       </Heading>
 
-      <Form onSubmit={handleSubmit(onSubmit)} className="mb-32">
+      <Form onSubmit={handleSubmit(onSubmit)} className="mb-32" padded>
         <Row>
           <TextInput
             name="sender"
