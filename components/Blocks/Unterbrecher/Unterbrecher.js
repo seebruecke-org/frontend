@@ -36,9 +36,9 @@ export default function Unterbrecher({
 
   return (
     <section
-      className={`flex flex-col relative z-10 ${hasPaddingTop && 'md:pt-24'} ${
-        hasPaddingBottom && 'pb-24'
-      } ${
+      className={`flex flex-col relative z-10 ${
+        hasPaddingTop && 'pt-12 md:pt-24'
+      } ${hasPaddingBottom && 'pb-12 md:pb-24'} ${
         reversed && 'flex-col-reverse md:flex-row-reverse'
       } md:flex-row md:items-center col-span-full ${
         size === 'small' && 'md:col-start-3 md:col-span-9'
