@@ -16,7 +16,7 @@ export default function NewsEntry({
   const i18n = useI18n();
 
   return (
-    <article className="grid grid-layout-primary gap-8 col-span-full pt-20 px-8 md:px-0 relative">
+    <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative">
       {image && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
           <Image image={image.image} />
