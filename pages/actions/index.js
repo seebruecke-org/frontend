@@ -46,7 +46,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
     <article>
       <SEO title={i18n.t('actions.pluralTitle')} />
 
-      <BlockSwitch blocks={page?.content} />
+      <BlockSwitch blocks={page?.content} isLast={false} />
 
       <div className="grid grid-layout-primary">
         <MemoizedMap />

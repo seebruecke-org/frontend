@@ -2,9 +2,10 @@ export { default } from './Material';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMaterial {
-    item {
+    items: item {
       id
       external_link
+      name
       description
       file {
         name

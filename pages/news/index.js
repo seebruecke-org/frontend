@@ -12,11 +12,11 @@ export default function NewsOverview({ news, page }) {
       <SEO title={page?.title} />
 
       <div>
-        <BlockSwitch blocks={page?.content} />
+        <BlockSwitch blocks={page?.content} isLast={false} />
       </div>
 
       <div className="grid grid-layout-primary">
-        <ul className="col-span-full">
+        <ul className="col-span-full pb-20 md:pb-40">
           {news.map((newsEntry) => (
             <li key={newsEntry.id} className="grid grid-layout-primary">
               <NewsTeaser {...newsEntry} />

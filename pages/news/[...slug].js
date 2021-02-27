@@ -5,7 +5,7 @@ import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
 
 import BlockSwitch from '@/components/BlockSwitch';
-import Heading from '@/components/Heading';
+import Heading from '@/components/Blocks/Heading';
 import SEO from '@/components/SEO';
 
 export default function NewsEntryPage({ title, content, publishedAt }) {
@@ -28,7 +28,7 @@ export default function NewsEntryPage({ title, content, publishedAt }) {
         </Heading>
       </div>
 
-      <BlockSwitch blocks={content} />
+      <BlockSwitch blocks={content} isFirst={false} />
     </article>
   );
 }

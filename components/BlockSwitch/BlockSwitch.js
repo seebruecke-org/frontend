@@ -9,7 +9,9 @@ const blocksWithOuterMargin = [
 export default function BlockSwitch({
   blocks,
   prefix = 'ComponentSharedBlocks',
-  className
+  className,
+  isFirst = true,
+  isLast = true
 }) {
   if (!blocks) {
     return null;
@@ -25,8 +27,9 @@ export default function BlockSwitch({
   const lastBlock =
     blocks && blocks.length > 0 && blocks[blocks.length - 1].__typename;
   const addMarginBottom =
-    lastBlock && blocksWithOuterMargin.includes(lastBlock);
-  const addMarginTop = firstBlock && blocksWithOuterMargin.includes(firstBlock);
+    isLast && lastBlock && blocksWithOuterMargin.includes(lastBlock);
+  const addMarginTop =
+    isFirst && firstBlock && blocksWithOuterMargin.includes(firstBlock);
 
   return (
     <div

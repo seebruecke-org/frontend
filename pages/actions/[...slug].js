@@ -10,7 +10,7 @@ import { fetchActionBySlug } from '../../lib/actions';
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
 import Group from '@/components/Teaser/Group';
-import Heading from '@/components/Heading';
+import Heading from '@/components/Blocks/Heading';
 import SEO from '@/components/SEO';
 
 export default function ActionPage({
@@ -64,10 +64,10 @@ export default function ActionPage({
         </div>
       </div>
 
-      <BlockSwitch blocks={content} />
+      <BlockSwitch blocks={content} isFirst={false} isLast={false} />
 
       {group && group?.city && (
-        <div className="grid grid-layout-primary">
+        <div className="grid grid-layout-primary pb-20 md:pb-32">
           <Heading
             level={2}
             className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0"

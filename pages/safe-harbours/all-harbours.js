@@ -13,7 +13,7 @@ export default function SafeHarboursOverview({ cities, page }) {
 
   return (
     <article>
-      <BlockSwitch blocks={page?.content} />
+      <BlockSwitch blocks={page?.content} isLast={false} />
 
       <div className="grid grid-layout-primary">
         <Map />
