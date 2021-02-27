@@ -29,7 +29,7 @@ export default function TeaserLarge({ title, intro, cta, type = 'internal' }) {
       } col-span-full md:col-start-3 md:col-span-9`}
     >
       <div
-        className={`${background} pl-10 md:pl-0 py-16 md:py-24 pr-24 relative`}
+        className={`${background} pl-8 md:pl-0 py-16 md:py-24 pr-24 relative`}
       >
         <h2 className="font-brezel text-xl md:text-2xl font-bold italic leading-tight">
           {title}

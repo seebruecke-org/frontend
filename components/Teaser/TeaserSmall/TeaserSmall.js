@@ -19,7 +19,7 @@ export default function TeaserSmall({ title, path, label, type = 'internal' }) {
 
   return (
     <div
-      className={`relative p-10 h-full flex flex-col ${background} hover:bg-black hover:text-white`}
+      className={`relative px-8 py-10 md:p-10 h-full flex flex-col ${background} hover:bg-black hover:text-white`}
     >
       <h2>
         <NextLink href={href}>
