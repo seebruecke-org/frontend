@@ -18,10 +18,7 @@ export default function FormPage() {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <PageBody
-      firstBlock="ComponentSharedBlocksHeading"
-      className="grid grid-layout-primary"
-    >
+    <PageBody firstBlock="Heading" className="grid grid-layout-primary">
       <Heading level={1} kicker="Deine Aktion">
         Aktions&shy;formular
       </Heading>

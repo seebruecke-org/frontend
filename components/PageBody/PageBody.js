@@ -1,8 +1,16 @@
-const blocksWithOuterMargin = [
-  'ComponentSharedBlocksHeading',
-  'ComponentSharedBlocksRichtext',
-  'ComponentSharedBlocksAccordion'
-];
+import { normalizeBlockName } from '@/lib/blocks';
+
+const BLOCKS_WITH_OUTER_MARGIN = ['Heading', 'Richtext', 'Accordion'].map(
+  normalizeBlockName
+);
+
+function blocksWithOuterMarginContain(blockName) {
+  if (!blockName) {
+    return false;
+  }
+
+  return BLOCKS_WITH_OUTER_MARGIN.includes(normalizeBlockName(blockName));
+}
 
 export default function PageBody({
   children,
@@ -10,14 +18,13 @@ export default function PageBody({
   lastBlock = null,
   className
 }) {
-  const addMarginBottom =
-    lastBlock && blocksWithOuterMargin.includes(lastBlock);
-  const addMarginTop = firstBlock && blocksWithOuterMargin.includes(firstBlock);
+  const marginBottom = blocksWithOuterMarginContain(lastBlock);
+  const marginTop = blocksWithOuterMarginContain(firstBlock);
 
   return (
     <article
-      className={`${addMarginTop && 'mt-10 md:mt-20'} ${
-        addMarginBottom && 'pb-20 md:pb-60'
+      className={`${marginTop && 'mt-10 md:mt-20'} ${
+        marginBottom && 'pb-20 md:pb-60'
       } ${className}`}
     >
       {children}

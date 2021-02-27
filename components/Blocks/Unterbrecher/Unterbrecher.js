@@ -4,6 +4,8 @@ import CTA from '@/components/CTA';
 import Heading from '@/components/Heading';
 import Image from '@/components/Image';
 
+import { blockNameMatches } from '@/lib/blocks';
+
 import * as styles from './unterbrecher.module.css';
 
 function getBackgroundColor(type) {
@@ -29,12 +31,12 @@ export default function Unterbrecher({
   blockContext: { previous, next }
 }) {
   const background = getBackgroundColor(type);
-  const hasPaddingTop = previous !== 'ComponentSharedBlocksUnterbrecher';
-  const hasPaddingBottom = next !== 'ComponentSharedBlocksUnterbrecher';
+  const hasPaddingTop = !blockNameMatches(previous, 'Unterbrecher');
+  const hasPaddingBottom = !blockNameMatches(next, 'Unterbrecher');
 
   return (
     <section
-      className={`flex flex-col ${hasPaddingTop && 'pt-24 relative z-10'} ${
+      className={`flex flex-col relative z-10 ${hasPaddingTop && 'pt-24'} ${
         hasPaddingBottom && 'pb-24'
       } ${
         reversed && 'flex-col-reverse md:flex-row-reverse'

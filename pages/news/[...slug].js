@@ -17,10 +17,7 @@ export default function NewsEntryPage({ title, content, publishedAt }) {
     : '';
 
   return (
-    <PageBody
-      firstBlock="ComponentSharedBlocksHeading"
-      lastBlock={getLastBlockName(content)}
-    >
+    <PageBody firstBlock="Heading" lastBlock={getLastBlockName(content)}>
       <SEO title={title} />
 
       <div className="grid grid-layout-primary">

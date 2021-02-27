@@ -22,10 +22,7 @@ export default function FormPage() {
   console.log(errors);
 
   return (
-    <PageBody
-      className="grid grid-layout-primary"
-      firstBlock="ComponentSharedBlocksHeading"
-    >
+    <PageBody className="grid grid-layout-primary" firstBlock="Heading">
       <Heading level={1} kicker="Deine Aktion">
         Aktions&shy;formular
       </Heading>

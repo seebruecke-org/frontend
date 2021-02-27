@@ -25,7 +25,7 @@ export default function TakePartPage({
 
   return (
     <PageBody
-      firstBlock="ComponentSharedBlocksStageMedium"
+      firstBlock="StageMedium"
       lastBlock={getLastBlockName(group?.content)}
       className="grid grid-layout-primary"
     >

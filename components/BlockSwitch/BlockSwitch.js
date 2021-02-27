@@ -1,16 +1,14 @@
 import contentBlocks from '@/components/Blocks';
 
-export default function BlockSwitch({
-  blocks,
-  prefix = 'ComponentSharedBlocks',
-  className
-}) {
+import { BLOCK_PREFIX } from '@/lib/constants';
+
+export default function BlockSwitch({ blocks, className }) {
   if (!blocks) {
     return null;
   }
 
   const blockMap = Object.keys(contentBlocks).reduce((acc, blockName) => {
-    acc[`${prefix}${blockName}`] = contentBlocks[blockName].Component;
+    acc[`${BLOCK_PREFIX}${blockName}`] = contentBlocks[blockName].Component;
 
     return acc;
   }, {});
