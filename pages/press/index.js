@@ -31,7 +31,7 @@ export default function PressOverview({ news, page }) {
 export async function getStaticProps({ locale }) {
   const { initialState, ...globalData } = await queryGlobalData(locale);
   const page = await getPage('presse');
-  const news = await fetchRecentNews({ filter: 'press' });
+  const news = await fetchRecentNews({ filter: 'pressrelease' });
 
   return {
     // TODO: find a good magic number here
