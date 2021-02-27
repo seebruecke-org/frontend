@@ -1,17 +1,22 @@
 import React from 'react';
 
-import { query as queryGlobalData } from '../lib/global';
-import { query, paths } from '../lib/pages';
+import { query as queryGlobalData } from '@/lib/global';
+import { query, paths } from '@/lib/pages';
+import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 
 import BlockSwitch from '@/components/BlockSwitch';
+import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
 export default function GenericPage({ page }) {
   return (
-    <article>
+    <PageBody
+      firstBlock={getFirstBlockName(page?.content)}
+      lastBlock={getLastBlockName(page?.content)}
+    >
       <SEO title={page?.title} />
       <BlockSwitch blocks={page?.content} />
-    </article>
+    </PageBody>
   );
 }
 

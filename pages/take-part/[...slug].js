@@ -5,7 +5,10 @@ import { useI18n } from 'next-localization';
 
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
+import PageBody from '@/components/PageBody';
 import SectionNavigation from '@/components/SectionNavigation';
+
+import { getLastBlockName } from '@/lib/blocks';
 
 export default function TakePartPage({
   name,
@@ -21,7 +24,11 @@ export default function TakePartPage({
       : safe_harbour?.featured_image?.image;
 
   return (
-    <article className="grid grid-layout-primary">
+    <PageBody
+      firstBlock="ComponentSharedBlocksStageMedium"
+      lastBlock={getLastBlockName(group?.content)}
+      className="grid grid-layout-primary"
+    >
       <StageMedium
         title={name}
         kicker={i18n.t(
@@ -36,7 +43,7 @@ export default function TakePartPage({
       )}
 
       <BlockSwitch blocks={group?.content} className="col-span-full" />
-    </article>
+    </PageBody>
   );
 }
 

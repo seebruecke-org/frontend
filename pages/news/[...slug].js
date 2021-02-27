@@ -1,11 +1,13 @@
 import { useI18n } from 'next-localization';
 import format from 'date-fns/format';
 
+import { getLastBlockName } from '@/lib/blocks';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
 
 import BlockSwitch from '@/components/BlockSwitch';
 import Heading from '@/components/Blocks/Heading';
+import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
 export default function NewsEntryPage({ title, content, publishedAt }) {
@@ -15,21 +17,20 @@ export default function NewsEntryPage({ title, content, publishedAt }) {
     : '';
 
   return (
-    <article>
+    <PageBody
+      firstBlock="ComponentSharedBlocksHeading"
+      lastBlock={getLastBlockName(content)}
+    >
       <SEO title={title} />
 
       <div className="grid grid-layout-primary">
-        <Heading
-          level={1}
-          kicker={date}
-          className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0 w-full"
-        >
+        <Heading level={1} kicker={date}>
           {title}
         </Heading>
       </div>
 
-      <BlockSwitch blocks={content} isFirst={false} />
-    </article>
+      <BlockSwitch blocks={content} />
+    </PageBody>
   );
 }
 
