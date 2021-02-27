@@ -34,6 +34,12 @@ module.exports = withPlugins([withModules], {
         source: '/de/aktuelles/:path*',
         destination: '/de/news/:path*',
         locale: false
+      },
+
+      {
+        source: '/de/presse/:path*',
+        destination: '/de/press/:path*',
+        locale: false
       }
     ];
   },
