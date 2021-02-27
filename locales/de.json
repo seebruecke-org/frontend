@@ -38,5 +38,11 @@
   "news": {
     "slug": "aktuelles",
     "dateFormat": "dd. LLLL yyy"
+  },
+
+  "blocks": {
+    "material": {
+      "title": "Material"
+    }
   }
 }
