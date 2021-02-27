@@ -4,17 +4,18 @@ import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
 import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Link from '../Richtext/Link';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
-import VStack from '@/components/VStack';
+import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 
 export default function ContactBlock({
   email,
   telephone,
   twitter,
   instagram,
-  facebook
+  facebook,
+  youtube
 }) {
   return (
-    <VStack as="ul" gap={2} className="col-start-3 col-span-10 py-20">
+    <ul className="flex flex-col space-y-2 col-start-3 col-span-10 py-20">
       {email && (
         <li className="w-full">
           <Link href={`mailto:${email}`}>{email}</Link>
@@ -53,7 +54,15 @@ export default function ContactBlock({
             </a>
           </NextLink>
         )}
+
+        {youtube && (
+          <NextLink href={youtube}>
+            <a className="hover:text-orange-200">
+              <YoutubeIcon className="w-16 h-16" />
+            </a>
+          </NextLink>
+        )}
       </li>
-    </VStack>
+    </ul>
   );
 }

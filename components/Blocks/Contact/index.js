@@ -5,6 +5,7 @@ export const FRAGMENT = `
     facebook
     instagram
     twitter
+    youtube
 
     email
     telephone
