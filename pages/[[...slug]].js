@@ -26,7 +26,8 @@ export async function getStaticPaths({ defaultLocale }) {
     'mach-mit',
     'aktionen',
     'aktuelles',
-    'sichere-haefen/alle-haefen'
+    'sichere-haefen/alle-haefen',
+    'presse'
   ];
 
   const staticPaths = sidePaths
