@@ -30,8 +30,8 @@ export default function PageBody({
 
   return (
     <article
-      className={`${marginTop && 'mt-10 md:mt-20'} ${
-        marginBottom && 'pb-20 md:pb-60'
+      className={`${marginTop && 'mt-8 md:mt-20'} ${
+        marginBottom && 'pb-16 md:pb-60'
       } ${className}`}
     >
       {children}
