@@ -24,6 +24,10 @@ import {
   FRAGMENT as TEASER_LARGE_FRAGMENT
 } from './TeaserLarge';
 import {
+  default as TeasersSmall,
+  FRAGMENT as TEASERS_SMALL_FRAGMENT
+} from './TeasersSmall';
+import {
   default as Unterbrecher,
   FRAGMENT as UNTERBRECHER_FRAGMENT
 } from './Unterbrecher';
@@ -77,6 +81,11 @@ const blocks = {
   TeaserLarge: {
     Component: TeaserLarge,
     FRAGMENT: TEASER_LARGE_FRAGMENT
+  },
+
+  TeasersSmall: {
+    Component: TeasersSmall,
+    FRAGMENT: TEASERS_SMALL_FRAGMENT
   },
 
   Unterbrecher: {
