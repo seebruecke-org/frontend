@@ -58,7 +58,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 
   return (
     <article>
-      <BlockSwitch blocks={page?.content} isLast={false} />
+      <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
         <MemoizedMap />

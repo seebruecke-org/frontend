@@ -12,7 +12,8 @@ import Form, {
   Textarea,
   Radio
 } from '@/components/Form';
-import Heading from '@/components/Heading';
+import Heading from '@/components/Blocks/Heading';
+import PageBody from '@/components/PageBody';
 
 export default function FormPage() {
   const { register, handleSubmit, errors } = useForm();
@@ -21,12 +22,8 @@ export default function FormPage() {
   console.log(errors);
 
   return (
-    <article className="grid grid-layout-primary pt-20">
-      <Heading
-        level={1}
-        kicker="Deine Aktion"
-        className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0"
-      >
+    <PageBody className="grid grid-layout-primary" firstBlock="Heading">
+      <Heading level={1} kicker="Deine Aktion">
         Aktions&shy;formular
       </Heading>
 
@@ -93,7 +90,7 @@ export default function FormPage() {
           <Button>Eintragen</Button>
         </Row>
       </Form>
-    </article>
+    </PageBody>
   );
 }
 

@@ -12,7 +12,7 @@ export default function NewsOverview({ news, page }) {
       <SEO title={page?.title} />
 
       <div>
-        <BlockSwitch blocks={page?.content} isLast={false} />
+        <BlockSwitch blocks={page?.content} />
       </div>
 
       <div className="grid grid-layout-primary">

@@ -11,6 +11,7 @@ import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
 import Group from '@/components/Teaser/Group';
 import Heading from '@/components/Blocks/Heading';
+import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
 export default function ActionPage({
@@ -45,42 +46,30 @@ export default function ActionPage({
   };
 
   return (
-    <article>
+    <PageBody firstBlock="Heading" className="grid grid-layout-primary">
       <SEO title={title} />
 
-      <div className="grid grid-layout-primary">
-        <Heading
-          level={1}
-          className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0 w-full"
-        >
-          {title}
-        </Heading>
+      <Heading level={1}>{title}</Heading>
 
-        <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
-          <Action
-            title={`${formatDate(start)} - ${formatDate(end, start)}`}
-            intro={`${location} ${location_detail}`}
-          />
-        </div>
+      <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
+        <Action
+          title={`${formatDate(start)} - ${formatDate(end, start)}`}
+          intro={`${location} ${location_detail}`}
+        />
       </div>
 
-      <BlockSwitch blocks={content} isFirst={false} isLast={false} />
+      <BlockSwitch blocks={content} />
 
       {group && group?.city && (
         <div className="grid grid-layout-primary pb-20 md:pb-32">
-          <Heading
-            level={2}
-            className="col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0"
-          >
-            {i18n.t('action.organizedBy')}
-          </Heading>
+          <Heading level={2}>{i18n.t('action.organizedBy')}</Heading>
 
           <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
             <Group {...group.city} />
           </div>
         </div>
       )}
-    </article>
+    </PageBody>
   );
 }
 
