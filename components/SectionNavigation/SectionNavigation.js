@@ -15,7 +15,7 @@ export default function SectionNavigation({ items, className }) {
         className={`w-full bg-gray-400 absolute top-0 left-0 opacity-50 ${styles.border}`}
       />
 
-      <nav className="py-8 px-10 md:px-0 col-span-full md:col-start-3 md:col-span-10 flex flex-row space-x-3 md:space-x-5 flex-nowrap overflow-x-auto w-full -ml-3">
+      <nav className="py-7 md:py-8 px-10 md:px-0 col-span-full md:col-start-3 md:col-span-10 flex flex-row space-x-3 md:space-x-5 flex-nowrap overflow-x-auto w-full -ml-3">
         {items.map((item, index) => {
           const isActive = asPath === item.path;
 
