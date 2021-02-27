@@ -58,7 +58,7 @@ export default function NewsEntry({
         </a>
       </NextLink>
 
-      <span className="col-start-2 col-span-10 h-1 border-b border-gray-300 mt-20" />
+      <span className="col-start-2 col-span-10 h-1 border-b border-gray-300 mt-4 md:mt-12" />
     </article>
   );
 }
