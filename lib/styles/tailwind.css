@@ -62,16 +62,32 @@ body {
     font-display: swap;
     font-family: Rubik;
     font-style: normal;
-    src: url(/fonts/Rubik/Rubik-VariableFont_wght.woff2)
-      format('woff2-variations');
+    font-weight: 400;
+    src: url(/fonts/Rubik/static/Rubik-Regular.woff2) format('woff2');
   }
 
   @font-face {
     font-display: swap;
     font-family: Rubik;
     font-style: italic;
-    src: url(/fonts/Rubik/Rubik-Italic-VariableFont_wght.woff2)
-      format('woff2-variations');
+    font-weight: 400;
+    src: url(/fonts/Rubik/static/Rubik-Italic.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: 700;
+    src: url(/fonts/Rubik/static/Rubik-Bold.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Rubik;
+    font-style: italic;
+    font-weight: 700;
+    src: url(/fonts/Rubik/static/Rubik-BoldItalic.woff2) format('woff2');
   }
 }
 
