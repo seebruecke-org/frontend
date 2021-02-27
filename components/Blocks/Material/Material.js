@@ -19,7 +19,7 @@ export default function MaterialBlock({ items }) {
         Material
       </Heading>
 
-      <ul className="flex flex-col space-y-10 col-span-full md:col-start-3 md:col-span-9 px-10 md:px-0 mt-10">
+      <ul className="flex flex-col space-y-10 col-span-full md:col-start-3 md:col-span-9 px-8 md:px-0 mt-10">
         {items.map(({ id, description, external_link, name, file }) => (
           <li
             key={`material-item-${id}`}

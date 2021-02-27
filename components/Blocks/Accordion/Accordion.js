@@ -27,7 +27,7 @@ export default function AccordionBlock({ item = [] }) {
               <AccordionItemState>
                 {({ expanded }) => (
                   <AccordionItemButton
-                    className={`px-10 py-4 md:p-7 border-gray-400 border-t ${
+                    className={`px-8 py-4 md:p-7 border-gray-400 border-t ${
                       isLast && 'border-b'
                     } ${
                       expanded
