@@ -1,12 +1,11 @@
 import { useI18n } from 'next-localization';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 import React from 'react';
 
 import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
 import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
+import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 
 import { useStore } from '@/lib/store';
@@ -52,9 +51,11 @@ export default function Footer() {
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
-      <div className="grid gap-y-20 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
-        <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
-          <a href="/" className="font-bold">
+      <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
+        <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3 flex-col space-y-8">
+          <SavedLocation name="Berlin" path="/mach-mit/deutschland/berlin" />
+
+          <a href="/" className="font-bold block">
             {i18n.t('footer.langEn')}
           </a>
         </div>
