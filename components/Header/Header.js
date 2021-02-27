@@ -39,7 +39,7 @@ function Burger({ onClick = () => {} }) {
   return (
     <button
       type="button"
-      className={`font-rubik text-3xs uppercase text-white text-center p-0 leading-none ml-auto justify-end tracking-wide ${styles.burger}`}
+      className={`font-rubik text-3xs uppercase text-white text-center p-0 leading-none ml-10 sm:ml-auto justify-end tracking-wide ${styles.burger}`}
       onClick={onClick}
     >
       <BarsIcon className="w-12 h-12" />
@@ -67,9 +67,9 @@ export default function Header() {
       <div className="flex flex-row align-bottom max-w-wide w-full">
         <Link href="/">
           <a
-            className={`${styles.logoContainer} flex items-end justify-center pl-5 xl:pl-0`}
+            className={`${styles.logoContainer} flex items-end justify-center pl-8 xl:pl-0`}
           >
-            <Logo className="w-auto h-10 sm:h-12 md:h-14" />
+            <Logo className="w-auto h-14 sm:h-12 md:h-14" />
           </a>
         </Link>
 
@@ -115,7 +115,7 @@ export default function Header() {
 
           {primaryItems && primaryItems.length > 0 && (
             <div
-              className={`${styles.primaryItemsContainer} flex flex-row justify-around w-full pl-5 sm:pl-10 md:pl-20 mt-auto md:mt-0 md:pb-5 pr-5`}
+              className={`${styles.primaryItemsContainer} flex flex-row justify-around w-full pl-5 sm:pl-10 md:pl-20 mt-auto md:mt-0 md:pb-5 pr-8`}
             >
               {primaryItems.map((item, index) => (
                 <MenuItem
@@ -137,7 +137,7 @@ export default function Header() {
 
               <MenuItem
                 {...cta[0]}
-                className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-4 bg-white rounded-3xl whitespace-nowrap tracking-wide self-end`}
+                className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-5 md:py-4 bg-white rounded-3xl whitespace-nowrap tracking-wide self-end`}
               />
 
               <Burger onClick={() => setmoreIsOpen(!moreIsOpen)} />

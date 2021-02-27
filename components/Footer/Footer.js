@@ -51,7 +51,7 @@ export default function Footer() {
   const footerMeta = store?.menus?.footerMeta;
 
   return (
-    <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-10 md:px-0">
+    <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
       <div className="grid gap-y-20 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
           <a href="/" className="font-bold">

@@ -15,7 +15,7 @@ export default function ContactBlock({
   youtube
 }) {
   return (
-    <ul className="flex flex-col space-y-2 col-start-3 col-span-10 py-20">
+    <ul className="flex flex-col space-y-2 col-span-full md:col-start-3 md:col-span-10 py-20 px-8 md:px-0">
       {email && (
         <li className="w-full">
           <Link href={`mailto:${email}`}>{email}</Link>

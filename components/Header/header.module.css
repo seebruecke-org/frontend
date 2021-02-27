@@ -13,7 +13,7 @@
 .primaryItemsContainer {
   @apply self-center;
   @apply items-center;
-  @apply py-5;
+  @apply py-7;
   @apply mb-auto;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .logoContainer {
-  @apply py-5;
+  @apply py-7;
 }
 
 @media (min-width: 430px) {
