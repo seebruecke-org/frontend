@@ -20,7 +20,7 @@ export default function Heading({
     h4: 'font-rubik text-xs uppercase'
   };
 
-  const Tag = `h${level}`;
+  const Tag = `h${level.replace('h', '')}`;
 
   return (
     <Tag
