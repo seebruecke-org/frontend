@@ -18,21 +18,22 @@ export default function TakePartPage({
   pageType
 }) {
   const i18n = useI18n();
-  const featuredImage =
-    pageType === 'group'
-      ? group?.featured_image?.image
-      : safe_harbour?.featured_image?.image;
+  const isGroup = pageType === 'group';
+  const contentBlocks = isGroup ? group?.content : safe_harbour?.content;
+  const featuredImage = isGroup
+    ? group?.featured_image?.image
+    : safe_harbour?.featured_image?.image;
 
   return (
     <PageBody
       firstBlock="StageMedium"
-      lastBlock={getLastBlockName(group?.content)}
+      lastBlock={getLastBlockName(contentBlocks)}
       className="grid grid-layout-primary"
     >
       <StageMedium
         title={name}
         kicker={i18n.t(
-          pageType === 'group' ? 'group.singleTitle' : 'safeHarbour.singleTitle'
+          isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle'
         )}
         className="col-span-full"
         image={featuredImage}
@@ -42,7 +43,7 @@ export default function TakePartPage({
         <SectionNavigation items={navigation} className="col-span-full" />
       )}
 
-      <BlockSwitch blocks={group?.content} className="col-span-full" />
+      <BlockSwitch blocks={contentBlocks} className="col-span-full" />
     </PageBody>
   );
 }
