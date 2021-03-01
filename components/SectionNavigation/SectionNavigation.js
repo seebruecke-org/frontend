@@ -9,8 +9,6 @@ import * as styles from './sectionNavigation.module.css';
 export default function SectionNavigation({ items, className }) {
   const { asPath } = useRouter();
 
-  console.log(items);
-
   return (
     <div
       className={`bg-orange-200 grid grid-layout-primary col-span-full sticky top-0 z-30 mb-10 ${styles.navigation} ${className}`}
