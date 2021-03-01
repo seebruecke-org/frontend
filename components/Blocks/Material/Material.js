@@ -11,11 +11,15 @@ function getHumanRedableFileFormat(mimeType) {
   return fileType;
 }
 
-export default function MaterialBlock({ items }) {
+export default function MaterialBlock({ items, blockContext: { next } }) {
   const i18n = useI18n();
 
   return (
-    <div className="col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary mt-20 mb-20">
+    <div
+      className={`col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary mt-20 ${
+        next && 'mb-20'
+      }`}
+    >
       <Heading level={2}>{i18n.t('blocks.material.title')}</Heading>
 
       <ul className="flex flex-col space-y-10 col-span-full md:col-start-3 md:col-span-9 px-8 md:px-0 mt-10">
