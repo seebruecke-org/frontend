@@ -2,10 +2,14 @@ import { useRouter } from 'next/router';
 
 import MenuItem from '@/components/MenuItem';
 
+import { arePathsEqual } from '@/lib/slug';
+
 import * as styles from './sectionNavigation.module.css';
 
 export default function SectionNavigation({ items, className }) {
   const { asPath } = useRouter();
+
+  console.log(items);
 
   return (
     <div
@@ -17,7 +21,7 @@ export default function SectionNavigation({ items, className }) {
 
       <nav className="py-7 md:py-8 px-10 md:px-0 col-span-full md:col-start-3 md:col-span-10 flex flex-row space-x-3 md:space-x-5 flex-nowrap overflow-x-auto w-full -ml-3">
         {items.map((item, index) => {
-          const isActive = asPath === item.path;
+          const isActive = arePathsEqual(asPath, item.path);
 
           return (
             <MenuItem
