@@ -89,42 +89,49 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
           </Form>
 
           <ul>
-            {Object.keys(cities).map((countryName, countryIndex) => (
-              <li
-                key={`country-${countryName}`}
-                className={`${countryIndex > 0 && 'mt-20'}`}
-              >
-                <Country name={countryName} />
+            {Object.keys(cities)
+              .sort()
+              .map((countryName, countryIndex) => (
+                <li
+                  key={`country-${countryName}`}
+                  className={`${countryIndex > 0 && 'mt-20'}`}
+                >
+                  <Country name={countryName} />
 
-                <ul className="flex flex-col space-y-10">
-                  {Object.keys(cities[countryName].countries).map(
-                    (federalCountryName) => (
-                      <li key={`federalCountry-${federalCountryName}`}>
-                        <FederalCountry
-                          count={
-                            cities[countryName].countries[federalCountryName]
-                              .cities.length
-                          }
-                          singularKicker={i18n.t('group.singleTitle')}
-                          pluralKicker={i18n.t('group.pluralTitle')}
-                          name={federalCountryName}
-                        />
+                  <ul className="flex flex-col space-y-10">
+                    {Object.keys(cities[countryName].countries)
+                      .sort()
+                      .map((federalCountryName) => (
+                        <li key={`federalCountry-${federalCountryName}`}>
+                          <FederalCountry
+                            count={
+                              cities[countryName].countries[federalCountryName]
+                                .cities.length
+                            }
+                            singularKicker={i18n.t('group.singleTitle')}
+                            pluralKicker={i18n.t('group.pluralTitle')}
+                            name={federalCountryName}
+                          />
 
-                        <ul className="grid md:grid-cols-2 gap-8 px-6">
-                          {cities[countryName].countries[
-                            federalCountryName
-                          ].cities.map((city) => (
-                            <li key={`city-${city.name}`}>
-                              <Group uri={city.uri} name={city.name} />
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </li>
-            ))}
+                          <ul className="grid md:grid-cols-2 gap-8 px-6">
+                            {cities[countryName].countries[
+                              federalCountryName
+                            ].cities
+                              .sort(
+                                ({ name: cityAName }, { name: cityBName }) =>
+                                  cityAName.localeCompare(cityBName)
+                              )
+                              .map((city) => (
+                                <li key={`city-${city.name}`}>
+                                  <Group uri={city.uri} name={city.name} />
+                                </li>
+                              ))}
+                          </ul>
+                        </li>
+                      ))}
+                  </ul>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
