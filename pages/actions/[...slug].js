@@ -46,25 +46,29 @@ export default function ActionPage({
   };
 
   return (
-    <PageBody firstBlock="Heading" className="grid grid-layout-primary">
+    <PageBody firstBlock="Heading">
       <SEO title={title} />
 
-      <Heading level={1}>{title}</Heading>
+      <div className="grid grid-layout-primary">
+        <Heading level={1}>{title}</Heading>
 
-      <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
-        <Action
-          title={`${formatDate(start)} - ${formatDate(end, start)}`}
-          intro={`${location} ${location_detail}`}
-        />
+        <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
+          <Action
+            title={`${formatDate(start)} - ${formatDate(end, start)}`}
+            intro={`${location} ${location_detail}`}
+          />
+        </div>
       </div>
 
       <BlockSwitch blocks={content} />
 
       {group && group?.city && (
-        <div className="grid grid-layout-primary pb-20 md:pb-32">
-          <Heading level={2}>{i18n.t('action.organizedBy')}</Heading>
+        <div className="grid grid-layout-primary">
+          <Heading level={2} as={4}>
+            {i18n.t('action.organizedBy')}
+          </Heading>
 
-          <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20">
+          <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20 mb-20">
             <Group {...group.city} />
           </div>
         </div>
