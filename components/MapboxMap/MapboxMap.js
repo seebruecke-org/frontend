@@ -1,5 +1,7 @@
 import ReactMapboxGl from 'react-mapbox-gl';
 
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 export default function MapboxMap({ factory = {}, ...props }) {
   const Map = ReactMapboxGl({
     accessToken: process.env.MAPBOX_ACCESS_TOKEN,
