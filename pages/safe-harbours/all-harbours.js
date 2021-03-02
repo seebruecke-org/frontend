@@ -2,7 +2,7 @@ import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 
 import { FederalCountry, Country, Map } from '@/components/Map';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
@@ -16,6 +16,7 @@ const MemoizedMap = memo(Map);
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
   const i18n = useI18n();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
+  const citiesListRef = useRef(null);
 
   return (
     <article>
@@ -25,7 +26,17 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
         <MemoizedMap />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
-          <Form primaryGrid={false} className="grid-cols-6">
+          <Form
+            primaryGrid={false}
+            className="grid-cols-6"
+            onSubmit={(event) => {
+              event.preventDefault();
+
+              citiesListRef?.current?.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }}
+          >
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput
                 name="filter"
@@ -48,7 +59,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             </Row>
           </Form>
 
-          <ul>
+          <ul ref={citiesListRef}>
             {Object.keys(cities).map((countryName, countryIndex) => (
               <li
                 key={`country-${countryName}`}

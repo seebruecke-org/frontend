@@ -1,6 +1,6 @@
 import { useI18n } from 'next-localization';
 import { format } from 'date-fns';
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, useRef } from 'react';
 
 import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
@@ -33,6 +33,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
   const i18n = useI18n();
   const [filterValue, setFilterValue] = useState(null);
   const [actions, setActions] = useState(defaultActions);
+  const actionsListRef = useRef(null);
 
   useEffect(() => {
     if (filterValue) {
@@ -52,7 +53,17 @@ export default function TakePartPage({ actions: defaultActions, page }) {
         <MemoizedMap />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
-          <Form primaryGrid={false} className="grid-cols-6">
+          <Form
+            primaryGrid={false}
+            className="grid-cols-6"
+            onSubmit={(event) => {
+              event.preventDefault();
+
+              actionsListRef?.current?.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }}
+          >
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput
                 name="filter"
@@ -61,7 +72,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                 onChange={(event) => {
                   setFilterValue(event.target.value);
                 }}
-                autocomplete="off"
+                autoComplete="off"
               />
 
               {filterValue && (
@@ -76,7 +87,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             </Row>
           </Form>
 
-          <ul>
+          <ul ref={actionsListRef}>
             {Object.keys(actions).map((key, index) => (
               <li
                 key={`action-date-${index}`}

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import { useI18n } from 'next-localization';
 
 import { getPage } from '@/lib/pages';
@@ -16,6 +16,7 @@ const MemoizedMap = memo(Map);
 export default function TakePartOverview({ cities: defaultCities, page }) {
   const i18n = useI18n();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
+  const citiesListRef = useRef(null);
 
   return (
     <article>
@@ -25,7 +26,17 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
         <MemoizedMap />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
-          <Form primaryGrid={false} className="grid-cols-6">
+          <Form
+            primaryGrid={false}
+            className="grid-cols-6"
+            onSubmit={(event) => {
+              event.preventDefault();
+
+              citiesListRef?.current?.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }}
+          >
             <Row primaryGrid={false} className="md:col-span-5 flex-nowrap">
               <TextInput
                 name="filter"
@@ -34,7 +45,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                 onChange={(event) => {
                   setFilter(event.target.value);
                 }}
-                autocomplete="off"
+                autoComplete="off"
               />
 
               {filter && (
@@ -49,7 +60,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
             </Row>
           </Form>
 
-          <ul>
+          <ul ref={citiesListRef}>
             {Object.keys(cities)
               .sort()
               .map((countryName, countryIndex) => (
