@@ -49,6 +49,7 @@
     "react-hook-form": "^6.15.4",
     "react-mapbox-gl": "^5.1.1",
     "react-markdown": "^5.0.3",
+    "react-modal": "^3.12.1",
     "remark": "^13.0.0",
     "remark-excerpt": "^1.0.0-beta.1",
     "simple-zustand-devtools": "^1.0.0",
