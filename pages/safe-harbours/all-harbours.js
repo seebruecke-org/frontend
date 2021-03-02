@@ -2,58 +2,20 @@ import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
-import { memo, useState, useEffect } from 'react';
+import { memo } from 'react';
 
 import { FederalCountry, Country, Map } from '@/components/Map';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
 
-function filterCities(cities, term) {
-  return Object.keys(cities).reduce((acc, countryName) => {
-    const federalCountries = cities[countryName].countries;
-    const matchingFederalCountries = {};
-
-    Object.keys(federalCountries).forEach((federalCountryName) => {
-      const federalCountry = federalCountries[federalCountryName];
-
-      federalCountry.cities.forEach((city) => {
-        const { name: cityName } = city;
-
-        if (cityName.includes(term)) {
-          if (!matchingFederalCountries[federalCountryName]) {
-            matchingFederalCountries[federalCountryName] = { cities: [] };
-          }
-
-          matchingFederalCountries[federalCountryName].cities.push(city);
-        }
-      });
-    });
-
-    if (Object.keys(matchingFederalCountries).length > 0) {
-      acc[countryName] = {
-        countries: matchingFederalCountries
-      };
-    }
-
-    return acc;
-  }, {});
-}
+import useCityFilter from '@/lib/hooks/useCityFilter';
 
 const MemoizedMap = memo(Map);
 
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
   const i18n = useI18n();
-  const [filterValue, setFilterValue] = useState(null);
-  const [cities, setCities] = useState(defaultCities);
-
-  useEffect(() => {
-    if (filterValue) {
-      setCities(filterCities(defaultCities, filterValue));
-    } else {
-      setCities(defaultCities);
-    }
-  }, [filterValue]);
+  const { cities, filter, setFilter } = useCityFilter(defaultCities);
 
   return (
     <article>
@@ -69,10 +31,20 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                 name="filter"
                 placeholder={i18n.t('group.searchCity')}
                 onChange={(event) => {
-                  setFilterValue(event.target.value);
+                  setFilter(event.target.value);
                 }}
                 autoComplete="off"
               />
+
+              {filter && (
+                <button
+                  type="button"
+                  onClick={() => setFilter('')}
+                  className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
+                >
+                  Filter zurücksetzen
+                </button>
+              )}
             </Row>
           </Form>
 
