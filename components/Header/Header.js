@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useI18n } from 'next-localization';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 import { useStore } from '@/lib/store';
@@ -9,12 +10,16 @@ import BarsIcon from '@/public/icons/bars.svg';
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
+import Heading from '@/components/Heading';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
 import More from './More';
 import SearchIcon from '@/public/icons/search-regular.svg';
+import Form, { Button, TextInput } from '@/components/Form';
 
 import * as styles from './header.module.css';
+
+const Modal = dynamic(() => import('@/components/Modal'));
 
 function isPartiallyActive(fullPath, path) {
   return fullPath.startsWith(path);
@@ -53,6 +58,8 @@ export default function Header() {
   const i18n = useI18n();
   const store = useStore() || {};
   const [moreIsOpen, setmoreIsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [saveLocationOpen, setSaveLocationOpen] = useState(false);
 
   const items = store?.menus?.header?.items;
   const headerSecondaryItems = store?.menus?.headerSecondary?.items;
@@ -87,21 +94,58 @@ export default function Header() {
                 </a>
               ))}
 
-              <MenuItem
-                path="/"
-                label={i18n.t('header.search')}
+              <button
+                type="button"
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                onClick={() => setSearchOpen(true)}
               >
+                {i18n.t('header.search')}
                 <SearchIcon className="w-7 h-7 ml-2" />
-              </MenuItem>
+              </button>
 
-              <MenuItem
-                path="/"
-                label={i18n.t('header.myPlace')}
+              {searchOpen && (
+                <Modal isOpen={true} onClose={() => setSearchOpen(false)}>
+                  <Heading level={2} as={4}>
+                    Search
+                  </Heading>
+
+                  <Form>
+                    <div className="col-span-full">
+                      <TextInput placeholder="Search" name="search" />
+                    </div>
+
+                    <div className="col-span-full pt-6">
+                      <Button type="submit">Suchen</Button>
+                    </div>
+                  </Form>
+                </Modal>
+              )}
+
+              <button
+                type="button"
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                onClick={() => setSaveLocationOpen(true)}
               >
+                {i18n.t('header.myPlace')}
                 <BookmarkIcon className="w-7 h-7 ml-2" />
-              </MenuItem>
+              </button>
+
+              {saveLocationOpen && (
+                <Modal isOpen={true} onClose={() => setSaveLocationOpen(false)}>
+                  <Heading level={2} as={4}>
+                    Save a location
+                  </Heading>
+
+                  <Form>
+                    <div className="col-span-full">
+                      <TextInput
+                        placeholder="Search for a location"
+                        name="location"
+                      />
+                    </div>
+                  </Form>
+                </Modal>
+              )}
 
               {headerSecondaryItems.map((item) => (
                 <MenuItem
