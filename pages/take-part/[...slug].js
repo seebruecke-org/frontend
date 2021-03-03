@@ -45,7 +45,7 @@ export default function TakePartPage({
         <SectionNavigation items={navigation} className="col-span-full" />
       )}
 
-      {!isGroup && (
+      {!isGroup && safe_harbour?.demands && (
         <>
           <Heading level={2}>Unsere Forderungen</Heading>
           <Demands demands={safe_harbour?.demands} />
