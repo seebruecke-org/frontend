@@ -5,6 +5,8 @@ import { useI18n } from 'next-localization';
 
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
+import Demands from '@/components/Demands/SafeHarbour';
+import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SectionNavigation from '@/components/SectionNavigation';
 
@@ -41,6 +43,13 @@ export default function TakePartPage({
 
       {navigation && navigation.length > 1 && (
         <SectionNavigation items={navigation} className="col-span-full" />
+      )}
+
+      {!isGroup && (
+        <>
+          <Heading level={2}>Unsere Forderungen</Heading>
+          <Demands demands={safe_harbour?.demands} />
+        </>
       )}
 
       <BlockSwitch blocks={contentBlocks} className="col-span-full" />
