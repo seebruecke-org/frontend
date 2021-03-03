@@ -16,6 +16,18 @@ const MemoizedMap = memo(Map);
 export default function TakePartOverview({ cities: defaultCities, page }) {
   const i18n = useI18n();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
+  const mapCities = Object.keys(cities)
+    .map((countryName) => {
+      const federalCountryNames = Object.keys(cities[countryName].countries);
+
+      return federalCountryNames
+        .map(
+          (federalCountryName) =>
+            cities[countryName].countries[federalCountryName].cities
+        )
+        .flat();
+    })
+    .flat();
   const citiesListRef = useRef(null);
 
   return (
@@ -23,7 +35,12 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
       <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
-        <MemoizedMap />
+        <MemoizedMap
+          marker={mapCities.map(({ name, coordinates }) => ({
+            title: name,
+            coordinates
+          }))}
+        />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
           <Form
