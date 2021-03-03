@@ -159,7 +159,7 @@ export default function Header() {
 
           {primaryItems && primaryItems.length > 0 && (
             <div
-              className={`${styles.primaryItemsContainer} flex flex-row justify-around w-full pl-5 sm:pl-10 md:pl-20 mt-auto md:mt-0 md:pb-5 pr-8`}
+              className={`${styles.primaryItemsContainer} flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-5`}
             >
               {primaryItems.map((item, index) => (
                 <MenuItem
