@@ -10,10 +10,12 @@ import BarsIcon from '@/public/icons/bars.svg';
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
+import Heading from '@/components/Heading';
 import Logo from '@/components/Logo';
 import MenuItem from '@/components/MenuItem';
 import More from './More';
 import SearchIcon from '@/public/icons/search-regular.svg';
+import Form, { Button, TextInput } from '@/components/Form';
 
 import * as styles from './header.module.css';
 
@@ -103,7 +105,19 @@ export default function Header() {
 
               {searchOpen && (
                 <Modal isOpen={true} onClose={() => setSearchOpen(false)}>
-                  Search Form
+                  <Heading level={2} as={4}>
+                    Search
+                  </Heading>
+
+                  <Form>
+                    <div className="col-span-full">
+                      <TextInput placeholder="Search" name="search" />
+                    </div>
+
+                    <div className="col-span-full pt-6">
+                      <Button type="submit">Suchen</Button>
+                    </div>
+                  </Form>
                 </Modal>
               )}
 
@@ -118,7 +132,18 @@ export default function Header() {
 
               {saveLocationOpen && (
                 <Modal isOpen={true} onClose={() => setSaveLocationOpen(false)}>
-                  Save Location Form
+                  <Heading level={2} as={4}>
+                    Save a location
+                  </Heading>
+
+                  <Form>
+                    <div className="col-span-full">
+                      <TextInput
+                        placeholder="Search for a location"
+                        name="location"
+                      />
+                    </div>
+                  </Form>
                 </Modal>
               )}
 
