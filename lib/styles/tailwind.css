@@ -16,8 +16,14 @@ body {
 
 @layer utilities {
   .grid-layout-primary {
-    grid-column-gap: 3rem;
     grid-template-columns: var(--grid-primary);
+  }
+
+  @screen sm {
+    .grid-layout-primary {
+      grid-column-gap: 3rem;
+      grid-template-columns: var(--grid-primary);
+    }
   }
 
   .font-rubik-features {
