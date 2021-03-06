@@ -34,8 +34,8 @@ export default function More({ children, onDismiss = () => {} }) {
         className="justify-end ml-auto mr-5 mb-20 md:hidden"
         onClick={onDismiss}
       >
-        <TimesIcon className="w-14 h-14" />
-        <span className="font-rubik text-3xs uppercase tracking-wide">
+        <TimesIcon className="w-16 h-auto" />
+        <span className="font-rubik text-3xs uppercase tracking-wide -mt-1">
           Close
         </span>
       </button>

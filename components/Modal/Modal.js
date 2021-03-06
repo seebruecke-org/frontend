@@ -36,7 +36,7 @@ export default function Modal({
           onClick={() => onClose()}
           className="absolute top-8 right-8 flex flex-col items-center font-rubik font-rubik-features text-3xs uppercase leading-none text-gray-800 hover:text-orange-800"
         >
-          <TimesIcon className="w-8 h-auto mb-1" />
+          <TimesIcon className="w-14 h-auto mb-1" />
           Close
         </button>
 
