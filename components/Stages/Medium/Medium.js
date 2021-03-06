@@ -19,6 +19,7 @@ export default function StageMedium({
           image={image}
           objectFit="cover"
           layout="fill"
+          priority
           className="col-span-full h-96 md:h-full w-full relative md:static"
         />
       )}

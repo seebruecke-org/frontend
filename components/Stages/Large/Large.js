@@ -11,6 +11,7 @@ export default function StageLarge({ image, className, title, cta = null }) {
         image={image}
         objectFit="cover"
         layout="fill"
+        priority
         className="col-span-full h-full w-full relative md:absolute"
       />
 
