@@ -1,3 +1,5 @@
+import { fetchAPI } from '@/lib/api';
+
 export { default } from './Actions';
 
 export const FRAGMENT = `
@@ -15,3 +17,23 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export async function sideloadData() {
+  const { actions } = await fetchAPI(`
+    query {
+      actions {
+        title
+        slug
+        intro
+        start
+        slug
+        location
+        location_detail
+      }
+    }
+  `);
+
+  return {
+    actions
+  };
+}

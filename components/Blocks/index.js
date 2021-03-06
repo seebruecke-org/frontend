@@ -1,8 +1,14 @@
+import { blockNameMatches } from '@/lib/blocks';
+
 import {
   default as Accordion,
   FRAGMENT as ACCORDION_FRAGMENT
 } from './Accordion';
-import { default as Actions, FRAGMENT as ACTIONS_FRAGMENT } from './Actions';
+import {
+  default as Actions,
+  FRAGMENT as ACTIONS_FRAGMENT,
+  sideloadData as actionsSideloadData
+} from './Actions';
 import { default as Contact, FRAGMENT as CONTACT_FRAGMENT } from './Contact';
 import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
 import { default as Material, FRAGMENT as MATERIAL_FRAGMENT } from './Material';
@@ -41,7 +47,8 @@ const blocks = {
 
   Actions: {
     Component: Actions,
-    FRAGMENT: ACTIONS_FRAGMENT
+    FRAGMENT: ACTIONS_FRAGMENT,
+    sideloadData: actionsSideloadData
   },
 
   Contact: {
@@ -100,25 +107,58 @@ const blocks = {
   }
 };
 
+function getFilteredBlocks(exclude = []) {
+  return Object.keys(blocks).filter((blockName) => {
+    const hasExludes = Array.isArray(exclude);
+
+    if (hasExludes) {
+      return !exclude.includes(blockName);
+    }
+
+    return true;
+  });
+}
+
 export function getFragments(options = {}) {
   const { exclude } = options;
-  const fragments = Object.keys(blocks)
-    .filter((blockName) => {
-      const hasExludes = Array.isArray(exclude);
+  const fragments = getFilteredBlocks(exclude).map((blockName) => {
+    const { FRAGMENT } = blocks[blockName];
 
-      if (hasExludes) {
-        return !exclude.includes(blockName);
-      }
-
-      return true;
-    })
-    .map((blockName) => {
-      const { FRAGMENT } = blocks[blockName];
-
-      return FRAGMENT;
-    });
+    return FRAGMENT;
+  });
 
   return fragments;
+}
+
+export async function sideloadBlockData(content, key) {
+  if (!content) {
+    return content;
+  }
+
+  const blocksWithSideloadedData = await Promise.all(
+    content[key].map(async (block) => {
+      const blockName = Object.keys(blocks).find((currentBlockName) =>
+        blockNameMatches(currentBlockName, block.__typename)
+      );
+
+      const sideloadFunc = blocks[blockName]?.sideloadData;
+      let sideloadedData = '';
+
+      if (sideloadFunc) {
+        sideloadedData = await sideloadFunc(block);
+      }
+
+      return {
+        ...block,
+        ...sideloadedData
+      };
+    })
+  );
+
+  return {
+    ...content,
+    [key]: blocksWithSideloadedData
+  };
 }
 
 export default blocks;

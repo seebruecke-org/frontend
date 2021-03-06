@@ -1,49 +1,12 @@
+import { useI18n } from 'next-localization';
+import { format } from 'date-fns';
 import dynamic from 'next/dynamic';
 
 import Action from '@/components/Teaser/Action';
 import CTA from '@/components/CTA';
 
-const ACTIONS = [
-  {
-    title: 'Villingen',
-    meta: '17. Mar 2021, 12:00 Uhr',
-    intro: 'NO MORE MORIA - Demo und Küfa',
-    slug: 'whatever'
-  },
-
-  {
-    title: 'Berlin',
-    meta: '17. Apr 2021, 12:00 Uhr',
-    intro: 'Ein Jahr nach Hanau! Rassismus tötet überall!',
-    slug: 'whatever'
-  },
-
-  {
-    title: 'Brandenburg an der Havel',
-    meta: '17. Apr 2021',
-    intro:
-      'No Border, No Nation, Stop Deportation – Offenes Gruppentreffen von “No Lager”',
-    slug: 'whatever'
-  },
-
-  {
-    title: 'Aachen',
-    meta: '13. May 2021, 12:00 Uhr - 12:00 Uhr',
-    intro:
-      'Menschenrechte an den Außengrenzen der Europäischen Union – Anspruch und Wirklichkeit',
-    slug: 'whatever'
-  },
-
-  {
-    title: 'Online',
-    meta: '10. Feb 2021',
-    intro:
-      'Über uns 27.02.2021 um 18:00 in Online Live Event: Aufnahme statt Abschottung. Ein Perspektivwechsel',
-    slug: 'whatever'
-  }
-];
-
-export default function ActionsBlock({ max_actions_to_show, show_map, cta }) {
+export default function ActionsBlock({ show_map, cta, actions }) {
+  const i18n = useI18n();
   const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
 
   return (
@@ -51,9 +14,17 @@ export default function ActionsBlock({ max_actions_to_show, show_map, cta }) {
       {show_map && <MapboxMap className="mb-8 h-96" />}
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {ACTIONS.map((action, index) => (
+        {actions.map(({ location, start, intro, title, slug }, index) => (
           <li key={`action-${index}`}>
-            <Action {...action} />
+            <Action
+              title={location}
+              meta={`${format(
+                new Date(start),
+                `${i18n.t('action.dateFormat')}, ${i18n.t('action.timeFormat')}`
+              )} ${i18n.t('action.timePostfix')}`}
+              intro={intro || title}
+              slug={slug}
+            />
           </li>
         ))}
       </ul>
