@@ -14,6 +14,8 @@ import MinusIcon from '@/public/icons/minus.svg';
 import PlusIcon from '@/public/icons/plus.svg';
 import Richtext from '@/components/Blocks/Richtext';
 
+import * as styles from './safeHarbour.module.css';
+
 export default function SafeHarbourDemands({ demands }) {
   const i18n = useI18n();
 
@@ -27,10 +29,6 @@ export default function SafeHarbourDemands({ demands }) {
         const isLast = demandIndex + 1 == Object.keys(demands).length;
         const demand = demands[demandKey];
         let color = 'bg-gray-500';
-
-        if (demand === true) {
-          color = 'bg-turquoise-300';
-        }
 
         if (demand === false) {
           color = 'bg-orange-900';
@@ -48,7 +46,9 @@ export default function SafeHarbourDemands({ demands }) {
                     } cursor-pointer flex`}
                   >
                     <span
-                      className={`${color} w-14 h-14 md:w-16 md:h-16 flex rounded-full text-white flex-shrink-0 items-center justify-center font-rubik font-rubik-features text-base md:text-medium font-bold`}
+                      className={`${
+                        demand === true ? styles.demandFullfilled : color
+                      } w-14 h-14 md:w-16 md:h-16 flex rounded-full text-white flex-shrink-0 items-center justify-center font-rubik font-rubik-features text-base md:text-medium font-bold`}
                     >
                       {demandIndex + 1}
                     </span>
