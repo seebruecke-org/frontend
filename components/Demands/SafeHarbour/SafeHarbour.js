@@ -73,7 +73,7 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
   );
 }
 
-export default function SafeHarbourDemands({ demands }) {
+export default function SafeHarbourDemands({ cityName, demands }) {
   const i18n = useI18n();
 
   return (
@@ -82,32 +82,38 @@ export default function SafeHarbourDemands({ demands }) {
       allowMultipleExpanded
       allowZeroExpanded
     >
-      {KEYS.map((demandKey, demandIndex) => (
-        // eslint-disable-next-line react/jsx-key
-        <AccordionItem
-          isLast={demandIndex + 1 == KEYS.lengthLast}
-          activeBackground={false}
-          iconClassName="w-14 h-14 flex-shrink-0 self-start ml-auto mt-3 hidden md:flex"
-          heading={
-            <Heading
-              index={demandIndex}
-              decided={demands[`${demandKey}_decided`]}
-              fullfilled={demands[`${demandKey}_fullfilled`]}
-              demand={demandKey}
-            />
-          }
-        >
-          <AccordionPanel>
-            <div className="pl-14 md:pl-28 pb-8 md:pb-10">
-              <Richtext
-                richtext={i18n.t(
-                  `safeHarbour.demands.${demandKey}.description`
-                )}
+      {KEYS.map((demandKey, demandIndex) => {
+        let description = i18n.t(
+          `safeHarbour.demands.${demandKey}.description`
+        );
+
+        if (description) {
+          description = description.replace('{{city_placeholder}}', cityName);
+        }
+
+        return (
+          // eslint-disable-next-line react/jsx-key
+          <AccordionItem
+            isLast={demandIndex + 1 == KEYS.lengthLast}
+            activeBackground={false}
+            iconClassName="w-14 h-14 flex-shrink-0 self-start ml-auto mt-3 hidden md:flex"
+            heading={
+              <Heading
+                index={demandIndex}
+                decided={demands[`${demandKey}_decided`]}
+                fullfilled={demands[`${demandKey}_fullfilled`]}
+                demand={demandKey}
               />
-            </div>
-          </AccordionPanel>
-        </AccordionItem>
-      ))}
+            }
+          >
+            <AccordionPanel>
+              <div className="pl-14 md:pl-28 pb-8 md:pb-10">
+                <Richtext richtext={description} />
+              </div>
+            </AccordionPanel>
+          </AccordionItem>
+        );
+      })}
     </Accordion>
   );
 }

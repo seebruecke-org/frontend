@@ -52,7 +52,7 @@ export default function TakePartPage({
       {!isGroup && safe_harbour?.demands && (
         <>
           <Heading level={2}>Unsere Forderungen</Heading>
-          <Demands demands={safe_harbour?.demands} />
+          <Demands demands={safe_harbour?.demands} cityName={name} />
         </>
       )}
 
