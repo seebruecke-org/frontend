@@ -35,7 +35,11 @@ export default function TeaserLarge({ title, intro, cta, type = 'internal' }) {
           {title}
         </h2>
 
-        <p className="font-rubik text-small md:text-medium leading-tight mt-4">
+        <p
+          className={`font-rubik text-small md:text-medium mt-4 ${
+            type !== 'general' ? 'leading-tight' : 'leading-normal'
+          }`}
+        >
           {intro}
         </p>
 
