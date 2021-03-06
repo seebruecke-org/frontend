@@ -37,6 +37,7 @@ export default function SafeHarbourDemands({ demands }) {
         }
 
         return (
+          // eslint-disable-next-line react/jsx-key
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemState>
