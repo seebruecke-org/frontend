@@ -1,4 +1,5 @@
 import { useI18n } from 'next-localization';
+import { AccordionItemState } from 'react-accessible-accordion';
 
 import {
   Accordion,
@@ -22,13 +23,7 @@ const KEYS = [
   'transparency'
 ];
 
-function Heading({
-  index,
-  expanded = false,
-  decided = false,
-  fullfilled = false,
-  demand
-}) {
+function Heading({ index, decided = false, fullfilled = false, demand }) {
   const i18n = useI18n();
   let color = 'bg-gray-500';
 
@@ -58,19 +53,21 @@ function Heading({
           {i18n.t('safeHarbour.demand.fullfilled')}
         </span>
 
-        <span
-          className={`flex font-rubik text-2xs font-normal md:hidden mt-6 items-center ${
-            expanded ? 'text-white' : 'text-gray-600'
-          }`}
-        >
-          {i18n.t(`safeHarbour.demand.${expanded ? 'readLess' : 'readMore'}`)}
+        <AccordionItemState>
+          {({ expanded }) => (
+            <span className="flex font-rubik text-2xs font-normal md:hidden mt-6 items-center text-gray-600">
+              {i18n.t(
+                `safeHarbour.demand.${expanded ? 'readLess' : 'readMore'}`
+              )}
 
-          {expanded ? (
-            <ChevronUpIcon className="w-4 h-auto ml-2" />
-          ) : (
-            <ChevronDownIcon className="w-4 h-auto ml-2" />
+              {expanded ? (
+                <ChevronUpIcon className="w-4 h-auto ml-2" />
+              ) : (
+                <ChevronDownIcon className="w-4 h-auto ml-2" />
+              )}
+            </span>
           )}
-        </span>
+        </AccordionItemState>
       </div>
     </div>
   );
