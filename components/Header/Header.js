@@ -181,7 +181,7 @@ export default function Header() {
 
               <MenuItem
                 {...cta[0]}
-                className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-5 md:py-4 bg-white rounded-3xl whitespace-nowrap tracking-wide self-end`}
+                className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-5 md:py-4 bg-white rounded-full whitespace-nowrap tracking-wide self-end`}
               />
 
               <Burger onClick={() => setmoreIsOpen(!moreIsOpen)} />
