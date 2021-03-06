@@ -9,6 +9,7 @@ import Demands from '@/components/Demands/SafeHarbour';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SectionNavigation from '@/components/SectionNavigation';
+import SEO from '@/components/SEO';
 
 import { getLastBlockName } from '@/lib/blocks';
 
@@ -22,6 +23,9 @@ export default function TakePartPage({
   const i18n = useI18n();
   const isGroup = pageType === 'group';
   const contentBlocks = isGroup ? group?.content : safe_harbour?.content;
+  const kicker = i18n.t(
+    isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle'
+  );
   const featuredImage = isGroup
     ? group?.featured_image?.image
     : safe_harbour?.featured_image?.image;
@@ -32,11 +36,11 @@ export default function TakePartPage({
       lastBlock={getLastBlockName(contentBlocks)}
       className="grid grid-layout-primary"
     >
+      <SEO title={`${kicker} ${name}`} />
+
       <StageMedium
         title={name}
-        kicker={i18n.t(
-          isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle'
-        )}
+        kicker={kicker}
         className="col-span-full"
         image={featuredImage}
       />
