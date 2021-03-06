@@ -35,8 +35,10 @@
     "pluralTitle": "Sichere Häfen",
 
     "demand": {
-      "decided": "Entschieden",
-      "fullfilled": "Umgesetzt",
+      "decided": "entschieden",
+      "fullfilled": "umgesetzt",
+      "not": "Nicht",
+      "unknown": "Unbekannt ob",
       "readMore": "Details anzeigen",
       "readLess": "Details ausblenden"
     },

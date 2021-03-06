@@ -16,6 +16,17 @@ import Richtext from '@/components/Blocks/Richtext';
 
 import * as styles from './safeHarbour.module.css';
 
+const KEYS = [
+  'public_solidarity_declaration',
+  'supports_searescue_actively',
+  'admission_in_addition_quota',
+  'admission_program',
+  'communal_reception',
+  'national_international_networking',
+  'alliance_safe_harbours',
+  'transparency'
+];
+
 export default function SafeHarbourDemands({ demands }) {
   const i18n = useI18n();
 
@@ -25,13 +36,16 @@ export default function SafeHarbourDemands({ demands }) {
       allowMultipleExpanded
       allowZeroExpanded
     >
-      {Object.keys(demands).map((demandKey, demandIndex) => {
-        const isLast = demandIndex + 1 == Object.keys(demands).length;
-        const demand = demands[demandKey];
+      {KEYS.map((demandKey, demandIndex) => {
+        const isLast = demandIndex + 1 == KEYS.length;
+        const demand_decided = demands[`${demandKey}_decided`];
+        const demand_fullfilled = demands[`${demandKey}_fullfilled`];
         let color = 'bg-gray-500';
 
-        if (demand === false) {
+        if (demand_decided === false && demand_fullfilled === false) {
           color = 'bg-orange-900';
+        } else if (demand_decided === true && demand_fullfilled === true) {
+          color = styles.demandFullfilled;
         }
 
         return (
@@ -46,9 +60,7 @@ export default function SafeHarbourDemands({ demands }) {
                     } cursor-pointer flex`}
                   >
                     <span
-                      className={`${
-                        demand === true ? styles.demandFullfilled : color
-                      } w-14 h-14 md:w-16 md:h-16 flex rounded-full text-white flex-shrink-0 items-center justify-center font-rubik font-rubik-features text-base md:text-medium font-bold`}
+                      className={`${color} w-14 h-14 md:w-16 md:h-16 flex rounded-full text-white flex-shrink-0 items-center justify-center font-rubik font-rubik-features text-base md:text-medium font-bold`}
                     >
                       {demandIndex + 1}
                     </span>
@@ -57,7 +69,15 @@ export default function SafeHarbourDemands({ demands }) {
                         {i18n.t(`safeHarbour.demands.${demandKey}.title`)}
                       </span>
                       <span className="block font-rubik text-xs mt-2">
-                        {i18n.t('safeHarbour.demand.decided')} &amp;{' '}
+                        {demand_decided === false &&
+                          `${i18n.t('safeHarbour.demand.not')} `}
+                        {demand_decided === null &&
+                          `${i18n.t('safeHarbour.demand.unknown')} `}
+                        {i18n.t('safeHarbour.demand.decided')} &middot;{' '}
+                        {demand_fullfilled === false &&
+                          `${i18n.t('safeHarbour.demand.not')} `}
+                        {demand_fullfilled === null &&
+                          `${i18n.t('safeHarbour.demand.unknown')} `}
                         {i18n.t('safeHarbour.demand.fullfilled')}
                       </span>
 
