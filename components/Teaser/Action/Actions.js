@@ -26,7 +26,7 @@ export default function ActionTeaser({ title, meta, intro, slug }) {
         </span>
       )}
 
-      <h2 className="font-brezel text-medium font-bold italic leading-tight mt-2">
+      <h2 className="font-brezel text-medium md:text-large font-bold italic leading-tight mt-2">
         {title}
       </h2>
 

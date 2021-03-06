@@ -2,6 +2,7 @@ import {
   default as Accordion,
   FRAGMENT as ACCORDION_FRAGMENT
 } from './Accordion';
+import { default as Actions, FRAGMENT as ACTIONS_FRAGMENT } from './Actions';
 import { default as Contact, FRAGMENT as CONTACT_FRAGMENT } from './Contact';
 import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
 import { default as Material, FRAGMENT as MATERIAL_FRAGMENT } from './Material';
@@ -36,6 +37,11 @@ const blocks = {
   Accordion: {
     Component: Accordion,
     FRAGMENT: ACCORDION_FRAGMENT
+  },
+
+  Actions: {
+    Component: Actions,
+    FRAGMENT: ACTIONS_FRAGMENT
   },
 
   Contact: {
