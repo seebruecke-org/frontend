@@ -1,0 +1,7 @@
+.listItem > * {
+  padding-left: 0;
+}
+
+.listItem::marker {
+  font-size: theme('fontSize.base');
+}
