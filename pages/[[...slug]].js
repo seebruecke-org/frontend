@@ -5,6 +5,7 @@ import { query, paths } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 
 import BlockSwitch from '@/components/BlockSwitch';
+import Gallery from '@/components/Gallery';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
@@ -16,6 +17,31 @@ export default function GenericPage({ page }) {
     >
       <SEO title={page?.title} />
       <BlockSwitch blocks={page?.content} />
+
+      <div className="grid grid-layout-primary">
+        <Gallery
+          items={[
+            {
+              media: 'https://dummyimage.com/600x400/000/fff'
+            },
+            {
+              media: 'https://dummyimage.com/600x400/000/0011ff'
+            },
+            {
+              media: 'https://dummyimage.com/600x400/000/fff'
+            },
+            {
+              media: 'https://dummyimage.com/600x400/000/0011ff'
+            },
+            {
+              media: 'https://dummyimage.com/600x400/000/fff'
+            },
+            {
+              media: 'https://dummyimage.com/600x400/000/0011ff'
+            }
+          ]}
+        />
+      </div>
     </PageBody>
   );
 }

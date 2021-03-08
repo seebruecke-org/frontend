@@ -9,6 +9,7 @@ import { useHydrate } from '../lib/store/zustand';
 import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
+import 'swiper/swiper-bundle.css';
 
 export default function SBApp({ Component, pageProps }) {
   const router = useRouter();
