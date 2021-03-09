@@ -1,6 +1,9 @@
+import SwiperCore, { Keyboard, Mousewheel, Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
 import Measure from 'react-measure';
+
+SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
 export default function Gallery({ items }) {
   const [offsetLet, setOffsetLeft] = useState({});
@@ -47,6 +50,7 @@ export default function Gallery({ items }) {
             freeMode
             slidesPerView="auto"
             spaceBetween={30}
+            mousewheel={true}
             onSlideChange={({ activeIndex }) => {
               setCurrentSlideIndex(activeIndex);
             }}
