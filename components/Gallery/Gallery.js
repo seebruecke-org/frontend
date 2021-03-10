@@ -68,7 +68,13 @@ export default function Gallery({ items }) {
 
           {items.map(({ media }) => (
             <SwiperSlide className={styles.slide}>
-              <Image image={media} className="w-auto h-full max-w-full" />
+              <Image
+                image={media}
+                className="w-full min-h-full h-auto max-w-full flex"
+                classNameImage="flex w-auto max-w-full"
+                objectFit="contain"
+                layout="fill"
+              />
             </SwiperSlide>
           ))}
         </Swiper>

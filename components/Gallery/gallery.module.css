@@ -1,7 +1,7 @@
 .slide {
   height: 50vh;
   max-width: 75%;
-  width: auto;
+  width: 100%;
 }
 
 @screen md {
