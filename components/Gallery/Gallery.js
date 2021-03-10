@@ -5,6 +5,7 @@ import Measure from 'react-measure';
 
 import ChevronLeftIcon from '@/public/icons/chevron-left-regular.svg';
 import ChevronRightIcon from '@/public/icons/chevron-right-regular.svg';
+import Image from '@/components/Image';
 
 import * as styles from './gallery.module.css';
 
@@ -67,10 +68,7 @@ export default function Gallery({ items }) {
 
           {items.map(({ media }) => (
             <SwiperSlide className={styles.slide}>
-              <img
-                src={media}
-                className="w-auto h-full max-w-full"
-              />
+              <Image image={media} className="w-auto h-full max-w-full" />
             </SwiperSlide>
           ))}
         </Swiper>

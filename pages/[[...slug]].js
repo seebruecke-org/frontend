@@ -5,7 +5,6 @@ import { query, paths } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 
 import BlockSwitch from '@/components/BlockSwitch';
-import Gallery from '@/components/Gallery';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
@@ -17,41 +16,6 @@ export default function GenericPage({ page }) {
     >
       <SEO title={page?.title} />
       <BlockSwitch blocks={page?.content} />
-
-      <div className="grid grid-layout-primary">
-        <Gallery
-          items={[
-            {
-              media:
-                'https://images.unsplash.com/photo-1615229998660-29e3cb2232b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            },
-            {
-              media:
-                'https://images.unsplash.com/photo-1615307255772-16b37528023a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-            },
-            {
-              media:
-                'https://images.unsplash.com/photo-1611095567219-8fa7d4d8bf48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80'
-            },
-            {
-              media:
-                'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            },
-            {
-              media:
-                'https://images.unsplash.com/photo-1615087574126-f4f3d62d73cf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=637&q=80'
-            },
-            {
-              media:
-                'https://images.unsplash.com/photo-1615266895738-11f1371cd7e5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80'
-            },
-            {
-              media:
-                'https://images.unsplash.com/photo-1615227777158-3de68180af11?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-            }
-          ]}
-        />
-      </div>
     </PageBody>
   );
 }
