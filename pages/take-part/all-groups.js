@@ -130,7 +130,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 
 export async function getStaticProps({ locale }) {
   const groups = await fetchAllGroups();
-  const page = await getPage('mach-mit');
+  const page = await getPage('lokalgruppen');
   const { initialState, ...globalData } = await queryGlobalData(locale);
 
   return {
