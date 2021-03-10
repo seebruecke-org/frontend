@@ -45,7 +45,7 @@ export default function Unterbrecher({
       } ${size === 'large' && 'md:col-start-2 md:col-span-12'}`}
     >
       <div
-        className={`${background} ${styles.contentContainer} flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-8 md:mx-0 -mt-36 md:mt-0 z-10`}
+        className={`${background} ${styles.contentContainer} flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-8 md:mx-0 -mt-36 md:my-0 z-10`}
       >
         <Heading as={1} kicker={title?.kicker} level={title.level}>
           {title.text}
