@@ -1,0 +1,20 @@
+.slide {
+  height: 50vh;
+  max-width: 75%;
+  width: 100%;
+}
+
+@screen md {
+  .slide {
+    height: 45vh;
+    max-width: 35%;
+  }
+}
+
+.controlPrev {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, .85));
+}
+
+.controlNext {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0));
+}

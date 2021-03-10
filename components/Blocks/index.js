@@ -13,6 +13,10 @@ import { default as Contact, FRAGMENT as CONTACT_FRAGMENT } from './Contact';
 import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
 import { default as Material, FRAGMENT as MATERIAL_FRAGMENT } from './Material';
 import { default as Media, FRAGMENT as MEDIA_FRAGMENT } from './Media';
+import {
+  default as MediaGallery,
+  FRAGMENT as MEDIA_GALLERY_FRAGMENT
+} from './MediaGallery';
 import { default as Richtext, FRAGMENT as RICHTEXT_FRAGMENT } from './Richtext';
 import {
   default as StageMedium,
@@ -69,6 +73,11 @@ const blocks = {
   Media: {
     Component: Media,
     FRAGMENT: MEDIA_FRAGMENT
+  },
+
+  MediaGallery: {
+    Component: MediaGallery,
+    FRAGMENT: MEDIA_GALLERY_FRAGMENT
   },
 
   Richtext: {
