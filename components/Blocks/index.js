@@ -17,6 +17,10 @@ import {
   default as MediaGallery,
   FRAGMENT as MEDIA_GALLERY_FRAGMENT
 } from './MediaGallery';
+import {
+  default as Newsletter,
+  FRAGMENT as NEWSLETTER_FRAGMENT
+} from './Newsletter';
 import { default as Richtext, FRAGMENT as RICHTEXT_FRAGMENT } from './Richtext';
 import {
   default as StageMedium,
@@ -78,6 +82,11 @@ const blocks = {
   MediaGallery: {
     Component: MediaGallery,
     FRAGMENT: MEDIA_GALLERY_FRAGMENT
+  },
+
+  Newsletter: {
+    Component: Newsletter,
+    FRAGMENT: NEWSLETTER_FRAGMENT
   },
 
   Richtext: {

@@ -9,13 +9,13 @@ import TimesCircleIcon from '@/public/icons/times-circle.svg';
 import * as styles from './textInput.module.css';
 
 function TextInput(
-  { type = 'text', label, help, id = null, error = null, ...props },
+  { type = 'text', label, help, id = null, error = null, className, ...props },
   ref
 ) {
   const htmlFor = id ?? uuid();
 
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col ${className}`}>
       {label && <Label htmlFor={htmlFor}>{label}</Label>}
 
       {help && <Help>{help}</Help>}

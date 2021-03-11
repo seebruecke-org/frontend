@@ -1,8 +1,13 @@
-export default function Button({ children, type = 'submit', ...props }) {
+export default function Button({
+  children,
+  type = 'submit',
+  className,
+  ...props
+}) {
   return (
     <button
       type={type}
-      className="bg-black hover:bg-white text-white hover:text-black border-black border text-base font-rubik font-bold uppercase rounded-full py-4 px-10 self-start"
+      className={`bg-black hover:bg-white text-white hover:text-black border-black border text-base font-rubik font-bold uppercase rounded-full py-6 px-10 self-start ${className}`}
       {...props}
     >
       {children}

@@ -22,7 +22,7 @@ function Checkbox({ children, id = null, error = null, ...props }, ref) {
       >
         <input
           type="checkbox"
-          className={`${styles.checkbox} z-10 relative`}
+          className={`${styles.checkbox} z-10`}
           id={htmlFor}
           ref={ref}
           {...props}
