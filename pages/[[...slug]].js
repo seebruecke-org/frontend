@@ -23,7 +23,7 @@ export default function GenericPage({ page }) {
 export async function getStaticPaths({ defaultLocale }) {
   const sidePaths = await paths();
   const customPages = [
-    'mach-mit',
+    'mach-mit/lokalgruppen',
     'aktionen',
     'aktuelles',
     'sichere-haefen/alle-haefen',
