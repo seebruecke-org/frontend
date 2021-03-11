@@ -4,7 +4,7 @@ const transpileModules = require('next-transpile-modules');
 const withModules = transpileModules(['html-react-parser']);
 
 const { slugs: slugsDe } = require('./locales/de');
-const { fetchAllRedirects } = require('@/lib/redirects');
+const { fetchAllRedirects } = require('./lib/redirects');
 
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
