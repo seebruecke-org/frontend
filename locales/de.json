@@ -84,12 +84,6 @@
     "dateFormat": "dd. LLLL yyy"
   },
 
-  "blocks": {
-    "material": {
-      "title": "Material"
-    }
-  },
-
   "slugs": {
     "take-part/all-groups": "mach-mit/lokalgruppen",
     "safe-harbours/all-harbours": "sichere-haefen/alle-haefen",

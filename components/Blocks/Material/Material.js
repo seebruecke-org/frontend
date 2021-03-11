@@ -1,5 +1,3 @@
-import { useI18n } from 'next-localization';
-
 import Heading from '@/components/Blocks/Heading';
 
 import FileDownloadIcon from '@/public/icons/file-download.svg';
@@ -11,16 +9,18 @@ function getHumanRedableFileFormat(mimeType) {
   return fileType;
 }
 
-export default function MaterialBlock({ items, blockContext: { next } }) {
-  const i18n = useI18n();
-
+export default function MaterialBlock({
+  title,
+  items,
+  blockContext: { next }
+}) {
   return (
     <div
       className={`col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary mt-20 ${
         next && 'mb-20'
       }`}
     >
-      <Heading level={2}>{i18n.t('blocks.material.title')}</Heading>
+      <Heading level={2}>{title}</Heading>
 
       <ul className="flex flex-col space-y-10 col-span-full md:col-start-3 md:col-span-9 px-8 md:px-0 mt-10">
         {items.map(({ id, description, external_link, name, file }) => (
