@@ -3,6 +3,31 @@ const withPlugins = require('next-compose-plugins');
 const transpileModules = require('next-transpile-modules');
 const withModules = transpileModules(['html-react-parser']);
 
+const { slugs: slugsDe } = require('./locales/de');
+
+function createRewrites(slugs, locale) {
+  const PATH_POSTFIXES = {
+    'take-part': ':slug',
+    actions: ':path*',
+    news: ':path*',
+    press: ':path*'
+  };
+
+  return Object.keys(slugs).map((key) => {
+    const postfix = PATH_POSTFIXES[key] ? `/${PATH_POSTFIXES[key]}` : '';
+    const source = `/${locale}/${slugs[key]}${postfix}`;
+    const destination = `/${locale}/${key}${postfix}`;
+
+    console.log('Create rewrite: ', source, ' --> ', destination);
+
+    return {
+      source,
+      destination,
+      locale: false
+    };
+  });
+}
+
 module.exports = withPlugins([withModules], {
   i18n: {
     locales: ['de'],
@@ -11,43 +36,7 @@ module.exports = withPlugins([withModules], {
   },
 
   async rewrites() {
-    return [
-      {
-        source: '/de/mach-mit/lokalgruppen',
-        destination: '/de/take-part/all-groups',
-        locale: false
-      },
-
-      {
-        source: '/de/mach-mit/:slug',
-        destination: '/de/take-part/:slug',
-        locale: false
-      },
-
-      {
-        source: '/de/aktionen/:path*',
-        destination: '/de/actions/:path*',
-        locale: false
-      },
-
-      {
-        source: '/de/sichere-haefen/alle-haefen',
-        destination: '/de/safe-harbours/all-harbours',
-        locale: false
-      },
-
-      {
-        source: '/de/aktuelles/:path*',
-        destination: '/de/news/:path*',
-        locale: false
-      },
-
-      {
-        source: '/de/presse/:path*',
-        destination: '/de/press/:path*',
-        locale: false
-      }
-    ];
+    return [...createRewrites(slugsDe, 'de')];
   },
 
   webpack(config) {

@@ -88,5 +88,14 @@
     "material": {
       "title": "Material"
     }
+  },
+
+  "slugs": {
+    "take-part": "mach-mit",
+    "news": "aktuelles",
+    "press": "presse",
+    "take-part/all-groups": "mach-mit/lokalgruppen",
+    "safe-harbours/all-harbours": "sichere-haefen/alle-haefen",
+    "actions": "aktionen"
   }
 }
