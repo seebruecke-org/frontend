@@ -10,7 +10,7 @@ function getHumanRedableFileFormat(mimeType) {
 }
 
 export default function MaterialBlock({
-  title,
+  mTitle,
   items,
   blockContext: { next }
 }) {
@@ -20,7 +20,7 @@ export default function MaterialBlock({
         next && 'mb-20'
       }`}
     >
-      <Heading level={2}>{title}</Heading>
+      <Heading level={2}>{mTitle}</Heading>
 
       <ul className="flex flex-col space-y-10 col-span-full md:col-start-3 md:col-span-9 px-8 md:px-0 mt-10">
         {items.map(({ id, description, external_link, name, file }) => (

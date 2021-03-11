@@ -66,11 +66,14 @@ export default function Gallery({ items }) {
             <SwiperSlide style={{ width: `${offsetLeft - SLIDE_GAP}px` }} />
           )}
 
-          {items.map(({ media }) => (
+          {items.map(({ caption, media }) => (
             <SwiperSlide className={styles.slide}>
               <Image
-                image={media}
-                className="w-full min-h-full h-auto max-w-full flex"
+                image={{
+                  ...media,
+                  caption
+                }}
+                className="w-full min-h-full h-auto max-w-full flex flex-col"
                 classNameImage="flex w-auto max-w-full"
                 objectFit="contain"
                 layout="fill"

@@ -2,7 +2,7 @@ export { default } from './Material';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMaterial {
-    title
+    mTitle: title
 
     items: item {
       id
