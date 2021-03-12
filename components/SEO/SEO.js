@@ -5,6 +5,9 @@ export default function SEO({ title, metadata }) {
     <Head>
       <title>{title} | SEEBRÜCKE</title>
 
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="icon" type="image/png" href="/favicon.png" />
+
       {metadata &&
         Object.keys(metadata).map((key) => {
           let prefix = '';
