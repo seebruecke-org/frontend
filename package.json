@@ -47,6 +47,7 @@
     "react-accessible-accordion": "^3.3.4",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.15.4",
+    "react-load-script": "0.0.6",
     "react-mapbox-gl": "^5.1.1",
     "react-markdown": "^5.0.3",
     "react-measure": "^2.5.2",

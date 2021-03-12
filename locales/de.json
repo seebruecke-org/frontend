@@ -91,5 +91,10 @@
     "news": "aktuelles",
     "press": "presse",
     "actions": "aktionen"
+  },
+
+  "fundraisingbox": {
+    "activateJS": "Bitte aktiviere Javascript um zu spenden.",
+    "logoAlt": "Fundraisingbox Logo"
   }
 }

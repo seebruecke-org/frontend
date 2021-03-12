@@ -10,6 +10,10 @@ import {
   sideloadData as actionsSideloadData
 } from './Actions';
 import { default as Contact, FRAGMENT as CONTACT_FRAGMENT } from './Contact';
+import {
+  default as FundraisingBox,
+  FRAGMENT as FUNDRAISINGBOX_FRAGMENT
+} from './Fundraisingbox';
 import { default as Heading, FRAGMENT as HEADING_FRAGMENT } from './Heading';
 import { default as Material, FRAGMENT as MATERIAL_FRAGMENT } from './Material';
 import { default as Media, FRAGMENT as MEDIA_FRAGMENT } from './Media';
@@ -62,6 +66,11 @@ const blocks = {
   Contact: {
     Component: Contact,
     FRAGMENT: CONTACT_FRAGMENT
+  },
+
+  Fundraisingbox: {
+    Component: FundraisingBox,
+    FRAGMENT: FUNDRAISINGBOX_FRAGMENT
   },
 
   Heading: {
