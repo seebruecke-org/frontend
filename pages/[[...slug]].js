@@ -14,7 +14,7 @@ export default function GenericPage({ page }) {
       firstBlock={getFirstBlockName(page?.content)}
       lastBlock={getLastBlockName(page?.content)}
     >
-      <SEO title={page?.title} />
+      <SEO title={page?.title} metadata={page?.metadata} />
       <BlockSwitch blocks={page?.content} />
     </PageBody>
   );

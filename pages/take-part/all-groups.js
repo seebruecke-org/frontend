@@ -10,6 +10,7 @@ import { FederalCountry, Country, Map } from '@/components/Map';
 import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
+import SEO from '@/components/SEO';
 
 const MemoizedMap = memo(Map);
 
@@ -32,6 +33,8 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 
   return (
     <article>
+      <SEO title={page?.title} metadata={page?.metadata} />
+
       <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">

@@ -10,7 +10,12 @@ import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
-export default function NewsEntryPage({ title, content, publishedAt }) {
+export default function NewsEntryPage({
+  title,
+  metadata,
+  content,
+  publishedAt
+}) {
   const i18n = useI18n();
   const date = publishedAt
     ? format(new Date(publishedAt), i18n.t('news.dateFormat'))
@@ -18,7 +23,7 @@ export default function NewsEntryPage({ title, content, publishedAt }) {
 
   return (
     <PageBody firstBlock="Heading" lastBlock={getLastBlockName(content)}>
-      <SEO title={title} />
+      <SEO title={title} metadata={metadata} />
 
       <div className="grid grid-layout-primary">
         <Heading level={1} kicker={date}>

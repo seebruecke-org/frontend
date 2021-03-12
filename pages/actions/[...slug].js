@@ -16,6 +16,7 @@ import SEO from '@/components/SEO';
 
 export default function ActionPage({
   title,
+  metadata,
   content,
   start,
   end,
@@ -47,7 +48,7 @@ export default function ActionPage({
 
   return (
     <PageBody firstBlock="Heading">
-      <SEO title={title} />
+      <SEO title={title} metadata={metadata} />
 
       <div className="grid grid-layout-primary">
         <Heading level={1}>{title}</Heading>

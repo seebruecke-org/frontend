@@ -9,7 +9,7 @@ import { getPage } from '@/lib/pages';
 export default function NewsOverview({ news, page }) {
   return (
     <article>
-      <SEO title={page?.title} />
+      <SEO title={page?.title} metadata={page?.metadata} />
 
       <div>
         <BlockSwitch blocks={page?.content} />

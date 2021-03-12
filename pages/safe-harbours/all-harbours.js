@@ -8,6 +8,7 @@ import { FederalCountry, Country, Map } from '@/components/Map';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form, { Row, TextInput } from '@/components/Form';
+import SEO from '@/components/SEO';
 
 import useCityFilter from '@/lib/hooks/useCityFilter';
 
@@ -20,6 +21,8 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 
   return (
     <article>
+      <SEO title={page?.title} metadata={page?.metadata} />
+
       <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
