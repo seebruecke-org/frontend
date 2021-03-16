@@ -67,6 +67,7 @@ export default function Gallery({ items }) {
           )}
 
           {items.map(({ caption, media }) => (
+            // eslint-disable-next-line react/jsx-key
             <SwiperSlide className={styles.slide}>
               <Image
                 image={{
