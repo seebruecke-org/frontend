@@ -12,3 +12,15 @@
   height: 1px;
   mix-blend-mode: multiply;
 }
+
+.fadeOutStart {
+  background-image: linear-gradient(to right, theme('colors.orange.200'), rgba(255, 255, 255, 0));
+}
+
+.fadeOutEnd {
+  background-image: linear-gradient(to left, theme('colors.orange.200'), rgba(255, 255, 255, 0));
+}
+
+.slide {
+  width: auto;
+}
