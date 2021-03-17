@@ -1,5 +1,9 @@
 import { RETURN_CODES } from '@/lib/constants';
-import { query, fetchAllGroupPaths } from '@/lib/take-part';
+import {
+  query,
+  fetchAllGroupPaths,
+  fetchAllCountryPaths
+} from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 
@@ -74,11 +78,12 @@ export default function TakePartPage({
 }
 
 export async function getStaticPaths() {
-  const paths = await fetchAllGroupPaths();
+  const groupPaths = await fetchAllGroupPaths();
+  const countryPaths = await fetchAllCountryPaths();
 
   return {
     fallback: true,
-    paths
+    paths: [...groupPaths, ...countryPaths]
   };
 }
 
