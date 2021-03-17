@@ -14,6 +14,10 @@ SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 const SLIDE_GAP = 20;
 
 export default function Gallery({ items }) {
+  if (!items) {
+    return null;
+  }
+
   const [offsetLeft, setOffsetLeft] = useState({});
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
