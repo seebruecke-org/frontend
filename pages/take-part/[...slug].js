@@ -5,6 +5,7 @@ import { useI18n } from 'next-localization';
 
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
+import Breadcrumbs from '@/components/Blocks/Breadcrumbs';
 import Demands from '@/components/Demands/SafeHarbour';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
@@ -14,6 +15,7 @@ import SEO from '@/components/SEO';
 import { getLastBlockName } from '@/lib/blocks';
 
 export default function TakePartPage({
+  breadcrumbs,
   name,
   group,
   safe_harbour,
@@ -37,6 +39,8 @@ export default function TakePartPage({
       className="grid grid-layout-primary"
     >
       <SEO title={`${kicker} ${name}`} />
+
+      <Breadcrumbs crumbs={breadcrumbs} />
 
       <StageMedium
         title={name}
