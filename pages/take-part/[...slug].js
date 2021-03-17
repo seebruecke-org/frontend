@@ -18,13 +18,14 @@ export default function TakePartPage({
   breadcrumbs,
   name,
   group,
+  content,
   safe_harbour,
   navigation,
   pageType
 }) {
   const i18n = useI18n();
   const isGroup = pageType === 'group';
-  const contentBlocks = isGroup ? group?.content : safe_harbour?.content;
+  const contentBlocks = group?.content || safe_harbour?.content || content;
   const kicker = i18n.t(
     isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle'
   );
@@ -40,14 +41,21 @@ export default function TakePartPage({
     >
       <SEO title={`${kicker} ${name}`} />
 
-      <Breadcrumbs crumbs={breadcrumbs} />
+      {pageType !== 'country' && <Breadcrumbs crumbs={breadcrumbs} />}
 
-      <StageMedium
-        title={name}
-        kicker={kicker}
-        className="col-span-full"
-        image={featuredImage}
-      />
+      {pageType === 'group' ||
+        (pageType === 'city' ? (
+          <StageMedium
+            title={name}
+            kicker={kicker}
+            className="col-span-full"
+            image={featuredImage}
+          />
+        ) : (
+          <Heading level={1} kicker="Seebrücke">
+            {name}
+          </Heading>
+        ))}
 
       {navigation && navigation.length > 1 && (
         <SectionNavigation items={navigation} className="col-span-full" />
