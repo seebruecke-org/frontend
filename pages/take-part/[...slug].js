@@ -70,8 +70,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ locale, params }) {
-  const { slug } = params;
+export async function getStaticProps({ locale, params: { slug } }) {
   const { type, data, ...res } = await query(slug, locale);
   const { initialState, ...globalData } = await queryGlobalData(locale);
 
