@@ -41,7 +41,7 @@ async function fetchAllRedirects() {
 
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
-    'take-part': ':slug',
+    'take-part': ':slug*',
     actions: ':path*',
     news: ':path*',
     press: ':path*'
@@ -50,7 +50,7 @@ function createRewrites(slugs, locale) {
   return Object.keys(slugs).map((key) => {
     const postfix = PATH_POSTFIXES[key] ? `/${PATH_POSTFIXES[key]}` : '';
     const source = `/${locale}/${slugs[key]}${postfix}`;
-    const destination = `/${locale}/${key}${postfix}`;
+    const destination = `/${locale}/${key}${postfix.replace(/\(.*\)/, '')}`;
 
     console.log('Create rewrite: ', source, ' --> ', destination);
 

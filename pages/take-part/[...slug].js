@@ -49,7 +49,7 @@ export default function TakePartPage({
       {pageType !== 'country' && <Breadcrumbs crumbs={breadcrumbs} />}
 
       {pageType === 'group' ||
-        (pageType === 'city' ? (
+        (pageType === 'safe-harbour' ? (
           <StageMedium
             title={name}
             kicker={kicker}
@@ -90,6 +90,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
+  console.log('take-part', slug);
   const { type, data, ...res } = await query(slug, locale);
   const { initialState, ...globalData } = await queryGlobalData(locale);
 

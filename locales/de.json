@@ -87,7 +87,6 @@
   "slugs": {
     "take-part/all-groups": "mach-mit/lokalgruppen",
     "safe-harbours/all-harbours": "sichere-haefen/alle-haefen",
-    "take-part/:slug*": "mach-mit/:slug*",
     "take-part": "mach-mit",
     "news": "aktuelles",
     "press": "presse",
