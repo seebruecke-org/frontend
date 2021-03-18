@@ -48,7 +48,7 @@ export async function getStaticPaths({ defaultLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const { slugs } = await import(`../locales/de.json`);
-  const normalizedSlug = slug.map((slug) => slugs[slug] || slug);
+  const normalizedSlug = slug ? slug.map((slug) => slugs[slug] || slug) : slug;
   const { data } = await query(normalizedSlug, locale);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
