@@ -1,5 +1,5 @@
 import { getPage } from '@/lib/pages';
-import { fetchAllGroups } from '@/lib/take-part';
+import { fetchAllSafeHarbours } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 import { memo, useRef } from 'react';
@@ -87,16 +87,42 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                         <ul className="grid md:grid-cols-2 gap-8 px-6">
                           {cities[countryName].countries[
                             federalCountryName
-                          ].cities.map((city) => (
-                            <li key={`city-${city.name}`}>
-                              <SafeHarbour
-                                uri={`${city.uri}/sicherer-hafen`}
-                                name={city.name}
-                                description="2 / 8 Forderungen"
-                                since="19. Mai 2018"
-                              />
-                            </li>
-                          ))}
+                          ].cities.map(
+                            ({
+                              name,
+                              uri,
+                              safe_harbour: {
+                                demands_count,
+                                demands_fullfilled,
+                                since
+                              }
+                            }) => {
+                              let description = i18n.t(
+                                'safeHarbour.demand.fullfilledFrom',
+                                {
+                                  fullfilled: demands_fullfilled,
+                                  count: demands_count
+                                }
+                              );
+
+                              if (demands_fullfilled === null) {
+                                description = i18n.t(
+                                  'safeHarbour.demand.stateUnknown'
+                                );
+                              }
+
+                              return (
+                                <li key={`city-${name}`}>
+                                  <SafeHarbour
+                                    uri={`${uri}/sicherer-hafen`}
+                                    name={name}
+                                    description={description}
+                                    since={since}
+                                  />
+                                </li>
+                              );
+                            }
+                          )}
                         </ul>
                       </li>
                     )
@@ -112,7 +138,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const groups = await fetchAllGroups();
+  const groups = await fetchAllSafeHarbours();
   const page = await getPage('alle-haefen');
   const { initialState, ...globalData } = await queryGlobalData(locale);
 

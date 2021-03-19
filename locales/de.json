@@ -40,7 +40,9 @@
       "not": "Nicht",
       "unknown": "Unbekannt ob",
       "readMore": "Details anzeigen",
-      "readLess": "Details ausblenden"
+      "readLess": "Details ausblenden",
+      "stateUnknown": "Status unbekannt",
+      "fullfilledFrom": "{{fullfilled}} von {{demands_count}} Forderungen umgesetzt"
     },
 
     "demands": {
