@@ -5,9 +5,10 @@ import dynamic from 'next/dynamic';
 import Action from '@/components/Teaser/Action';
 import CTA from '@/components/CTA';
 
+const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
+
 export default function ActionsBlock({ show_map, cta, actions }) {
   const i18n = useI18n();
-  const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
 
   return (
     <section className="col-span-full md:col-start-2 md:col-span-12 mt-10 md:mt-12 mb-20 md:mb-32">
