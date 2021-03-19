@@ -48,19 +48,18 @@ export default function TakePartPage({
 
       {pageType !== 'country' && <Breadcrumbs crumbs={breadcrumbs} />}
 
-      {pageType === 'group' ||
-        (pageType === 'safe-harbour' ? (
-          <StageMedium
-            title={name}
-            kicker={kicker}
-            className="col-span-full"
-            image={featuredImage}
-          />
-        ) : (
-          <Heading level={1} kicker="Seebrücke">
-            {name}
-          </Heading>
-        ))}
+      {pageType === 'group' || pageType === 'safe-harbour' ? (
+        <StageMedium
+          title={name}
+          kicker={kicker}
+          className="col-span-full"
+          image={featuredImage}
+        />
+      ) : (
+        <Heading level={1} kicker="Seebrücke">
+          {name}
+        </Heading>
+      )}
 
       {navigation && navigation.length > 1 && (
         <SectionNavigation items={navigation} className="col-span-full" />
