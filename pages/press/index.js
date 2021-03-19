@@ -11,9 +11,7 @@ export default function PressOverview({ news, page }) {
     <article>
       <SEO title={page?.title} metadata={page?.metadata} />
 
-      <div>
-        <BlockSwitch blocks={page?.content} />
-      </div>
+      <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
         <ul className="col-span-full pb-20 md:pb-40">

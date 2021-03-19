@@ -6,7 +6,7 @@ export default function Breadcrumbs({ crumbs }) {
   }
 
   return (
-    <ul className="col-start-2 col-span-10 flex py-5">
+    <ul className="col-start-3 col-span-10 flex py-5">
       {crumbs.map((crumb, index) => (
         <li key={`breadcrumb-${index}`}>
           {index !== 0 && (

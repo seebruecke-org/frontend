@@ -84,7 +84,15 @@
 
   "news": {
     "slug": "aktuelles",
-    "dateFormat": "dd. LLLL yyy"
+    "dateFormat": "dd. LLLL yyy",
+    "type": {
+      "news": "Aktuelles",
+      "pressrelease": "Pressemitteilung"
+    }
+  },
+
+  "press": {
+    "longTitle": "Pressemitteilungen"
   },
 
   "slugs": {

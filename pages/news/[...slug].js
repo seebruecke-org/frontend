@@ -6,6 +6,7 @@ import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
 
 import BlockSwitch from '@/components/BlockSwitch';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
@@ -14,7 +15,8 @@ export default function NewsEntryPage({
   title,
   metadata,
   content,
-  publishedAt
+  publishedAt,
+  type
 }) {
   const i18n = useI18n();
   const date = publishedAt
@@ -26,7 +28,18 @@ export default function NewsEntryPage({
       <SEO title={title} metadata={metadata} />
 
       <div className="grid grid-layout-primary">
-        <Heading level={1} kicker={date}>
+        {type !== 'news' && (
+          <Breadcrumbs
+            crumbs={[
+              {
+                path: `/${i18n.t('slugs.press')}`,
+                label: i18n.t('press.longTitle')
+              }
+            ]}
+          />
+        )}
+
+        <Heading level={1} kicker={`${date} · ${i18n.t(`news.type.${type}`)}`}>
           {title}
         </Heading>
       </div>

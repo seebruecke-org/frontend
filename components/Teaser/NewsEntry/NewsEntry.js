@@ -15,8 +15,10 @@ export default function NewsEntry({
 }) {
   const i18n = useI18n();
 
+  const translatedType = i18n.t(`news.type.${type}`);
+
   return (
-    <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative">
+    <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group">
       {image && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
           <Image image={image.image} />
@@ -31,14 +33,12 @@ export default function NewsEntry({
         }`}
       >
         <header className="font-rubik text-xs text-gray-600 flex space-x-8">
-          <span>
-            {format(new Date(publishedAt), i18n.t('news.dateFormat'))}
-          </span>
-          <span>{type}</span>
+          {format(new Date(publishedAt), i18n.t('news.dateFormat'))}
+          &nbsp;·&nbsp;{translatedType}
         </header>
 
         <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
-          <a>
+          <a className="group-hover:underline">
             <Heading level={3}>{title}</Heading>
           </a>
         </NextLink>
