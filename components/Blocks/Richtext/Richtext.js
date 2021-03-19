@@ -7,35 +7,39 @@ import Paragraph from './Paragraph';
 
 import { blockNameMatches } from '@/lib/blocks';
 
-const RENDERERS = {
-  heading: ({ level, children }) => {
-    return <Heading level={level}>{children}</Heading>;
-  },
-
-  link: ({ node: { url }, children }) => {
-    return <Link href={url}>{children}</Link>;
-  },
-
-  list: ({ ordered, children }) => {
-    return <List ordered={ordered}>{children}</List>;
-  },
-
-  listItem: ({ children }) => {
-    return (
-      <ListItem>
-        <Paragraph>{children}</Paragraph>
-      </ListItem>
-    );
-  },
-
-  paragraph: ({ children }) => {
-    return <Paragraph>{children}</Paragraph>;
-  }
-};
-
-export default function Richtext({ richtext, blockContext = {} }) {
+export default function Richtext({
+  richtext,
+  blockContext = {},
+  isSmall = false
+}) {
   const { previous } = blockContext;
   let marginTop = 'mt-5 md:mt-10';
+
+  const RENDERERS = {
+    heading: ({ level, children }) => {
+      return <Heading level={level}>{children}</Heading>;
+    },
+
+    link: ({ node: { url }, children }) => {
+      return <Link href={url}>{children}</Link>;
+    },
+
+    list: ({ ordered, children }) => {
+      return <List ordered={ordered}>{children}</List>;
+    },
+
+    listItem: ({ children }) => {
+      return (
+        <ListItem>
+          <Paragraph isSmall={isSmall}>{children}</Paragraph>
+        </ListItem>
+      );
+    },
+
+    paragraph: ({ children }) => {
+      return <Paragraph isSmall={isSmall}>{children}</Paragraph>;
+    }
+  };
 
   if (blockNameMatches(previous, 'SubNavigation')) {
     marginTop = 'mt-12 md:mt-20';
