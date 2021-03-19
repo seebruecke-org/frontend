@@ -88,7 +88,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                   key={`country-${countryName}`}
                   className={`${countryIndex > 0 && 'mt-20'}`}
                 >
-                  <Country name={countryName} />
+                  <Country name={countryName} uri={cities[countryName].uri} />
 
                   <ul className="flex flex-col space-y-10">
                     {Object.keys(cities[countryName].countries)
@@ -103,6 +103,10 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                             singularKicker={i18n.t('group.singleTitle')}
                             pluralKicker={i18n.t('group.pluralTitle')}
                             name={federalCountryName}
+                            uri={
+                              cities[countryName].countries[federalCountryName]
+                                .uri
+                            }
                           />
 
                           <ul className="grid md:grid-cols-2 gap-8 px-6">
