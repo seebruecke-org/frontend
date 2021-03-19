@@ -43,7 +43,8 @@ function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
     'take-part': ':slug*',
     actions: ':path*',
-    news: ':path*',
+    news: ':path',
+    'news/campaigns': ':slug',
     press: ':path*'
   };
 
