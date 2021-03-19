@@ -13,14 +13,17 @@ import * as styles from './sectionNavigation.module.css';
 
 SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
-export default function SectionNavigation({ items, className }) {
+export default function SectionNavigation({
+  items,
+  className,
+  primaryGrid = true
+}) {
   const { asPath } = useRouter();
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [allowNext, setAllowNext] = useState(false);
   const [allowPrev, setAllowPrev] = useState(false);
-  const activeSlideIndex = items.findIndex((item) =>
-    arePathsEqual(asPath, item.path)
-  ) || 0;
+  const activeSlideIndex =
+    items.findIndex((item) => arePathsEqual(asPath, item.path)) || 0;
 
   useEffect(() => {
     if (swiperInstance) {
@@ -30,13 +33,19 @@ export default function SectionNavigation({ items, className }) {
 
   return (
     <div
-      className={`bg-orange-200 grid grid-layout-primary col-span-full sticky top-0 z-30 py-6 sm:py-7 md:py-8 ${styles.navigation} ${className}`}
+      className={`bg-orange-200 ${
+        primaryGrid && 'grid grid-layout-primary'
+      } py-6 sm:py-7 md:py-8 relative ${styles.navigation} ${className}`}
     >
       <span
         className={`w-full bg-gray-400 absolute top-0 left-0 opacity-50 ${styles.border}`}
       />
 
-      <nav className="col-span-full md:col-start-3 md:col-span-10 relative w-full px-8 md:px-0">
+      <nav
+        className={`${
+          primaryGrid && 'col-span-full md:col-start-3 md:col-span-10'
+        } relative w-full px-8 md:px-0`}
+      >
         {allowPrev && (
           <button
             type="button"
@@ -55,7 +64,6 @@ export default function SectionNavigation({ items, className }) {
           freeMode
           slidesPerView="auto"
           spaceBetween={8}
-          centeredSlides={activeSlideIndex !== 0}
           initialSlide={activeSlideIndex}
           mousewheel={{
             forceToAxis: true

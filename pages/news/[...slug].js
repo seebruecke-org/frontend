@@ -58,10 +58,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ locale, params }) {
-  const { slug } = params;
-
-  const { data } = await fetchNewsBySlug(slug[0]);
+export async function getStaticProps({ locale, params: { slug } }) {
+  const { data } = await fetchNewsBySlug(slug);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {

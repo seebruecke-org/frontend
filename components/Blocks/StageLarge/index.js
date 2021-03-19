@@ -6,14 +6,21 @@ import { FRAGMENT as FRAGMENT_IMAGE } from '@/components/Image';
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageLarge {
     title
+
     image {
       caption
       image {
         ${FRAGMENT_IMAGE}
       }
     }
+
     cta {
       ${FRAGMENT_CTA}
+    }
+
+    subnavigation {
+      path
+      label
     }
   }
 `;
