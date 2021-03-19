@@ -33,6 +33,7 @@
   "safeHarbour": {
     "singleTitle": "Sicherer Hafen",
     "pluralTitle": "Sichere Häfen",
+    "dateFormat": "dd. LL. yyy",
 
     "demand": {
       "decided": "entschieden",

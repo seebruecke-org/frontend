@@ -3,6 +3,7 @@ import { fetchAllSafeHarbours } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 import { memo, useRef } from 'react';
+import format from 'date-fns/format';
 
 import { FederalCountry, Country, Map } from '@/components/Map';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
@@ -90,11 +91,11 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                           ].cities.map(
                             ({
                               name,
-                              uri,
                               safe_harbour: {
                                 demands_count,
                                 demands_fullfilled,
-                                since
+                                since,
+                                uri
                               }
                             }) => {
                               let description = i18n.t(
@@ -114,10 +115,13 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                               return (
                                 <li key={`city-${name}`}>
                                   <SafeHarbour
-                                    uri={`${uri}/sicherer-hafen`}
+                                    uri={uri}
                                     name={name}
                                     description={description}
-                                    since={since}
+                                    since={format(
+                                      new Date(since),
+                                      i18n.t('safeHarbour.dateFormat')
+                                    )}
                                   />
                                 </li>
                               );
