@@ -18,6 +18,9 @@ export default function SectionNavigation({ items, className }) {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [allowNext, setAllowNext] = useState(false);
   const [allowPrev, setAllowPrev] = useState(false);
+  const activeSlideIndex = items.findIndex((item) =>
+    arePathsEqual(asPath, item.path)
+  ) || 0;
 
   useEffect(() => {
     if (swiperInstance) {
@@ -52,6 +55,8 @@ export default function SectionNavigation({ items, className }) {
           freeMode
           slidesPerView="auto"
           spaceBetween={8}
+          centeredSlides={activeSlideIndex !== 0}
+          initialSlide={activeSlideIndex}
           mousewheel={{
             forceToAxis: true
           }}
