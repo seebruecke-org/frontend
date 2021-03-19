@@ -99,8 +99,8 @@
     "take-part/all-groups": "mach-mit/lokalgruppen",
     "safe-harbours/all-harbours": "sichere-haefen/alle-haefen",
     "take-part": "mach-mit",
-    "news": "aktuelles",
     "news/campaigns": "aktuelles/kampagnen",
+    "news": "aktuelles",
     "press": "presse",
     "actions": "aktionen"
   },
