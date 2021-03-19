@@ -6,7 +6,7 @@
 
 @screen md {
   .slide {
-    height: 45vh;
+    height: auto;
     max-width: 35%;
   }
 }
@@ -15,6 +15,16 @@
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, .85));
 }
 
+.controlPrev:hover,
+.controlPrev:focus {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, .95));
+}
+
 .controlNext {
   background-image: linear-gradient(to left, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0));
+}
+
+.controlNext:hover,
+.controlNext:focus {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0));
 }
