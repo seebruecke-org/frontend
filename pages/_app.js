@@ -1,7 +1,6 @@
 import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { I18nProvider } from 'next-localization';
 import { useRouter } from 'next/router';
-import App from 'next/app';
 
 import { StoreProvider } from '../lib/store/store';
 import { useHydrate } from '../lib/store/zustand';
