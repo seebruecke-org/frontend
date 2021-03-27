@@ -2,7 +2,7 @@ export { default } from './Accordion';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksAccordion {
-    item {
+    items {
       title
       content
     }

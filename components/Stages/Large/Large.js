@@ -1,12 +1,12 @@
 import CTA from '@/components/CTA';
 import Heading from '@/components/Heading';
-import Image from '@/components/Image';
+import Media from '@/components/Media';
 import SectionNavigation from '@/components/SectionNavigation';
 
 import * as styles from './large.module.css';
 
 export default function StageLarge({
-  image,
+  media,
   className,
   title,
   cta = null,
@@ -17,8 +17,8 @@ export default function StageLarge({
 
   return (
     <div className={`relative mb-40 md:mb-52 ${styles.stage} ${className}`}>
-      <Image
-        image={image}
+      <Media
+        media={media}
         objectFit="cover"
         layout="fill"
         priority

@@ -12,7 +12,7 @@ import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
 import Heading from '@/components/Heading';
 import Logo from '@/components/Logo';
-import MenuItem from '@/components/MenuItem';
+import StrapiLink from '@/components/StrapiLink';
 import More from './More';
 import SearchIcon from '@/public/icons/search-regular.svg';
 import Form, { Button, TextInput } from '@/components/Form';
@@ -75,6 +75,8 @@ export default function Header() {
   const cta = items && items.slice(items.length - 1);
 
   function isPartiallyActive(currentPageSlug, path) {
+    return false; // TODO
+
     const pathWithoutSlashes = path.replace(/\\|\//g, '');
     let localizedPagePath = currentPageSlug;
 
@@ -168,7 +170,7 @@ export default function Header() {
               )}
 
               {headerSecondaryItems.map((item) => (
-                <MenuItem
+                <StrapiLink
                   key={`menu-${item.label}`}
                   {...item}
                   className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
@@ -182,7 +184,7 @@ export default function Header() {
               className={`${styles.primaryItemsContainer} flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-5`}
             >
               {primaryItems.map((item, index) => (
-                <MenuItem
+                <StrapiLink
                   key={`menu-${item.label}`}
                   {...item}
                   className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
@@ -199,7 +201,7 @@ export default function Header() {
                 isOpen={moreIsOpen}
               />
 
-              <MenuItem
+              <StrapiLink
                 {...cta[0]}
                 className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-5 md:py-4 bg-white rounded-full whitespace-nowrap tracking-wide self-end`}
               />
@@ -211,7 +213,7 @@ export default function Header() {
                   {primaryItems && primaryItems.length > 0 && (
                     <div>
                       {primaryItems.map((item, index) => (
-                        <MenuItem
+                        <StrapiLink
                           key={`menu-${item.label}`}
                           {...item}
                           className={`font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${

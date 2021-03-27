@@ -1,13 +1,11 @@
 export { default } from './Media';
 
-import { FRAGMENT as IMAGE_FRAGMENT } from '@/components/Image';
+import { FRAGMENT as MEDIA_FRAGMENT } from '@/components/Media';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMedia {
-    description
-
     media {
-      ${IMAGE_FRAGMENT}
+      ${MEDIA_FRAGMENT}
     }
   }
 `;

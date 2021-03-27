@@ -1,6 +1,6 @@
 export { default } from './StageMedium';
 
-import { FRAGMENT as FRAGMENT_IMAGE } from '@/components/Image';
+import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageMedium {
@@ -8,10 +8,7 @@ export const FRAGMENT = `
     kicker
     intro
     image {
-      caption
-      image {
-        ${FRAGMENT_IMAGE}
-      }
+      ${FRAGMENT_MEDIA}
     }
   }
 `;

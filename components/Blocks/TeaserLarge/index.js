@@ -1,6 +1,6 @@
 export { default } from './TeaserLarge';
 
-import { FRAGMENT as FRAGMENT_CTA } from '@/components/CTA';
+import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksTeaserLarge {
@@ -8,7 +8,7 @@ export const FRAGMENT = `
     intro
     tType: type
     cta {
-      ${FRAGMENT_CTA}
+      ${FRAGMENT_LINK}
     }
   }
 `;

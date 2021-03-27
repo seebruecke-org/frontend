@@ -2,11 +2,10 @@ export { default } from './TeasersSmall';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksTeasersSmall {
-    items: item {
+    items {
       title
-      path
-      label
       tsType: type
+      link
     }
   }
 `;

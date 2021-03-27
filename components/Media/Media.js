@@ -1,6 +1,6 @@
-import Image from '@/components/Media';
+import Image from '@/components/Image';
 
-export default function MediaBlock({ media }) {
+export default function Media({ media }) {
   return (
     <Image
       image={media}

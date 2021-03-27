@@ -1,8 +1,8 @@
 export { default } from './Unterbrecher';
 
-import { FRAGMENT as FRAGMENT_IMAGE } from '@/components/Image';
+import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
 import { FRAGMENT as FRAGMENT_TITLE } from '@/components/Blocks/Heading';
-import { FRAGMENT as FRAGMENT_CTA } from '@/components/CTA';
+import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksUnterbrecher {
@@ -16,11 +16,11 @@ export const FRAGMENT = `
     size
 
     uCta: cta {
-      ${FRAGMENT_CTA}
+      ${FRAGMENT_LINK}
     }
 
     uMedia: media {
-      ${FRAGMENT_IMAGE}
+      ${FRAGMENT_MEDIA}
     }
   }
 `;

@@ -1,5 +1,7 @@
 import { fetchAPI } from '@/lib/api';
 
+import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+
 export { default } from './Actions';
 
 export const FRAGMENT = `
@@ -12,8 +14,7 @@ export const FRAGMENT = `
     }
 
     cta {
-      path
-      label
+      ${FRAGMENT_LINK}
     }
   }
 `;

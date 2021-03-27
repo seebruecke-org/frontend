@@ -17,7 +17,7 @@ export default function Richtext({
 
   const RENDERERS = {
     heading: ({ level, children }) => {
-      return <Heading level={level}>{children}</Heading>;
+      return <Heading level={level - 1}>{children}</Heading>;
     },
 
     link: ({ node: { url }, children }) => {

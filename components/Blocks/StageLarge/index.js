@@ -1,26 +1,22 @@
 export { default } from './StageLarge';
 
-import { FRAGMENT as FRAGMENT_CTA } from '@/components/CTA';
-import { FRAGMENT as FRAGMENT_IMAGE } from '@/components/Image';
+import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageLarge {
     title
 
-    image {
-      caption
-      image {
-        ${FRAGMENT_IMAGE}
-      }
+    media {
+      ${FRAGMENT_MEDIA}
     }
 
     cta {
-      ${FRAGMENT_CTA}
+      ${FRAGMENT_LINK}
     }
 
     subnavigation {
-      path
-      label
+      ${FRAGMENT_LINK}
     }
   }
 `;

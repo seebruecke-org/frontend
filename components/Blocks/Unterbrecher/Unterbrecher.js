@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import CTA from '@/components/CTA';
 import Heading from '@/components/Heading';
-import Image from '@/components/Image';
+import Media from '@/components/Media';
 
 import { blockNameMatches } from '@/lib/blocks';
 
@@ -67,8 +67,8 @@ export default function Unterbrecher({
       <Link href={cta.path}>
         <a className="block w-full h-full md:w-2/4">
           <div className={`block h-full relative ${styles.square}`}>
-            <Image
-              image={media}
+            <Media
+              media={media}
               layout="fill"
               objectFit="cover"
               className="h-full absolute top-2/4 transform -translate-y-2/4 left-0 w-full"

@@ -5,7 +5,7 @@ import Measure from 'react-measure';
 
 import ChevronLeftIcon from '@/public/icons/chevron-left-regular.svg';
 import ChevronRightIcon from '@/public/icons/chevron-right-regular.svg';
-import Image from '@/components/Image';
+import Media from '@/components/Media';
 
 import * as styles from './gallery.module.css';
 
@@ -70,15 +70,10 @@ export default function Gallery({ items }) {
             <SwiperSlide style={{ width: `${offsetLeft - SLIDE_GAP}px` }} />
           )}
 
-          {items.map(({ caption, media }) => (
+          {items.map(({ media }) => (
             // eslint-disable-next-line react/jsx-key
             <SwiperSlide className={styles.slide}>
-              <Image
-                image={{
-                  ...media,
-                  caption
-                }}
-              />
+              <Media media={media} />
             </SwiperSlide>
           ))}
         </Swiper>

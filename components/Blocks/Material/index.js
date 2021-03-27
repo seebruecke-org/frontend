@@ -4,7 +4,7 @@ export const FRAGMENT = `
   ... on ComponentSharedBlocksMaterial {
     mTitle: title
 
-    items: item {
+    items {
       id
       external_link
       name

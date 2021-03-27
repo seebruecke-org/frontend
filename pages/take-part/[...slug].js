@@ -35,8 +35,8 @@ export default function TakePartPage({
     isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle'
   );
   const featuredImage = isGroup
-    ? group?.featured_image?.image
-    : safe_harbour?.featured_image?.image;
+    ? group?.image?.image
+    : safe_harbour?.image?.image;
 
   return (
     <PageBody
