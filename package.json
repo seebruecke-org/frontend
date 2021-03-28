@@ -34,7 +34,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
-    "html-react-parser": "^1.2.4",
     "is-relative-url": "^3.0.0",
     "mapbox-gl": "^2.2.0",
     "next": "^10.0.10-canary.12",

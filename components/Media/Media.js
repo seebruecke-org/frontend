@@ -1,6 +1,6 @@
 import NextImage from 'next/image';
 
-import HTML from '@/components/HTML';
+import Richtext from '@/components/Blocks/Richtext';
 
 export default function Media({
   image: {
@@ -30,7 +30,7 @@ export default function Media({
           <figcaption
             className={`font-rubik italic text-2xs px-10 py-5 md:p-5 text-gray-600 font-rubik-features ${classNameCaption}`}
           >
-            <HTML html={description || caption} />
+            <Richtext richtext={description || caption} />
           </figcaption>
         ))}
     </figure>
