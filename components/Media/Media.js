@@ -1,12 +1,38 @@
-import Image from '@/components/Image';
+import NextImage from 'next/image';
 
-export default function Media({ media }) {
+import HTML from '@/components/HTML';
+
+export default function Media({
+  image: {
+    description,
+    media: { caption, url, width, height }
+  },
+  className,
+  classNameImage,
+  classNameCaption,
+  ...props
+}) {
+  const imageProps = {
+    src: `${process.env.NEXT_CMS_DOMAIN}${url}`,
+    width: props?.layout === 'fill' ? undefined : width,
+    height: props?.layout === 'fill' ? undefined : height,
+    ...props
+  };
+
   return (
-    <Image
-      image={media}
-      className="col-span-full md:col-start-2 md:col-span-10 my-20 grid grid-cols-10 md:place-items-end"
-      classNameImage="col-span-full md:col-start-1 md:col-span-8"
-      classNameCaption="col-span-full md:col-start-9 md:col-span-2 md:pb-0"
-    />
+    <figure className={`leading-none text-none ${className}`}>
+      <div className={classNameImage}>
+        <NextImage {...imageProps} />
+      </div>
+
+      {description ||
+        (caption && (
+          <figcaption
+            className={`font-rubik italic text-2xs px-10 py-5 md:p-5 text-gray-600 font-rubik-features ${classNameCaption}`}
+          >
+            <HTML html={description || caption} />
+          </figcaption>
+        ))}
+    </figure>
   );
 }

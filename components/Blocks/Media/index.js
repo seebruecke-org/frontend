@@ -4,7 +4,7 @@ import { FRAGMENT as MEDIA_FRAGMENT } from '@/components/Media';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMedia {
-    media {
+    image {
       ${MEDIA_FRAGMENT}
     }
   }

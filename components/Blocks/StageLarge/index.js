@@ -7,7 +7,7 @@ export const FRAGMENT = `
   ... on ComponentSharedBlocksStageLarge {
     title
 
-    media {
+    image {
       ${FRAGMENT_MEDIA}
     }
 
