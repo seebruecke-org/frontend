@@ -1,8 +1,7 @@
-import Link from 'next/link';
-
 import CTA from '@/components/CTA';
 import Heading from '@/components/Heading';
 import Media from '@/components/Media';
+import StrapiLink from '@/components/StrapiLink';
 
 import { blockNameMatches } from '@/lib/blocks';
 
@@ -25,7 +24,7 @@ export default function Unterbrecher({
   intro,
   uCta: cta,
   type,
-  uMedia: media,
+  image,
   reversed = false,
   size = 'small',
   blockContext: { previous, next }
@@ -64,21 +63,19 @@ export default function Unterbrecher({
         )}
       </div>
 
-      <Link href={cta.path}>
-        <a className="block w-full h-full md:w-2/4">
-          <div className={`block h-full relative ${styles.square}`}>
-            <Media
-              media={media}
-              layout="fill"
-              objectFit="cover"
-              className="h-full absolute top-2/4 transform -translate-y-2/4 left-0 w-full"
-              classNameImage={`flex ${
-                reversed ? 'justify-end' : 'justify-start'
-              }`}
-            />
-          </div>
-        </a>
-      </Link>
+      <StrapiLink {...cta} className="block w-full h-full md:w-2/4">
+        <div className={`block h-full relative ${styles.square}`}>
+          <Media
+            image={image}
+            layout="fill"
+            objectFit="cover"
+            className="h-full absolute top-2/4 transform -translate-y-2/4 left-0 w-full"
+            classNameImage={`flex ${
+              reversed ? 'justify-end' : 'justify-start'
+            }`}
+          />
+        </div>
+      </StrapiLink>
     </section>
   );
 }

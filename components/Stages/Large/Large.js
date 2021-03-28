@@ -6,7 +6,7 @@ import SectionNavigation from '@/components/SectionNavigation';
 import * as styles from './large.module.css';
 
 export default function StageLarge({
-  media,
+  image,
   className,
   title,
   cta = null,
@@ -18,7 +18,7 @@ export default function StageLarge({
   return (
     <div className={`relative mb-40 md:mb-52 ${styles.stage} ${className}`}>
       <Media
-        media={media}
+        image={image}
         objectFit="cover"
         layout="fill"
         priority

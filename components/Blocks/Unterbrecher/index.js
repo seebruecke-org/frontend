@@ -15,11 +15,11 @@ export const FRAGMENT = `
     type
     size
 
-    uCta: cta {
+    uCTA: cta {
       ${FRAGMENT_LINK}
     }
 
-    uMedia: media {
+    image {
       ${FRAGMENT_MEDIA}
     }
   }

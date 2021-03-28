@@ -14,7 +14,7 @@ import * as styles from './sectionNavigation.module.css';
 SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
 export default function SectionNavigation({
-  items,
+  items = [],
   className,
   primaryGrid = true
 }) {

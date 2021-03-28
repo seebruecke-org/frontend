@@ -7,16 +7,18 @@ export default function StageMedium({
   kicker,
   title,
   intro,
-  media,
+  image,
   className
 }) {
+  const hasImage = !!image;
+
   return (
     <section
       className={`grid grid-layout-primary bg-orange-200 relative ${styles.stage} ${className}`}
     >
-      {media && (
+      {hasImage && (
         <Media
-          media={media}
+          image={image}
           objectFit="cover"
           layout="fill"
           priority
@@ -26,7 +28,7 @@ export default function StageMedium({
 
       <div
         className={`col-span-full md:col-start-3 relative bg-orange-200 ${
-          media
+          hasImage
             ? 'py-12 md:px-12 md:my-40 md:-ml-12 md:col-span-6'
             : 'my-14 md:my-24 md:col-span-9'
         }`}
@@ -34,7 +36,7 @@ export default function StageMedium({
         <Heading
           level={1}
           kicker={kicker}
-          className={`${media ? 'py-5' : 'mb-5'} px-8 md:px-0`}
+          className={`${hasImage ? 'py-5' : 'mb-5'} px-8 md:px-0`}
         >
           {title}
         </Heading>
