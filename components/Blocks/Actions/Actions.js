@@ -7,7 +7,7 @@ import CTA from '@/components/CTA';
 
 const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
 
-export default function ActionsBlock({ show_map, cta, actions = [] }) {
+export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
   const i18n = useI18n();
 
   return (

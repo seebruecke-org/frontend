@@ -9,10 +9,6 @@ export const FRAGMENT = `
     max_actions_to_show
     show_map
 
-    city {
-      name
-    }
-
     cta {
       ${FRAGMENT_LINK}
     }
