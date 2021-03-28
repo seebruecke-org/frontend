@@ -1,6 +1,6 @@
 export { default } from './NewsEntry';
 
-import { FRAGMENT as IMAGE_FRAGMENT } from '@/components/Image';
+import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
 
 export const FRAGMENT = `
   ... on NewsEntry {
@@ -10,9 +10,7 @@ export const FRAGMENT = `
     type
     publishedAt: published_at
     image {
-      image {
-        ${IMAGE_FRAGMENT}
-      }
+      ${FRAGMENT_MEDIA}
     }
   }
 `;

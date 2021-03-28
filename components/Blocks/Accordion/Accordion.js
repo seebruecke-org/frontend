@@ -5,13 +5,13 @@ import {
 } from '@/components/Accordion';
 import Richtext from '../Richtext';
 
-export default function AccordionBlock({ item = [] }) {
+export default function AccordionBlock({ items = [] }) {
   return (
     <Accordion allowMultipleExpanded allowZeroExpanded>
-      {item.map(({ title, content }, index) => (
+      {items.map(({ title, content }, index) => (
         // eslint-disable-next-line react/jsx-key
         <AccordionItem
-          isLast={index + 1 === item.length}
+          isLast={index + 1 === items.length}
           heading={<span>{title}</span>}
         >
           <AccordionPanel>

@@ -4,7 +4,7 @@ import React from 'react';
 import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
 import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Logo from '@/components/Logo';
-import MenuItem from '@/components/MenuItem';
+import StrapiLink from '@/components/StrapiLink';
 import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 
@@ -29,7 +29,7 @@ function Menu({ title, items }) {
         <ul className="grid grid-cols-2 md:grid-cols-1">
           {items.map((node, index) => (
             <li key={`footer-${title}-${index}`}>
-              <MenuItem
+              <StrapiLink
                 className="font-rubik text-xs hover:underline block py-3 md:py-5"
                 {...node}
               />
@@ -100,7 +100,7 @@ export default function Footer() {
           <div className="flex items-center justify-between col-start-1 md:col-span-12">
             <nav className="flex space-x-10">
               {footerMeta.items.map((item, index) => (
-                <MenuItem
+                <StrapiLink
                   className="font-rubik text-xs font-bold hover:underline"
                   key={`footer-meta-${index}`}
                   {...item}

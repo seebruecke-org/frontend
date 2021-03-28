@@ -1,5 +1,7 @@
 import { fetchAPI } from '@/lib/api';
 
+import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+
 export { default } from './Actions';
 
 export const FRAGMENT = `
@@ -7,13 +9,8 @@ export const FRAGMENT = `
     max_actions_to_show
     show_map
 
-    city {
-      name
-    }
-
     cta {
-      path
-      label
+      ${FRAGMENT_LINK}
     }
   }
 `;

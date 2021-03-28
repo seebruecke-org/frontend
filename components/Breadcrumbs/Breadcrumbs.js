@@ -1,4 +1,4 @@
-import MenuItem from '@/components/MenuItem';
+import StrapiLink from '@/components/StrapiLink';
 
 export default function Breadcrumbs({ crumbs }) {
   if (!crumbs) {
@@ -14,7 +14,7 @@ export default function Breadcrumbs({ crumbs }) {
               &gt;
             </span>
           )}
-          <MenuItem
+          <StrapiLink
             {...crumb}
             className={`font-rubik text-gray-600 uppercase text-2xs md:text-xs ${
               crumb.path && 'hover:underline'

@@ -1,7 +1,6 @@
-import NextLink from 'next/link';
+import StrapiLink from '@/components/StrapiLink';
 
-export default function TeaserSmall({ title, path, label, type = 'internal' }) {
-  const href = path;
+export default function TeaserSmall({ title, link, type = 'internal' }) {
   let background = '';
 
   switch (type) {
@@ -22,26 +21,21 @@ export default function TeaserSmall({ title, path, label, type = 'internal' }) {
       className={`relative px-8 py-10 md:p-10 h-full flex flex-col ${background} hover:bg-black hover:text-white`}
     >
       <h2>
-        <NextLink href={href}>
-          <a className="block font-brezel text-xl italic font-bold leading-none mb-10">
-            {title}
-          </a>
-        </NextLink>
-      </h2>
-
-      <span className="block font-rubik text-small underline justify-end mt-auto">
-        {label}
-      </span>
-
-      <NextLink href={href}>
-        <a
-          href={href}
-          className="absolute top-0 left-0 w-full h-full opacity-0"
-          aria-hidden="true"
+        <StrapiLink
+          link={link}
+          className="block font-brezel text-xl italic font-bold leading-none mb-10"
         >
           {title}
-        </a>
-      </NextLink>
+        </StrapiLink>
+      </h2>
+
+      <StrapiLink
+        link={link}
+        className="absolute top-0 left-0 w-full h-full opacity-0"
+        aria-hidden="true"
+      >
+        {title}
+      </StrapiLink>
     </div>
   );
 }

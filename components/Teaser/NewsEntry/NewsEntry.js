@@ -3,11 +3,11 @@ import { format } from 'date-fns';
 import NextLink from 'next/link';
 
 import Heading from '@/components/Heading';
-import Image from '@/components/Image';
+import Media from '@/components/Media';
 
 export default function NewsEntry({
   title,
-  image,
+  media,
   publishedAt,
   type,
   excerpt = '',
@@ -19,15 +19,15 @@ export default function NewsEntry({
 
   return (
     <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group">
-      {image && (
+      {media && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
-          <Image image={image.image} />
+          <Media media={media} />
         </div>
       )}
 
       <div
         className={`col-span-full ${
-          image
+          media
             ? 'md:col-start-6 md:col-span-8'
             : 'md:col-start-3 md:col-span-11'
         }`}

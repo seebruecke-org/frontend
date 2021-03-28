@@ -11,7 +11,7 @@ function getHumanRedableFileFormat(mimeType) {
 
 export default function MaterialBlock({
   mTitle,
-  items,
+  items = [],
   blockContext: { next }
 }) {
   return (
