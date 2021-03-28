@@ -1,17 +1,23 @@
 import Link from 'next/link';
 
-export default function StrapiLink({ link, children, locale, ...props }) {
-  let linkProps = {
+export function parseLink(link) {
+  let props = {
     label: null,
     title: null,
     url: null
   };
 
   try {
-    linkProps = JSON.parse(link);
+    props = JSON.parse(link);
   } catch (err) {
-    linkProps.url = null;
+    props.url = null;
   }
+
+  return props;
+}
+
+export default function StrapiLink({ link, children, locale, ...props }) {
+  const linkProps = parseLink(link);
 
   if (!linkProps.url) {
     return (

@@ -15,6 +15,7 @@ import Logo from '@/components/Logo';
 import StrapiLink from '@/components/StrapiLink';
 import More from './More';
 import SearchIcon from '@/public/icons/search-regular.svg';
+import { parseLink } from '@/components/StrapiLink';
 import Form, { Button, TextInput } from '@/components/Form';
 
 import * as styles from './header.module.css';
@@ -74,10 +75,10 @@ export default function Header() {
   const primaryItems = items && items.slice(0, items.length - 1);
   const cta = items && items.slice(items.length - 1);
 
-  function isPartiallyActive(currentPageSlug, path) {
-    return false; // TODO
+  function isPartiallyActive(currentPageSlug, link) {
+    const { url } = parseLink(link);
 
-    const pathWithoutSlashes = path.replace(/\\|\//g, '');
+    const pathWithoutSlashes = url.replace(/\\|\//g, '');
     let localizedPagePath = currentPageSlug;
 
     // the pathname was passed, not query.slug
@@ -188,7 +189,7 @@ export default function Header() {
                   key={`menu-${item.label}`}
                   {...item}
                   className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
-                    isPartiallyActive(pagePathFragment, item.path) &&
+                    isPartiallyActive(pagePathFragment, item.link) &&
                     'bg-white text-orange-800'
                   } hover:text-orange-800 py-2 px-3 whitespace-nowrap ${
                     styles.item

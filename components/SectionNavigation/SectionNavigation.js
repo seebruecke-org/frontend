@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ChevronLeftIcon from '@/public/icons/chevron-left-regular.svg';
 import ChevronRightIcon from '@/public/icons/chevron-right-regular.svg';
-import StrapiLink from '@/components/StrapiLink';
+import StrapiLink, { parseLink } from '@/components/StrapiLink';
 
 import { arePathsEqual } from '@/lib/slug';
 
@@ -22,8 +22,12 @@ export default function SectionNavigation({
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [allowNext, setAllowNext] = useState(false);
   const [allowPrev, setAllowPrev] = useState(false);
-  const activeSlideIndex = 0
-  /*items.findIndex((item) => arePathsEqual(asPath, item.path)) || 0*/;
+  const activeSlideIndex =
+    items.findIndex((item) => {
+      const { url } = parseLink(item.link);
+
+      return arePathsEqual(asPath, url);
+    }) || 0;
 
   useEffect(() => {
     if (swiperInstance) {
