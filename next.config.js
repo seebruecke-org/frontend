@@ -79,22 +79,16 @@ module.exports = withPlugins([], {
   },
 
   webpack(config) {
-    config.resolve.alias['react'] = path.resolve(
-      __dirname,
-      '.',
-      'node_modules',
-      'react'
-    );
-
     config.module.rules.push({
       test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/
-      },
       use: ['@svgr/webpack']
     });
 
     return config;
+  },
+
+  future: {
+    webpack5: true
   },
 
   images: {
