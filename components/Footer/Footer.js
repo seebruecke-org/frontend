@@ -45,9 +45,9 @@ export default function Footer() {
   const i18n = useI18n();
   const store = useStore() || {};
 
-  const footerTakePart = store?.menus['footer_take_part'];
-  const footerAbout = store?.menus['footer_about'];
-  const footerMeta = store?.menus['footer_meta'];
+  const footerTakePart = store?.menus?.['footer_take_part'];
+  const footerAbout = store?.menus?.['footer_about'];
+  const footerMeta = store?.menus?.['footer_meta'];
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">

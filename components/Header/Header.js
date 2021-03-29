@@ -67,8 +67,8 @@ export default function Header() {
     pagePathFragment = asPath;
   }
 
-  const items = store?.menus['header_main']?.items;
-  const headerSecondaryItems = store?.menus['header_meta']?.items;
+  const items = store?.menus?.['header_main']?.items;
+  const headerSecondaryItems = store?.menus?.['header_meta']?.items;
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
   );
