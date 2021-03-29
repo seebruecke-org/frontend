@@ -67,8 +67,8 @@ export default function Header() {
     pagePathFragment = asPath;
   }
 
-  const items = store?.menus?.header?.items;
-  const headerSecondaryItems = store?.menus?.headerSecondary?.items;
+  const items = store?.menus['header_main']?.items;
+  const headerSecondaryItems = store?.menus['header_meta']?.items;
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
   );
@@ -76,7 +76,7 @@ export default function Header() {
   const cta = items && items.slice(items.length - 1);
 
   function isPartiallyActive(currentPageSlug, link) {
-    const { url } = parseLink(link);
+    const { url = '' } = link;
 
     const pathWithoutSlashes = url.replace(/\\|\//g, '');
     let localizedPagePath = currentPageSlug;
@@ -173,7 +173,7 @@ export default function Header() {
               {headerSecondaryItems.map((item) => (
                 <StrapiLink
                   key={`menu-${item.label}`}
-                  {...item}
+                  link={item}
                   className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 />
               ))}
@@ -187,9 +187,9 @@ export default function Header() {
               {primaryItems.map((item, index) => (
                 <StrapiLink
                   key={`menu-${item.label}`}
-                  {...item}
+                  link={item}
                   className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
-                    isPartiallyActive(pagePathFragment, item.link) &&
+                    isPartiallyActive(pagePathFragment, item) &&
                     'bg-white text-orange-800'
                   } hover:text-orange-800 py-2 px-3 whitespace-nowrap ${
                     styles.item
@@ -203,7 +203,7 @@ export default function Header() {
               />
 
               <StrapiLink
-                {...cta[0]}
+                link={cta[0]}
                 className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 py-5 md:py-4 bg-white rounded-full whitespace-nowrap tracking-wide self-end`}
               />
 
@@ -216,7 +216,7 @@ export default function Header() {
                       {primaryItems.map((item, index) => (
                         <StrapiLink
                           key={`menu-${item.label}`}
-                          {...item}
+                          link={item}
                           className={`font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
                             styles.itemMore
                           } ${styles[`item--more-${index + 1}`]}`}

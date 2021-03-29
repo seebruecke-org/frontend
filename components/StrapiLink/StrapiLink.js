@@ -21,7 +21,12 @@ export function parseLink(link) {
 }
 
 export default function StrapiLink({ link, children, locale, ...props }) {
-  const linkProps = parseLink(link);
+  let linkProps = link;
+
+  // TODO: this should be done entirely on the server
+  if (typeof linkProps !== 'object') {
+    linkProps = parseLink(link);
+  }
 
   if (!linkProps.url) {
     return (
