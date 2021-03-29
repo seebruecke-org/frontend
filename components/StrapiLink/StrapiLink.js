@@ -4,13 +4,17 @@ export function parseLink(link) {
   let props = {
     label: null,
     title: null,
-    url: null
+    url: ''
   };
 
   try {
-    props = JSON.parse(link);
+    // TODO: this is a quick fix
+    props = {
+      ...props,
+      ...JSON.parse(link)
+    };
   } catch (err) {
-    props.url = null;
+    props.url = '';
   }
 
   return props;
