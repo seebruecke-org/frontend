@@ -11,7 +11,7 @@ export default function Media({
   classNameCaption,
   ...props
 }) {
-  if (!image.media) {
+  if (!image || !image.media) {
     return null;
   }
 
