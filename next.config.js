@@ -1,6 +1,7 @@
+const { request } = require('graphql-request');
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
-const { request } = require('graphql-request');
+const withPreact = require('next-plugin-preact');
 
 const { slugs: slugsDe } = require('./locales/de');
 
@@ -61,7 +62,7 @@ function createRewrites(slugs, locale) {
   });
 }
 
-module.exports = withPlugins([], {
+module.exports = withPlugins([withPreact], {
   i18n: {
     locales: ['de'],
     defaultLocale: 'de',
