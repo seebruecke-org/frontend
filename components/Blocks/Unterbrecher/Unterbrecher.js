@@ -58,12 +58,12 @@ export default function Unterbrecher({
 
         {cta && (
           <div className="mt-12 md:mt-16">
-            <CTA {...cta} />
+            <CTA link={cta} />
           </div>
         )}
       </div>
 
-      <StrapiLink {...cta} className="block w-full h-full md:w-2/4">
+      <StrapiLink link={cta} className="block w-full h-full md:w-2/4">
         <div className={`block h-full relative ${styles.square}`}>
           <Media
             image={image}
