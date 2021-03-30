@@ -1,8 +1,8 @@
 import { fetchAPI } from '@/lib/api';
-
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+import Actions from './Actions';
 
-export { default } from './Actions';
+export default Actions;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksActions {
@@ -34,3 +34,10 @@ export async function sideloadData() {
     actions
   };
 }
+
+export const block = {
+  name: 'Actions',
+  Component: Actions,
+  Fragment: FRAGMENT,
+  sideload: sideloadData
+};

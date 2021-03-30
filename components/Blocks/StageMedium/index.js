@@ -1,6 +1,7 @@
-export { default } from './StageMedium';
-
+import StageMedium from './StageMedium';
 import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
+
+export default StageMedium;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageMedium {
@@ -12,3 +13,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'StageMedium',
+  Component: StageMedium,
+  Fragment: FRAGMENT
+};

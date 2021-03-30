@@ -1,4 +1,6 @@
-export { default } from './Accordion';
+import Accordion from './Accordion';
+
+export default Accordion;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksAccordion {
@@ -8,3 +10,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'Accordion',
+  Component: Accordion,
+  Fragment: FRAGMENT
+};

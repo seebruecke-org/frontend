@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ChevronLeftIcon from '@/public/icons/chevron-left-regular.svg';
 import ChevronRightIcon from '@/public/icons/chevron-right-regular.svg';
-import StrapiLink, { parseLink } from '@/components/StrapiLink';
+import StrapiLink from '@/components/StrapiLink';
 
 import { arePathsEqual } from '@/lib/slug';
 
@@ -23,11 +23,7 @@ export default function SectionNavigation({
   const [allowNext, setAllowNext] = useState(false);
   const [allowPrev, setAllowPrev] = useState(false);
   const activeSlideIndex =
-    items.findIndex((item) => {
-      const { url } = parseLink(item.link);
-
-      return arePathsEqual(asPath, url);
-    }) || 0;
+    items.findIndex(({ url }) => arePathsEqual(asPath, url)) || 0;
 
   useEffect(() => {
     if (swiperInstance) {
@@ -79,13 +75,13 @@ export default function SectionNavigation({
           onSwiper={(swiper) => setSwiperInstance(swiper)}
         >
           {items.map((item, index) => {
-            const isActive = true; /*arePathsEqual(asPath, item.path)*/
+            const isActive = arePathsEqual(asPath, item.url);
 
             return (
               // eslint-disable-next-line react/jsx-key
               <SwiperSlide className={styles.slide}>
                 <StrapiLink
-                  {...item}
+                  link={item}
                   className={`block py-3 px-3 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap ${
                     isActive && 'bg-white'
                   } hover:bg-white col-span-2 text-center ${

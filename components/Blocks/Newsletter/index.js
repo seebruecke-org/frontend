@@ -1,4 +1,6 @@
-export { default } from './Newsletter';
+import Newsletter from './Newsletter';
+
+export default Newsletter;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksNewsletter {
@@ -6,3 +8,9 @@ export const FRAGMENT = `
     intro
   }
 `;
+
+export const block = {
+  name: 'Newsletter',
+  Component: Newsletter,
+  Fragment: FRAGMENT
+};

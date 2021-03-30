@@ -1,4 +1,6 @@
-export { default } from './Material';
+import Material from './Material';
+
+export default Material;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMaterial {
@@ -18,3 +20,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'Material',
+  Component: Material,
+  Fragment: FRAGMENT
+};
