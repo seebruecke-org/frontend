@@ -1,4 +1,6 @@
-export { default } from './Heading';
+import Heading from './Heading';
+
+export default Heading;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksHeading {
@@ -7,3 +9,9 @@ export const FRAGMENT = `
     kicker
   }
 `;
+
+export const block = {
+  name: 'Heading',
+  Component: Heading,
+  Fragment: FRAGMENT
+};

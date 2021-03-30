@@ -2,16 +2,17 @@ import contentBlocks from '@/components/Blocks';
 
 import { BLOCK_PREFIX } from '@/lib/constants';
 
+const blockMap = contentBlocks.reduce((acc, block) => {
+  const { name, Component } = block;
+  acc[`${BLOCK_PREFIX}${name}`] = Component;
+
+  return acc;
+}, {});
+
 export default function BlockSwitch({ blocks, className }) {
   if (!blocks) {
     return null;
   }
-
-  const blockMap = Object.keys(contentBlocks).reduce((acc, blockName) => {
-    acc[`${BLOCK_PREFIX}${blockName}`] = contentBlocks[blockName].Component;
-
-    return acc;
-  }, {});
 
   return (
     <div className={`grid grid-layout-primary ${className}`}>

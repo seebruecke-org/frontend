@@ -1,6 +1,7 @@
-export { default } from './Media';
-
+import Media from './Media';
 import { FRAGMENT as MEDIA_FRAGMENT } from '@/components/Media';
+
+export default Media;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMedia {
@@ -9,3 +10,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'Media',
+  Component: Media,
+  Fragment: FRAGMENT
+};

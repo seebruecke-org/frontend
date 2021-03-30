@@ -1,6 +1,7 @@
-export { default } from './MediaGallery';
-
+import MediaGallery from './MediaGallery';
 import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
+
+export default MediaGallery;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMediaGallery {
@@ -9,3 +10,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'MediaGallery',
+  Component: MediaGallery,
+  Fragment: FRAGMENT
+};

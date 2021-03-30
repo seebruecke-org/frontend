@@ -1,4 +1,6 @@
-export { default } from './Contact';
+import Contact from './Contact';
+
+export default Contact;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksContact {
@@ -11,3 +13,9 @@ export const FRAGMENT = `
     telephone
   }
 `;
+
+export const block = {
+  name: 'Contact',
+  Component: Contact,
+  Fragment: FRAGMENT
+};

@@ -1,4 +1,6 @@
-export { default } from './TeasersSmall';
+import TeasersSmall from './TeasersSmall';
+
+export default TeasersSmall;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksTeasersSmall {
@@ -9,3 +11,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'TeasersSmall',
+  Component: TeasersSmall,
+  Fragment: FRAGMENT
+};

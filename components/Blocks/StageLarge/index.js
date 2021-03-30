@@ -1,7 +1,8 @@
-export { default } from './StageLarge';
-
+import StageLarge from './StageLarge';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
+
+export default StageLarge;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageLarge {
@@ -20,3 +21,9 @@ export const FRAGMENT = `
     }
   }
 `;
+
+export const block = {
+  name: 'StageLarge',
+  Component: StageLarge,
+  Fragment: FRAGMENT
+};
