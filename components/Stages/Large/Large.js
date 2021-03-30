@@ -37,7 +37,7 @@ export default function StageLarge({
 
           {cta && (
             <div className="mt-12">
-              <CTA {...cta} />
+              <CTA link={cta} />
             </div>
           )}
         </div>
