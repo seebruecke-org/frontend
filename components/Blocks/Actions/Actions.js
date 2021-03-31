@@ -32,7 +32,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
 
       {cta && (
         <div className="flex justify-center mt-16">
-          <CTA inverse {...cta} />
+          <CTA inverse link={cta} />
         </div>
       )}
     </section>

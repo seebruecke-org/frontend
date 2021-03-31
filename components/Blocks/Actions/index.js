@@ -1,6 +1,7 @@
 import { fetchAPI } from '@/lib/api';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import Actions from './Actions';
+import { fetchLink } from '@/lib/link';
 
 export default Actions;
 
@@ -15,7 +16,7 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData() {
+export async function sideloadData({ cta }) {
   const { actions } = await fetchAPI(`
     query {
       actions {
@@ -31,6 +32,7 @@ export async function sideloadData() {
   `);
 
   return {
+    cta: await fetchLink(cta.link),
     actions
   };
 }
