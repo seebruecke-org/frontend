@@ -1,5 +1,6 @@
 import TeaserLarge from './TeaserLarge';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+import { fetchLink } from '@/lib/link';
 
 export default TeaserLarge;
 
@@ -14,8 +15,15 @@ export const FRAGMENT = `
   }
 `;
 
+export async function sideloadData({ cta }) {
+  return {
+    cta: await fetchLink(cta?.link)
+  };
+}
+
 export const block = {
   name: 'TeaserLarge',
   Component: TeaserLarge,
-  Fragment: FRAGMENT
+  Fragment: FRAGMENT,
+  sideload: sideloadData
 };

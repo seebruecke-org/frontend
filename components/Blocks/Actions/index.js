@@ -32,7 +32,7 @@ export async function sideloadData({ cta }) {
   `);
 
   return {
-    cta: await fetchLink(cta.link),
+    cta: await fetchLink(cta?.link),
     actions
   };
 }
