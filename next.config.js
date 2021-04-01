@@ -88,10 +88,6 @@ module.exports = withPlugins([withPreact], {
     return config;
   },
 
-  future: {
-    webpack5: true
-  },
-
   images: {
     domains: [process.env.NEXT_IMAGE_HOSTNAME]
   },
