@@ -36,16 +36,21 @@ export default function Unterbrecher({
   return (
     <section
       className={`flex flex-col relative z-10 ${
-        hasPaddingTop && 'pt-12 md:pt-24'
-      } ${hasPaddingBottom && 'pb-12 md:pb-24'} ${
+        hasPaddingTop && 'pt-48 md:pt-24'
+      } ${hasPaddingBottom && 'pb-20 md:pb-24'} ${
         reversed && 'flex-col-reverse md:flex-row-reverse'
       } md:flex-row md:items-center col-span-full ${
         size === 'small' && 'md:col-start-3 md:col-span-9'
       } ${size === 'large' && 'md:col-start-2 md:col-span-12'}`}
     >
       <div
-        className={`${background} ${styles.contentContainer} flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-8 md:mx-0 -mt-36 md:mt-0 z-10`}
+        className={`${background} ${styles.contentContainer} flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-4 md:mx-0 -mt-36 md:mt-0 z-10 relative`}
       >
+        <div
+          className={`w-7 ${background} absolute ${
+            reversed ? 'right-full' : 'left-full'
+          } h-full z-40 top-0 hidden md:block`}
+        />
         <Heading as={1} kicker={title?.kicker} level={title.level}>
           {title.text}
         </Heading>
@@ -63,18 +68,16 @@ export default function Unterbrecher({
         )}
       </div>
 
-      <StrapiLink link={cta} className="block w-full h-full md:w-2/4">
-        <div className={`block h-full relative ${styles.square}`}>
-          <Media
-            image={image}
-            layout="fill"
-            objectFit="cover"
-            className="h-full absolute top-2/4 transform -translate-y-2/4 left-0 w-full"
-            classNameImage={`flex ${
-              reversed ? 'justify-end' : 'justify-start'
-            }`}
-          />
-        </div>
+      <StrapiLink
+        link={cta}
+        className={`block w-full h-full md:w-2/4 ${styles.square}`}
+      >
+        <Media
+          image={image}
+          layout="fill"
+          objectFit="cover"
+          className="h-full"
+        />
       </StrapiLink>
     </section>
   );
