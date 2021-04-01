@@ -2,7 +2,7 @@ import { useState } from 'react';
 import NextImage from 'next/image';
 
 import InfoCircleIcon from '@/public/icons/info-circle.svg';
-import Richtext from '@/components/Blocks/Richtext';
+import Richtext from '@/components/Richtext';
 
 export default function Media({
   image = {
@@ -20,7 +20,7 @@ export default function Media({
 
   const {
     caption,
-    media: { caption: imageCaption, url, width, height }
+    media: { caption: mediaCaption, url, width, height }
   } = image;
   const imageProps = {
     src: `${process.env.NEXT_CMS_DOMAIN}${url}`,
@@ -31,7 +31,8 @@ export default function Media({
 
   const showCaptionAsOverlay = !showCaption;
   const [isCaptionOpen, setIsCaptionOpen] = useState(showCaption);
-  const hasCaption = caption || imageCaption;
+  const imageCaption = caption || mediaCaption;
+  const hasCaption = !!imageCaption;
 
   return (
     <figure className={`leading-none text-none relative ${className}`}>
@@ -61,7 +62,7 @@ export default function Media({
             'absolute -bottom-8 left-16 bg-white z-20'
           }`}
         >
-          <Richtext richtext={caption || imageCaption} isSmall />
+          <Richtext content={imageCaption} isSmall />
         </figcaption>
       )}
     </figure>

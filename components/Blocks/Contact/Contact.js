@@ -2,7 +2,7 @@ import NextLink from 'next/link';
 
 import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
 import InstagramIcon from '@/public/icons/instagram-brands.svg';
-import Link from '../Richtext/Link';
+import Link from '@/components/Richtext/Link';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 
