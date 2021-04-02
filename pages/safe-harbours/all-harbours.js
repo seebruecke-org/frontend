@@ -143,7 +143,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 
 export async function getStaticProps({ locale }) {
   const groups = await fetchAllSafeHarbours();
-  const page = await getPage('alle-haefen');
+  const page = await getPage('haefen');
   const { initialState, ...globalData } = await queryGlobalData(locale);
 
   return {
