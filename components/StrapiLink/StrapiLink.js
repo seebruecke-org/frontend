@@ -38,7 +38,7 @@ export default function StrapiLink({ link, children, locale, ...props }) {
   }
 
   return (
-    <Link href={linkProps.url} locale={locale}>
+    <Link href={linkProps.url.toLowerCase()} locale={locale}>
       <a {...props}>
         {linkProps.label || linkProps.title}
         {children}
