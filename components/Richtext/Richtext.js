@@ -5,7 +5,7 @@ import Link from './Link';
 import List, { ListItem } from './List';
 import Paragraph from './Paragraph';
 
-export default function Richtext({ content, isSmall = false, ...props }) {
+export default function Richtext({ content, size = 'regular', ...props }) {
   const RENDERERS = {
     heading: ({ level, children }) => {
       return <Heading level={level - 1}>{children}</Heading>;
@@ -22,13 +22,13 @@ export default function Richtext({ content, isSmall = false, ...props }) {
     listItem: ({ children }) => {
       return (
         <ListItem>
-          <Paragraph isSmall={isSmall}>{children}</Paragraph>
+          <Paragraph size={size}>{children}</Paragraph>
         </ListItem>
       );
     },
 
     paragraph: ({ children }) => {
-      return <Paragraph isSmall={isSmall}>{children}</Paragraph>;
+      return <Paragraph size={size}>{children}</Paragraph>;
     }
   };
 

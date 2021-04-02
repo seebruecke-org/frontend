@@ -8,7 +8,7 @@ import {
 } from '@/components/Accordion';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
-import Richtext from '@/components/Blocks/Richtext';
+import Richtext from '@/components/Richtext';
 
 import * as styles from './safeHarbour.module.css';
 
@@ -108,7 +108,7 @@ export default function SafeHarbourDemands({ cityName, demands }) {
           >
             <AccordionPanel>
               <div className="pl-14 md:pl-28 pb-8 md:pb-10">
-                <Richtext richtext={description} isSmall={true} />
+                <Richtext richtext={description} size="small" />
               </div>
             </AccordionPanel>
           </AccordionItem>

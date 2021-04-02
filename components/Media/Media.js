@@ -56,13 +56,13 @@ export default function Media({
 
       {isCaptionOpen && hasCaption && (
         <figcaption
-          className={`font-rubik italic text-2xs px-10 py-5 md:p-5 text-gray-600 font-rubik-features ${classNameCaption} ${
+          className={`font-rubik italic text-2xs px-10 py-5 md:p-5 md:pr-0 text-gray-600 font-rubik-features ${classNameCaption} ${
             showCaptionAsOverlay &&
             isCaptionOpen &&
             'absolute -bottom-8 left-16 bg-white z-20'
           }`}
         >
-          <Richtext content={imageCaption} isSmall />
+          <Richtext content={imageCaption} size="tiny" />
         </figcaption>
       )}
     </figure>
