@@ -1,3 +1,6 @@
+import { onlyText } from 'react-children-utilities';
+import slugify from 'slugify';
+
 export default function Heading({
   children,
   level,
@@ -22,6 +25,10 @@ export default function Heading({
   };
 
   const Tag = `h${`${level}`.replace('h', '')}`;
+  const text = onlyText(children);
+  const id = slugify(text, {
+    lower: true
+  });
 
   return (
     <Tag
@@ -29,6 +36,7 @@ export default function Heading({
         levels[`h${as ?? level}`]
       } ${className}`}
       {...props}
+      id={id}
     >
       {kicker && (
         <small

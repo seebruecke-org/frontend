@@ -75,21 +75,13 @@ export default function Header() {
   const primaryItems = items && items.slice(0, items.length - 1);
   const cta = items && items.slice(items.length - 1);
 
-  function isPartiallyActive(currentPageSlug, link) {
-    const { url = '' } = link;
+  function isPartiallyActive(currentPageSlug, { url = '' }) {
+    const urlWithoutSlashes = url.replace(/\\|\//g, '');
+    const pageSlugWithoutSlashes = currentPageSlug.replace(/\\|\//g, '');
+    let localizedPagePath =
+      i18n.t(`slugs.${pageSlugWithoutSlashes}`) || pageSlugWithoutSlashes;
 
-    const pathWithoutSlashes = url.replace(/\\|\//g, '');
-    let localizedPagePath = currentPageSlug;
-
-    // the pathname was passed, not query.slug
-    if (currentPageSlug.includes('/')) {
-      const currentPageSlugSplitted = currentPageSlug.split('/');
-      localizedPagePath = i18n.t(`slugs.${currentPageSlugSplitted[1]}`);
-    }
-
-    return (
-      localizedPagePath && localizedPagePath.startsWith(pathWithoutSlashes)
-    );
+    return localizedPagePath && localizedPagePath.startsWith(urlWithoutSlashes);
   }
 
   return (

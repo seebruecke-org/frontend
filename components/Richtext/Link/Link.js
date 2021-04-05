@@ -1,12 +1,23 @@
 import NextLink from 'next/link';
+import { isInternal } from '@/lib/link';
 
 import * as styles from './link.module.css';
 
-export default function Link({ href, children, ...props }) {
+function getRelativeURL(href) {
+  if (!isInternal(href)) {
+    const { pathname, hash } = new URL(href);
+
+    return `${pathname}${hash}`;
+  }
+
+  return href;
+}
+
+export default function Link({ href, children, className = '', ...props }) {
   return (
-    <NextLink href={href}>
+    <NextLink href={getRelativeURL(href)}>
       <a
-        className={`font-rubik text-base md:text-medium ${styles.link}`}
+        className={`font-rubik text-base md:text-medium ${className} ${styles.link}`}
         {...props}
       >
         {children}

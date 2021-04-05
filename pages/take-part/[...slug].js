@@ -54,6 +54,7 @@ export default function TakePartPage({
           kicker={kicker}
           className="col-span-full"
           image={featuredImage}
+          allowBookmark
         />
       ) : (
         <Heading level={1} kicker="Seebrücke">

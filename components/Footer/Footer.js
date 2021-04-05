@@ -48,12 +48,15 @@ export default function Footer() {
   const footerTakePart = store?.menus?.['footer_take_part'];
   const footerAbout = store?.menus?.['footer_about'];
   const footerMeta = store?.menus?.['footer_meta'];
+  const hasBookmarkedItem = false;
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
       <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3 flex-col space-y-8">
-          <SavedLocation name="Berlin" path="/mach-mit/deutschland/berlin" />
+          {hasBookmarkedItem && (
+            <SavedLocation name="Berlin" path="/mach-mit/deutschland/berlin" />
+          )}
 
           <a href="/" className="font-bold block">
             {i18n.t('footer.langEn')}

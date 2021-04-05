@@ -12,6 +12,10 @@
     "savedLocation": "Gemerkter Ort"
   },
 
+  "city": {
+    "bookmark_place": "Ort merken"
+  },
+
   "group": {
     "singleTitle": "Lokalgruppe",
     "pluralTitle": "Lokalgruppen",

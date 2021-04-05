@@ -4,6 +4,8 @@ import NextImage from 'next/image';
 import InfoCircleIcon from '@/public/icons/info-circle.svg';
 import Richtext from '@/components/Richtext';
 
+import * as styles from './media.module.css';
+
 export default function Media({
   image = {
     media: null
@@ -59,7 +61,7 @@ export default function Media({
           className={`font-rubik italic text-2xs px-10 py-5 md:p-5 md:pr-0 text-gray-600 font-rubik-features ${classNameCaption} ${
             showCaptionAsOverlay &&
             isCaptionOpen &&
-            'absolute -bottom-8 left-16 bg-white z-20'
+            `absolute -bottom-8 left-16 bg-white z-20 px-4 md:pr-5 ${styles.captionOverlay}`
           }`}
         >
           <Richtext content={imageCaption} size="tiny" />
