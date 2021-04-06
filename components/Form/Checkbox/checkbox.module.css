@@ -41,6 +41,5 @@
 }
 
 .background {
-  mix-blend-mode: multiply;
   width: calc(100% + theme('spacing.8'));
 }

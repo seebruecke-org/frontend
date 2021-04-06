@@ -38,7 +38,7 @@ export default function SectionNavigation({
       } py-6 sm:py-7 md:py-8 relative ${styles.navigation} ${className}`}
     >
       <span
-        className={`w-full bg-gray-400 absolute top-0 left-0 opacity-50 ${styles.border}`}
+        className={`w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply ${styles.border}`}
       />
 
       <nav

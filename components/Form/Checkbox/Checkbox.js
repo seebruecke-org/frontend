@@ -12,7 +12,7 @@ function Checkbox({ children, id = null, error = null, ...props }, ref) {
     <div className="relative py-2">
       {error && (
         <div
-          className={`absolute top-0 left-0 w-full h-full z-0 bg-gray-300 -ml-4 rounded-md ${styles.background}`}
+          className={`absolute top-0 left-0 w-full h-full z-0 bg-gray-300 -ml-4 rounded-md mix-blend-multiply ${styles.background}`}
         />
       )}
       <div
