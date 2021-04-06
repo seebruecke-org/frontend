@@ -19,6 +19,7 @@
 
 .cta {
   @apply ml-auto;
+  @apply p-5;
 }
 
 .logoContainer {
@@ -46,13 +47,25 @@
   }
 }
 
-@media (min-width: 560px) {
+@media (min-width: 570px) {
   .item--2 {
     @apply block;
   }
 
   .item--more-2 {
     @apply hidden;
+  }
+
+  .burger {
+    @apply hidden;
+  }
+
+  .moreToggle {
+    @apply flex;
+  }
+
+  .cta {
+    @apply py-4;
   }
 }
 
@@ -65,14 +78,6 @@
     @apply hidden;
   }
 
-  .burger {
-    @apply hidden;
-  }
-
-  .moreToggle {
-    @apply flex;
-  }
-
   .primaryItemsContainer {
     @apply pt-0;
   }
@@ -83,13 +88,17 @@
   }
 }
 
-@media (min-width: 820px) {
+@media (min-width: 910px) {
   .item--4 {
     @apply block;
   }
 
   .item--more-4 {
     @apply hidden;
+  }
+
+  .cta {
+    @apply py-5;
   }
 }
 
