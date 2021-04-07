@@ -23,9 +23,12 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ cta }) {
+async function sideloadData({ cta, subnavigation }) {
   return {
-    cta: await fetchLink(cta.link)
+    cta: cta && (await fetchLink(cta.link)),
+    subnavigation: await Promise.all(
+      subnavigation.map(({ link }) => fetchLink(link))
+    )
   };
 }
 
