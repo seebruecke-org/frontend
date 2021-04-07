@@ -39,10 +39,20 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 
       <div className="grid grid-layout-primary">
         <MemoizedMap
-          marker={mapCities.map(({ name, coordinates }) => ({
-            title: name,
-            coordinates
-          }))}
+          features={mapCities.map(
+            ({ name, id, coordinates: { geometry } }) => ({
+              type: 'Feature',
+              properties: {
+                name,
+                id,
+                type: 'city'
+              },
+              geometry: {
+                ...geometry,
+                coordinates: geometry.coordinates
+              }
+            })
+          )}
         />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
