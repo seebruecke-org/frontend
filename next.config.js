@@ -44,7 +44,7 @@ async function fetchAllRedirects() {
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
     'take-part': ':slug*',
-    actions: ':slug*',
+    actions: ':slug',
     news: ':slug',
     'news/campaigns': ':slug',
     press: ':slug'
@@ -69,7 +69,9 @@ module.exports = withPlugins([withTranspiledModules, withPreact], {
   i18n,
 
   async rewrites() {
-    return [...createRewrites(slugsDe, 'de')];
+    return {
+      beforeFiles: createRewrites(slugsDe, 'de')
+    };
   },
 
   async redirects() {
