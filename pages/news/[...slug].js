@@ -32,7 +32,7 @@ export default function NewsEntryPage({
           <Breadcrumbs
             crumbs={[
               {
-                path: `/${t('slugs.press')}`,
+                url: `/${t('slugs.press')}`,
                 label: t('press.longTitle')
               }
             ]}
