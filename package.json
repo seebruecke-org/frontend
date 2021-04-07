@@ -53,6 +53,7 @@
     "react-children-utilities": "^2.5.0",
     "react-dom": "npm:@preact/compat@0.0.4",
     "react-hook-form": "^6.15.5",
+    "react-intersection-observer": "^8.31.0",
     "react-load-script": "0.0.6",
     "react-mapbox-gl": "^5.1.1",
     "react-markdown": "^5.0.3",
