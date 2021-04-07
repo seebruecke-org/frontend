@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { v4 as uuid } from 'uuid';
+import clsx from 'clsx';
 
 import FormError from '../Error';
 import Help from '../Help';
@@ -26,11 +27,13 @@ function Textarea(
         <div className="relative">
           <textarea
             type={type}
-            className={`font-rubik text-base leading-none p-6 rounded-md border-2 outline-none w-full ${
+            className={clsx(
+              'font-rubik text-base leading-none p-6 rounded-md border-2 outline-none w-full',
               error
                 ? 'border-orange-900 text-orange-900'
-                : 'border-gray-600 text-gray-600 focus:border-black'
-            } ${styles.textarea}`}
+                : 'border-gray-600 text-gray-600 focus:border-black',
+              styles.textarea
+            )}
             id={htmlFor}
             ref={ref}
             {...props}

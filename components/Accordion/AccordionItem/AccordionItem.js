@@ -4,6 +4,7 @@ import {
   AccordionItemButton,
   AccordionItemState
 } from 'react-accessible-accordion';
+import clsx from 'clsx';
 
 import MinusIcon from '@/public/icons/minus.svg';
 import PlusIcon from '@/public/icons/plus.svg';
@@ -23,13 +24,13 @@ export default function AccordionItem({
         <AccordionItemState>
           {({ expanded }) => (
             <AccordionItemButton
-              className={`px-8 py-4 md:p-7 border-gray-400 border-t ${
-                isLast && 'border-b'
-              } ${
+              className={clsx(
+                'px-8 py-4 md:p-7 border-gray-400 border-t cursor-pointer font-rubik font-rubik-features text-base  md:text-medium lg:text-l font-bold flex items-center',
+                { 'border-b': isLast },
                 expanded && activeBackground
                   ? 'bg-orange-800 text-white border-b-0'
                   : 'hover:bg-gray-200'
-              } cursor-pointer font-rubik font-rubik-features text-base  md:text-medium lg:text-l font-bold flex items-center`}
+              )}
               {...props}
             >
               {heading}

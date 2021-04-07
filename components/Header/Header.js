@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
@@ -27,7 +28,10 @@ function MoreToggle({ onClick = () => {}, isOpen }) {
   return (
     <button
       type="button"
-      className={`font-rubik text-small items-center text-white leading-none p-2 ${styles.moreToggle}`}
+      className={clsx(
+        'font-rubik text-small items-center text-white leading-none p-2',
+        styles.moreToggle
+      )}
       onClick={onClick}
     >
       mehr
@@ -40,7 +44,10 @@ function Burger({ onClick = () => {} }) {
   return (
     <button
       type="button"
-      className={`font-rubik text-3xs uppercase text-white text-center p-0 leading-none ml-10 sm:ml-auto justify-end tracking-wide ${styles.burger}`}
+      className={clsx(
+        'font-rubik text-3xs uppercase text-white text-center p-0 leading-none ml-10 sm:ml-auto justify-end tracking-wide',
+        styles.burger
+      )}
       onClick={onClick}
     >
       <BarsIcon className="w-16 h-16" />
@@ -88,7 +95,10 @@ export default function Header() {
       <div className="flex flex-row align-bottom max-w-wide w-full">
         <Link href="/">
           <a
-            className={`${styles.logoContainer} flex items-end justify-center pl-8 xl:pl-0`}
+            className={clsx(
+              styles.logoContainer,
+              'flex items-end justify-center pl-8 xl:pl-0'
+            )}
           >
             <Logo className="w-auto h-14 sm:h-12 md:h-14" />
           </a>
@@ -173,18 +183,23 @@ export default function Header() {
 
           {primaryItems && primaryItems.length > 0 && (
             <div
-              className={`${styles.primaryItemsContainer} flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-5`}
+              className={clsx(
+                styles.primaryItemsContainer,
+                'flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-5'
+              )}
             >
               {primaryItems.map((item, index) => (
                 <StrapiLink
                   key={`menu-${item.label}`}
                   link={item}
-                  className={`font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white ${
+                  className={clsx(
+                    'font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white',
                     isPartiallyActive(pagePathFragment, item) &&
-                    'bg-white text-orange-800'
-                  } hover:text-orange-800 py-2 px-3 whitespace-nowrap ${
-                    styles.item
-                  } ${styles[`item--${index + 1}`]}`}
+                      'bg-white text-orange-800',
+                    'hover:text-orange-800 py-2 px-3 whitespace-nowrap',
+                    styles.item,
+                    styles[`item--${index + 1}`]
+                  )}
                 />
               ))}
 
@@ -195,7 +210,10 @@ export default function Header() {
 
               <StrapiLink
                 link={cta[0]}
-                className={`${styles.cta} font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 bg-white rounded-full whitespace-nowrap tracking-wide self-end`}
+                className={clsx(
+                  styles.cta,
+                  'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 bg-white rounded-full whitespace-nowrap tracking-wide self-end'
+                )}
               />
 
               <Burger onClick={() => setmoreIsOpen(!moreIsOpen)} />
@@ -208,9 +226,11 @@ export default function Header() {
                         <StrapiLink
                           key={`menu-${item.label}`}
                           link={item}
-                          className={`font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600 ${
-                            styles.itemMore
-                          } ${styles[`item--more-${index + 1}`]}`}
+                          className={clsx(
+                            'font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600',
+                            styles.itemMore,
+                            styles[`item--more-${index + 1}`]
+                          )}
                           onClick={() => setmoreIsOpen(false)}
                         />
                       ))}

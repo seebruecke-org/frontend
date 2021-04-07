@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
+import clsx from 'clsx';
 import NextLink from 'next/link';
 
 import Heading from '@/components/Heading';
@@ -26,11 +27,12 @@ export default function NewsEntry({
       )}
 
       <div
-        className={`col-span-full ${
+        className={clsx(
+          'col-span-full',
           media
             ? 'md:col-start-6 md:col-span-8'
             : 'md:col-start-3 md:col-span-11'
-        }`}
+        )}
       >
         <header className="font-rubik text-xs text-gray-600 flex space-x-8">
           {format(new Date(publishedAt), t('news.dateFormat'))}

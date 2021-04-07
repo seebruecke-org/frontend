@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import { useState, useEffect, memo, useRef } from 'react';
+import clsx from 'clsx';
 
 import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
@@ -91,7 +92,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             {Object.keys(actions).map((key, index) => (
               <li
                 key={`action-date-${index}`}
-                className={`${index > 0 && 'mt-20'}`}
+                className={clsx(index > 0 && 'mt-20')}
               >
                 <FederalCountry
                   count={actions[key].length}

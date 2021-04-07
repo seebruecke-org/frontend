@@ -1,5 +1,7 @@
 import { memo, useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import clsx from 'clsx';
+
 import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
@@ -95,7 +97,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
               .map((countryName, countryIndex) => (
                 <li
                   key={`country-${countryName}`}
-                  className={`${countryIndex > 0 && 'mt-20'}`}
+                  className={clsx(countryIndex > 0 && 'mt-20')}
                 >
                   <Country name={countryName} uri={cities[countryName].uri} />
 

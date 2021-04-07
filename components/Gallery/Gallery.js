@@ -1,6 +1,7 @@
 import SwiperCore, { Keyboard, Mousewheel, Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
+import clsx from 'clsx';
 import Measure from 'react-measure';
 
 import ChevronLeftIcon from '@/public/icons/chevron-left-regular.svg';
@@ -42,7 +43,10 @@ export default function Gallery({ items }) {
         {currentSlideIndex > 1 && (
           <button
             type="button"
-            className={`h-full w-20 absolute top-0 left-0 z-10 hidden md:flex justify-center pr-16 pl-8 ${styles.controlPrev}`}
+            className={clsx(
+              'h-full w-20 absolute top-0 left-0 z-10 hidden md:flex justify-center pr-16 pl-8',
+              styles.controlPrev
+            )}
             onClick={() => {
               if (swiperInstance) {
                 swiperInstance.slidePrev();
@@ -80,7 +84,10 @@ export default function Gallery({ items }) {
 
         <button
           type="button"
-          className={`h-full pl-16 pr-8 absolute top-0 right-0 z-10 hidden md:flex justify-center ${styles.controlNext}`}
+          className={clsx(
+            'h-full pl-16 pr-8 absolute top-0 right-0 z-10 hidden md:flex justify-center',
+            styles.controlNext
+          )}
           onClick={() => {
             if (swiperInstance) {
               swiperInstance.slideNext();

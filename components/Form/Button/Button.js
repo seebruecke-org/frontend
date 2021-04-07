@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 export default function Button({
   children,
   type = 'submit',
@@ -7,7 +9,10 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`bg-black hover:bg-white text-white hover:text-black border-black border text-base font-rubik font-bold uppercase rounded-full py-6 px-10 self-start ${className}`}
+      className={clsx(
+        'bg-black hover:bg-white text-white hover:text-black border-black border text-base font-rubik font-bold uppercase rounded-full py-6 px-10 self-start',
+        className
+      )}
       {...props}
     >
       {children}

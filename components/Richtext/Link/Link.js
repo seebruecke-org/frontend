@@ -1,4 +1,6 @@
+import clsx from 'clsx';
 import NextLink from 'next/link';
+
 import { isInternal } from '@/lib/link';
 
 import * as styles from './link.module.css';
@@ -17,7 +19,11 @@ export default function Link({ href, children, className = '', ...props }) {
   return (
     <NextLink href={getRelativeURL(href)}>
       <a
-        className={`font-rubik text-base md:text-medium ${className} ${styles.link}`}
+        className={clsx(
+          'font-rubik text-base md:text-medium',
+          className,
+          styles.link
+        )}
         {...props}
       >
         {children}

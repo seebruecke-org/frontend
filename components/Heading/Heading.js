@@ -1,4 +1,5 @@
 import { onlyText } from 'react-children-utilities';
+import clsx from 'clsx';
 import slugify from 'slugify';
 
 export default function Heading({
@@ -32,17 +33,20 @@ export default function Heading({
 
   return (
     <Tag
-      className={`font-rubik-features ${
-        levels[`h${as ?? level}`]
-      } ${className}`}
+      className={clsx(
+        'font-rubik-features',
+        levels[`h${as ?? level}`],
+        className
+      )}
       {...props}
       id={id}
     >
       {kicker && (
         <small
-          className={`${
-            kickers[`h${as ?? level}`]
-          } block font-normal leading-none`}
+          className={clsx(
+            kickers[`h${as ?? level}`],
+            'block font-normal leading-none'
+          )}
         >
           {kicker}
           <span className="sr-only">:</span>

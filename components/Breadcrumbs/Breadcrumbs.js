@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import StrapiLink from '@/components/StrapiLink';
 
 export default function Breadcrumbs({ crumbs }) {
@@ -14,7 +16,7 @@ export default function Breadcrumbs({ crumbs }) {
         return (
           <li
             key={`breadcrumb-${index}`}
-            className={`${isLast ? '' : 'hidden md:inline-flex'}`}
+            className={clsx(isLast && 'hidden md:inline-flex')}
           >
             {!isFirst && (
               <span className="font-rubik text-gray-400 mx-2 uppercase text-2xs md:text-xs hidden md:inline-flex">
@@ -23,9 +25,10 @@ export default function Breadcrumbs({ crumbs }) {
             )}
             <StrapiLink
               link={crumb}
-              className={`font-rubik text-gray-600 uppercase text-2xs md:text-xs ${
+              className={clsx(
+                'font-rubik text-gray-600 uppercase text-2xs md:text-xs',
                 crumb.url && 'hover:underline'
-              }`}
+              )}
             />
           </li>
         );

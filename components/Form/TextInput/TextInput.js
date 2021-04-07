@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { v4 as uuid } from 'uuid';
+import clsx from 'clsx';
 
 import FormError from '../Error';
 import Help from '../Help';
@@ -15,7 +16,7 @@ function TextInput(
   const htmlFor = id ?? uuid();
 
   return (
-    <div className={`flex flex-col ${className}`}>
+    <div className={clsx('flex flex-col', className)}>
       {label && <Label htmlFor={htmlFor}>{label}</Label>}
 
       {help && <Help>{help}</Help>}
@@ -26,13 +27,13 @@ function TextInput(
         <div className="relative">
           <input
             type={type}
-            className={`font-rubik text-base leading-none p-4 md:p-6 rounded-md border-2 outline-none w-full ${
-              styles.input
-            } ${
+            className={clsx(
+              'font-rubik text-base leading-none p-4 md:p-6 rounded-md border-2 outline-none w-full',
               error
                 ? 'border-orange-900 text-orange-900'
-                : 'border-gray-600 text-gray-600 focus:border-black'
-            }`}
+                : 'border-gray-600 text-gray-600 focus:border-black',
+              styles.input
+            )}
             id={htmlFor}
             ref={ref}
             {...props}

@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import StrapiLink from '@/components/StrapiLink';
 
 export default function TeaserSmall({ title, link, type = 'internal' }) {
@@ -18,7 +20,11 @@ export default function TeaserSmall({ title, link, type = 'internal' }) {
 
   return (
     <div
-      className={`relative px-8 py-10 md:p-10 h-full flex flex-col ${background} hover:bg-black hover:text-white`}
+      className={clsx(
+        'relative px-8 py-10 md:p-10 h-full flex flex-col',
+        background,
+        'hover:bg-black hover:text-white'
+      )}
     >
       <h2>
         <StrapiLink
