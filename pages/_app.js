@@ -1,6 +1,5 @@
 import { mountStoreDevtool } from 'simple-zustand-devtools';
-import { I18nProvider } from 'next-localization';
-import { useRouter } from 'next/router';
+import { appWithTranslation } from 'next-i18next';
 
 import { StoreProvider } from '../lib/store/store';
 import { useHydrate } from '../lib/store/zustand';
@@ -10,24 +9,23 @@ import Layout from '@/components/Layout';
 import '@/styles/tailwind.css';
 import 'swiper/swiper-bundle.css';
 
-export default function SBApp({ Component, pageProps }) {
-  const router = useRouter();
+function SBApp({ Component, pageProps }) {
   const store = useHydrate({
     ...pageProps.initialState
   });
-  const { translations, ...props } = pageProps;
+  const { ...props } = pageProps;
 
   if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
     mountStoreDevtool('Store', store);
   }
 
   return (
-    <I18nProvider lngDict={translations} locale={router.locale}>
-      <StoreProvider store={store}>
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      </StoreProvider>
-    </I18nProvider>
+    <StoreProvider store={store}>
+      <Layout>
+        <Component {...props} />
+      </Layout>
+    </StoreProvider>
   );
 }
+
+export default appWithTranslation(SBApp);

@@ -1,4 +1,4 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import dynamic from 'next/dynamic';
 
@@ -8,7 +8,7 @@ import CTA from '@/components/CTA';
 const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
 
 export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
 
   if (actions.length === 0) {
     return null;
@@ -25,8 +25,8 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
               title={location}
               meta={`${format(
                 new Date(start),
-                `${i18n.t('action.dateFormat')}, ${i18n.t('action.timeFormat')}`
-              )} ${i18n.t('action.timePostfix')}`}
+                `${t('action.dateFormat')}, ${t('action.timeFormat')}`
+              )} ${t('action.timePostfix')}`}
               intro={intro || title}
               slug={slug}
             />

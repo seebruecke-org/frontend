@@ -5,7 +5,8 @@ const withTranspiledModules = require('next-transpile-modules')([
   'react-children-utilities'
 ]);
 
-const { slugs: slugsDe } = require('./locales/de');
+const { i18n } = require('./next-i18next.config');
+const { slugs: slugsDe } = require('./public/locales/de/common.json');
 
 async function fetchAllRedirects() {
   try {
@@ -65,11 +66,7 @@ function createRewrites(slugs, locale) {
 }
 
 module.exports = withPlugins([withTranspiledModules, withPreact], {
-  i18n: {
-    locales: ['de'],
-    defaultLocale: 'de',
-    localeDetection: false
-  },
+  i18n,
 
   async rewrites() {
     return [...createRewrites(slugsDe, 'de')];

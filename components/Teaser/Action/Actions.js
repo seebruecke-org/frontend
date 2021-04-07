@@ -1,12 +1,12 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import NextLink from 'next/link';
 
 function Wrapper({ slug, children }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
 
   if (slug) {
     return (
-      <NextLink href={`/${i18n.t('action.slug')}/${slug}`}>
+      <NextLink href={`/${t('action.slug')}/${slug}`}>
         <a className="block bg-turquoise-300 hover:bg-black hover:text-white p-10 h-full">
           {children}
         </a>

@@ -1,8 +1,8 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import Script from 'react-load-script';
 
 export default function Fundraisingbox({ scriptUrl }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -11,7 +11,7 @@ export default function Fundraisingbox({ scriptUrl }) {
 
       <Script url={scriptUrl} />
 
-      <noscript>{i18n.t('fundraisingbox.activateJS')}</noscript>
+      <noscript>{t('fundraisingbox.activateJS')}</noscript>
 
       <a
         target="_blank"
@@ -20,7 +20,7 @@ export default function Fundraisingbox({ scriptUrl }) {
       >
         <img
           src="https://secure.fundraisingbox.com/images/FundraisingBox-Logo-Widget.png"
-          alt={i18n.t('fundraisingbox.logoAlt')}
+          alt={t('fundraisingbox.logoAlt')}
           border="0"
         />
       </a>

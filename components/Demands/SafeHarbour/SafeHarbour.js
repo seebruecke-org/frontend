@@ -1,4 +1,4 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import { AccordionItemState } from 'react-accessible-accordion';
 
 import {
@@ -24,7 +24,7 @@ const KEYS = [
 ];
 
 function Heading({ index, decided = false, fullfilled = false, demand }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   let color = 'bg-gray-500';
 
   if (decided === false && fullfilled === false) {
@@ -42,23 +42,21 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
       </span>
       <div className="ml-4 md:ml-8">
         <span className="font-rubik font-rubik-features text-base md:text-large font-bold leading-tight">
-          {i18n.t(`safeHarbour.demands.${demand}.title`)}
+          {t(`safeHarbour.demands.${demand}.title`)}
         </span>
         <span className="block font-rubik font-normal text-xs mt-2">
-          {decided === false && `${i18n.t('safeHarbour.demand.not')} `}
-          {decided === null && `${i18n.t('safeHarbour.demand.unknown')} `}
-          {i18n.t('safeHarbour.demand.decided')} &middot;{' '}
-          {fullfilled === false && `${i18n.t('safeHarbour.demand.not')} `}
-          {fullfilled === null && `${i18n.t('safeHarbour.demand.unknown')} `}
-          {i18n.t('safeHarbour.demand.fullfilled')}
+          {decided === false && `${t('safeHarbour.demand.not')} `}
+          {decided === null && `${t('safeHarbour.demand.unknown')} `}
+          {t('safeHarbour.demand.decided')} &middot;{' '}
+          {fullfilled === false && `${t('safeHarbour.demand.not')} `}
+          {fullfilled === null && `${t('safeHarbour.demand.unknown')} `}
+          {t('safeHarbour.demand.fullfilled')}
         </span>
 
         <AccordionItemState>
           {({ expanded }) => (
             <span className="flex font-rubik text-2xs font-normal md:hidden mt-6 items-center text-gray-600">
-              {i18n.t(
-                `safeHarbour.demand.${expanded ? 'readLess' : 'readMore'}`
-              )}
+              {t(`safeHarbour.demand.${expanded ? 'readLess' : 'readMore'}`)}
 
               {expanded ? (
                 <ChevronUpIcon className="w-4 h-auto ml-2" />
@@ -74,7 +72,7 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
 }
 
 export default function SafeHarbourDemands({ cityName, demands }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
 
   return (
     <Accordion
@@ -83,9 +81,7 @@ export default function SafeHarbourDemands({ cityName, demands }) {
       allowZeroExpanded
     >
       {KEYS.map((demandKey, demandIndex) => {
-        let description = i18n.t(
-          `safeHarbour.demands.${demandKey}.description`
-        );
+        let description = t(`safeHarbour.demands.${demandKey}.description`);
 
         if (description) {
           description = description.replace('{{city_placeholder}}', cityName);
