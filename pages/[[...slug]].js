@@ -27,14 +27,14 @@ export async function getStaticPaths({ defaultLocale }) {
 
   const staticPaths = sidePaths
     .map((slug) => {
-      if (customPages.includes(slug)) {
+      if (customPages.includes(slug.join('/'))) {
         return null;
       }
 
       return {
         locale: defaultLocale,
         params: {
-          slug: slug.split('/')
+          slug
         }
       };
     })
