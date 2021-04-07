@@ -8,7 +8,7 @@ export default function Breadcrumbs({ crumbs }) {
   }
 
   return (
-    <ul className="col-start-3 col-span-10 flex py-5 px-8">
+    <ul className="col-start-3 col-span-10 flex py-5 px-8 md:px-0">
       {crumbs.map((crumb, index) => {
         const isFirst = index === 0;
         const isLast = index + 1 === crumbs.length;
