@@ -44,10 +44,10 @@ async function fetchAllRedirects() {
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
     'take-part': ':slug*',
-    actions: ':path*',
-    news: ':path',
+    actions: ':slug*',
+    news: ':slug',
     'news/campaigns': ':slug',
-    press: ':path*'
+    press: ':slug'
   };
 
   return Object.keys(slugs).map((key) => {
