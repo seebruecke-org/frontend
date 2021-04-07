@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
@@ -59,7 +59,7 @@ function Burger({ onClick = () => {} }) {
 export default function Header() {
   const { locale, locales, query, asPath, pathname } = useRouter();
   let pagePathFragment = pathname;
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const store = useStore() || {};
   const [moreIsOpen, setmoreIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -85,7 +85,7 @@ export default function Header() {
     const urlWithoutSlashes = url.replace(/\\|\//g, '');
     const pageSlugWithoutSlashes = currentPageSlug.replace(/\\|\//g, '');
     let localizedPagePath =
-      i18n.t(`slugs.${pageSlugWithoutSlashes}`) || pageSlugWithoutSlashes;
+      t(`slugs.${pageSlugWithoutSlashes}`) || pageSlugWithoutSlashes;
 
     return localizedPagePath && localizedPagePath.startsWith(urlWithoutSlashes);
   }
@@ -123,7 +123,7 @@ export default function Header() {
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 onClick={() => setSearchOpen(true)}
               >
-                {i18n.t('header.search')}
+                {t('header.search')}
                 <SearchIcon className="w-7 h-7 ml-2" />
               </button>
 
@@ -150,7 +150,7 @@ export default function Header() {
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
                 onClick={() => setSaveLocationOpen(true)}
               >
-                {i18n.t('header.myPlace')}
+                {t('header.myPlace')}
                 <BookmarkIcon className="w-7 h-7 ml-2" />
               </button>
 

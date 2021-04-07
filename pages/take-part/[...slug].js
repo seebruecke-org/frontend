@@ -6,8 +6,7 @@ import {
   fetchAllFederalCountryPaths
 } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
-import { useI18n } from 'next-localization';
-
+import { useTranslation } from 'next-i18next';
 import { StageMedium } from '@/components/Stages';
 import BlockSwitch from '@/components/BlockSwitch';
 import Breadcrumbs from '@/components/Blocks/Breadcrumbs';
@@ -28,12 +27,10 @@ export default function TakePartPage({
   navigation,
   pageType
 }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const isGroup = pageType === 'group';
   const contentBlocks = group?.content || safe_harbour?.content || content;
-  const kicker = i18n.t(
-    isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle'
-  );
+  const kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
   const featuredImage = isGroup
     ? group?.image?.image
     : safe_harbour?.image?.image;

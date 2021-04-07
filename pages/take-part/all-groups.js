@@ -1,5 +1,5 @@
 import { memo, useRef } from 'react';
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 
 import { getPage } from '@/lib/pages';
@@ -16,7 +16,7 @@ import SEO from '@/components/SEO';
 const MemoizedMap = memo(Map);
 
 export default function TakePartOverview({ cities: defaultCities, page }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
   const mapCities = Object.keys(cities)
     .map((countryName) => {
@@ -71,7 +71,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
             <Row primaryGrid={false} className="md:col-span-5 flex-nowrap">
               <TextInput
                 name="filter"
-                placeholder={i18n.t('group.searchCity')}
+                placeholder={t('group.searchCity')}
                 value={filter}
                 onChange={(event) => {
                   setFilter(event.target.value);
@@ -111,8 +111,8 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                               cities[countryName].countries[federalCountryName]
                                 .cities.length
                             }
-                            singularKicker={i18n.t('group.singleTitle')}
-                            pluralKicker={i18n.t('group.pluralTitle')}
+                            singularKicker={t('group.singleTitle')}
+                            pluralKicker={t('group.pluralTitle')}
                             name={federalCountryName}
                             uri={
                               cities[countryName].countries[federalCountryName]

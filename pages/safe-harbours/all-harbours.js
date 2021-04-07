@@ -1,7 +1,7 @@
 import { getPage } from '@/lib/pages';
 import { fetchAllSafeHarbours } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import { memo, useRef } from 'react';
 import clsx from 'clsx';
 import format from 'date-fns/format';
@@ -17,7 +17,7 @@ import useCityFilter from '@/lib/hooks/useCityFilter';
 const MemoizedMap = memo(Map);
 
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
   const citiesListRef = useRef(null);
 
@@ -45,7 +45,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput
                 name="filter"
-                placeholder={i18n.t('group.searchCity')}
+                placeholder={t('group.searchCity')}
                 onChange={(event) => {
                   setFilter(event.target.value);
                 }}
@@ -81,8 +81,8 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                             cities[countryName].countries[federalCountryName]
                               .cities.length
                           }
-                          singularKicker={i18n.t('safeHarbour.singleTitle')}
-                          pluralKicker={i18n.t('safeHarbour.pluralTitle')}
+                          singularKicker={t('safeHarbour.singleTitle')}
+                          pluralKicker={t('safeHarbour.pluralTitle')}
                           name={federalCountryName}
                         />
 
@@ -99,7 +99,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                                 uri
                               }
                             }) => {
-                              let description = i18n.t(
+                              let description = t(
                                 'safeHarbour.demand.fullfilledFrom',
                                 {
                                   fullfilled: demands_fullfilled,
@@ -108,7 +108,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                               );
 
                               if (demands_fullfilled === null) {
-                                description = i18n.t(
+                                description = t(
                                   'safeHarbour.demand.stateUnknown'
                                 );
                               }
@@ -121,7 +121,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                                     description={description}
                                     since={format(
                                       new Date(since),
-                                      i18n.t('safeHarbour.dateFormat')
+                                      t('safeHarbour.dateFormat')
                                     )}
                                   />
                                 </li>
