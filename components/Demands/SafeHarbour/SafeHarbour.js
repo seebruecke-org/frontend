@@ -75,41 +75,43 @@ export default function SafeHarbourDemands({ cityName, demands }) {
   const { t } = useTranslation();
 
   return (
-    <Accordion
-      className="col-span-full md:col-start-3 md:col-span-9 my-12"
-      allowMultipleExpanded
-      allowZeroExpanded
-    >
-      {KEYS.map((demandKey, demandIndex) => {
-        let description = t(`safeHarbour.demands.${demandKey}.description`);
+    <div className="col-span-full md:col-start-3 md:col-span-9 my-12">
+      <Accordion allowMultipleExpanded allowZeroExpanded>
+        {KEYS.map((demandKey, demandIndex) => {
+          let description = t(`safeHarbour.demands.${demandKey}.description`);
 
-        if (description) {
-          description = description.replace('{{city_placeholder}}', cityName);
-        }
+          if (description) {
+            description = description.replace('{{city_placeholder}}', cityName);
+          }
 
-        return (
-          // eslint-disable-next-line react/jsx-key
-          <AccordionItem
-            isLast={demandIndex + 1 == KEYS.lengthLast}
-            activeBackground={false}
-            iconClassName="w-14 h-14 flex-shrink-0 self-start ml-auto mt-3 hidden md:flex"
-            heading={
-              <Heading
-                index={demandIndex}
-                decided={demands[`${demandKey}_decided`]}
-                fullfilled={demands[`${demandKey}_fullfilled`]}
-                demand={demandKey}
-              />
-            }
-          >
-            <AccordionPanel>
-              <div className="pl-14 md:pl-28 pb-8 md:pb-10">
-                <Richtext richtext={description} size="small" />
-              </div>
-            </AccordionPanel>
-          </AccordionItem>
-        );
-      })}
-    </Accordion>
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <AccordionItem
+              isLast={demandIndex + 1 == KEYS.lengthLast}
+              activeBackground={false}
+              iconClassName="w-14 h-14 flex-shrink-0 self-start ml-auto mt-3 hidden md:flex"
+              heading={
+                <Heading
+                  index={demandIndex}
+                  decided={demands[`${demandKey}_decided`]}
+                  fullfilled={demands[`${demandKey}_fullfilled`]}
+                  demand={demandKey}
+                />
+              }
+            >
+              <AccordionPanel>
+                <div className="pl-14 md:pl-28 pb-8 md:pb-10">
+                  <Richtext richtext={description} size="small" />
+                </div>
+              </AccordionPanel>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
+
+      <p className="font-rubik text-base text-gray-600 mt-12">
+        {t('safeHarbour.disclaimer')}
+      </p>
+    </div>
   );
 }

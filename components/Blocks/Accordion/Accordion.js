@@ -7,7 +7,11 @@ import Richtext from '../Richtext';
 
 export default function AccordionBlock({ items = [] }) {
   return (
-    <Accordion allowMultipleExpanded allowZeroExpanded>
+    <Accordion
+      allowMultipleExpanded
+      allowZeroExpanded
+      className="col-span-full md:col-start-3 md:col-span-9 py-20"
+    >
       {items.map(({ title, content }, index) => (
         // eslint-disable-next-line react/jsx-key
         <AccordionItem
