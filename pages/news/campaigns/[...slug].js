@@ -23,12 +23,12 @@ export default function CampaignPage({ content, title }) {
         <Breadcrumbs
           crumbs={[
             {
-              path: '/aktuelles',
+              url: '/aktuelles',
               label: 'Aktuelles'
             },
 
             {
-              path: '/aktuelles/kampagnen',
+              url: '/aktuelles/kampagnen',
               label: 'Kampagnen'
             }
           ]}
