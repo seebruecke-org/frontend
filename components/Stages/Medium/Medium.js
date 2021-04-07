@@ -1,4 +1,5 @@
 import { useI18n } from 'next-localization';
+import clsx from 'clsx';
 
 import Bookmark from '@/components/Bookmark';
 import Heading from '@/components/Heading';
@@ -19,7 +20,11 @@ export default function StageMedium({
 
   return (
     <section
-      className={`grid grid-layout-primary bg-orange-200 relative ${styles.stage} ${className}`}
+      className={clsx(
+        'grid grid-layout-primary bg-orange-200 relative',
+        styles.stage,
+        className
+      )}
     >
       {hasImage && (
         <Media
@@ -32,16 +37,17 @@ export default function StageMedium({
       )}
 
       <div
-        className={`col-span-full md:col-start-3 relative bg-orange-200 ${
+        className={clsx(
+          'col-span-full md:col-start-3 relative bg-orange-200',
           hasImage
             ? 'py-12 md:px-12 md:my-40 md:-ml-12 md:col-span-6'
             : 'my-14 md:my-24 md:col-span-9'
-        }`}
+        )}
       >
         <Heading
           level={1}
           kicker={kicker}
-          className={`${hasImage ? 'py-5' : 'mb-5'} px-8 md:px-0`}
+          className={clsx(hasImage ? 'py-5' : 'mb-5', 'px-8 md:px-0')}
         >
           {title}
         </Heading>

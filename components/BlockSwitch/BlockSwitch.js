@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import contentBlocks from '@/components/Blocks';
 
 import { BLOCK_PREFIX } from '@/lib/constants';
@@ -15,7 +17,7 @@ export default function BlockSwitch({ blocks, className }) {
   }
 
   return (
-    <div className={`grid grid-layout-primary ${className}`}>
+    <div className={clsx('grid grid-layout-primary', className)}>
       {blocks.map(({ __typename: type, ...props }, index) => {
         const BlockComponent = blockMap[type] || null;
 

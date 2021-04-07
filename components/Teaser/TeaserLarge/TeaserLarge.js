@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import CTA from '@/components/CTA';
 
 export default function TeaserLarge({ title, intro, cta, type = 'internal' }) {
@@ -24,21 +26,26 @@ export default function TeaserLarge({ title, intro, cta, type = 'internal' }) {
 
   return (
     <section
-      className={`py-12 ${
+      className={clsx(
+        'py-12 col-span-full md:col-start-3 md:col-span-9',
         type === 'general' ? 'md:py-0' : 'md:py-16'
-      } col-span-full md:col-start-3 md:col-span-9`}
+      )}
     >
       <div
-        className={`${background} pl-8 md:pl-0 py-16 md:py-24 pr-24 relative`}
+        className={clsx(
+          background,
+          'pl-8 md:pl-0 py-16 md:py-24 pr-24 relative'
+        )}
       >
         <h2 className="font-brezel text-xl md:text-2xl font-bold italic leading-tight">
           {title}
         </h2>
 
         <p
-          className={`font-rubik text-small md:text-medium mt-4 ${
+          className={clsx(
+            'font-rubik text-small md:text-medium mt-4',
             type !== 'general' ? 'leading-tight' : 'leading-normal'
-          }`}
+          )}
         >
           {intro}
         </p>
@@ -48,7 +55,10 @@ export default function TeaserLarge({ title, intro, cta, type = 'internal' }) {
         </div>
 
         <span
-          className={`absolute right-full h-full top-0 w-40 hidden md:block ${background}`}
+          className={clsx(
+            'absolute right-full h-full top-0 w-40 hidden md:block',
+            background
+          )}
         />
       </div>
     </section>

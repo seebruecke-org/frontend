@@ -3,6 +3,7 @@ import { fetchAllSafeHarbours } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useI18n } from 'next-localization';
 import { memo, useRef } from 'react';
+import clsx from 'clsx';
 import format from 'date-fns/format';
 
 import { FederalCountry, Country, Map } from '@/components/Map';
@@ -67,7 +68,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             {Object.keys(cities).map((countryName, countryIndex) => (
               <li
                 key={`country-${countryName}`}
-                className={`${countryIndex > 0 && 'mt-20'}`}
+                className={clsx(countryIndex > 0 && 'mt-20')}
               >
                 <Country name={countryName} />
 

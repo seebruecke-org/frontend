@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 
 function LinkWrapper({ children, uri }) {
@@ -26,7 +27,7 @@ export default function FederalCountry({
           {count} {count === 1 ? singularKicker : pluralKicker}
         </small>
 
-        <span className={`${uri && 'underline group-hover:text-orange-800'}`}>
+        <span className={clsx(uri && 'underline group-hover:text-orange-800')}>
           {name}
         </span>
       </h3>

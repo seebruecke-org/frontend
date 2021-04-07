@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import clsx from 'clsx';
 import SwiperCore, { Keyboard, Mousewheel, Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -33,23 +34,34 @@ export default function SectionNavigation({
 
   return (
     <div
-      className={`bg-orange-200 ${
-        primaryGrid && 'grid grid-layout-primary'
-      } py-6 sm:py-7 md:py-8 relative ${styles.navigation} ${className}`}
+      className={clsx(
+        'bg-orange-200',
+        primaryGrid && 'grid grid-layout-primary',
+        'py-6 sm:py-7 md:py-8 relative',
+        styles.navigation,
+        className
+      )}
     >
       <span
-        className={`w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply ${styles.border}`}
+        className={clsx(
+          'w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply',
+          styles.border
+        )}
       />
 
       <nav
-        className={`${
-          primaryGrid && 'col-span-full md:col-start-3 md:col-span-10'
-        } relative w-full px-8 md:px-0`}
+        className={clsx(
+          primaryGrid && 'col-span-full md:col-start-3 md:col-span-10',
+          'relative w-full px-8 md:px-0'
+        )}
       >
         {allowPrev && (
           <button
             type="button"
-            className={`absolute top-0 h-full left-0 z-10 flex items-center ${styles.fadeOutStart}`}
+            className={clsx(
+              'absolute top-0 h-full left-0 z-10 flex items-center',
+              styles.fadeOutStart
+            )}
             onClick={() => {
               if (swiperInstance) {
                 swiperInstance.slidePrev();
@@ -82,11 +94,11 @@ export default function SectionNavigation({
               <SwiperSlide className={styles.slide}>
                 <StrapiLink
                   link={item}
-                  className={`block py-3 px-3 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap ${
-                    isActive && 'bg-white'
-                  } hover:bg-white col-span-2 text-center ${
+                  className={clsx(
+                    'block py-3 px-3 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap hover:bg-white col-span-2 text-center',
+                    isActive && 'bg-white',
                     index === 0 && 'col-start-2'
-                  }`}
+                  )}
                 />
               </SwiperSlide>
             );
@@ -96,7 +108,10 @@ export default function SectionNavigation({
         {allowNext && (
           <button
             type="button"
-            className={`absolute top-0 h-full right-0 z-10 flex items-center ${styles.fadeOutEnd}`}
+            className={clsx(
+              'absolute top-0 h-full right-0 z-10 flex items-center',
+              styles.fadeOutEnd
+            )}
             onClick={() => {
               if (swiperInstance) {
                 swiperInstance.slideNext();

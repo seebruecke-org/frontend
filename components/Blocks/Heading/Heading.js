@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import Heading from '@/components/Heading';
 
 import { blockNameMatches } from '@/lib/blocks';
@@ -30,7 +32,10 @@ export default function HeadingBlock({
     <Heading
       level={normalizedLevel}
       kicker={kicker}
-      className={`${marginTop} px-8 md:px-0 col-span-full md:col-start-3 md:col-span-9`}
+      className={clsx(
+        'px-8 md:px-0 col-span-full md:col-start-3 md:col-span-9',
+        marginTop
+      )}
       as={as}
     >
       {normalizedChildren}

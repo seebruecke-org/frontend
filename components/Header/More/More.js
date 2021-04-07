@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import TimesIcon from '@/public/icons/times.svg';
 
 import * as styles from './more.module.css';
@@ -26,7 +28,10 @@ export default function More({ children, onDismiss = () => {} }) {
   return (
     <div className="flex flex-col bg-gray-800 absolute top-0 md:top-full right-0 w-screen md:w-auto h-screen md:h-auto pt-5 md:pt-16 md:pl-16 md:pr-16 z-40">
       <span
-        className={`w-0 h-0 border text-gray-800 absolute left-2/4 ${styles.triangle}`}
+        className={clsx(
+          'w-0 h-0 border text-gray-800 absolute left-2/4',
+          styles.triangle
+        )}
       />
 
       <button

@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import Heading from '@/components/Blocks/Heading';
 
 import FileDownloadIcon from '@/public/icons/file-download.svg';
@@ -16,9 +18,10 @@ export default function MaterialBlock({
 }) {
   return (
     <div
-      className={`col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary mt-20 ${
+      className={clsx(
+        'col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary mt-20',
         next && 'mb-20'
-      }`}
+      )}
     >
       <Heading level={2}>{mTitle}</Heading>
 

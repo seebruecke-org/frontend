@@ -1,4 +1,5 @@
 import { useI18n } from 'next-localization';
+import clsx from 'clsx';
 import React from 'react';
 
 import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
@@ -12,7 +13,7 @@ import { useStore } from '@/lib/store';
 
 function SocialMedia({ className = '' }) {
   return (
-    <div className={`flex space-x-4 ${className}`}>
+    <div className={clsx('flex space-x-4', className)}>
       <FacebookIcon className="w-12 h-12" />
       <InstagramIcon className="w-12 h-12" />
       <TwitterIcon className="w-12 h-12" />

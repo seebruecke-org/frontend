@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import { normalizeBlockName } from '@/lib/blocks';
 
 const BLOCKS_WITH_OUTER_MARGIN = [
@@ -30,9 +32,11 @@ export default function PageBody({
 
   return (
     <article
-      className={`${marginTop && 'mt-8 md:mt-20'} ${
-        marginBottom && 'pb-16 md:pb-60'
-      } ${className}`}
+      className={clsx(
+        marginTop && 'mt-8 md:mt-20',
+        marginBottom && 'pb-16 md:pb-60',
+        className
+      )}
     >
       {children}
     </article>
