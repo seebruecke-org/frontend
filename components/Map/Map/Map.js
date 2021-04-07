@@ -27,7 +27,7 @@ export default function Map({ features: defaultFeatures }) {
     <div className="col-span-full md:col-start-1 md:col-span-6 relative">
       <div className="bg-gray-400 h-96 md:h-screen sticky top-0 overflow-hidden">
         <MemoizedMap
-          fitBounds={collection && getBounds(collection.features)}
+          fitBounds={collection?.features && getBounds(collection.features)}
           fitBoundsOptions={
             collection && {
               duration: 0,
@@ -35,7 +35,7 @@ export default function Map({ features: defaultFeatures }) {
             }
           }
         >
-          {collection && (
+          {collection?.features && (
             <GeoJSONLayer
               data={collection}
               circlePaint={{
