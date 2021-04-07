@@ -1,12 +1,15 @@
 import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import { useInView } from 'react-intersection-observer';
+import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
 import Action from '@/components/Teaser/Action';
 import CTA from '@/components/CTA';
 
 const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
+
+import * as styles from './actions.module.css';
 
 export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
   const { t } = useTranslation();
@@ -24,13 +27,14 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
       ref={ref}
     >
       {show_map && (
-        <>
-          {inView ? (
-            <MapboxMap className="mb-8 h-96" />
-          ) : (
-            <div className="bg-gray-500 h-96" />
+        <div
+          className={clsx(
+            'bg-gray-500 mb-8 overflow-hidden',
+            styles.mapContainer
           )}
-        </>
+        >
+          {inView && <MapboxMap factory={{ scrollZoom: false }} />}
+        </div>
       )}
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
