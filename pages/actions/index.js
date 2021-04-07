@@ -1,4 +1,4 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import { useState, useEffect, memo, useRef } from 'react';
 
@@ -30,7 +30,7 @@ function filterActions(actions, term) {
 const MemoizedMap = memo(Map);
 
 export default function TakePartPage({ actions: defaultActions, page }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const [filterValue, setFilterValue] = useState(null);
   const [actions, setActions] = useState(defaultActions);
   const actionsListRef = useRef(null);
@@ -45,7 +45,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 
   return (
     <article>
-      <SEO title={i18n.t('actions.pluralTitle')} />
+      <SEO title={t('actions.pluralTitle')} />
 
       <BlockSwitch blocks={page?.content} />
 
@@ -67,7 +67,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput
                 name="filter"
-                placeholder={i18n.t('action.filter')}
+                placeholder={t('action.filter')}
                 value={filterValue}
                 onChange={(event) => {
                   setFilterValue(event.target.value);
@@ -95,8 +95,8 @@ export default function TakePartPage({ actions: defaultActions, page }) {
               >
                 <FederalCountry
                   count={actions[key].length}
-                  singularKicker={i18n.t('action.singleTitle')}
-                  pluralKicker={i18n.t('action.pluralTitle')}
+                  singularKicker={t('action.singleTitle')}
+                  pluralKicker={t('action.pluralTitle')}
                   name={key}
                 />
 
@@ -108,10 +108,10 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                           title={location}
                           meta={`${format(
                             new Date(start),
-                            `${i18n.t('action.dateFormat')}, ${i18n.t(
+                            `${t('action.dateFormat')}, ${t(
                               'action.timeFormat'
                             )}`
-                          )} ${i18n.t('action.timePostfix')}`}
+                          )} ${t('action.timePostfix')}`}
                           intro={intro || title}
                           slug={slug}
                         />

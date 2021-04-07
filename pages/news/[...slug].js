@@ -1,4 +1,4 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import format from 'date-fns/format';
 
 import { getLastBlockName } from '@/lib/blocks';
@@ -18,9 +18,9 @@ export default function NewsEntryPage({
   publishedAt,
   type
 }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const date = publishedAt
-    ? format(new Date(publishedAt), i18n.t('news.dateFormat'))
+    ? format(new Date(publishedAt), t('news.dateFormat'))
     : '';
 
   return (
@@ -32,14 +32,14 @@ export default function NewsEntryPage({
           <Breadcrumbs
             crumbs={[
               {
-                path: `/${i18n.t('slugs.press')}`,
-                label: i18n.t('press.longTitle')
+                path: `/${t('slugs.press')}`,
+                label: t('press.longTitle')
               }
             ]}
           />
         )}
 
-        <Heading level={1} kicker={`${date} · ${i18n.t(`news.type.${type}`)}`}>
+        <Heading level={1} kicker={`${date} · ${t(`news.type.${type}`)}`}>
           {title}
         </Heading>
       </div>

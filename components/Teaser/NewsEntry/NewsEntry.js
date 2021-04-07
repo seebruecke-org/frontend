@@ -1,4 +1,4 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import NextLink from 'next/link';
 
@@ -13,9 +13,9 @@ export default function NewsEntry({
   excerpt = '',
   slug
 }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
 
-  const translatedType = i18n.t(`news.type.${type}`);
+  const translatedType = t(`news.type.${type}`);
 
   return (
     <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group">
@@ -33,11 +33,11 @@ export default function NewsEntry({
         }`}
       >
         <header className="font-rubik text-xs text-gray-600 flex space-x-8">
-          {format(new Date(publishedAt), i18n.t('news.dateFormat'))}
+          {format(new Date(publishedAt), t('news.dateFormat'))}
           &nbsp;·&nbsp;{translatedType}
         </header>
 
-        <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
+        <NextLink href={`/${t('news.slug')}/${slug}/`}>
           <a className="group-hover:underline">
             <Heading level={3}>{title}</Heading>
           </a>
@@ -48,7 +48,7 @@ export default function NewsEntry({
         )}
       </div>
 
-      <NextLink href={`/${i18n.t('news.slug')}/${slug}/`}>
+      <NextLink href={`/${t('news.slug')}/${slug}/`}>
         <a
           className="absolute top-0 left-0 h-full w-full z-10 opacity-0"
           tabIndex="-1"

@@ -1,5 +1,4 @@
-import { useI18n } from 'next-localization';
-
+import { useTranslation } from 'next-i18next';
 import Bookmark from '@/components/Bookmark';
 import Heading from '@/components/Heading';
 import Media from '@/components/Media';
@@ -14,7 +13,7 @@ export default function StageMedium({
   className,
   allowBookmark = false
 }) {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const hasImage = !!image;
 
   return (
@@ -52,7 +51,7 @@ export default function StageMedium({
           </p>
         )}
 
-        {allowBookmark && <Bookmark label={i18n.t('city.bookmark_place')} />}
+        {allowBookmark && <Bookmark label={t('city.bookmark_place')} />}
       </div>
     </section>
   );

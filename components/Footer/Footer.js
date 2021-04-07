@@ -1,4 +1,4 @@
-import { useI18n } from 'next-localization';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 
 import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
@@ -42,7 +42,7 @@ function Menu({ title, items }) {
 }
 
 export default function Footer() {
-  const i18n = useI18n();
+  const { t } = useTranslation();
   const store = useStore() || {};
 
   const footerTakePart = store?.menus?.['footer_take_part'];
@@ -59,7 +59,7 @@ export default function Footer() {
           )}
 
           <a href="/" className="font-bold block">
-            {i18n.t('footer.langEn')}
+            {t('footer.langEn')}
           </a>
         </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
             <Logo />
 
             <p className="font-rubik text-xs font-rubik-features">
-              {i18n.t('footer.tagline')}
+              {t('footer.tagline')}
             </p>
 
             <div className="flex flex-col space-y-6 md:space-y-6 pt-6 md:pt-10">
@@ -84,14 +84,14 @@ export default function Footer() {
                 href="https://www.seebruecke.at"
                 className="font-rubik text-xs font-rubik-features hover:underline"
               >
-                {i18n.t('footer.austria')}
+                {t('footer.austria')}
               </a>
 
               <a
                 href="https://seebruecke.ch"
                 className="font-rubik text-xs font-rubik-features hover:underline"
               >
-                {i18n.t('footer.switzerland')}
+                {t('footer.switzerland')}
               </a>
             </div>
 
