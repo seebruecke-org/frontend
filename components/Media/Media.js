@@ -66,7 +66,7 @@ export default function Media({
             showCaptionAsOverlay &&
               isCaptionOpen &&
               'absolute -bottom-8 left-16 bg-white z-20 px-4 md:pr-5',
-            styles.captionOverlay
+            showCaptionAsOverlay && styles.captionOverlay
           )}
         >
           <Richtext content={imageCaption} size="tiny" />
