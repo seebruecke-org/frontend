@@ -50,19 +50,37 @@ function createRewrites(slugs, locale) {
     press: ':slug'
   };
 
-  return Object.keys(slugs).map((key) => {
-    const postfix = PATH_POSTFIXES[key] ? `/${PATH_POSTFIXES[key]}` : '';
-    const source = `/${locale}/${slugs[key]}${postfix}`;
-    const destination = `/${locale}/${key}${postfix.replace(/\(.*\)/, '')}`;
+  const rewrites = Object.keys(slugs)
+    .map((key) => {
+      const postfix = PATH_POSTFIXES[key] ? `/${PATH_POSTFIXES[key]}` : '';
+      const source = `/${locale}/${slugs[key]}${postfix}`;
+      const destination = `/${locale}/${key}${postfix.replace(/\(.*\)/, '')}`;
 
-    console.log('Create rewrite: ', source, ' --> ', destination);
+      const rewrite = [];
 
-    return {
-      source,
-      destination,
-      locale: false
-    };
-  });
+      if (postfix) {
+        rewrite.push({
+          source: `/${locale}/${slugs[key]}`,
+          destination: `/${locale}/${key}`,
+          locale: false
+        });
+      }
+
+      rewrite.push({
+        source,
+        destination,
+        locale: false
+      });
+
+      return rewrite;
+    })
+    .flat();
+
+  rewrites.forEach(({ source, destination }) =>
+    console.log('Create rewrite: ', source, ' --> ', destination)
+  );
+
+  return rewrites;
 }
 
 module.exports = withPlugins([withTranspiledModules, withPreact], {
