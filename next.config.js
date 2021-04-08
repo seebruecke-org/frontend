@@ -97,5 +97,9 @@ module.exports = withPlugins([withTranspiledModules, withPreact], {
     NEXT_CMS_DOMAIN: process.env.NEXT_CMS_DOMAIN,
     WP_GRAPHQL_API: process.env.NEXT_WP_GRAPHQL_API,
     MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN
+  },
+
+  future: {
+    webpack5: true
   }
 });
