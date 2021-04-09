@@ -65,6 +65,12 @@ function createRewrites(slugs, locale) {
           destination: `/${locale}/${key}`,
           locale: false
         });
+      } else if (postfix) {
+        rewrite.push({
+          source: `/${locale}/${slugs[key]}`,
+          destination: `/:slug*`,
+          locale: false
+        });
       }
 
       rewrite.push({
