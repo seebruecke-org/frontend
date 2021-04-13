@@ -48,7 +48,10 @@ export default function TakePartPage({
       {pageType === 'group' || pageType === 'safe-harbour' ? (
         <StageMedium
           title={name}
-          kicker={kicker}
+          kicker={`${kicker}${
+            pageType === 'safe-harbour' &&
+            ` ${t('safeHarbour.since')}${safe_harbour?.since}`
+          }`}
           className="col-span-full"
           image={featuredImage}
           allowBookmark
