@@ -43,7 +43,8 @@ async function fetchAllRedirects() {
 
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
-    'take-part': ':slug*',
+    // eslint-disable-next-line no-useless-escape
+    'take-part': ':slug*([\w-]{1,})',
     actions: ':slug',
     news: ':slug',
     'news/campaigns': ':slug',
@@ -63,12 +64,6 @@ function createRewrites(slugs, locale) {
         rewrite.push({
           source: `/${locale}/${slugs[key]}`,
           destination: `/${locale}/${key}`,
-          locale: false
-        });
-      } else if (postfix) {
-        rewrite.push({
-          source: `/${locale}/${slugs[key]}`,
-          destination: `/:slug`,
           locale: false
         });
       }
