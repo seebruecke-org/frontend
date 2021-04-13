@@ -65,76 +65,83 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
           </Form>
 
           <ul ref={citiesListRef}>
-            {Object.keys(cities).map((countryName, countryIndex) => (
-              <li
-                key={`country-${countryName}`}
-                className={clsx(countryIndex > 0 && 'mt-20')}
-              >
-                <Country name={countryName} />
+            {Object.keys(cities)
+              .sort()
+              .map((countryName, countryIndex) => (
+                <li
+                  key={`country-${countryName}`}
+                  className={clsx(countryIndex > 0 && 'mt-20')}
+                >
+                  <Country name={countryName} />
 
-                <ul className="flex flex-col space-y-10">
-                  {Object.keys(cities[countryName].countries).map(
-                    (federalCountryName) => (
-                      <li key={`federalCountry-${federalCountryName}`}>
-                        <FederalCountry
-                          count={
-                            cities[countryName].countries[federalCountryName]
-                              .cities.length
-                          }
-                          singularKicker={t('safeHarbour.singleTitle')}
-                          pluralKicker={t('safeHarbour.pluralTitle')}
-                          name={federalCountryName}
-                        />
-
-                        <ul className="grid md:grid-cols-2 gap-8 px-6">
-                          {cities[countryName].countries[
-                            federalCountryName
-                          ].cities.map(
-                            ({
-                              name,
-                              safe_harbour: {
-                                demands_count,
-                                demands_fullfilled,
-                                since,
-                                uri
-                              }
-                            }) => {
-                              let description = t(
-                                'safeHarbour.demand.fullfilledFrom',
-                                {
-                                  fullfilled: demands_fullfilled,
-                                  count: demands_count
-                                }
-                              );
-
-                              if (demands_fullfilled === null) {
-                                description = t(
-                                  'safeHarbour.demand.stateUnknown'
-                                );
-                              }
-
-                              return (
-                                <li key={`city-${name}`}>
-                                  <SafeHarbour
-                                    uri={uri}
-                                    name={name}
-                                    description={description}
-                                    since={format(
-                                      new Date(since),
-                                      t('safeHarbour.dateFormat')
-                                    )}
-                                  />
-                                </li>
-                              );
+                  <ul className="flex flex-col space-y-10">
+                    {Object.keys(cities[countryName].countries)
+                      .sort()
+                      .map((federalCountryName) => (
+                        <li key={`federalCountry-${federalCountryName}`}>
+                          <FederalCountry
+                            count={
+                              cities[countryName].countries[federalCountryName]
+                                .cities.length
                             }
-                          )}
-                        </ul>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </li>
-            ))}
+                            singularKicker={t('safeHarbour.singleTitle')}
+                            pluralKicker={t('safeHarbour.pluralTitle')}
+                            name={federalCountryName}
+                          />
+
+                          <ul className="grid md:grid-cols-2 gap-8 px-6">
+                            {cities[countryName].countries[
+                              federalCountryName
+                            ].cities
+                              .sort(
+                                ({ name: cityAName }, { name: cityBName }) =>
+                                  cityAName.localeCompare(cityBName)
+                              )
+                              .map(
+                                ({
+                                  name,
+                                  safe_harbour: {
+                                    demands_count,
+                                    demands_fullfilled,
+                                    since,
+                                    uri
+                                  }
+                                }) => {
+                                  let description = t(
+                                    'safeHarbour.demand.fullfilledFrom',
+                                    {
+                                      fullfilled: demands_fullfilled,
+                                      count: demands_count
+                                    }
+                                  );
+
+                                  if (demands_fullfilled === null) {
+                                    description = t(
+                                      'safeHarbour.demand.stateUnknown'
+                                    );
+                                  }
+
+                                  return (
+                                    <li key={`city-${name}`}>
+                                      <SafeHarbour
+                                        uri={uri}
+                                        name={name}
+                                        description={description}
+                                        since={format(
+                                          new Date(since),
+                                          t('safeHarbour.dateFormat')
+                                        )}
+                                      />
+                                    </li>
+                                  );
+                                }
+                              )}
+                          </ul>
+                        </li>
+                      ))}
+                  </ul>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
