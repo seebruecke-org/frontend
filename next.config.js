@@ -43,6 +43,7 @@ async function fetchAllRedirects() {
 
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
+    // eslint-disable-next-line no-useless-escape
     'take-part': ':slug*',
     actions: ':slug',
     news: ':slug',
@@ -50,19 +51,38 @@ function createRewrites(slugs, locale) {
     press: ':slug'
   };
 
-  return Object.keys(slugs).map((key) => {
-    const postfix = PATH_POSTFIXES[key] ? `/${PATH_POSTFIXES[key]}` : '';
-    const source = `/${locale}/${slugs[key]}${postfix}`;
-    const destination = `/${locale}/${key}${postfix.replace(/\(.*\)/, '')}`;
+  const rewrites = Object.keys(slugs)
+    .map((key) => {
+      const postfix = PATH_POSTFIXES[key] ? `/${PATH_POSTFIXES[key]}` : '';
+      const source = `/${locale}/${slugs[key]}${postfix}`;
+      const destination = `/${locale}/${key}${postfix.replace(/\(.*\)/, '')}`;
 
-    console.log('Create rewrite: ', source, ' --> ', destination);
+      const rewrite = [];
 
-    return {
-      source,
-      destination,
-      locale: false
-    };
-  });
+      // TODO: remove hard coded take-part condition
+      if (postfix) {
+        rewrite.push({
+          source: `/${locale}/${slugs[key]}`,
+          destination: `/${locale}/${key}`,
+          locale: false
+        });
+      }
+
+      rewrite.push({
+        source,
+        destination,
+        locale: false
+      });
+
+      return rewrite;
+    })
+    .flat();
+
+  rewrites.forEach(({ source, destination }) =>
+    console.log('Create rewrite: ', source, ' --> ', destination)
+  );
+
+  return rewrites;
 }
 
 module.exports = withPlugins([withTranspiledModules, withPreact], {
