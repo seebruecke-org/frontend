@@ -36,8 +36,8 @@ export default function FormPage() {
         <Row>
           <TextInput
             name="city"
-            label="In welcher Stadt findet die Demo oder Aktion statt?"
-            ref={register({ required: 'Bitte gibt eine Stadt ein' })}
+            label="In welchem Ort findet die Demo oder Aktion statt?"
+            ref={register({ required: 'Bitte gibt einen Ort ein' })}
             error={errors?.city}
           />
         </Row>
