@@ -60,7 +60,7 @@ function createRewrites(slugs, locale) {
       const rewrite = [];
 
       // TODO: remove hard coded take-part condition
-      if (postfix && key !== 'take-part') {
+      if (postfix) {
         rewrite.push({
           source: `/${locale}/${slugs[key]}`,
           destination: `/${locale}/${key}`,
