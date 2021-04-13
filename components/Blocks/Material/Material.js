@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 
 import Heading from '@/components/Blocks/Heading';
-
 import FileDownloadIcon from '@/public/icons/file-download.svg';
+
+import { blockNameMatches } from '@/lib/blocks';
 
 function getHumanRedableFileFormat(mimeType) {
   const part = mimeType.split('/')[1].toUpperCase();
@@ -14,13 +15,25 @@ function getHumanRedableFileFormat(mimeType) {
 export default function MaterialBlock({
   mTitle,
   items = [],
-  blockContext: { next }
+  blockContext: { next, previous }
 }) {
+  let marginTop = 'mt-20';
+  let marginBottom = next && 'mb-20';
+
+  if (blockNameMatches(previous, 'Material')) {
+    marginTop = 'mt-0';
+  }
+
+  if (blockNameMatches(next, 'Material')) {
+    marginBottom = 'mb-0';
+  }
+
   return (
     <div
       className={clsx(
-        'col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary mt-20',
-        next && 'mb-20'
+        'col-span-full bg-turquoise-300 pt-4 md:pt-16 pb-24 md:pb-32 grid grid-layout-primary',
+        marginTop,
+        marginBottom
       )}
     >
       <Heading level={2}>{mTitle}</Heading>
