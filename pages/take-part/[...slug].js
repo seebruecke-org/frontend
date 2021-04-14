@@ -1,3 +1,5 @@
+import format from 'date-fns/format';
+
 import { RETURN_CODES } from '@/lib/constants';
 import {
   query,
@@ -50,7 +52,11 @@ export default function TakePartPage({
           title={name}
           kicker={`${kicker}${
             pageType === 'safe-harbour' &&
-            ` ${t('safeHarbour.since')}${safe_harbour?.since}`
+            safe_harbour?.since &&
+            ` · ${t('safeHarbour.since').toLowerCase()} ${format(
+              new Date(safe_harbour?.since),
+              t('safeHarbour.dateFormat')
+            )}`
           }`}
           className="col-span-full"
           image={featuredImage}
