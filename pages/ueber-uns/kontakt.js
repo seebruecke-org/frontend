@@ -67,7 +67,7 @@ export async function getStaticProps({ locale }) {
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   return {
-    revalidate: 60,
+    revalidate: 20,
     props: {
       ...globalData,
       initialState
