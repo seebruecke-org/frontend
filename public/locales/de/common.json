@@ -90,7 +90,7 @@
 
   "news": {
     "slug": "aktuelles",
-    "dateFormat": "dd.LLLLyyy",
+    "dateFormat": "dd. LLLL yyy",
     "type": {
       "news": "Aktuelles",
       "pressrelease": "Pressemitteilung"
