@@ -55,9 +55,10 @@ export default function Footer() {
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
       <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3 flex-col space-y-8">
-          {hasBookmarkedItem && (
-            <SavedLocation name="Berlin" path="/mach-mit/deutschland/berlin" />
-          )}
+          <SavedLocation
+            name={hasBookmarkedItem ? 'Berlin' : false}
+            path={hasBookmarkedItem ? '/mach-mit/deutschland/berlin' : false}
+          />
 
           <a href="/" className="font-bold block">
             {t('footer.langEn')}
