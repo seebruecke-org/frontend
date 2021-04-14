@@ -6,7 +6,7 @@ const withTranspiledModules = require('next-transpile-modules')([
 ]);
 
 const { i18n } = require('./next-i18next.config');
-const { slugs: slugsDe } = require('./public/locales/de/common.json');
+const { slugs: slugsDe } = require('./locales/de/common.json');
 
 async function fetchAllRedirects() {
   try {
