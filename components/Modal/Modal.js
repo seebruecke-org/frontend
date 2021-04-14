@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import ReactModal from 'react-modal';
 
 import TimesIcon from '@/public/icons/times.svg';
@@ -24,6 +25,8 @@ const styles = {
 };
 
 export default function Modal({ children, onClose = () => {}, ...props }) {
+  const { t } = useTranslation();
+
   return (
     <ReactModal onRequestClose={() => onClose()} style={styles} {...props}>
       <div className="relative p-10">
@@ -33,7 +36,7 @@ export default function Modal({ children, onClose = () => {}, ...props }) {
           className="absolute top-8 right-8 flex flex-col items-center font-rubik font-rubik-features text-3xs uppercase leading-none text-gray-800 hover:text-orange-800"
         >
           <TimesIcon className="w-14 h-auto mb-1" />
-          Close
+          {t('modal.close')}
         </button>
 
         <div className="pt-20">{children}</div>

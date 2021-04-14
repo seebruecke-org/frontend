@@ -92,7 +92,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             {Object.keys(actions).map((key, index) => (
               <li
                 key={`action-date-${index}`}
-                className={clsx(index > 0 && 'mt-20')}
+                className={clsx(index > 0 && 'mt-12 md:mt-20')}
               >
                 <FederalCountry
                   count={actions[key].length}

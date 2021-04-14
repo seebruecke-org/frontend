@@ -114,5 +114,9 @@
   "fundraisingbox": {
     "activateJS": "Bitte aktiviere Javascript um zu spenden.",
     "logoAlt": "Fundraisingbox Logo"
+  },
+
+  "modal": {
+    "close": "Schließen"
   }
 }

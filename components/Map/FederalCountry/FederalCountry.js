@@ -22,7 +22,7 @@ export default function FederalCountry({
 }) {
   return (
     <LinkWrapper uri={uri}>
-      <h3 className="font-brezel text-xl font-bold italic leading-none px-5 py-10">
+      <h3 className="font-brezel text-xl font-bold italic leading-none px-8 py-8 md:py-10">
         <small className="block not-italic font-rubik font-normal text-small mb-4">
           {count} {count === 1 ? singularKicker : pluralKicker}
         </small>

@@ -97,7 +97,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
               .map((countryName, countryIndex) => (
                 <li
                   key={`country-${countryName}`}
-                  className={clsx(countryIndex > 0 && 'mt-20')}
+                  className={clsx(countryIndex > 0 && 'mt-12 md:mt-20')}
                 >
                   <Country name={countryName} uri={cities[countryName].uri} />
 
