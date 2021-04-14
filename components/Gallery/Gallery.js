@@ -74,10 +74,10 @@ export default function Gallery({ items }) {
             <SwiperSlide style={{ width: `${offsetLeft - SLIDE_GAP}px` }} />
           )}
 
-          {items.map(({ media }) => (
+          {items.map((item) => (
             // eslint-disable-next-line react/jsx-key
             <SwiperSlide className={styles.slide}>
-              <Media media={media} />
+              <Media image={item} />
             </SwiperSlide>
           ))}
         </Swiper>
