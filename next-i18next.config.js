@@ -7,5 +7,5 @@ module.exports = {
     localeDetection: false
   },
 
-  localePath: path.resolve('./src/locales')
+  localePath: path.resolve('./locales')
 };

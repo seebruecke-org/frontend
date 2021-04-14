@@ -6,7 +6,8 @@
       "@/data/*": ["data/*"],
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["lib/styles/*"],
-      "@/public/*": ["public/*"]
+      "@/public/*": ["public/*"],
+      "@/locales/*": ["locales/*"],
     }
   }
 }
