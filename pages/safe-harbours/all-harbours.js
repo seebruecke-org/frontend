@@ -19,6 +19,18 @@ const MemoizedMap = memo(Map);
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
   const { t } = useTranslation();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
+  const mapCities = Object.keys(cities)
+    .map((countryName) => {
+      const federalCountryNames = Object.keys(cities[countryName].countries);
+
+      return federalCountryNames
+        .map(
+          (federalCountryName) =>
+            cities[countryName].countries[federalCountryName].cities
+        )
+        .flat();
+    })
+    .flat();
   const citiesListRef = useRef(null);
 
   return (
@@ -28,7 +40,22 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
       <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
-        <MemoizedMap />
+        <MemoizedMap
+          features={mapCities.map(
+            ({ name, id, coordinates: { geometry } }) => ({
+              type: 'Feature',
+              properties: {
+                name,
+                id,
+                type: 'city'
+              },
+              geometry: {
+                ...geometry,
+                coordinates: geometry.coordinates
+              }
+            })
+          )}
+        />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
           <Form

@@ -27,7 +27,7 @@
     "singleTitle": "Aktion",
     "pluralTitle": "Aktionen",
     "slug": "aktionen",
-    "dateFormat": "dd. LLL yyy",
+    "dateFormat": "dd.LLLyyy",
     "timeFormat": "hh:mm",
     "timePostfix": "Uhr",
     "organizedBy": "Organisiert von der Lokalgruppe",
@@ -37,7 +37,7 @@
   "safeHarbour": {
     "singleTitle": "Sicherer Hafen",
     "pluralTitle": "Sichere Häfen",
-    "dateFormat": "dd. LL. yyy",
+    "dateFormat": "dd.LL.yyy",
     "since": "Seit",
     "disclaimer": "Die Angaben berufen sich auf die Interpretation der Beschlüsse. Wenn etwas fehlt oder geändert werden soll, oder du Fragen oder Anmerkungen hast, schreibe uns gerne.",
 
@@ -49,7 +49,7 @@
       "readMore": "Details anzeigen",
       "readLess": "Details ausblenden",
       "stateUnknown": "Status unbekannt",
-      "fullfilledFrom": "{{fullfilled}} von {{demands_count}} Forderungen umgesetzt"
+      "fullfilledFrom": "{{fullfilled}} von {{count}} Forderungen umgesetzt"
     },
 
     "demands": {
@@ -90,7 +90,7 @@
 
   "news": {
     "slug": "aktuelles",
-    "dateFormat": "dd. LLLL yyy",
+    "dateFormat": "dd.LLLLyyy",
     "type": {
       "news": "Aktuelles",
       "pressrelease": "Pressemitteilung"
