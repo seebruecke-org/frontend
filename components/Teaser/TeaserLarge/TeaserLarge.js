@@ -51,7 +51,7 @@ export default function TeaserLarge({ title, intro, cta, type = 'internal' }) {
         </p>
 
         <div className="mt-8 md:mt-16">
-          <CTA {...cta} inverse={ctaInverse} />
+          <CTA link={cta} inverse={ctaInverse} />
         </div>
 
         <span
