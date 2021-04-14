@@ -13,21 +13,17 @@ const styles = {
     bottom: 'auto',
     marginRight: '-50%',
     padding: 0,
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    zIndex: 21
   },
 
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.75)'
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    zIndex: 20
   }
 };
 
-export default function Modal({
-  children,
-  onClose = () => {},
-  onRequestClose,
-  style,
-  ...props
-}) {
+export default function Modal({ children, onClose = () => {}, ...props }) {
   return (
     <ReactModal onRequestClose={() => onClose()} style={styles} {...props}>
       <div className="relative p-10">
