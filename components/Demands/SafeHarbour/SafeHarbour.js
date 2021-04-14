@@ -101,7 +101,7 @@ export default function SafeHarbourDemands({ cityName, demands }) {
             >
               <AccordionPanel>
                 <div className="pl-14 md:pl-28 pb-8 md:pb-10">
-                  <Richtext richtext={description} size="small" />
+                  <Richtext content={description} size="small" />
                 </div>
               </AccordionPanel>
             </AccordionItem>
