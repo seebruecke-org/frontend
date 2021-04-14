@@ -84,8 +84,10 @@ export default function Header() {
   function isPartiallyActive(currentPageSlug, { url = '' }) {
     const urlWithoutSlashes = url.replace(/\\|\//g, '');
     const pageSlugWithoutSlashes = currentPageSlug.replace(/\\|\//g, '');
+    const translationKey = `slugs.${pageSlugWithoutSlashes}`;
+    const localizedSlug = t(translationKey);
     let localizedPagePath =
-      t(`slugs.${pageSlugWithoutSlashes}`) || pageSlugWithoutSlashes;
+      localizedSlug !== translationKey ? localizedSlug : pageSlugWithoutSlashes;
 
     return localizedPagePath && localizedPagePath.startsWith(urlWithoutSlashes);
   }

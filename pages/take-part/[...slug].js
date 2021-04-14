@@ -83,16 +83,6 @@ export async function getStaticPaths() {
   const countryPaths = await fetchAllCountryPaths();
   const federalCountryPaths = await fetchAllFederalCountryPaths();
 
-  groupPaths.forEach(({ params: { slug } }) =>
-    console.log(`Group: ${slug.join('/')}`)
-  );
-  countryPaths.forEach(({ params: { slug } }) =>
-    console.log(`Country: ${slug.join('/')}`)
-  );
-  federalCountryPaths.forEach(({ params: { slug } }) =>
-    console.log(`Federal Country: ${slug.join('/')}`)
-  );
-
   return {
     fallback: true,
     paths: [...groupPaths, ...countryPaths, ...federalCountryPaths]
