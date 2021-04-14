@@ -21,7 +21,7 @@ export default function GenericPage({ page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const { data } = await query('mach-mit', locale);
+  const { data } = await query(['mach-mit'], locale);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {
