@@ -9,7 +9,7 @@ export default function Paragraph({ children, size = 'regular' }) {
       break;
 
     case 'tiny':
-      sizeClassName = 'text-xs';
+      sizeClassName = 'text-2xs';
       break;
   }
 
