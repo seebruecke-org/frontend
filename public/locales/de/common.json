@@ -20,7 +20,8 @@
     "singleTitle": "Lokalgruppe",
     "pluralTitle": "Lokalgruppen",
     "slug": "mach-mit",
-    "searchCity": "Ort suchen ..."
+    "searchCity": "Ort suchen ...",
+    "upcomingActions": "Nächste Aktionen"
   },
 
   "action": {

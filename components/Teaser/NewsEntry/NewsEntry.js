@@ -20,6 +20,8 @@ export default function NewsEntry({
 
   return (
     <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group">
+      <span className="col-start-2 col-span-10 h-1 border-b border-gray-300 mb-4 md:mb-12" />
+
       {media && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
           <Media media={media} />
@@ -59,8 +61,6 @@ export default function NewsEntry({
           <Heading level={3}>{title}</Heading>
         </a>
       </NextLink>
-
-      <span className="col-start-2 col-span-10 h-1 border-b border-gray-300 mt-4 md:mt-12" />
     </article>
   );
 }

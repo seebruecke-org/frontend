@@ -1,5 +1,6 @@
 import BlockSwitch from '@/components/BlockSwitch';
 import NewsTeaser from '@/components/Teaser/NewsEntry';
+import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
 import { query as queryGlobalData } from '@/lib/global';
@@ -8,7 +9,7 @@ import { getPage } from '@/lib/pages';
 
 export default function NewsOverview({ news, page }) {
   return (
-    <article>
+    <PageBody firstBlock="Richtext">
       <SEO title={page?.title} metadata={page?.metadata} />
 
       <BlockSwitch blocks={page?.content} />
@@ -22,7 +23,7 @@ export default function NewsOverview({ news, page }) {
           ))}
         </ul>
       </div>
-    </article>
+    </PageBody>
   );
 }
 

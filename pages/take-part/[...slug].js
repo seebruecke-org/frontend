@@ -10,6 +10,7 @@ import {
 import { query as queryGlobalData } from '@/lib/global';
 import { useTranslation } from 'next-i18next';
 import { StageMedium } from '@/components/Stages';
+import Actions from '@/components/Blocks/Actions';
 import BlockSwitch from '@/components/BlockSwitch';
 import Breadcrumbs from '@/components/Blocks/Breadcrumbs';
 import Demands from '@/components/Demands/SafeHarbour';
@@ -70,6 +71,13 @@ export default function TakePartPage({
 
       {navigation && navigation.length > 1 && (
         <SectionNavigation items={navigation} className="col-span-full" />
+      )}
+
+      {isGroup && group?.actions && (
+        <>
+          <Heading level={2}>{t('group.upcomingActions')}</Heading>
+          <Actions actions={group.actions} />
+        </>
       )}
 
       {!isGroup && safe_harbour?.demands && (
