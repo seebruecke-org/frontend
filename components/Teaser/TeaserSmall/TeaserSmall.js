@@ -28,20 +28,24 @@ export default function TeaserSmall({ title, link, type = 'internal' }) {
     >
       <h2>
         <StrapiLink
-          link={link}
+          link={{
+            ...link,
+            label: title
+          }}
           className="block font-brezel text-xl italic font-bold leading-none mb-10"
-        >
-          {title}
-        </StrapiLink>
+        />
       </h2>
+
+      <StrapiLink
+        link={link}
+        className="justify-end mt-auto text-small font-rubik"
+      />
 
       <StrapiLink
         link={link}
         className="absolute top-0 left-0 w-full h-full opacity-0"
         aria-hidden="true"
-      >
-        {title}
-      </StrapiLink>
+      />
     </div>
   );
 }

@@ -19,7 +19,12 @@ export async function sideloadData({ items }) {
   }
 
   return {
-    items: await Promise.all(items.map(({ link }) => fetchLink(link)))
+    items: await Promise.all(
+      items.map(async (item) => ({
+        ...item,
+        link: await fetchLink(item.link)
+      }))
+    )
   };
 }
 
