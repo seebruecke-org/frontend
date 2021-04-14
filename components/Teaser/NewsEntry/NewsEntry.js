@@ -43,12 +43,16 @@ export default function NewsEntry({
 
         <NextLink href={`/${t('news.slug')}/${slug}/`}>
           <a className="group-hover:underline">
-            <Heading level={3}>{title}</Heading>
+            <Heading level={3} as={4}>
+              {title}
+            </Heading>
           </a>
         </NextLink>
 
         {excerpt && (
-          <p className="font-rubik text-base md:text-medium mt-6">{excerpt}</p>
+          <p className="font-rubik text-small md:text-base md:text-medium mt-6">
+            {excerpt}
+          </p>
         )}
       </div>
 
