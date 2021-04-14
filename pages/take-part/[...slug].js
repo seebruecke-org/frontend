@@ -33,10 +33,17 @@ export default function TakePartPage({
   const { t } = useTranslation();
   const isGroup = pageType === 'group';
   const contentBlocks = group?.content || safe_harbour?.content || content;
-  const kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
+  let kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
   const featuredImage = isGroup
     ? group?.image?.image
     : safe_harbour?.image?.image;
+
+  if (!isGroup && safe_harbour?.since) {
+    kicker += ` · ${t('safeHarbour.since').toLowerCase()} ${format(
+      new Date(safe_harbour?.since),
+      t('safeHarbour.dateFormat')
+    )}`;
+  }
 
   return (
     <PageBody
@@ -48,17 +55,10 @@ export default function TakePartPage({
 
       {pageType !== 'country' && <Breadcrumbs crumbs={breadcrumbs} />}
 
-      {pageType === 'group' || pageType === 'safe-harbour' ? (
+      {isGroup || pageType === 'safe-harbour' ? (
         <StageMedium
           title={name}
-          kicker={`${kicker}${
-            pageType === 'safe-harbour' &&
-            safe_harbour?.since &&
-            ` · ${t('safeHarbour.since').toLowerCase()} ${format(
-              new Date(safe_harbour?.since),
-              t('safeHarbour.dateFormat')
-            )}`
-          }`}
+          kicker={kicker}
           className="col-span-full"
           image={featuredImage}
           allowBookmark
