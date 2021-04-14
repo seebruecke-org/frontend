@@ -46,9 +46,7 @@ export default function Map({ features: defaultFeatures }) {
                   'rgb(69, 238, 191)',
                   'rgb(245, 181, 17)'
                 ],
-                'circle-radius': 8,
-                'circle-stroke-width': 1,
-                'circle-stroke-color': 'black'
+                'circle-radius': 8
               }}
             />
           )}
