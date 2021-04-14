@@ -9,14 +9,11 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
-import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
+import { getLastBlockName } from '@/lib/blocks';
 
 export default function CampaignPage({ content, title }) {
   return (
-    <PageBody
-      firstBlock={getFirstBlockName(content)}
-      lastBlock={getLastBlockName(content)}
-    >
+    <>
       <SEO title={title} />
 
       <div className="grid grid-layout-primary">
@@ -35,8 +32,10 @@ export default function CampaignPage({ content, title }) {
         />
       </div>
 
-      <BlockSwitch blocks={content} />
-    </PageBody>
+      <PageBody lastBlock={getLastBlockName(content)}>
+        <BlockSwitch blocks={content} />
+      </PageBody>
+    </>
   );
 }
 

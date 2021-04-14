@@ -24,7 +24,7 @@ export default function NewsEntryPage({
     : '';
 
   return (
-    <PageBody firstBlock="Heading" lastBlock={getLastBlockName(content)}>
+    <>
       <SEO title={title} metadata={metadata} />
 
       <div className="grid grid-layout-primary">
@@ -38,14 +38,18 @@ export default function NewsEntryPage({
             ]}
           />
         )}
-
-        <Heading level={1} kicker={`${date} · ${t(`news.type.${type}`)}`}>
-          {title}
-        </Heading>
       </div>
 
-      <BlockSwitch blocks={content} />
-    </PageBody>
+      <PageBody lastBlock={getLastBlockName(content)}>
+        <div className="grid grid-layout-primary">
+          <Heading level={1} kicker={`${date} · ${t(`news.type.${type}`)}`}>
+            {title}
+          </Heading>
+        </div>
+
+        <BlockSwitch blocks={content} />
+      </PageBody>
+    </>
   );
 }
 
