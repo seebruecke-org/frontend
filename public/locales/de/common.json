@@ -28,7 +28,7 @@
     "singleTitle": "Aktion",
     "pluralTitle": "Aktionen",
     "slug": "aktionen",
-    "dateFormat": "dd.LLLyyy",
+    "dateFormat": "dd. LLL yyy",
     "timeFormat": "hh:mm",
     "timePostfix": "Uhr",
     "organizedBy": "Organisiert von der Lokalgruppe",
