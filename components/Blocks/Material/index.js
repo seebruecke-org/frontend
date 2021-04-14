@@ -21,8 +21,21 @@ export const FRAGMENT = `
   }
 `;
 
+export async function sideloadData({ items }) {
+  return {
+    items: items.map(({ file, ...item }) => ({
+      ...item,
+      file: {
+        ...file,
+        url: file?.url ? `${process.env.NEXT_CMS_DOMAIN}${file.url}` : null
+      }
+    }))
+  };
+}
+
 export const block = {
   name: 'Material',
   Component: Material,
-  Fragment: FRAGMENT
+  Fragment: FRAGMENT,
+  sideload: sideloadData
 };
