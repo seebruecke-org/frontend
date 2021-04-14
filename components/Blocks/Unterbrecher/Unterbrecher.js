@@ -41,7 +41,7 @@ export default function Unterbrecher({
         'flex flex-col relative z-10 md:flex-row md:items-center col-span-full',
         hasPaddingTop && 'pt-48 md:pt-24',
         hasPaddingBottom && 'pb-20 md:pb-24',
-        reversed && 'flex-col-reverse md:flex-row-reverse',
+        !reversed && 'flex-col-reverse md:flex-row-reverse',
         size === 'small' && 'md:col-start-3 md:col-span-9',
         size === 'large' && 'md:col-start-2 md:col-span-12'
       )}
@@ -57,7 +57,7 @@ export default function Unterbrecher({
           className={clsx(
             background,
             'w-7 absolute h-full z-40 top-0 hidden md:block',
-            reversed ? 'right-full' : 'left-full'
+            !reversed ? 'right-full' : 'left-full'
           )}
         />
         <Heading as={1} kicker={title?.kicker} level={title.level}>
