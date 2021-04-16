@@ -1,5 +1,4 @@
-import { point } from '@turf/helpers';
-
+import { toMapboxCoordinates } from '@/lib/coordinates';
 import { fetchAPI } from '@/lib/api';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import Actions from './Actions';
@@ -37,14 +36,10 @@ export async function sideloadData({ cta }) {
 
   return {
     cta: await fetchLink(cta?.link),
-    actions: actions.map(({ coordinates, ...action }) => {
-      const [lat, lng] = coordinates ? coordinates.split(',') : [null, null];
-
-      return {
-        ...action,
-        coordiantes: lat && lng && point([parseFloat(lng), parseFloat(lat)])
-      };
-    })
+    actions: actions.map(({ coordinates, ...action }) => ({
+      ...action,
+      coordiantes: toMapboxCoordinates(coordinates)
+    }))
   };
 }
 
