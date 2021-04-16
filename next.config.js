@@ -27,7 +27,8 @@ async function fetchAllRedirects() {
     }
   `
       )
-      .toPromise();
+      .toPromise()
+      .then(({ data }) => data);
 
     if (!redirects) {
       return [];
