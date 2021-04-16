@@ -24,7 +24,7 @@ function getBackgroundColor(type) {
 export default function Unterbrecher({
   uTitle: title,
   intro,
-  uCta: cta,
+  uCTA: cta,
   type,
   image,
   reversed = false,
