@@ -29,12 +29,13 @@ export const FRAGMENT = `
 
 export async function sideloadData({ uCTA }) {
   return {
-    uCTA: await fetchLink(uCTA.link)
+    uCTA: await fetchLink(uCTA?.link)
   };
 }
 
 export const block = {
   name: 'Unterbrecher',
   Component: Unterbrecher,
-  Fragment: FRAGMENT
+  Fragment: FRAGMENT,
+  sideload: sideloadData
 };

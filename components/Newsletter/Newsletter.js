@@ -8,7 +8,7 @@ export default function Newsletter({ title, intro }) {
         {title}
       </h2>
 
-      {intro && <Richtext richtext={intro} />}
+      {intro && <Richtext content={intro} />}
 
       <Form primaryGrid={false} className="p-0">
         <Row primaryGrid={false}>
