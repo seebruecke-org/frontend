@@ -1,4 +1,4 @@
-export { default, parseLink } from './StrapiLink';
+export { default } from './StrapiLink';
 
 export const FRAGMENT = `
   ... on ComponentHelperBlocksLink {
