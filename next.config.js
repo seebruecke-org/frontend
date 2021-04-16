@@ -1,4 +1,5 @@
-const { request } = require('graphql-request');
+const { createClient } = require('urql');
+
 const withPlugins = require('next-compose-plugins');
 const withPreact = require('next-plugin-preact');
 const withTranspiledModules = require('next-transpile-modules')([
@@ -9,19 +10,24 @@ const { i18n } = require('./next-i18next.config');
 const { slugs: slugsDe } = require('./locales/de/common.json');
 
 async function fetchAllRedirects() {
+  const client = createClient({
+    url: process.env.WP_GRAPHQL_API
+  });
+
   try {
-    const { redirects } = await request(
-      process.env.NEXT_WP_GRAPHQL_API,
-      `
-  query {
-    redirects {
-      from
-      to
-      type
+    const { redirects } = await client
+      .query(
+        `
+    query {
+      redirects {
+        from
+        to
+        type
+      }
     }
-  }
-`
-    );
+  `
+      )
+      .toPromise();
 
     if (!redirects) {
       return [];
