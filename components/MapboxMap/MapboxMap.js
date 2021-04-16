@@ -41,7 +41,7 @@ export default function MapboxMap({
       fitBoundsOptions={
         collection && {
           duration: 0,
-          padding: 20
+          padding: 100
         }
       }
       {...props}
