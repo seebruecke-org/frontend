@@ -73,7 +73,7 @@ export default function TakePartPage({
         <SectionNavigation items={navigation} className="col-span-full" />
       )}
 
-      {isGroup && group?.actions && (
+      {isGroup && group?.actions && group.actions.length > 0 && (
         <>
           <Heading level={2}>{t('group.upcomingActions')}</Heading>
           <Actions actions={group.actions} />
