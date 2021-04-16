@@ -1,3 +1,4 @@
+import { toMapboxCoordinates } from '@/lib/coordinates';
 import { fetchAPI } from '@/lib/api';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import Actions from './Actions';
@@ -20,6 +21,7 @@ export async function sideloadData({ cta }) {
   const { actions } = await fetchAPI(`
     query {
       actions {
+        id
         title
         slug
         intro
@@ -27,13 +29,17 @@ export async function sideloadData({ cta }) {
         slug
         location
         location_detail
+        coordinates
       }
     }
   `);
 
   return {
     cta: await fetchLink(cta?.link),
-    actions
+    actions: actions.map(({ coordinates, ...action }) => ({
+      ...action,
+      coordiantes: toMapboxCoordinates(coordinates)
+    }))
   };
 }
 

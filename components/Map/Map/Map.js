@@ -8,7 +8,8 @@ import dynamic from 'next/dynamic';
 const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
 const MemoizedMap = memo(MapboxMap);
 
-export default function Map({ features: defaultFeatures }) {
+export default function Map({ features: defaultFeatures = [] }) {
+  const hasFeatures = defaultFeatures.length > 0;
   const [collection, setCollection] = useState({
     type: 'FeatureCollection',
     features: defaultFeatures
@@ -27,7 +28,7 @@ export default function Map({ features: defaultFeatures }) {
     <div className="col-span-full md:col-start-1 md:col-span-6 relative">
       <div className="bg-gray-400 h-96 md:h-screen sticky top-0 overflow-hidden">
         <MemoizedMap
-          fitBounds={collection?.features && getBounds(collection.features)}
+          fitBounds={hasFeatures && getBounds(collection.features)}
           fitBoundsOptions={
             collection && {
               duration: 0,
@@ -35,7 +36,7 @@ export default function Map({ features: defaultFeatures }) {
             }
           }
         >
-          {collection?.features && (
+          {hasFeatures && (
             <GeoJSONLayer
               data={collection}
               circlePaint={{

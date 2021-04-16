@@ -51,7 +51,24 @@ export default function TakePartPage({ actions: defaultActions, page }) {
       <BlockSwitch blocks={page?.content} />
 
       <div className="grid grid-layout-primary">
-        <MemoizedMap />
+        <MemoizedMap
+          features={Object.keys(actions)
+            .map((key) => actions[key])
+            .flat()
+            .filter(({ coordinates }) => !!coordinates?.geometry)
+            .map(({ title, id, coordinates: { geometry } }) => ({
+              type: 'Feature',
+              properties: {
+                name: title,
+                id,
+                type: 'action'
+              },
+              geometry: {
+                ...geometry,
+                coordinates: geometry.coordinates
+              }
+            }))}
+        />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
           <Form
