@@ -38,7 +38,7 @@ export async function sideloadData({ cta }) {
     cta: await fetchLink(cta?.link),
     actions: actions.map(({ coordinates, ...action }) => ({
       ...action,
-      coordiantes: toMapboxCoordinates(coordinates)
+      coordinates: toMapboxCoordinates(coordinates)
     }))
   };
 }

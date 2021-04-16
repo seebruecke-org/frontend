@@ -33,7 +33,25 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
             styles.mapContainer
           )}
         >
-          {inView && <MapboxMap factory={{ scrollZoom: false }} />}
+          {inView && (
+            <MapboxMap
+              factory={{ scrollZoom: false }}
+              features={actions
+                .filter(({ coordinates }) => !!coordinates?.geometry)
+                .map(({ title, id, coordinates: { geometry } }) => ({
+                  type: 'Feature',
+                  properties: {
+                    name: title,
+                    id,
+                    type: 'action'
+                  },
+                  geometry: {
+                    ...geometry,
+                    coordinates: geometry.coordinates
+                  }
+                }))}
+            />
+          )}
         </div>
       )}
 
