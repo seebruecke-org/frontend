@@ -3,7 +3,10 @@ import clsx from 'clsx';
 import { blockNameMatches } from '@/lib/blocks';
 import Richtext from '@/components/Richtext';
 
-export default function RichtextBlock({ blockContext = {}, content }) {
+export default function RichtextBlock({
+  blockContext = {},
+  richtext: content
+}) {
   const { previous } = blockContext;
   let marginTop = 'mt-5 md:mt-10';
 
