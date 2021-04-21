@@ -13,7 +13,7 @@ export default function FormError({ message, align = 'middle' }) {
     >
       <p
         className={clsx(
-          'text-white bg-orange-900 py-4 px-6 md:p-8 rounded-2xl md:ml-12 relative',
+          'text-white bg-orange-900 py-4 px-6 md:px-8 rounded-2xl md:ml-12 relative leading-tight',
           styles.container
         )}
       >

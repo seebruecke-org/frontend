@@ -1,5 +1,6 @@
 import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { appWithTranslation } from 'next-i18next';
+import { Toaster } from 'react-hot-toast';
 
 import { StoreProvider } from '../lib/store/store';
 import { useHydrate } from '../lib/store/zustand';
@@ -22,6 +23,7 @@ function SBApp({ Component, pageProps }) {
   return (
     <StoreProvider store={store}>
       <Layout>
+        <Toaster />
         <Component {...props} />
       </Layout>
     </StoreProvider>
