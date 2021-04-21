@@ -36,16 +36,15 @@ export default function NewsEntry({
             : 'md:col-start-3 md:col-span-11'
         )}
       >
-        <header className="font-rubik text-xs text-gray-600 flex space-x-8">
+        <header className="font-rubik text-base text-gray-600 mb-1 uppercase">
           {format(new Date(publication_date), t('news.dateFormat'))}
-          &nbsp;·&nbsp;{translatedType}
+          <span className="px-3">·</span>
+          {translatedType}
         </header>
 
         <NextLink href={`/${t('news.slug')}/${slug}/`}>
           <a className="group-hover:underline">
-            <Heading level={3} as={4}>
-              {title}
-            </Heading>
+            <Heading level={3}>{title}</Heading>
           </a>
         </NextLink>
 
@@ -56,7 +55,7 @@ export default function NewsEntry({
 
       <NextLink href={`/${t('news.slug')}/${slug}/`}>
         <a
-          className="absolute top-0 left-0 h-full w-full z-10 opacity-0"
+          className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
           tabIndex="-1"
           aria-hidden
         >
