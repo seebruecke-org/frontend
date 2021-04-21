@@ -30,7 +30,7 @@ export default function SavedLocation({ name, path }) {
       <span className="font-brezel text-xs italic pl-14">
         {t(name ? 'footer.bookmarkedLocation' : 'footer.bookmarkLocation')}
       </span>
-      <span className="font-rubik text-base md:text-medium font-bold flex space-x-6 leading-none items-center">
+      <span className="font-rubik text-base font-bold flex space-x-6 leading-none items-center">
         <BookmarkIcon className="w-8 h-auto flex-shrink-0" />
         <span>{name || t('footer.bookmarkYourLocation')}</span>
       </span>
