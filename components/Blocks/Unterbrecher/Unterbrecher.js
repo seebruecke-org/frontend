@@ -89,6 +89,15 @@ export default function Unterbrecher({
           layout="fill"
           objectFit="cover"
           className="h-full"
+          captionIconClassName={clsx(
+            blockNameMatches(next, 'Unterbrecher') && 'bottom-16 left-10',
+            !reversed &&
+              !blockNameMatches(next, 'Unterbrecher') &&
+              'bottom-8 left-8',
+            reversed &&
+              !blockNameMatches(next, 'Unterbrecher') &&
+              'bottom-8 right-8'
+          )}
         />
       </StrapiLink>
     </section>

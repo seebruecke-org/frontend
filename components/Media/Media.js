@@ -15,6 +15,7 @@ export default function Media({
   classNameImage,
   classNameCaption,
   showCaption = false,
+  captionIconClassName = "bottom-8 left-8",
   ...props
 }) {
   if (!image || !image.media) {
@@ -47,7 +48,7 @@ export default function Media({
           onClick={() => {
             setIsCaptionOpen(!isCaptionOpen);
           }}
-          className="absolute bottom-8 left-8"
+          className={clsx('absolute', captionIconClassName)}
         >
           <InfoCircleIcon
             className={clsx(
