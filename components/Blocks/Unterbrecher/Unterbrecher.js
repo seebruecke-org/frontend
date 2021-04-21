@@ -78,7 +78,10 @@ export default function Unterbrecher({
       </div>
 
       <StrapiLink
-        link={cta}
+        link={{
+          ...cta,
+          label: null
+        }}
         className={clsx('block w-full h-full md:w-2/4', styles.square)}
       >
         <Media
