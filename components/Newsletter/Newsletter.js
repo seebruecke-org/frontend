@@ -10,7 +10,12 @@ export default function Newsletter({ title, intro }) {
 
       {intro && <Richtext content={intro} />}
 
-      <Form primaryGrid={false} className="p-0">
+      <Form
+        primaryGrid={false}
+        className="p-0"
+        method="post"
+        action="/api/newsletter/subscribe"
+      >
         <Row primaryGrid={false}>
           <div className="w-full flex flex-col md:flex-row items-end space-y-8 md:space-x-8 mb-8 md:mb-0">
             <TextInput label="Deine E-Mail" className="w-full md:w-3/4" />
