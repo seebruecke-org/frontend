@@ -78,11 +78,9 @@ export default function SafeHarbourDemands({ cityName, demands }) {
     <div className="col-span-full md:col-start-3 md:col-span-9 my-12">
       <Accordion allowMultipleExpanded allowZeroExpanded>
         {KEYS.map((demandKey, demandIndex) => {
-          let description = t(`safeHarbour.demands.${demandKey}.description`);
-
-          if (description) {
-            description = description.replace('{{city_placeholder}}', cityName);
-          }
+          let description = t(`safeHarbour.demands.${demandKey}.description`, {
+            city: cityName
+          });
 
           return (
             // eslint-disable-next-line react/jsx-key
