@@ -1,3 +1,19 @@
 .captionOverlay {
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
 }
+
+.infoIcon > path:first-child {
+  color: black;
+}
+
+.infoIcon > path:last-child {
+  color: white;
+}
+
+.infoIconOpen > path:first-child {
+  color: white;
+}
+
+.infoIconOpen > path:last-child {
+  color: black;
+}

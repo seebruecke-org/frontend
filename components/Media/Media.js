@@ -2,7 +2,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import NextImage from 'next/image';
 
-import InfoCircleIcon from '@/public/icons/info-circle.svg';
+import InfoCircleIcon from '@/public/icons/info-circle-duotone.svg';
 import Richtext from '@/components/Richtext';
 
 import * as styles from './media.module.css';
@@ -47,12 +47,13 @@ export default function Media({
           onClick={() => {
             setIsCaptionOpen(!isCaptionOpen);
           }}
-          className="absolute bottom-4 left-4"
+          className="absolute bottom-8 left-8"
         >
           <InfoCircleIcon
             className={clsx(
-              'w-8 h-auto hover:text-white',
-              isCaptionOpen && 'text-white'
+              'w-10 h-auto hover:text-white',
+              styles.infoIcon,
+              isCaptionOpen && styles.infoIconOpen
             )}
           />
         </button>
