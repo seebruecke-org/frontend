@@ -9,7 +9,7 @@ import Media from '@/components/Media';
 export default function NewsEntry({
   title,
   image,
-  publishedAt,
+  publication_date,
   type,
   excerpt = '',
   slug
@@ -20,7 +20,7 @@ export default function NewsEntry({
 
   return (
     <article className="grid grid-layout-primary gap-8 col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group">
-      <span className="col-start-2 col-span-10 h-1 border-b border-gray-300 mb-4 md:mb-12" />
+      <span className="col-start-2 col-span-12 h-1 border-b border-gray-300 mb-4 md:mb-12" />
 
       {image && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
@@ -37,7 +37,7 @@ export default function NewsEntry({
         )}
       >
         <header className="font-rubik text-xs text-gray-600 flex space-x-8">
-          {format(new Date(publishedAt), t('news.dateFormat'))}
+          {format(new Date(publication_date), t('news.dateFormat'))}
           &nbsp;·&nbsp;{translatedType}
         </header>
 

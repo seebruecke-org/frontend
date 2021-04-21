@@ -8,7 +8,7 @@ export const FRAGMENT = `
     title
     slug
     type
-    publishedAt: published_at
+    publication_date
     image {
       ${FRAGMENT_MEDIA}
     }
