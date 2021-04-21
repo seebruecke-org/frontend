@@ -121,5 +121,23 @@
 
   "modal": {
     "close": "Schließen"
+  },
+
+  "newsletter": {
+    "form": {
+      "success": "Wir haben dich auf unserem Newsletter eingetragen!",
+      "error": "Es ist leider etwas schief gegangen.",
+      "email": {
+        "required": "Bitte gibt eine Email Adresse ein",
+        "label": "Deine E-Mail"
+      },
+      "consent": {
+        "required": "Bitte akzeptiere die Datenschutzerklärung.",
+        "label": "Ja, ich möchte per Email informiert werden"
+      },
+      "submit": {
+        "label": "Anmelden"
+      }
+    }
   }
 }
