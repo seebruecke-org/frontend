@@ -6,6 +6,7 @@ import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import Richtext from '@/components/Blocks/Richtext';
 import SEO from '@/components/SEO';
+import TeasersSmall from '@/components/Blocks/TeasersSmall';
 
 export default function Custom404() {
   const { t } = useTranslation();
@@ -20,6 +21,34 @@ export default function Custom404() {
         </Heading>
 
         <Richtext richtext={t('404.intro')} />
+
+        <TeasersSmall
+          items={[
+            {
+              title: 'Alle Lokalgruppen',
+              link: {
+                url: '/mach-mit/lokalgruppen',
+                label: 'Zur Übersicht'
+              }
+            },
+
+            {
+              title: 'Kontakt',
+              link: {
+                url: '/kontakt',
+                label: 'Zur Seite'
+              }
+            },
+
+            {
+              title: 'Spenden',
+              link: {
+                url: '/spenden',
+                label: 'Zur Seite'
+              }
+            }
+          ]}
+        />
       </div>
     </PageBody>
   );
