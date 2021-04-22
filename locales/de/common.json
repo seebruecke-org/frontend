@@ -125,18 +125,18 @@
 
   "newsletter": {
     "form": {
-      "success": "Wir haben dich auf unserem Newsletter eingetragen!",
-      "error": "Es ist leider etwas schief gegangen.",
+      "success": "Du hast dich erfolgreich für unseren Newsletter eingetragen!",
+      "error": "Leider ist etwas schiefgelaufen. Versuch's nochmal.",
       "email": {
-        "required": "Bitte gibt eine Email Adresse ein",
-        "label": "Deine E-Mail"
+        "required": "Bitte gib eine E-Mail-Adresse ein.",
+        "label": "Deine E-Mail-Adresse"
       },
       "consent": {
         "required": "Bitte akzeptiere die Datenschutzerklärung.",
-        "label": "Ja, ich möchte per Email informiert werden"
+        "label": "Ja, ich möchte per E-Mail informiert werden."
       },
       "submit": {
-        "label": "Anmelden"
+        "label": "Newsletter abonnieren"
       }
     }
   },
