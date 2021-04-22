@@ -71,7 +71,11 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
   );
 }
 
-export default function SafeHarbourDemands({ cityName, demands }) {
+export default function SafeHarbourDemands({
+  cityName,
+  federalCountryName = '',
+  demands
+}) {
   const { t } = useTranslation();
 
   return (
@@ -79,7 +83,8 @@ export default function SafeHarbourDemands({ cityName, demands }) {
       <Accordion allowMultipleExpanded allowZeroExpanded>
         {KEYS.map((demandKey, demandIndex) => {
           let description = t(`safeHarbour.demands.${demandKey}.description`, {
-            city: cityName
+            city: cityName,
+            federal_country: federalCountryName
           });
 
           return (

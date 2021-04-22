@@ -26,6 +26,7 @@ export default function TakePartPage({
   name,
   group,
   content,
+  federal_country,
   safe_harbour,
   navigation,
   pageType
@@ -83,7 +84,11 @@ export default function TakePartPage({
       {!isGroup && safe_harbour?.demands && (
         <>
           <Heading level={2}>Unsere Forderungen</Heading>
-          <Demands demands={safe_harbour?.demands} cityName={name} />
+          <Demands
+            demands={safe_harbour?.demands}
+            cityName={name}
+            federalCountryName={federal_country?.name}
+          />
         </>
       )}
 
