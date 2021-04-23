@@ -53,18 +53,11 @@ export default function MaterialBlock({
             ) : (
               <>
                 {file && (
-                  <div className="flex flex-col space-y-2">
-                    <h3 className="font-rubik font-rubik-features text-xs md:text-base font-bold">
-                      <a href={file.url} className="underline break-all">
-                        {name || file.name}
-                      </a>
-                    </h3>
-
-                    <p className="font-rubik font-rubik-features text-xs md:text-base uppercase flex items-center">
-                      <FileDownloadIcon className="w-8 h-8 mr-2" />
-                      {getHumanRedableFileFormat(file.mime)}, {file.size}kb
-                    </p>
-                  </div>
+                  <h3 className="font-rubik font-rubik-features text-xs md:text-base font-bold">
+                    <a href={file.url} className="underline break-all">
+                      {name || file.name}
+                    </a>
+                  </h3>
                 )}
               </>
             )}
@@ -72,6 +65,13 @@ export default function MaterialBlock({
             {description && (
               <p className="font-rubik font-rubik-features text-xs md:text-base w-full">
                 {description}
+              </p>
+            )}
+
+            {file && (
+              <p className="font-rubik font-rubik-features text-xs md:text-base uppercase flex items-center">
+                <FileDownloadIcon className="w-8 h-8 mr-2" />
+                {getHumanRedableFileFormat(file.mime)}, {file.size}kb
               </p>
             )}
           </li>

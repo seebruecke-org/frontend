@@ -23,13 +23,22 @@ export const FRAGMENT = `
 
 export async function sideloadData({ items }) {
   return {
-    items: items.map(({ file, ...item }) => ({
-      ...item,
-      file: {
-        ...file,
-        url: file?.url ? `${process.env.NEXT_CMS_DOMAIN}${file.url}` : null
+    items: items.map(({ file, ...item }) => {
+      if (!file?.url) {
+        return {
+          ...item,
+          file
+        };
       }
-    }))
+
+      return {
+        ...item,
+        file: {
+          ...file,
+          url: `${process.env.NEXT_CMS_DOMAIN}${file.url}`
+        }
+      };
+    })
   };
 }
 
