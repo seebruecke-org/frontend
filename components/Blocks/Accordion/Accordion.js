@@ -20,7 +20,7 @@ export default function AccordionBlock({ items = [] }) {
         >
           <AccordionPanel>
             <div className="py-6 md:py-10 md:px-6">
-              <Richtext content={content} />
+              <Richtext richtext={content} />
             </div>
           </AccordionPanel>
         </AccordionItem>

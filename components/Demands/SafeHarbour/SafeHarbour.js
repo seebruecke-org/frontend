@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { AccordionItemState } from 'react-accessible-accordion';
+import format from 'date-fns/format';
 
 import {
   Accordion,
@@ -8,6 +9,7 @@ import {
 } from '@/components/Accordion';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
+import CTA from '@/components/CTA';
 import Richtext from '@/components/Richtext';
 
 import * as styles from './safeHarbour.module.css';
@@ -74,12 +76,19 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
 export default function SafeHarbourDemands({
   cityName,
   federalCountryName = '',
-  demands
+  demands: { last_updated, cta, ...demands }
 }) {
   const { t } = useTranslation();
 
   return (
     <div className="col-span-full md:col-start-3 md:col-span-9 my-12">
+      {last_updated && (
+        <p className="font-rubik text-small md:text-base mb-16">
+          {t('safeHarbour.lastUpdated')}{' '}
+          {format(new Date(last_updated), t('safeHarbour.dateFormat'))}
+        </p>
+      )}
+
       <Accordion allowMultipleExpanded allowZeroExpanded>
         {KEYS.map((demandKey, demandIndex) => {
           let description = t(`safeHarbour.demands.${demandKey}.description`, {
@@ -115,6 +124,8 @@ export default function SafeHarbourDemands({
       <p className="font-rubik text-base text-gray-600 mt-12">
         {t('safeHarbour.disclaimer')}
       </p>
+
+      {cta && <CTA link={cta} />}
     </div>
   );
 }

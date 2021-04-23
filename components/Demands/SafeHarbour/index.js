@@ -1,5 +1,7 @@
 export { default } from './SafeHarbour';
 
+import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+
 export const FRAGMENT = `
   ... on ComponentDemandsDemands {
     public_solidarity_declaration_decided
@@ -19,5 +21,10 @@ export const FRAGMENT = `
     national_international_networking_fullfilled
     alliance_safe_harbours_fullfilled
     transparency_fullfilled
+
+    last_updated
+    cta {
+      ${FRAGMENT_LINK}
+    }
   }
 `;
