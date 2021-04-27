@@ -84,8 +84,10 @@ export default function TakePartPage({
         />
       )}
 
-      {((isGroup && group.actions.length > 0 && group?.headlines?.length > 0) ||
-        (group.actions.length === 0 && group?.headlines?.length > 1)) && (
+      {((isGroup &&
+        group?.actions?.length > 0 &&
+        group?.headlines?.length > 0) ||
+        (group?.actions?.length === 0 && group?.headlines?.length > 1)) && (
         <div
           className={clsx(
             'col-span-full sticky top-0 z-30',
