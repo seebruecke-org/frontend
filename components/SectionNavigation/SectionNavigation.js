@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import clsx from 'clsx';
 import SwiperCore, { Keyboard, Mousewheel, Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,11 +14,10 @@ import * as styles from './sectionNavigation.module.css';
 
 SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
-export default function SectionNavigation({
-  items = [],
-  className,
-  primaryGrid = true
-}) {
+export default forwardRef(function SectionNavigation(
+  { items = [], className, primaryGrid = true },
+  ref
+) {
   const { asPath } = useRouter();
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [allowNext, setAllowNext] = useState(false);
@@ -34,6 +33,7 @@ export default function SectionNavigation({
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'bg-orange-200',
         primaryGrid && 'grid grid-layout-primary',
@@ -124,4 +124,4 @@ export default function SectionNavigation({
       </nav>
     </div>
   );
-}
+});
