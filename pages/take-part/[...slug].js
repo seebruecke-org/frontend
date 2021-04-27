@@ -84,7 +84,8 @@ export default function TakePartPage({
         />
       )}
 
-      {isGroup && group?.headlines?.length > 1 && (
+      {((isGroup && group.actions.length > 0 && group?.headlines?.length > 0) ||
+        (group.actions.length === 0 && group?.headlines?.length > 1)) && (
         <div
           className={clsx(
             'col-span-full sticky top-0 z-30',
@@ -92,7 +93,17 @@ export default function TakePartPage({
           )}
         >
           <SectionNavigation
-            items={group.headlines}
+            items={[
+              ...(group.actions.length > 0
+                ? [
+                    {
+                      url: '#aktionen',
+                      label: t('group.upcomingActions')
+                    }
+                  ]
+                : []),
+              ...group.headlines
+            ]}
             className="col-span-full"
           />
         </div>
@@ -100,7 +111,9 @@ export default function TakePartPage({
 
       {isGroup && group?.actions && group.actions.length > 0 && (
         <>
-          <Heading level={2}>{t('group.upcomingActions')}</Heading>
+          <Heading level={2} id="aktionen">
+            {t('group.upcomingActions')}
+          </Heading>
           <Actions actions={group.actions} />
         </>
       )}

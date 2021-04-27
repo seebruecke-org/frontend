@@ -10,7 +10,8 @@ export default function HeadingBlock({
   kicker,
   children,
   as,
-  blockContext = {}
+  blockContext = {},
+  id
 }) {
   const { previous } = blockContext;
   const normalizedLevel =
@@ -37,6 +38,7 @@ export default function HeadingBlock({
         marginTop
       )}
       as={as}
+      id={id}
     >
       {normalizedChildren}
     </Heading>
