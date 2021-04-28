@@ -5,6 +5,8 @@ export default function MediaGallery({ items, blockContext: { index } }) {
     return null;
   }
 
+  console.log(items);
+
   return (
     <div className="grid grid-layout-primary col-span-full my-10 md:my-20">
       <Gallery items={items} priority={index < 3} />
