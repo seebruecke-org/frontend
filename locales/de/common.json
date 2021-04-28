@@ -121,7 +121,18 @@
   },
 
   "modal": {
-    "close": "Schließen"
+    "close": "Schließen",
+
+    "search": {
+      "title": "Suche",
+      "placeholder": "Suchbegriff",
+      "submit": "Suche abschicken"
+    },
+
+    "bookmark": {
+      "title": "Ort merken",
+      "placeholder": "Name"
+    }
   },
 
   "newsletter": {
