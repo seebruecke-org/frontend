@@ -57,21 +57,12 @@ function Burger({ onClick = () => {} }) {
 }
 
 export default function Header() {
-  const { locale, locales, query, asPath, pathname } = useRouter();
-  let pagePathFragment = pathname;
+  const { locale, locales, asPath } = useRouter();
   const { t } = useTranslation();
   const store = useStore() || {};
   const [moreIsOpen, setmoreIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [saveLocationOpen, setSaveLocationOpen] = useState(false);
-
-  if (pagePathFragment === '/[[...slug]]' && query?.slug && query.slug[0]) {
-    pagePathFragment = query.slug[0];
-  }
-
-  if (asPath && asPath === '/') {
-    pagePathFragment = asPath;
-  }
 
   const items = store?.menus?.['header_main']?.items;
   const headerSecondaryItems = store?.menus?.['header_meta']?.items;
@@ -81,15 +72,18 @@ export default function Header() {
   const primaryItems = items && items.slice(0, items.length - 1);
   const cta = items && items.slice(items.length - 1);
 
-  function isPartiallyActive(currentPageSlug, { url = '' }) {
-    const urlWithoutSlashes = url.replace(/\\|\//g, '');
-    const pageSlugWithoutSlashes = currentPageSlug.replace(/\\|\//g, '');
-    const translationKey = `slugs.${pageSlugWithoutSlashes}`;
-    const localizedSlug = t(translationKey);
-    let localizedPagePath =
-      localizedSlug !== translationKey ? localizedSlug : pageSlugWithoutSlashes;
+  function isPartiallyActive(currentPagePath, { url = '' }) {
+    const firstPagePathFragment = currentPagePath.split('/')[1];
+    const slug = `slugs.${firstPagePathFragment}`;
+    const currentPathFragmentLocalized = t(slug);
 
-    return localizedPagePath && localizedPagePath.startsWith(urlWithoutSlashes);
+    let normalizedPagePath = firstPagePathFragment;
+
+    if (slug !== currentPathFragmentLocalized) {
+      normalizedPagePath = currentPathFragmentLocalized;
+    }
+
+    return url.endsWith(normalizedPagePath);
   }
 
   return (
@@ -196,7 +190,7 @@ export default function Header() {
                   link={item}
                   className={clsx(
                     'font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white',
-                    isPartiallyActive(pagePathFragment, item) &&
+                    isPartiallyActive(asPath, item) &&
                       'bg-white text-orange-800',
                     'hover:text-orange-800 py-2 px-3 whitespace-nowrap',
                     styles.item,
