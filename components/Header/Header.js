@@ -62,8 +62,6 @@ export default function Header({ metaItems, items }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [saveLocationOpen, setSaveLocationOpen] = useState(false);
 
-  const items = store?.menus?.['header_main']?.items;
-  const headerSecondaryItems = store?.menus?.['header_meta']?.items;
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
   );
