@@ -11,16 +11,17 @@ import BarsIcon from '@/public/icons/bars.svg';
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
-import Heading from '@/components/Heading';
 import Logo from '@/components/Logo';
 import StrapiLink from '@/components/StrapiLink';
 import More from './More';
 import SearchIcon from '@/public/icons/search-regular.svg';
-import Form, { Button, TextInput } from '@/components/Form';
 
 import * as styles from './header.module.css';
 
-const Modal = dynamic(() => import('@/components/Modal'));
+const SearchModal = dynamic(() => import('@/components/Modals/Search'));
+const BookmarkLocationModal = dynamic(() =>
+  import('@/components/Modals/BookmarkLocation')
+);
 
 function MoreToggle({ onClick = () => {}, isOpen }) {
   const Icon = isOpen ? ChevronUpIcon : ChevronDownIcon;
@@ -130,21 +131,7 @@ export default function Header() {
               </button>
 
               {searchOpen && (
-                <Modal isOpen={true} onClose={() => setSearchOpen(false)}>
-                  <Heading level={2} as={4}>
-                    Search
-                  </Heading>
-
-                  <Form>
-                    <div className="col-span-full">
-                      <TextInput placeholder="Search" name="search" />
-                    </div>
-
-                    <div className="col-span-full pt-6">
-                      <Button type="submit">Suchen</Button>
-                    </div>
-                  </Form>
-                </Modal>
+                <SearchModal onClose={() => setSearchOpen(false)} />
               )}
 
               <button
@@ -157,20 +144,9 @@ export default function Header() {
               </button>
 
               {saveLocationOpen && (
-                <Modal isOpen={true} onClose={() => setSaveLocationOpen(false)}>
-                  <Heading level={2} as={4}>
-                    Save a location
-                  </Heading>
-
-                  <Form>
-                    <div className="col-span-full">
-                      <TextInput
-                        placeholder="Search for a location"
-                        name="location"
-                      />
-                    </div>
-                  </Form>
-                </Modal>
+                <BookmarkLocationModal
+                  onClose={() => setSaveLocationOpen(false)}
+                />
               )}
 
               {headerSecondaryItems.map((item) => (
