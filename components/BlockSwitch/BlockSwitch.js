@@ -36,6 +36,7 @@ export default function BlockSwitch({ blocks, className }) {
           <BlockComponent
             key={`block-${type}-${index}`}
             blockContext={{
+              index,
               previous: index > 1 && blocks[index - 1].__typename,
               next: blocks.length > index + 1 && blocks[index + 1].__typename
             }}

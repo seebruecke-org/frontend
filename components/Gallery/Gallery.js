@@ -14,7 +14,7 @@ SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
 const SLIDE_GAP = 20;
 
-export default function Gallery({ items }) {
+export default function Gallery({ items, priority = false }) {
   if (!items) {
     return null;
   }
@@ -74,10 +74,10 @@ export default function Gallery({ items }) {
             <SwiperSlide style={{ width: `${offsetLeft - SLIDE_GAP}px` }} />
           )}
 
-          {items.map((item) => (
+          {items.map((item, index) => (
             // eslint-disable-next-line react/jsx-key
             <SwiperSlide className={styles.slide}>
-              <Media image={item} />
+              <Media image={item} priority={index < 3 && priority} />
             </SwiperSlide>
           ))}
         </Swiper>
