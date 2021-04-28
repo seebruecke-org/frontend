@@ -10,14 +10,12 @@ import Layout from '@/components/Layout';
 import '@/styles/tailwind.css';
 import 'swiper/swiper-bundle.css';
 
-function SBApp({ Component, pageProps }) {
-  const {
-    initialState: { menus, ...initialState },
-    ...props
-  } = pageProps;
+function SBApp({ Component, pageProps = {} }) {
+  const { initialState = {}, ...props } = pageProps;
+  const { menus, ...hydrate } = initialState;
 
   const store = useHydrate({
-    ...initialState
+    ...hydrate
   });
 
   if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {

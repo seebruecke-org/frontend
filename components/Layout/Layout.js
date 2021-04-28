@@ -5,14 +5,14 @@ export default function Layout({ menus, children }) {
   return (
     <div className="flex flex-col flex-1 min-h-screen">
       <Header
-        metaItems={menus['header_meta']?.items}
-        items={menus['header_main']?.items}
+        metaItems={menus?.['header_meta']?.items}
+        items={menus?.['header_main']?.items}
       />
       {children}
       <Footer
-        itemsTakePart={menus['footer_take_part']}
-        itemsAbout={menus['footer_about']}
-        itemsMeta={menus['footer_meta']}
+        itemsTakePart={menus?.['footer_take_part']}
+        itemsAbout={menus?.['footer_about']}
+        itemsMeta={menus?.['footer_meta']}
       />
     </div>
   );
