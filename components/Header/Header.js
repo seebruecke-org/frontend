@@ -5,8 +5,6 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import { useStore } from '@/lib/store';
-
 import BarsIcon from '@/public/icons/bars.svg';
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
@@ -56,11 +54,10 @@ function Burger({ onClick = () => {} }) {
   );
 }
 
-export default function Header() {
+export default function Header({ metaItems, items }) {
   const { locale, locales, query, asPath, pathname } = useRouter();
   let pagePathFragment = pathname;
   const { t } = useTranslation();
-  const store = useStore() || {};
   const [moreIsOpen, setmoreIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [saveLocationOpen, setSaveLocationOpen] = useState(false);
@@ -73,8 +70,6 @@ export default function Header() {
     pagePathFragment = asPath;
   }
 
-  const items = store?.menus?.['header_main']?.items;
-  const headerSecondaryItems = store?.menus?.['header_meta']?.items;
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
   );
@@ -107,7 +102,7 @@ export default function Header() {
         </Link>
 
         <nav className="flex flex-col w-full relative">
-          {headerSecondaryItems && headerSecondaryItems?.length > 0 && (
+          {metaItems && metaItems?.length > 0 && (
             <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-52 hidden md:flex md:mb-3 pt-5">
               {otherLocales.map((currentLocale, index) => (
                 <a
@@ -173,7 +168,7 @@ export default function Header() {
                 </Modal>
               )}
 
-              {headerSecondaryItems.map((item) => (
+              {metaItems.map((item) => (
                 <StrapiLink
                   key={`menu-${item.label}`}
                   link={item}
