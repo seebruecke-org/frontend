@@ -37,7 +37,7 @@ export default function NewsEntry({
             : 'md:col-start-3 md:col-span-11'
         )}
       >
-        <header className="font-rubik text-base text-gray-600 mb-1 uppercase">
+        <header className="font-rubik text-small md:text-base text-gray-600 mb-1 uppercase">
           {format(new Date(publication_date), t('news.dateFormat'))}
           <span className="px-3">·</span>
           {translatedType}
