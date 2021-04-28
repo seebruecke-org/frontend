@@ -73,6 +73,11 @@ export default function Header() {
   const cta = items && items.slice(items.length - 1);
 
   function isPartiallyActive(currentPagePath, { url = '' }) {
+    // the homepage needs some special treatment here
+    if (currentPagePath === '/') {
+      return false;
+    }
+
     const firstPagePathFragment = currentPagePath.split('/')[1];
     const slug = `slugs.${firstPagePathFragment}`;
     const currentPathFragmentLocalized = t(slug);
