@@ -1,9 +1,9 @@
 import Markdown from '@/components/Markdown';
 
 import Heading from '@/components/Blocks/Heading';
-import Link from './Link';
-import List, { ListItem } from './List';
-import Paragraph from './Paragraph';
+import Link from '@/components/Richtext/Link';
+import List, { ListItem } from '@/components/Richtext/List';
+import Paragraph from '@/components/Richtext/Paragraph';
 
 export default function Richtext({ content, size = 'regular', ...props }) {
   const RENDERERS = {
