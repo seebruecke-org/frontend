@@ -9,8 +9,6 @@ import StrapiLink from '@/components/StrapiLink';
 import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 
-import { useStore } from '@/lib/store';
-
 function SocialMedia({ className = '' }) {
   return (
     <div className={clsx('flex space-x-4', className)}>
@@ -42,13 +40,8 @@ function Menu({ title, items }) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
   const { t } = useTranslation();
-  const store = useStore() || {};
-
-  const footerTakePart = store?.menus?.['footer_take_part'];
-  const footerAbout = store?.menus?.['footer_about'];
-  const footerMeta = store?.menus?.['footer_meta'];
   const hasBookmarkedItem = false;
 
   return (
@@ -66,11 +59,11 @@ export default function Footer() {
         </div>
 
         <div className="md:col-start-4 md:col-span-3">
-          <Menu {...footerTakePart} />
+          <Menu {...itemsTakePart} />
         </div>
 
         <div className="md:col-start-7 md:col-span-3">
-          <Menu {...footerAbout} />
+          <Menu {...itemsAbout} />
         </div>
 
         <div className="md:col-start-10 md:col-span-3">
@@ -101,10 +94,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {footerMeta?.items && (
+        {itemsMeta?.items && (
           <div className="flex items-center justify-between col-start-1 md:col-span-12">
             <nav className="flex space-x-10">
-              {footerMeta.items.map((item, index) => (
+              {itemsMeta.items.map((item, index) => (
                 <StrapiLink
                   className="font-rubik text-xs font-bold hover:underline"
                   key={`footer-meta-${index}`}
