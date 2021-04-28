@@ -1,8 +1,6 @@
 import Media from '@/components/Media';
 
 export default function MediaBlock({ image, blockContext: { index } }) {
-  console.log(image);
-
   return (
     <Media
       image={image}
