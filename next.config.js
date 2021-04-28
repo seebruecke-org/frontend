@@ -1,6 +1,7 @@
 const { createClient } = require('urql');
 
 const withPlugins = require('next-compose-plugins');
+const withPreact = require('next-plugin-preact');
 const withTranspiledModules = require('next-transpile-modules')([
   'react-children-utilities'
 ]);
@@ -10,7 +11,7 @@ const { slugs: slugsDe } = require('./locales/de/common.json');
 
 async function fetchAllRedirects() {
   const client = createClient({
-    url: process.env.NEXT_WP_GRAPHQL_API
+    url: process.env.WP_GRAPHQL_API
   });
 
   try {
@@ -91,7 +92,7 @@ function createRewrites(slugs, locale) {
   return rewrites;
 }
 
-module.exports = withPlugins([withTranspiledModules], {
+module.exports = withPlugins([withTranspiledModules, withPreact], {
   i18n,
 
   async rewrites() {
@@ -124,5 +125,9 @@ module.exports = withPlugins([withTranspiledModules], {
     NEXT_CMS_DOMAIN: process.env.NEXT_CMS_DOMAIN,
     WP_GRAPHQL_API: process.env.NEXT_WP_GRAPHQL_API,
     MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN
+  },
+
+  future: {
+    webpack5: true
   }
 });
