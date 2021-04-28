@@ -12,7 +12,8 @@ export default function NewsEntry({
   publication_date,
   type,
   excerpt = '',
-  slug
+  slug,
+  index
 }) {
   const { t } = useTranslation();
 
@@ -24,7 +25,7 @@ export default function NewsEntry({
 
       {image && (
         <div className="col-span-full md:col-start-2 md:col-span-4">
-          <Media image={image} />
+          <Media image={image} priority={index < 2} />
         </div>
       )}
 

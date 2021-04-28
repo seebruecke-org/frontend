@@ -15,7 +15,7 @@ export default function Media({
   classNameImage,
   classNameCaption,
   showCaption = false,
-  captionIconClassName = "bottom-8 left-8",
+  captionIconClassName = 'bottom-8 left-8',
   ...props
 }) {
   if (!image || !image.media) {

@@ -16,9 +16,9 @@ export default function NewsOverview({ news, page }) {
 
       <div className="grid grid-layout-primary">
         <ul className="col-span-full pb-20 md:pb-40">
-          {news.map((newsEntry) => (
+          {news.map((newsEntry, index) => (
             <li key={newsEntry.id} className="grid grid-layout-primary">
-              <NewsTeaser {...newsEntry} />
+              <NewsTeaser index={index} {...newsEntry} />
             </li>
           ))}
         </ul>
