@@ -1,3 +1,5 @@
+import { useInView } from 'react-intersection-observer';
+import clsx from 'clsx';
 import format from 'date-fns/format';
 
 import { RETURN_CODES } from '@/lib/constants';
@@ -32,6 +34,10 @@ export default function TakePartPage({
   pageType
 }) {
   const { t } = useTranslation();
+  const { ref: refCityNavigation, inView: inViewCityNavigation } = useInView({
+    threshold: 0
+  });
+
   const isGroup = pageType === 'group';
   const contentBlocks = group?.content || safe_harbour?.content || content;
   let kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
@@ -71,12 +77,45 @@ export default function TakePartPage({
       )}
 
       {navigation && navigation.length > 1 && (
-        <SectionNavigation items={navigation} className="col-span-full" />
+        <SectionNavigation
+          items={navigation}
+          className="col-span-full"
+          ref={refCityNavigation}
+        />
+      )}
+
+      {((isGroup &&
+        group?.actions?.length > 0 &&
+        group?.headlines?.length > 0) ||
+        (group?.actions?.length === 0 && group?.headlines?.length > 1)) && (
+        <div
+          className={clsx(
+            'col-span-full sticky top-0 z-30',
+            inViewCityNavigation && 'hidden'
+          )}
+        >
+          <SectionNavigation
+            items={[
+              ...(group.actions.length > 0
+                ? [
+                    {
+                      url: '#aktionen',
+                      label: t('group.upcomingActions')
+                    }
+                  ]
+                : []),
+              ...group.headlines
+            ]}
+            className="col-span-full"
+          />
+        </div>
       )}
 
       {isGroup && group?.actions && group.actions.length > 0 && (
         <>
-          <Heading level={2}>{t('group.upcomingActions')}</Heading>
+          <Heading level={2} id="aktionen">
+            {t('group.upcomingActions')}
+          </Heading>
           <Actions actions={group.actions} />
         </>
       )}

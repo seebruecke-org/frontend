@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import clsx from 'clsx';
 import SwiperCore, { Keyboard, Mousewheel, Navigation, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,11 +14,33 @@ import * as styles from './sectionNavigation.module.css';
 
 SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
-export default function SectionNavigation({
-  items = [],
-  className,
-  primaryGrid = true
-}) {
+function Control({ direction, ...props }) {
+  const isDirectionPrev = direction === 'prev';
+  const fadeOut = isDirectionPrev ? styles.fadeOutStart : styles.fadeOutEnd;
+  const Icon = isDirectionPrev ? ChevronLeftIcon : ChevronRightIcon;
+  const alignment = isDirectionPrev
+    ? 'left-0 md:-left-4 pl-4 pr-2'
+    : 'right-0 md:-right-4 pr-4 pl-2';
+
+  return (
+    <button
+      type="button"
+      className={clsx(
+        'absolute top-0 h-full z-10 flex items-center',
+        alignment,
+        fadeOut
+      )}
+      {...props}
+    >
+      <Icon className={clsx('w-4 h-auto flex-shrink-0')} />
+    </button>
+  );
+}
+
+export default forwardRef(function SectionNavigation(
+  { items = [], className, primaryGrid = true },
+  ref
+) {
   const { asPath } = useRouter();
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [allowNext, setAllowNext] = useState(false);
@@ -34,6 +56,7 @@ export default function SectionNavigation({
 
   return (
     <div
+      ref={ref}
       className={clsx(
         'bg-orange-200',
         primaryGrid && 'grid grid-layout-primary',
@@ -56,20 +79,14 @@ export default function SectionNavigation({
         )}
       >
         {allowPrev && (
-          <button
-            type="button"
-            className={clsx(
-              'absolute top-0 h-full left-0 z-10 flex items-center',
-              styles.fadeOutStart
-            )}
+          <Control
+            direction="prev"
             onClick={() => {
               if (swiperInstance) {
                 swiperInstance.slidePrev();
               }
             }}
-          >
-            <ChevronLeftIcon className="w-5 h-auto ml-2 mr-10 flex-shrink-0" />
-          </button>
+          />
         )}
 
         <Swiper
@@ -106,22 +123,16 @@ export default function SectionNavigation({
         </Swiper>
 
         {allowNext && (
-          <button
-            type="button"
-            className={clsx(
-              'absolute top-0 h-full right-0 z-10 flex items-center',
-              styles.fadeOutEnd
-            )}
+          <Control
+            direction="next"
             onClick={() => {
               if (swiperInstance) {
                 swiperInstance.slideNext();
               }
             }}
-          >
-            <ChevronRightIcon className="w-5 h-auto ml-10 mr-2 flex-shrink-0" />
-          </button>
+          />
         )}
       </nav>
     </div>
   );
-}
+});

@@ -28,6 +28,7 @@ export default function Heading({
   const Tag = `h${`${level}`.replace('h', '')}`;
   const text = onlyText(children);
   const id = slugify(text, {
+    strict: true,
     lower: true
   });
 
