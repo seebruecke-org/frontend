@@ -8,7 +8,7 @@ export default function MediaBlock({ image, blockContext: { index } }) {
       classNameImage="col-span-full md:col-start-1 md:col-span-8"
       classNameCaption="col-span-full md:col-start-9 md:col-span-2 md:pb-0"
       showCaption={true}
-      priority={index < 3}
+      priority={index < 4}
     />
   );
 }
