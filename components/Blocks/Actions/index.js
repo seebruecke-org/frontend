@@ -1,3 +1,4 @@
+import { filterActions } from '@/lib/actions';
 import { toMapboxCoordinates } from '@/lib/coordinates';
 import { fetchAPI } from '@/lib/api';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
@@ -23,7 +24,7 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ cta }) {
+export async function sideloadData({ cta, filter }) {
   const { actions = [] } = await fetchAPI(`
     query {
       actions(where: { end_gte: "${new Date().toISOString()}" }) {
@@ -42,10 +43,12 @@ export async function sideloadData({ cta }) {
 
   return {
     cta: cta?.link ? await fetchLink(cta?.link) : null,
-    actions: actions.map(({ coordinates, ...action }) => ({
-      ...action,
-      coordinates: toMapboxCoordinates(coordinates)
-    }))
+    actions: filterActions(actions, filter).map(
+      ({ coordinates, ...action }) => ({
+        ...action,
+        coordinates: toMapboxCoordinates(coordinates)
+      })
+    )
   };
 }
 
