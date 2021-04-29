@@ -10,11 +10,13 @@ import Layout from '@/components/Layout';
 import '@/styles/tailwind.css';
 import 'swiper/swiper-bundle.css';
 
-function SBApp({ Component, pageProps }) {
+function SBApp({ Component, pageProps = {} }) {
+  const { initialState = {}, ...props } = pageProps;
+  const { menus, ...hydrate } = initialState;
+
   const store = useHydrate({
-    ...pageProps.initialState
+    ...hydrate
   });
-  const { ...props } = pageProps;
 
   if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
     mountStoreDevtool('Store', store);
@@ -22,7 +24,7 @@ function SBApp({ Component, pageProps }) {
 
   return (
     <StoreProvider store={store}>
-      <Layout>
+      <Layout menus={menus}>
         <Toaster />
         <Component {...props} />
       </Layout>
