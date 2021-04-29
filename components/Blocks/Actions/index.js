@@ -11,6 +11,12 @@ export const FRAGMENT = `
     max_actions_to_show
     show_map
 
+    filter {
+      connect_via
+      value
+      key
+    }
+
     cta {
       ${FRAGMENT_LINK}
     }
@@ -18,9 +24,9 @@ export const FRAGMENT = `
 `;
 
 export async function sideloadData({ cta }) {
-  const { actions } = await fetchAPI(`
+  const { actions = [] } = await fetchAPI(`
     query {
-      actions {
+      actions(where: { end_gte: "${new Date().toISOString()}" }) {
         id
         title
         slug
@@ -35,7 +41,7 @@ export async function sideloadData({ cta }) {
   `);
 
   return {
-    cta: await fetchLink(cta?.link),
+    cta: cta?.link ? await fetchLink(cta?.link) : null,
     actions: actions.map(({ coordinates, ...action }) => ({
       ...action,
       coordinates: toMapboxCoordinates(coordinates)
