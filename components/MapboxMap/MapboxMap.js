@@ -13,7 +13,7 @@ export default function MapboxMap({
   ...props
 }) {
   const Map = ReactMapboxGl({
-    accessToken: process.env.MAPBOX_ACCESS_TOKEN,
+    accessToken: process.env.NEXT_MAPBOX_ACCESS_TOKEN,
     attributionControl: false,
     ...factory
   });
