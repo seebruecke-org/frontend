@@ -9,9 +9,17 @@ const withTranspiledModules = require('next-transpile-modules')([
 const { i18n } = require('./next-i18next.config');
 const { slugs: slugsDe } = require('./locales/de/common.json');
 
+function isProduction() {
+  return process.env.NODE_ENV === 'production';
+}
+
+function getImageHostnames() {
+  return [process.env.NEXT_PUBLIC_IMAGE_HOSTNAME];
+}
+
 async function fetchAllRedirects() {
   const client = createClient({
-    url: process.env.NEXT_GRAPHQL_API
+    url: process.env.NEXT_PUBLIC_GRAPHQL_API
   });
 
   try {
@@ -118,10 +126,10 @@ module.exports = withPlugins([withTranspiledModules, withPreact], {
   },
 
   images: {
-    domains: [process.env.NEXT_IMAGE_HOSTNAME]
+    domains: getImageHostnames()
   },
 
   future: {
-    webpack5: true
+    webpack5: isProduction()
   }
 });

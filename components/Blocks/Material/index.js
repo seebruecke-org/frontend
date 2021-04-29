@@ -35,7 +35,7 @@ export async function sideloadData({ items }) {
         ...item,
         file: {
           ...file,
-          url: `${process.env.NEXT_CMS_DOMAIN}${file.url}`
+          url: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}${file.url}`
         }
       };
     })

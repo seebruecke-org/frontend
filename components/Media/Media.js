@@ -27,7 +27,7 @@ export default function Media({
     media: { caption: mediaCaption, url, width, height }
   } = image;
   const imageProps = {
-    src: `${process.env.NEXT_CMS_DOMAIN}${url}`,
+    src: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}${url}`,
     width: props?.layout === 'fill' ? undefined : width,
     height: props?.layout === 'fill' ? undefined : height,
     ...props
