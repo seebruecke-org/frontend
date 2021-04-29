@@ -24,7 +24,7 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ cta, filter }) {
+export async function sideloadData({ cta, filter, max_actions_to_show = 100 }) {
   const { actions = [] } = await fetchAPI(`
     query {
       actions(where: { end_gte: "${new Date().toISOString()}" }) {
@@ -43,12 +43,12 @@ export async function sideloadData({ cta, filter }) {
 
   return {
     cta: cta?.link ? await fetchLink(cta?.link) : null,
-    actions: filterActions(actions, filter).map(
-      ({ coordinates, ...action }) => ({
+    actions: filterActions(actions, filter)
+      .map(({ coordinates, ...action }) => ({
         ...action,
         coordinates: toMapboxCoordinates(coordinates)
-      })
-    )
+      }))
+      .slice(0, max_actions_to_show)
   };
 }
 
