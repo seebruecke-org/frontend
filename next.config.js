@@ -11,7 +11,7 @@ const { slugs: slugsDe } = require('./locales/de/common.json');
 
 async function fetchAllRedirects() {
   const client = createClient({
-    url: process.env.WP_GRAPHQL_API
+    url: process.env.NEXT_GRAPHQL_API
   });
 
   try {
