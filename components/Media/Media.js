@@ -49,6 +49,9 @@ export default function Media({
             setIsCaptionOpen(!isCaptionOpen);
           }}
           className={clsx('absolute', captionIconClassName)}
+          aria-label={t(
+            isCaptionOpen ? 'media.caption.close' : 'media.caption.open'
+          )}
         >
           <InfoCircleIcon
             className={clsx(

@@ -160,5 +160,12 @@
     },
 
     "intro": "Wir konnten das was du suchst, leider nicht finden. Vielleicht helfen dir folgende Links weiter?"
+  },
+
+  "media": {
+    "caption": {
+      "close": "Bildbeschreibung anzeigen",
+      "open": "Bildbeschreibung ausblenden"
+    }
   }
 }
