@@ -39,6 +39,7 @@ async function getBrowserInstance() {
   }
 
   return chromium.puppeteer.launch({
+    ...defaults,
     args: chromium.args,
     executablePath,
     headless: chromium.headless,
