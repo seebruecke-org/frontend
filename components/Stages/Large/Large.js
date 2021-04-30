@@ -7,7 +7,9 @@ import Media from '@/components/Media';
 
 import * as styles from './large.module.css';
 
-const SectionNavigation = dynamic(() => '@/components/SectionNavigation');
+const SectionNavigation = dynamic(() =>
+  import('@/components/SectionNavigation')
+);
 
 export default function StageLarge({
   image,
