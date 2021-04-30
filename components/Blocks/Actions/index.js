@@ -1,4 +1,4 @@
-import { filterActions } from '@/lib/actions';
+import { buildGraphQLQuery } from '@/lib/actions';
 import { toMapboxCoordinates } from '@/lib/coordinates';
 import { fetchAPI } from '@/lib/api';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
@@ -24,31 +24,31 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ cta, filter, max_actions_to_show = 100 }) {
-  const { actions = [] } = await fetchAPI(`
-    query {
-      actions(where: { end_gte: "${new Date().toISOString()}" }) {
-        id
-        title
-        slug
-        intro
-        start
-        slug
-        location
-        location_detail
-        coordinates
-      }
-    }
-  `);
+export async function sideloadData({ cta, filter, max_actions_to_show }) {
+  const query = buildGraphQLQuery(
+    [
+      'id',
+      'title',
+      'slug',
+      'intro',
+      'start',
+      'slug',
+      'location',
+      'location_detail',
+      'coordinates'
+    ],
+    filter,
+    max_actions_to_show
+  );
+
+  const { actions = [] } = await fetchAPI(query);
 
   return {
     cta: cta?.link ? await fetchLink(cta?.link) : null,
-    actions: filterActions(actions, filter)
-      .map(({ coordinates, ...action }) => ({
-        ...action,
-        coordinates: toMapboxCoordinates(coordinates)
-      }))
-      .slice(0, max_actions_to_show)
+    actions: actions.map(({ coordinates, ...action }) => ({
+      ...action,
+      coordinates: toMapboxCoordinates(coordinates)
+    }))
   };
 }
 
