@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic';
 import clsx from 'clsx';
 
 import CTA from '@/components/CTA';
 import Heading from '@/components/Heading';
 import Media from '@/components/Media';
-import SectionNavigation from '@/components/SectionNavigation';
 
 import * as styles from './large.module.css';
+
+const SectionNavigation = dynamic(() => '@/components/SectionNavigation');
 
 export default function StageLarge({
   image,
