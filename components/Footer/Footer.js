@@ -22,10 +22,10 @@ function SocialMedia({ className = '' }) {
 function Menu({ title, items }) {
   return (
     <div className="flex flex-col space-y-10">
-      <h4 className="font-rubik text-xs uppercase font-bold">{title}</h4>
+      <p className="font-rubik text-xs uppercase font-bold">{title}</p>
 
       {items && items.length > 0 && (
-        <ul className="grid grid-cols-2 md:grid-cols-1">
+        <ul className="grid grid-cols-2 md:grid-cols-1" aria-label={title}>
           {items.map((node, index) => (
             <li key={`footer-${title}-${index}`}>
               <StrapiLink
