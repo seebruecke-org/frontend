@@ -55,6 +55,12 @@ async function takeScreenshot(url) {
     const page = await browser.newPage();
     await page.goto(url);
 
+    // Remove Header
+    await page.evaluate((sel) => {
+      const header = document.querySelector(sel);
+      header.remove();
+    }, 'header');
+
     return await page.screenshot({ type: 'png' });
   } catch (error) {
     return null;
