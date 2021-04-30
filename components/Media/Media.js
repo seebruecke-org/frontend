@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import NextImage from 'next/image';
 
@@ -18,6 +19,8 @@ export default function Media({
   captionIconClassName = 'bottom-8 left-8',
   ...props
 }) {
+  const { t } = useTranslation();
+
   if (!image || !image.media) {
     return null;
   }
