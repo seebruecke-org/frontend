@@ -5,6 +5,8 @@ export default function SEO({ title, metadata }) {
     <Head>
       <title>{title} | SEEBRÜCKE</title>
 
+      <meta name="theme-color" content="#f55511" />
+
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="icon" type="image/png" href="/favicon.png" />
 
