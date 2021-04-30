@@ -1,9 +1,24 @@
 import Head from 'next/head';
 
-export default function SEO({ title, metadata }) {
+export default function SEO({ title, metadata: origMetadata = {} }) {
+  const metadata = origMetadata || {};
+
+  metadata['twitter_card'] = 'summary_large_image';
+  metadata['twitter_site'] = '_Seebruecke_';
+
+  if (Object.keys(metadata).length === 0) {
+    metadata['twitter_image'] = {
+      url: process.env.NEXT_PUBLIC_VERCEL_URL + '/public/twitter-preview.png'
+    };
+
+    metadata['facebook_image'] = {
+      url: process.env.NEXT_PUBLIC_VERCEL_URL + '/public/facebook-preview.png'
+    };
+  }
+
   return (
     <Head>
-      <title>{title} | SEEBRÜCKE</title>
+      <title>{title} | Seebrücke</title>
 
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="icon" type="image/png" href="/favicon.png" />
@@ -22,8 +37,12 @@ export default function SEO({ title, metadata }) {
           if (prefix === 'twitter:' || prefix === 'og:') {
             const normalizedKey = key.split('_')[1];
 
-            if (normalizedKey === 'image' && value) {
-              value = value.url;
+            if (normalizedKey === 'image') {
+              if (value?.url) {
+                value = `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/${value.url}`;
+              } else {
+                value = `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/screenshot?url=${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+              }
             }
 
             if (!value) {

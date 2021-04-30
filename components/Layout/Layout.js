@@ -8,7 +8,7 @@ export default function Layout({ menus, children }) {
         metaItems={menus?.['header_meta']?.items}
         items={menus?.['header_main']?.items}
       />
-      {children}
+      <main>{children}</main>
       <Footer
         itemsTakePart={menus?.['footer_take_part']}
         itemsAbout={menus?.['footer_about']}
