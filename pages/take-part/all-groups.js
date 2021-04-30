@@ -15,6 +15,57 @@ import SEO from '@/components/SEO';
 
 const MemoizedMap = memo(Map);
 
+function sortCities(cities) {
+  return cities.sort(({ name: cityAName }, { name: cityBName }) =>
+    cityAName.localeCompare(cityBName)
+  );
+}
+
+function Cities({ cities }) {
+  return (
+    <ul className="grid md:grid-cols-2 gap-8 px-6">
+      {cities.map((city) => (
+        <li key={`city-${city.name}`}>
+          <Group uri={city.uri} name={city.name} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function FederalCountries({ countries }) {
+  const { t } = useTranslation();
+  const numberOfCities = countries.reduce((acc, { cities }) => {
+    acc = acc + cities.length;
+
+    return acc;
+  }, 0);
+
+  if (numberOfCities === countries.length) {
+    const allCities = countries.map(({ cities }) => cities).flat();
+
+    return <Cities cities={sortCities(allCities)} />;
+  }
+
+  return (
+    <ul className="flex flex-col space-y-10">
+      {countries.map(({ name, uri, cities }) => (
+        <li key={`federalCountry-${name}`}>
+          <FederalCountry
+            count={cities.length}
+            singularKicker={t('group.singleTitle')}
+            pluralKicker={t('group.pluralTitle')}
+            name={name}
+            uri={uri}
+          />
+
+          <Cities cities={sortCities(cities)} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function TakePartOverview({ cities: defaultCities, page }) {
   const { t } = useTranslation();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
@@ -101,42 +152,14 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                 >
                   <Country name={countryName} uri={cities[countryName].uri} />
 
-                  <ul className="flex flex-col space-y-10">
-                    {Object.keys(cities[countryName].countries)
+                  <FederalCountries
+                    countries={Object.keys(cities[countryName].countries)
                       .sort()
-                      .map((federalCountryName) => (
-                        <li key={`federalCountry-${federalCountryName}`}>
-                          <FederalCountry
-                            count={
-                              cities[countryName].countries[federalCountryName]
-                                .cities.length
-                            }
-                            singularKicker={t('group.singleTitle')}
-                            pluralKicker={t('group.pluralTitle')}
-                            name={federalCountryName}
-                            uri={
-                              cities[countryName].countries[federalCountryName]
-                                .uri
-                            }
-                          />
-
-                          <ul className="grid md:grid-cols-2 gap-8 px-6">
-                            {cities[countryName].countries[
-                              federalCountryName
-                            ].cities
-                              .sort(
-                                ({ name: cityAName }, { name: cityBName }) =>
-                                  cityAName.localeCompare(cityBName)
-                              )
-                              .map((city) => (
-                                <li key={`city-${city.name}`}>
-                                  <Group uri={city.uri} name={city.name} />
-                                </li>
-                              ))}
-                          </ul>
-                        </li>
-                      ))}
-                  </ul>
+                      .map(
+                        (federalCountryName) =>
+                          cities[countryName].countries[federalCountryName]
+                      )}
+                  />
                 </li>
               ))}
           </ul>
