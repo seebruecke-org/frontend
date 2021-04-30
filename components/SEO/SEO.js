@@ -4,10 +4,13 @@ export default function SEO({ title, metadata: origMetadata = {} }) {
   const metadata = origMetadata || {};
 
   if (Object.keys(metadata).length === 0) {
-    metadata['twitter_image'] =
-      process.env.VERCEL_URL + '/public/twitter-preview.png';
-    metadata['facebook_image'] =
-      process.env.VERCEL_URL + '/public/facebook-preview.png';
+    metadata['twitter_image'] = {
+      url: process.env.VERCEL_URL + '/public/twitter-preview.png'
+    };
+
+    metadata['facebook_image'] = {
+      url: process.env.VERCEL_URL + '/public/facebook-preview.png'
+    };
   }
 
   return (
