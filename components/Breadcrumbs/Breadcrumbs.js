@@ -11,15 +11,19 @@ export default function Breadcrumbs({ crumbs }) {
     <ul className="col-start-3 col-span-10 flex py-5 px-8 md:px-0">
       {crumbs.map((crumb, index) => {
         const isFirst = index === 0;
-        const isLast = index + 1 === crumbs.length;
+        const isNotLast = index + 1 < crumbs.length;
 
         return (
           <li
             key={`breadcrumb-${index}`}
-            className={clsx(isLast && 'hidden md:inline-flex')}
+            className={clsx(isNotLast && 'hidden md:inline-flex')}
           >
             {!isFirst && (
-              <span className="font-rubik text-gray-400 mx-2 uppercase text-2xs md:text-xs hidden md:inline-flex">
+              <span
+                className={clsx(
+                  'font-rubik text-gray-400 mx-2 uppercase text-2xs md:text-xs'
+                )}
+              >
                 &gt;
               </span>
             )}
