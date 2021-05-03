@@ -4,7 +4,7 @@ export default function SEO({ title, metadata: origMetadata = {} }) {
   const metadata = origMetadata || {};
   const domain =
     process.env.VERCEL_ENV === 'production'
-      ? process.env.NEXT_PUBLIC_DOMAIN
+      ? process.env.NEXT_PUBLIC_VERCEL_DOMAIN
       : process.env.NEXT_PUBLIC_VERCEL_URL;
 
   metadata['twitter_card'] = 'summary_large_image';
