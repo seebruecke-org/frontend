@@ -125,7 +125,11 @@ export default function SafeHarbourDemands({
         {t('safeHarbour.disclaimer')}
       </p>
 
-      {cta && <CTA link={cta} />}
+      {cta && (
+        <div className="flex justify-center mt-10 md:mt-16">
+          <CTA link={cta} inverse />
+        </div>
+      )}
     </div>
   );
 }
