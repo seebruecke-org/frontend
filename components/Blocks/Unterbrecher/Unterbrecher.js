@@ -77,29 +77,30 @@ export default function Unterbrecher({
         )}
       </div>
 
+      <Media
+        image={image}
+        layout="fill"
+        objectFit="cover"
+        className={clsx('block h-full w-full md:w-2/4', styles.square)}
+        captionIconClassName={clsx(
+          blockNameMatches(next, 'Unterbrecher') && 'bottom-16 left-10',
+          !reversed &&
+            !blockNameMatches(next, 'Unterbrecher') &&
+            'bottom-8 left-8',
+          reversed &&
+            !blockNameMatches(next, 'Unterbrecher') &&
+            'bottom-8 right-8'
+        )}
+      />
+
       <StrapiLink
         link={{
           ...cta,
           label: null
         }}
-        className={clsx('block w-full h-full md:w-2/4', styles.square)}
-      >
-        <Media
-          image={image}
-          layout="fill"
-          objectFit="cover"
-          className="h-full"
-          captionIconClassName={clsx(
-            blockNameMatches(next, 'Unterbrecher') && 'bottom-16 left-10',
-            !reversed &&
-              !blockNameMatches(next, 'Unterbrecher') &&
-              'bottom-8 left-8',
-            reversed &&
-              !blockNameMatches(next, 'Unterbrecher') &&
-              'bottom-8 right-8'
-          )}
-        />
-      </StrapiLink>
+        className="absolute top-0 left-0 w-full h-full opacity-0 z-20"
+        aria-label={title.text}
+      />
     </section>
   );
 }

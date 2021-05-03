@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 
 import contentBlocks from '@/components/Blocks';
-
 import { BLOCK_PREFIX } from '@/lib/constants';
 
 const blockMap = contentBlocks.reduce((acc, block) => {
