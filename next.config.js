@@ -1,5 +1,6 @@
 const { createClient } = require('urql');
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')();
 const withPlugins = require('next-compose-plugins');
 const withPreact = require('next-plugin-preact');
 const withTranspiledModules = require('next-transpile-modules')([
@@ -100,36 +101,39 @@ function createRewrites(slugs, locale) {
   return rewrites;
 }
 
-module.exports = withPlugins([withTranspiledModules, withPreact], {
-  i18n,
+module.exports = withPlugins(
+  [withTranspiledModules, withPreact, withBundleAnalyzer],
+  {
+    i18n,
 
-  async rewrites() {
-    return {
-      beforeFiles: createRewrites(slugsDe, 'de')
-    };
-  },
+    async rewrites() {
+      return {
+        beforeFiles: createRewrites(slugsDe, 'de')
+      };
+    },
 
-  async redirects() {
-    const redirects = await fetchAllRedirects();
+    async redirects() {
+      const redirects = await fetchAllRedirects();
 
-    return redirects;
-  },
+      return redirects;
+    },
 
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: /\.(js|ts)x?$/,
-      use: ['@svgr/webpack']
-    });
+    webpack(config) {
+      config.module.rules.push({
+        test: /\.svg$/,
+        issuer: /\.(js|ts)x?$/,
+        use: ['@svgr/webpack']
+      });
 
-    return config;
-  },
+      return config;
+    },
 
-  images: {
-    domains: getImageHostnames()
-  },
+    images: {
+      domains: getImageHostnames()
+    },
 
-  future: {
-    webpack5: isProduction()
+    future: {
+      webpack5: isProduction()
+    }
   }
-});
+);

@@ -27,19 +27,6 @@ export default function NewsEntryPage({
     <>
       <SEO title={title} metadata={metadata} />
 
-      <div className="grid grid-layout-primary">
-        {type !== 'news' && (
-          <Breadcrumbs
-            crumbs={[
-              {
-                url: `/${t('slugs.press')}`,
-                label: t('press.longTitle')
-              }
-            ]}
-          />
-        )}
-      </div>
-
       <PageBody lastBlock={getLastBlockName(content)}>
         <div className="grid grid-layout-primary">
           <Heading level={1} kicker={`${date} · ${t(`news.type.${type}`)}`}>
