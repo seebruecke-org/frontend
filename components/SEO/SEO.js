@@ -2,17 +2,21 @@ import Head from 'next/head';
 
 export default function SEO({ title, metadata: origMetadata = {} }) {
   const metadata = origMetadata || {};
+  const domain =
+    process.env.VERCEL_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_DOMAIN
+      : process.env.NEXT_PUBLIC_VERCEL_URL;
 
   metadata['twitter_card'] = 'summary_large_image';
   metadata['twitter_site'] = '_Seebruecke_';
 
   if (Object.keys(metadata).length === 0) {
     metadata['twitter_image'] = {
-      url: process.env.NEXT_PUBLIC_VERCEL_URL + '/public/twitter-preview.png'
+      url: `https://${domain}/public/twitter-preview.png`
     };
 
     metadata['facebook_image'] = {
-      url: process.env.NEXT_PUBLIC_VERCEL_URL + '/public/facebook-preview.png'
+      url: `https://${domain}/public/facebook-preview.png`
     };
   }
 
@@ -41,9 +45,9 @@ export default function SEO({ title, metadata: origMetadata = {} }) {
 
             if (normalizedKey === 'image') {
               if (value?.url) {
-                value = `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/${value.url}`;
+                value = `https://${process.env.NEXT_PUBLIC_CMS_DOMAIN}/${value.url}`;
               } else {
-                value = `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/screenshot?url=${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+                value = `https://${domain}/api/screenshot?url=https://${domain}`;
               }
             }
 
