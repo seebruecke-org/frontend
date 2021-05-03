@@ -83,7 +83,7 @@ export default function SafeHarbourDemands({
   return (
     <div className="col-span-full md:col-start-3 md:col-span-9 my-12">
       {last_updated && (
-        <p className="font-rubik text-small md:text-base mb-16">
+        <p className="font-rubik text-small md:text-base mb-16 px-8 md:px-0">
           {t('safeHarbour.lastUpdated')}{' '}
           {format(new Date(last_updated), t('safeHarbour.dateFormat'))}
         </p>
@@ -121,7 +121,7 @@ export default function SafeHarbourDemands({
         })}
       </Accordion>
 
-      <p className="font-rubik text-base text-gray-600 mt-12">
+      <p className="font-rubik text-base text-gray-600 mt-12 px-8 md:px-0">
         {t('safeHarbour.disclaimer')}
       </p>
 
