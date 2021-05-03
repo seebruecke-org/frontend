@@ -1,6 +1,8 @@
 const { createClient } = require('urql');
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')();
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enable: isProduction()
+});
 const withPlugins = require('next-compose-plugins');
 const withPreact = require('next-plugin-preact');
 const withTranspiledModules = require('next-transpile-modules')([
