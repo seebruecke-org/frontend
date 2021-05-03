@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 
 import Bookmark from '@/components/Bookmark';
@@ -7,14 +8,10 @@ import Media from '@/components/Media';
 
 import * as styles from './medium.module.css';
 
-export default function StageMedium({
-  kicker,
-  title,
-  intro,
-  image,
-  className,
-  allowBookmark = false
-}) {
+export default forwardRef(function StageMedium(
+  { kicker, title, intro, image, className, allowBookmark = false },
+  ref
+) {
   const { t } = useTranslation();
   const hasImage = !!image;
 
@@ -25,6 +22,7 @@ export default function StageMedium({
         styles.stage,
         className
       )}
+      ref={ref}
     >
       {hasImage && (
         <Media
@@ -62,4 +60,4 @@ export default function StageMedium({
       </div>
     </section>
   );
-}
+});

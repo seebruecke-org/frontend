@@ -34,11 +34,12 @@ export default function TakePartPage({
   pageType
 }) {
   const { t } = useTranslation();
-  const { ref: refCityNavigation, inView: inViewCityNavigation } = useInView({
+  const { ref: refStage, inView: inViewStage } = useInView({
     threshold: 0
   });
 
   const isGroup = pageType === 'group';
+  const hasNavigation = navigation && navigation.length > 1;
   const contentBlocks = group?.content || safe_harbour?.content || content;
   let kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
   const featuredImage = isGroup
@@ -69,6 +70,7 @@ export default function TakePartPage({
           className="col-span-full"
           image={featuredImage}
           allowBookmark
+          ref={refStage}
         />
       ) : (
         <Heading level={1} kicker="Seebrücke">
@@ -76,12 +78,8 @@ export default function TakePartPage({
         </Heading>
       )}
 
-      {navigation && navigation.length > 1 && (
-        <SectionNavigation
-          items={navigation}
-          className="col-span-full"
-          ref={refCityNavigation}
-        />
+      {hasNavigation && (
+        <SectionNavigation items={navigation} className="col-span-full" />
       )}
 
       {((isGroup &&
@@ -91,7 +89,7 @@ export default function TakePartPage({
         <div
           className={clsx(
             'col-span-full sticky top-0 z-30',
-            inViewCityNavigation && 'hidden'
+            inViewStage && 'hidden'
           )}
         >
           <SectionNavigation
