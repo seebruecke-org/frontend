@@ -18,7 +18,7 @@ export default function Media({
   classNameImage,
   classNameCaption,
   showCaption = false,
-  captionIconClassName = 'bottom-8 left-8',
+  captionIconClassName = 'bottom-2 md:bottom-8 left-2 md:left-2',
   ...props
 }) {
   const { t } = useTranslation();
