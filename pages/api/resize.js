@@ -1,4 +1,5 @@
 import { serializeError } from 'serialize-error';
+import path from 'path';
 import sharp from 'sharp';
 
 import { isValidSeebrueckeUrl } from '@/lib/url';
@@ -18,10 +19,16 @@ function isValidSize(name) {
 
 async function resizeImage(url, size) {
   const imageBuffer = await fetch(url).then((res) => res.arrayBuffer());
+  const parsedUrl = new URL(url);
+  const filename = path.extname(parsedUrl.pathname);
+  const filenameWithoutDot = filename.split('.').pop();
 
   return await sharp(Buffer.from(imageBuffer))
-    .resize(...getSize(size))
-    .png()
+    .resize(...getSize(size), {
+      fit: 'contain',
+      background: { r: 245, g: 85, b: 17 }
+    })
+    .toFormat(filenameWithoutDot)
     .toBuffer();
 }
 
