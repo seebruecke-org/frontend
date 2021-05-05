@@ -5,6 +5,7 @@ import { getLastBlockName } from '@/lib/blocks';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
 
+import { Image as RichtextBlockImage } from '@/components/Richtext';
 import BlockSwitch from '@/components/BlockSwitch';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
@@ -14,6 +15,7 @@ export default function NewsEntryPage({
   title,
   metadata,
   content,
+  image,
   publishedAt,
   type
 }) {
@@ -33,7 +35,27 @@ export default function NewsEntryPage({
           </Heading>
         </div>
 
-        <BlockSwitch blocks={content} />
+        <BlockSwitch
+          blocks={content}
+          blockProps={{
+            Richtext: {
+              renderers: {
+                image: ({ src, alt }) => {
+                  return (
+                    <RichtextBlockImage
+                      image={{
+                        caption: image?.caption || image?.media?.caption,
+                        media: { url: src, width: 300, height: 300, alternativeText: alt }
+                      }}
+                      priority
+                      className="md:float-left md:mr-12 mb-12 md:-ml-16 xl:-ml-48"
+                    />
+                  );
+                }
+              }
+            }
+          }}
+        />
       </PageBody>
     </>
   );

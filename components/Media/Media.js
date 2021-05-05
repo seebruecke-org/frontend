@@ -29,9 +29,10 @@ export default function Media({
 
   const {
     caption,
-    media: { caption: mediaCaption, url, width, height }
+    media: { caption: mediaCaption, url, width, height, alternativeText }
   } = image;
   const imageProps = {
+    alt: alternativeText,
     src: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}${url}`,
     width: props?.layout === 'fill' ? undefined : width,
     height: props?.layout === 'fill' ? undefined : height,
