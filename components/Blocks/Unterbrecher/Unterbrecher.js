@@ -50,7 +50,9 @@ export default function Unterbrecher({
         className={clsx(
           background,
           styles.contentContainer,
-          'flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-4 md:mx-0 -mt-36 md:mt-0 z-10 relative'
+          'flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-4 md:mx-0 z-10 relative',
+          !hasPaddingBottom && '-mt-80 md:mt-0',
+          hasPaddingBottom && '-mb-80 md:mb-0'
         )}
       >
         <div
@@ -83,13 +85,14 @@ export default function Unterbrecher({
         objectFit="cover"
         className={clsx('block h-full w-full md:w-2/4', styles.square)}
         captionIconClassName={clsx(
-          blockNameMatches(next, 'Unterbrecher') && 'bottom-16 left-10',
+          blockNameMatches(next, 'Unterbrecher') &&
+            'top-4 md:top-auto left-4 md:left-auto md:bottom-16 md:left-10',
           !reversed &&
             !blockNameMatches(next, 'Unterbrecher') &&
-            'bottom-8 left-8',
+            'top-4 md:top-auto md:bottom-8 left-4 md:left-8',
           reversed &&
             !blockNameMatches(next, 'Unterbrecher') &&
-            'bottom-8 right-8'
+            'bottom-4 md:bottom-8 left-4 md:left-auto md:right-8'
         )}
       />
 
