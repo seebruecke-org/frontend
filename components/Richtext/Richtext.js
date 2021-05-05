@@ -1,6 +1,7 @@
 import Markdown from '@/components/Markdown';
 
 import Heading from '@/components/Blocks/Heading';
+import Image from './Image';
 import Link from './Link';
 import List, { ListItem } from './List';
 import Paragraph from './Paragraph';
@@ -9,6 +10,7 @@ export default function Richtext({
   content,
   size = 'regular',
   scrollMargin,
+  renderers,
   ...props
 }) {
   const RENDERERS = {
@@ -37,8 +39,15 @@ export default function Richtext({
     },
 
     paragraph: ({ children }) => {
+      // Don't wrap images in paragraph tags
+      if (children && children.length === 1 && children?.[0]?.props?.src) {
+        return children;
+      }
+
       return <Paragraph size={size}>{children}</Paragraph>;
-    }
+    },
+
+    ...renderers
   };
 
   return (

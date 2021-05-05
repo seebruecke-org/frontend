@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import contentBlocks from '@/components/Blocks';
+import { blockNameMatches } from '@/lib/blocks';
 import { BLOCK_PREFIX } from '@/lib/constants';
 
 const blockMap = contentBlocks.reduce((acc, block) => {
@@ -13,7 +14,8 @@ const blockMap = contentBlocks.reduce((acc, block) => {
 export default function BlockSwitch({
   blocks,
   className,
-  scrollMargin = false
+  scrollMargin = false,
+  blockProps = {}
 }) {
   if (!blocks) {
     return null;
@@ -23,6 +25,16 @@ export default function BlockSwitch({
     <div className={clsx('grid grid-layout-primary', className)}>
       {blocks.map(({ __typename: type, ...props }, index) => {
         const BlockComponent = blockMap[type] || null;
+        const extraBlockProps = Object.entries(blockProps).reduce(
+          (acc, [key, value]) => {
+            if (blockNameMatches(key, type)) {
+              acc = value;
+            }
+
+            return acc;
+          },
+          {}
+        );
 
         if (!BlockComponent) {
           return (
@@ -44,6 +56,7 @@ export default function BlockSwitch({
               next: blocks.length > index + 1 && blocks[index + 1].__typename
             }}
             scrollMargin={scrollMargin}
+            {...extraBlockProps}
             {...props}
           />
         );
