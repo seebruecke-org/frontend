@@ -1,5 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 import format from 'date-fns/format';
 
 import { RETURN_CODES } from '@/lib/constants';
@@ -12,16 +13,19 @@ import {
 import { query as queryGlobalData } from '@/lib/global';
 import { useTranslation } from 'next-i18next';
 import { StageMedium } from '@/components/Stages';
-import Actions from '@/components/Blocks/Actions';
 import BlockSwitch from '@/components/BlockSwitch';
-import Breadcrumbs from '@/components/Blocks/Breadcrumbs';
-import Demands from '@/components/Demands/SafeHarbour';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
-import SectionNavigation from '@/components/SectionNavigation';
 import SEO from '@/components/SEO';
 
 import { getLastBlockName } from '@/lib/blocks';
+
+const Actions = dynamic(() => import('@/components/Blocks/Actions'));
+const Breadcrumbs = dynamic(() => import('@/components/Blocks/Breadcrumbs'));
+const Demands = dynamic(() => import('@/components/Demands/SafeHarbour'));
+const SectionNavigation = dynamic(() =>
+  import('@/components/SectionNavigation')
+);
 
 export default function TakePartPage({
   breadcrumbs,
