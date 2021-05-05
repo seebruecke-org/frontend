@@ -44,12 +44,6 @@ export default function Media({
   const imageCaption = caption || mediaCaption;
   const hasCaption = !!imageCaption;
 
-  useEffect(() => {
-    if (captionPosition) {
-      console.log(captionPosition);
-    }
-  }, [captionPosition]);
-
   return (
     <figure className={clsx('leading-none relative text-none', className)}>
       <div className={classNameImage}>{<NextImage {...imageProps} />}</div>

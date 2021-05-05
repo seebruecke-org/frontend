@@ -18,7 +18,7 @@ export default function RichtextBlock({
   return (
     <Richtext
       className={clsx(
-        'col-span-full md:col-start-3 md:col-span-9 flex flex-col space-y-10 mb-5 md:mb-10',
+        'col-span-full md:col-start-3 md:col-span-9 space-y-10 mb-5 md:mb-10',
         marginTop
       )}
       content={content}

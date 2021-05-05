@@ -6,7 +6,6 @@ import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
 
 import BlockSwitch from '@/components/BlockSwitch';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
