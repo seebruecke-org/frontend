@@ -45,10 +45,10 @@ export default function NewsEntryPage({
                     <RichtextBlockImage
                       image={{
                         caption: image?.caption || image?.media?.caption,
-                        media: { url: src, width: 300, height: 300, alternativeText: alt }
+                        media: { url: src, width: 270, height: 270, alternativeText: alt }
                       }}
                       priority
-                      className="md:float-left md:mr-12 mb-12 md:-ml-16 xl:-ml-48"
+                      className="md:float-left md:mr-12 mb-10 md:-ml-16 xl:-ml-48 md:mt-4"
                     />
                   );
                 }
