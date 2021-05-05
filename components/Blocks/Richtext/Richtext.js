@@ -5,7 +5,8 @@ import Richtext from '@/components/Richtext';
 
 export default function RichtextBlock({
   blockContext = {},
-  richtext: content
+  richtext: content,
+  scrollMargin,
 }) {
   const { previous } = blockContext;
   let marginTop = 'mt-5 md:mt-10';
@@ -21,6 +22,7 @@ export default function RichtextBlock({
         marginTop
       )}
       content={content}
+      scrollMargin={scrollMargin}
     />
   );
 }

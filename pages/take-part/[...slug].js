@@ -45,6 +45,9 @@ export default function TakePartPage({
   const featuredImage = isGroup
     ? group?.image?.image
     : safe_harbour?.image?.image;
+  const hasAnchorNavigation =
+    (isGroup && group?.actions?.length > 0 && group?.headlines?.length > 0) ||
+    (group?.actions?.length === 0 && group?.headlines?.length > 1);
 
   if (!isGroup && safe_harbour?.since) {
     kicker += ` · ${t('safeHarbour.since').toLowerCase()} ${format(
@@ -82,10 +85,7 @@ export default function TakePartPage({
         <SectionNavigation items={navigation} className="col-span-full" />
       )}
 
-      {((isGroup &&
-        group?.actions?.length > 0 &&
-        group?.headlines?.length > 0) ||
-        (group?.actions?.length === 0 && group?.headlines?.length > 1)) && (
+      {hasAnchorNavigation && (
         <div
           className={clsx(
             'col-span-full sticky top-0 z-30',
@@ -111,7 +111,7 @@ export default function TakePartPage({
 
       {isGroup && group?.actions && group.actions.length > 0 && (
         <>
-          <Heading level={2} id="aktionen">
+          <Heading level={2} id="aktionen" scrollMargin={hasAnchorNavigation}>
             {t('group.upcomingActions')}
           </Heading>
           <Actions actions={group.actions} />
@@ -120,7 +120,9 @@ export default function TakePartPage({
 
       {!isGroup && safe_harbour?.demands && (
         <>
-          <Heading level={2}>Unsere Forderungen</Heading>
+          <Heading level={2} scrollMargin={hasAnchorNavigation}>
+            Unsere Forderungen
+          </Heading>
           <Demands
             demands={safe_harbour?.demands}
             cityName={name}
@@ -129,7 +131,11 @@ export default function TakePartPage({
         </>
       )}
 
-      <BlockSwitch blocks={contentBlocks} className="col-span-full" />
+      <BlockSwitch
+        blocks={contentBlocks}
+        className="col-span-full"
+        scrollMargin={hasAnchorNavigation}
+      />
     </PageBody>
   );
 }

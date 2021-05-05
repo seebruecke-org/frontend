@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 
 import Heading from '@/components/Heading';
-
 import { blockNameMatches } from '@/lib/blocks';
+
+import * as styles from './heading.module.css';
 
 export default function HeadingBlock({
   level,
@@ -11,7 +12,8 @@ export default function HeadingBlock({
   children,
   as,
   blockContext = {},
-  id
+  id,
+  scrollMargin
 }) {
   const { previous } = blockContext;
   const normalizedLevel =
@@ -35,7 +37,8 @@ export default function HeadingBlock({
       kicker={kicker}
       className={clsx(
         'px-8 md:px-0 col-span-full md:col-start-3 md:col-span-9',
-        marginTop
+        marginTop,
+        scrollMargin && styles.scrollMargin
       )}
       as={as}
       id={id}

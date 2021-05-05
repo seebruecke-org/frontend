@@ -10,7 +10,11 @@ const blockMap = contentBlocks.reduce((acc, block) => {
   return acc;
 }, {});
 
-export default function BlockSwitch({ blocks, className }) {
+export default function BlockSwitch({
+  blocks,
+  className,
+  scrollMargin = false
+}) {
   if (!blocks) {
     return null;
   }
@@ -39,6 +43,7 @@ export default function BlockSwitch({ blocks, className }) {
               previous: index > 1 && blocks[index - 1].__typename,
               next: blocks.length > index + 1 && blocks[index + 1].__typename
             }}
+            scrollMargin={scrollMargin}
             {...props}
           />
         );

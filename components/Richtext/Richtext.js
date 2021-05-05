@@ -5,10 +5,19 @@ import Link from './Link';
 import List, { ListItem } from './List';
 import Paragraph from './Paragraph';
 
-export default function Richtext({ content, size = 'regular', ...props }) {
+export default function Richtext({
+  content,
+  size = 'regular',
+  scrollMargin,
+  ...props
+}) {
   const RENDERERS = {
     heading: ({ level, children }) => {
-      return <Heading level={level - 1}>{children}</Heading>;
+      return (
+        <Heading level={level - 1} scrollMargin={scrollMargin}>
+          {children}
+        </Heading>
+      );
     },
 
     link: ({ node: { url }, children }) => {
