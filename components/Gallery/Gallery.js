@@ -14,6 +14,21 @@ SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
 const SLIDE_GAP = 20;
 
+function ControlButton({ children, className = '', ...props }) {
+  return (
+    <button
+      type="button"
+      className={clsx(
+        'px-8 md:px-6 py-4 md:py-2 justify-center hover:bg-gray-200 focus:bg-gray-200 focus:outline-none',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function Gallery({ items, priority = false }) {
   if (!items) {
     return null;
@@ -40,23 +55,35 @@ export default function Gallery({ items, priority = false }) {
       </Measure>
 
       <div className="col-span-full overflow-hidden relative">
-        {currentSlideIndex > 1 && (
-          <button
-            type="button"
-            className={clsx(
-              'h-full w-20 absolute top-0 left-0 z-10 hidden md:flex justify-center pr-16 pl-8',
-              styles.controlPrev
-            )}
+        <div className="flex justify-end mb-12">
+          <ControlButton
             onClick={() => {
               if (swiperInstance) {
                 swiperInstance.slidePrev();
               }
             }}
+            disabled={currentSlideIndex < 1}
             aria-label="Previous Slide"
+            className={currentSlideIndex < 1 && 'text-gray-400'}
           >
-            <ChevronLeftIcon className="w-6 h-auto flex-shrink-0" />
-          </button>
-        )}
+            <ChevronLeftIcon className="w-4 md:w-6 h-auto flex-shrink-0" />
+          </ControlButton>
+
+          <ControlButton
+            onClick={() => {
+              if (swiperInstance) {
+                swiperInstance.slideNext();
+              }
+            }}
+            aria-label="Next Slide"
+            disabled={currentSlideIndex + 2 === items.length}
+            className={
+              currentSlideIndex + 2 === items.length && 'text-gray-400'
+            }
+          >
+            <ChevronRightIcon className="w-4 md:w-6 h-auto flex-shrink-0" />
+          </ControlButton>
+        </div>
 
         <Swiper
           freeMode
@@ -81,22 +108,6 @@ export default function Gallery({ items, priority = false }) {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <button
-          type="button"
-          className={clsx(
-            'h-full pl-16 pr-8 absolute top-0 right-0 z-10 hidden md:flex justify-center',
-            styles.controlNext
-          )}
-          onClick={() => {
-            if (swiperInstance) {
-              swiperInstance.slideNext();
-            }
-          }}
-          aria-label="Next Slide"
-        >
-          <ChevronRightIcon className="w-6 h-auto flex-shrink-0" />
-        </button>
       </div>
     </>
   );
