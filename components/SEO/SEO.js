@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 export default function SEO({ title, metadata: origMetadata = {} }) {
+  const { asPath } = useRouter();
   const metadata = origMetadata || {};
   const domain =
     process.env.VERCEL_ENV === 'production'
@@ -44,15 +46,9 @@ export default function SEO({ title, metadata: origMetadata = {} }) {
             const normalizedKey = key.split('_')[1];
 
             if (normalizedKey === 'image') {
-              if (value?.url) {
-                value = `https://${process.env.NEXT_PUBLIC_CMS_DOMAIN}/${value.url}`;
-              } else {
-                value = `https://${domain}/api/screenshot?url=https://${domain}`;
-              }
-            }
-
-            if (!value) {
-              return null;
+              value = value?.url
+                ? `https://${process.env.NEXT_PUBLIC_CMS_DOMAIN}/${value.url}`
+                : `https://${domain}/api/screenshot?url=https://${domain}${asPath}`;
             }
 
             return (
