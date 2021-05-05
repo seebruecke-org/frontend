@@ -72,6 +72,7 @@
     "remark-extract-toc": "^1.1.0",
     "remark-parse": "^9.0.0",
     "serialize-error": "^8.1.0",
+    "sharp": "^0.28.1",
     "simple-zustand-devtools": "^1.0.0",
     "slugify": "^1.5.1",
     "swiper": "^6.5.9",
