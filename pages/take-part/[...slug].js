@@ -35,7 +35,8 @@ export default function TakePartPage({
 }) {
   const { t } = useTranslation();
   const { ref: refStage, inView: inViewStage } = useInView({
-    threshold: 0
+    threshold: 0,
+    initialInView: true
   });
 
   const isGroup = pageType === 'group';
