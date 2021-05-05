@@ -29,11 +29,12 @@ export default function StageLarge({
         layout="fill"
         priority
         className="col-span-full h-full w-full relative md:absolute"
+        captionIconClassName="top-4 md:bottom-4 md:top-auto left-2 md:left-4"
       />
 
       <div
         className={clsx(
-          'bg-orange-200 md:w-8/12 absolute -bottom-48 md:-bottom-32 left-8 md:left-auto right-8 md:right-0 w-auto',
+          'bg-orange-200 md:w-8/12 absolute -bottom-32 md:-bottom-32 left-2 md:left-auto right-2 md:right-0 w-auto',
           hasSubnavigation ? 'pt-20 md:pt-28' : 'py-20 md:py-28'
         )}
       >
