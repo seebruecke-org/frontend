@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Portal } from 'react-portal';
 import clsx from 'clsx';
+import Measure from 'react-measure';
 import NextImage from 'next/image';
 
 import InfoCircleIcon from '@/public/icons/info-circle-duotone.svg';
@@ -38,43 +40,77 @@ export default function Media({
 
   const showCaptionAsOverlay = !showCaption;
   const [isCaptionOpen, setIsCaptionOpen] = useState(showCaption);
+  const [captionPosition, setCaptionPosition] = useState(null);
   const imageCaption = caption || mediaCaption;
   const hasCaption = !!imageCaption;
 
+  useEffect(() => {
+    if (captionPosition) {
+      console.log(captionPosition);
+    }
+  }, [captionPosition]);
+
   return (
-    <figure className={clsx('leading-none text-none relative', className)}>
+    <figure className={clsx('leading-none relative text-none', className)}>
       <div className={classNameImage}>{<NextImage {...imageProps} />}</div>
 
       {!showCaption && hasCaption && (
-        <button
-          type="button"
-          onClick={() => {
-            setIsCaptionOpen(!isCaptionOpen);
+        <Measure
+          bounds
+          onResize={({ bounds }) => {
+            setCaptionPosition(bounds);
           }}
-          className={clsx('absolute', captionIconClassName)}
-          aria-label={t(
-            isCaptionOpen ? 'media.caption.close' : 'media.caption.open'
-          )}
         >
-          <InfoCircleIcon
-            className={clsx(
-              'w-10 h-auto hover:text-white',
-              styles.infoIcon,
-              isCaptionOpen && styles.infoIconOpen
-            )}
-          />
-        </button>
+          {({ measureRef }) => (
+            <button
+              type="button"
+              ref={measureRef}
+              onClick={() => {
+                setIsCaptionOpen(!isCaptionOpen);
+              }}
+              className={clsx('absolute z-30', captionIconClassName)}
+              aria-label={t(
+                isCaptionOpen ? 'media.caption.close' : 'media.caption.open'
+              )}
+            >
+              <InfoCircleIcon
+                className={clsx(
+                  'w-10 h-auto hover:text-white',
+                  styles.infoIcon,
+                  isCaptionOpen && styles.infoIconOpen
+                )}
+              />
+            </button>
+          )}
+        </Measure>
       )}
 
-      {isCaptionOpen && hasCaption && (
+      {!showCaption && isCaptionOpen && hasCaption && (
+        <Portal>
+          <figcaption
+            className={clsx(
+              'font-rubik italic text-2xs px-10 py-5 md:p-5 md:pr-0 text-gray-100 bg-black font-rubik-features',
+              classNameCaption,
+              showCaptionAsOverlay &&
+                isCaptionOpen &&
+                'absolute z-30 px-4 md:pr-5',
+              showCaptionAsOverlay && styles.captionOverlay
+            )}
+            style={{
+              left: captionPosition?.left + captionPosition?.width + 10,
+              top: captionPosition?.top - captionPosition?.height / 2
+            }}
+          >
+            <Richtext content={imageCaption} size="tiny" />
+          </figcaption>
+        </Portal>
+      )}
+
+      {showCaption && (
         <figcaption
           className={clsx(
-            'font-rubik italic text-2xs px-10 py-5 md:p-5 md:pr-0 text-gray-600 font-rubik-features',
-            classNameCaption,
-            showCaptionAsOverlay &&
-              isCaptionOpen &&
-              'absolute -bottom-8 left-16 bg-white z-20 px-4 md:pr-5',
-            showCaptionAsOverlay && styles.captionOverlay
+            'font-rubik italic text-2xs px-0 md:px-10 py-5 md:p-5 md:pr-0 text-gray-600 font-rubik-features',
+            classNameCaption
           )}
         >
           <Richtext content={imageCaption} size="tiny" />
