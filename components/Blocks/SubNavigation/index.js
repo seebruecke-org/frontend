@@ -24,7 +24,6 @@ export async function sideloadData({ items = [] }) {
 
 export const block = {
   name: 'SubNavigation',
-  Component: SubNavigation,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

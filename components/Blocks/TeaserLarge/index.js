@@ -23,7 +23,6 @@ export async function sideloadData({ cta }) {
 
 export const block = {
   name: 'TeaserLarge',
-  Component: TeaserLarge,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

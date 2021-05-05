@@ -30,7 +30,6 @@ export async function sideloadData({ items }) {
 
 export const block = {
   name: 'TeasersSmall',
-  Component: TeasersSmall,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

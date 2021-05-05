@@ -34,7 +34,6 @@ async function sideloadData({
 
 export const block = {
   name: 'Media',
-  Component: Media,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

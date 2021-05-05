@@ -44,7 +44,6 @@ export async function sideloadData({ items }) {
 
 export const block = {
   name: 'Material',
-  Component: Material,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

@@ -35,7 +35,6 @@ export async function sideloadData({ uCTA }) {
 
 export const block = {
   name: 'Unterbrecher',
-  Component: Unterbrecher,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

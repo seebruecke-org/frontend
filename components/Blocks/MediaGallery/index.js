@@ -28,7 +28,6 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'MediaGallery',
-  Component: MediaGallery,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

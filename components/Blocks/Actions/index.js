@@ -54,7 +54,6 @@ export async function sideloadData({ cta, filter, max_actions_to_show }) {
 
 export const block = {
   name: 'Actions',
-  Component: Actions,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

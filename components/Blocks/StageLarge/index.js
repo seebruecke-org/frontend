@@ -34,7 +34,6 @@ async function sideloadData({ cta, subnavigation }) {
 
 export const block = {
   name: 'StageLarge',
-  Component: StageLarge,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };
