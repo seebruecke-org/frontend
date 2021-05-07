@@ -2,3 +2,6 @@
 node_modules/
 .env
 public/workbox-*.js
+public/workbox-*.js.map
+public/sw.js.map
+public/sw.map
