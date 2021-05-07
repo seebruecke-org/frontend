@@ -19,7 +19,7 @@ export default function Media({
   classNameImage,
   classNameCaption,
   showCaption = false,
-  captionIconClassName = 'bottom-2 md:bottom-8 left-2 md:left-2',
+  captionIconClassName = 'bottom-4 md:bottom-8 left-4 md:left-2',
   ...props
 }) {
   const { t } = useTranslation();
@@ -71,7 +71,7 @@ export default function Media({
             >
               <InfoCircleIcon
                 className={clsx(
-                  'w-10 h-auto hover:text-white',
+                  'w-8 sm:w-10 h-auto hover:text-white opacity-70 mix-blend-multiply hover:opacity-100',
                   styles.infoIcon,
                   isCaptionOpen && styles.infoIconOpen
                 )}
