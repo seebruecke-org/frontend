@@ -16,23 +16,25 @@ SwiperCore.use([Navigation, Keyboard, Mousewheel, A11y]);
 
 function Control({ direction, ...props }) {
   const isDirectionPrev = direction === 'prev';
-  const fadeOut = isDirectionPrev ? styles.fadeOutStart : styles.fadeOutEnd;
   const Icon = isDirectionPrev ? ChevronLeftIcon : ChevronRightIcon;
-  const alignment = isDirectionPrev
-    ? 'left-0 md:-left-4 pl-4 pr-2'
-    : 'right-0 md:-right-4 pr-4 pl-2';
 
   return (
     <button
       type="button"
       className={clsx(
         'absolute top-0 h-full z-10 flex items-center',
-        alignment,
-        fadeOut
+        isDirectionPrev
+          ? 'left-0 md:-left-4 pl-4 pr-2'
+          : 'right-0 md:-right-4 pr-4 pl-2',
+        isDirectionPrev ? styles.fadeOutStart : styles.fadeOutEnd
       )}
       {...props}
     >
-      <Icon className={clsx('w-4 h-auto flex-shrink-0')} />
+      <Icon
+        className={clsx(
+          'w-4 h-auto flex-shrink-0 mix-blend-multiply opacity-40'
+        )}
+      />
     </button>
   );
 }
@@ -112,7 +114,7 @@ export default forwardRef(function SectionNavigation(
                 <StrapiLink
                   link={item}
                   className={clsx(
-                    'block py-3 px-3 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap hover:bg-white col-span-2 text-center',
+                    'block py-3 px-2 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap hover:bg-white col-span-2 text-center',
                     isActive && 'bg-white',
                     index === 0 && 'col-start-2'
                   )}
