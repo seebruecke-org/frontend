@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next';
-import { format } from 'date-fns';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 
@@ -38,7 +37,7 @@ export default function NewsEntry({
         )}
       >
         <header className="font-rubik text-xs md:text-base text-gray-600 mb-1 uppercase flex">
-          {format(new Date(publication_date), t('news.dateFormat'))}
+          {publication_date}
           <span className="px-3">·</span>
           {translatedType}
         </header>

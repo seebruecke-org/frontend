@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next';
-import format from 'date-fns/format';
 
 import { getLastBlockName } from '@/lib/blocks';
 import { query as queryGlobalData } from '@/lib/global';
@@ -16,13 +15,10 @@ export default function NewsEntryPage({
   metadata,
   content,
   image,
-  publishedAt,
+  published_at,
   type
 }) {
   const { t } = useTranslation();
-  const date = publishedAt
-    ? format(new Date(publishedAt), t('news.dateFormat'))
-    : '';
 
   return (
     <>
@@ -30,7 +26,10 @@ export default function NewsEntryPage({
 
       <PageBody lastBlock={getLastBlockName(content)}>
         <div className="grid grid-layout-primary">
-          <Heading level={1} kicker={`${date} · ${t(`news.type.${type}`)}`}>
+          <Heading
+            level={1}
+            kicker={`${published_at} · ${t(`news.type.${type}`)}`}
+          >
             {title}
           </Heading>
         </div>
