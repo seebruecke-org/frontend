@@ -33,6 +33,8 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
     color = 'bg-orange-900';
   } else if (decided === true && fullfilled === true) {
     color = styles.demandFullfilled;
+  } else if (decided === true && !fullfilled) {
+    color = 'bg-orange-200';
   }
 
   return (
