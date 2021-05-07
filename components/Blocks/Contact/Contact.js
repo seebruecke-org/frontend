@@ -34,7 +34,7 @@ export default function ContactBlock({
         {twitter && (
           <NextLink href={twitter}>
             <a className="hover:text-orange-200">
-              <TwitterIcon className="w-16 h-16" />
+              <TwitterIcon className="w-12 md:w-16 h-auto" />
             </a>
           </NextLink>
         )}
@@ -42,7 +42,7 @@ export default function ContactBlock({
         {facebook && (
           <NextLink href={facebook}>
             <a className="hover:text-orange-200">
-              <FacebookIcon className="w-16 h-16" />
+              <FacebookIcon className="w-12 md:w-16 h-auto" />
             </a>
           </NextLink>
         )}
@@ -50,7 +50,7 @@ export default function ContactBlock({
         {instagram && (
           <NextLink href={instagram}>
             <a className="hover:text-orange-200">
-              <InstagramIcon className="w-16 h-16" />
+              <InstagramIcon className="w-12 md:w-16 h-auto" />
             </a>
           </NextLink>
         )}
@@ -58,7 +58,7 @@ export default function ContactBlock({
         {youtube && (
           <NextLink href={youtube}>
             <a className="hover:text-orange-200">
-              <YoutubeIcon className="w-16 h-16" />
+              <YoutubeIcon className="w-12 md:w-16 h-auto" />
             </a>
           </NextLink>
         )}
