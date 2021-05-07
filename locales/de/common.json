@@ -112,7 +112,8 @@
     "news/campaigns": "aktuelles/kampagnen",
     "news": "aktuelles",
     "press": "presse",
-    "actions": "aktionen"
+    "actions": "aktionen",
+    "search": "suche"
   },
 
   "fundraisingbox": {
@@ -133,6 +134,11 @@
       "title": "Ort merken",
       "placeholder": "Name"
     }
+  },
+
+  "search": {
+    "title": "Suche",
+    "submit": "Suchen"
   },
 
   "newsletter": {

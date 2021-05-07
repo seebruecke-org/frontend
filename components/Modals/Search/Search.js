@@ -13,12 +13,9 @@ export default function SearchFormModal({ onClose = () => {} }) {
         {t('modal.search.title')}
       </Heading>
 
-      <Form>
+      <Form method="get" action={`/${t('slugs.search')}`}>
         <div className="col-span-full">
-          <TextInput
-            placeholder={t('modal.search.placeholder')}
-            name="search"
-          />
+          <TextInput placeholder={t('modal.search.placeholder')} name="query" />
         </div>
 
         <div className="col-span-full pt-6">

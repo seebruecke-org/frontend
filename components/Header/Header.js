@@ -115,14 +115,18 @@ export default function Header({ metaItems, items }) {
                 </a>
               ))}
 
-              <button
+              <a
+                href={t('slugs.search')}
                 type="button"
                 className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                onClick={() => setSearchOpen(true)}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setSearchOpen(true);
+                }}
               >
                 {t('header.search')}
                 <SearchIcon className="w-7 h-7 ml-2" />
-              </button>
+              </a>
 
               {searchOpen && (
                 <SearchModal onClose={() => setSearchOpen(false)} />
