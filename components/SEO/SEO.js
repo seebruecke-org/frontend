@@ -1,26 +1,23 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-export default function SEO({ title, metadata: origMetadata = {} }) {
+import { getFullClientUrl } from '@/lib/url';
+
+export default function SEO({ title, metadata: defaultMetadata }) {
   const { asPath } = useRouter();
-  const metadata = origMetadata || {};
-  const domain =
-    process.env.VERCEL_ENV === 'production'
-      ? process.env.NEXT_PUBLIC_VERCEL_DOMAIN
-      : process.env.NEXT_PUBLIC_VERCEL_URL;
 
-  metadata['twitter_card'] = 'summary_large_image';
-  metadata['twitter_site'] = '_Seebruecke_';
+  const metadata = {
+    ...{
+      'twitter:image': getFullClientUrl(
+        `/api/screenshot?url=${getFullClientUrl(asPath)}`
+      ),
 
-  if (Object.keys(metadata).length === 0) {
-    metadata['twitter_image'] = {
-      url: `https://${domain}/public/twitter-preview.png`
-    };
-
-    metadata['facebook_image'] = {
-      url: `https://${domain}/public/facebook-preview.png`
-    };
-  }
+      'og:image': getFullClientUrl(
+        `/api/screenshot?url=${getFullClientUrl(asPath)}`
+      )
+    },
+    ...defaultMetadata
+  };
 
   return (
     <Head>
@@ -32,37 +29,10 @@ export default function SEO({ title, metadata: origMetadata = {} }) {
       <link rel="icon" type="image/png" href="/favicon.png" />
 
       {metadata &&
-        Object.keys(metadata).map((key) => {
-          let prefix = '';
-          let value = metadata[key];
-
-          if (key.startsWith('facebook')) {
-            prefix = 'og:';
-          } else if (key.startsWith('twitter')) {
-            prefix = 'twitter:';
-          }
-
-          if (prefix === 'twitter:' || prefix === 'og:') {
-            const normalizedKey = key.split('_')[1];
-
-            if (normalizedKey === 'image') {
-              if (value?.url) {
-                if (value.url.startsWith('/api')) {
-                  value = `https://${domain}${value.url}`;
-                } else {
-                  value = `https://${process.env.NEXT_PUBLIC_CMS_DOMAIN}/${value.url}`;
-                }
-              } else {
-                value = `https://${domain}/api/screenshot?url=https://${domain}${asPath}`;
-              }
-            }
-
-            return (
-              <meta property={`${prefix}${normalizedKey}`} content={value} />
-            );
-          } else {
-            return <meta name={key} content={value} />;
-          }
+        Object.entries(metadata).map(([key, value]) => {
+          return (
+            <meta name={key} content={value} key={`meta-${key}-${value}`} />
+          );
         })}
     </Head>
   );

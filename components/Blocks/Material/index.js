@@ -1,3 +1,4 @@
+import { getFullCMSUrl } from '@/lib/url';
 import Material from './Material';
 
 export default Material;
@@ -35,7 +36,7 @@ export async function sideloadData({ items }) {
         ...item,
         file: {
           ...file,
-          url: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}${file.url}`
+          url: getFullCMSUrl(file.url)
         }
       };
     })

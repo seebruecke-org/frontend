@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Portal } from 'react-portal';
 import clsx from 'clsx';
 import Measure from 'react-measure';
 import NextImage from 'next/image';
 
+import { getFullCMSUrl } from '@/lib/url';
 import InfoCircleIcon from '@/public/icons/info-circle-duotone.svg';
 import Richtext from '@/components/Richtext';
 
@@ -33,7 +34,7 @@ export default function Media({
   } = image;
   const imageProps = {
     alt: alternativeText,
-    src: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}${url}`,
+    src: getFullCMSUrl(url),
     width: props?.layout === 'fill' ? undefined : width,
     height: props?.layout === 'fill' ? undefined : height,
     ...props

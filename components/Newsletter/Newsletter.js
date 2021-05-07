@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import toast from 'react-hot-toast';
+import { getFullClientUrl } from '@/lib/url';
 import Form, { Checkbox, TextInput, Row, Button } from '@/components/Form';
 import Richtext from '@/components/Blocks/Richtext';
 
@@ -8,7 +9,7 @@ export default function Newsletter({ title, intro }) {
   const { register, handleSubmit, errors, reset } = useForm();
   const { t } = useTranslation();
   const onSubmit = async function (data) {
-    const result = await fetch('/api/newsletter/subscribe', {
+    const result = await fetch(getFullClientUrl('/api/newsletter/subscribe'), {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
