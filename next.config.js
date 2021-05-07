@@ -132,10 +132,6 @@ module.exports = withPlugins(
 
     images: {
       domains: getImageHostnames()
-    },
-
-    future: {
-      webpack5: isProduction()
     }
   }
 );

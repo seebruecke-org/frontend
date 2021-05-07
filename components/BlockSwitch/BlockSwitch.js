@@ -4,52 +4,6 @@ import dynamic from 'next/dynamic';
 import { blockNameMatches } from '@/lib/blocks';
 import { BLOCK_PREFIX } from '@/lib/constants';
 
-const blockMap = {
-  [`${BLOCK_PREFIX}Accordion`]: dynamic(() =>
-    import('@/components/Blocks/Accordion')
-  ),
-  [`${BLOCK_PREFIX}Actions`]: dynamic(() =>
-    import('@/components/Blocks/Actions')
-  ),
-  [`${BLOCK_PREFIX}Contact`]: dynamic(() =>
-    import('@/components/Blocks/Contact')
-  ),
-  [`${BLOCK_PREFIX}Fundraisingbox`]: dynamic(() =>
-    import('@/components/Blocks/Fundraisingbox')
-  ),
-  [`${BLOCK_PREFIX}Heading`]: dynamic(() =>
-    import('@/components/Blocks/Heading')
-  ),
-  [`${BLOCK_PREFIX}Material`]: dynamic(() =>
-    import('@/components/Blocks/Material')
-  ),
-  [`${BLOCK_PREFIX}Media`]: dynamic(() => import('@/components/Blocks/Media')),
-  [`${BLOCK_PREFIX}Newsletter`]: dynamic(() =>
-    import('@/components/Blocks/Newsletter')
-  ),
-  [`${BLOCK_PREFIX}Richtext`]: dynamic(() =>
-    import('@/components/Blocks/Richtext')
-  ),
-  [`${BLOCK_PREFIX}StageMedium`]: dynamic(() =>
-    import('@/components/Blocks/StageMedium')
-  ),
-  [`${BLOCK_PREFIX}StageLarge`]: dynamic(() =>
-    import('@/components/Blocks/StageLarge')
-  ),
-  [`${BLOCK_PREFIX}SubNavigation`]: dynamic(() =>
-    import('@/components/Blocks/SubNavigation')
-  ),
-  [`${BLOCK_PREFIX}TeaserLarge`]: dynamic(() =>
-    import('@/components/Blocks/TeaserLarge')
-  ),
-  [`${BLOCK_PREFIX}TeasersSmall`]: dynamic(() =>
-    import('@/components/Blocks/TeasersSmall')
-  ),
-  [`${BLOCK_PREFIX}Unterbrecher`]: dynamic(() =>
-    import('@/components/Blocks/Unterbrecher')
-  )
-};
-
 export default function BlockSwitch({
   blocks,
   className,
@@ -63,7 +17,11 @@ export default function BlockSwitch({
   return (
     <div className={clsx('grid grid-layout-primary', className)}>
       {blocks.map(({ __typename: type, ...props }, index) => {
-        const BlockComponent = blockMap[type] || null;
+        const BlockComponent = dynamic(() =>
+          import(
+            `@/components/Blocks/${type.replace('ComponentSharedBlocks', '')}`
+          )
+        );
         const extraBlockProps = Object.entries(blockProps).reduce(
           (acc, [key, value]) => {
             if (blockNameMatches(key, type)) {
