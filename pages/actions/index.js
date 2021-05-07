@@ -118,7 +118,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                   name={key}
                 />
 
-                <ul className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <ul className="grid grid-cols-1 md:grid-cols-3 gap-10 px-1 md:px-0">
                   {actions[key].map(
                     ({ location, start, intro, title, slug }, actionIndex) => (
                       <li key={`action-${actionIndex}`} className="h-full">

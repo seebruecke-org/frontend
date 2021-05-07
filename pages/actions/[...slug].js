@@ -53,7 +53,7 @@ export default function ActionPage({
       <div className="grid grid-layout-primary">
         <Heading level={1}>{title}</Heading>
 
-        <div className="col-span-full md:col-start-3 md:col-span-5 mt-20">
+        <div className="col-span-full md:col-start-3 md:col-span-7 mt-20 px-1 md:px-0">
           <Action
             title={`${formatDate(start)} - ${formatDate(end, start)}`}
             intro={`${location} ${location_detail}`}
