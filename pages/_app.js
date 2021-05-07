@@ -27,7 +27,7 @@ function SBApp({ Component, pageProps = {} }) {
     <StoreProvider store={store}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href="/static/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <Layout menus={menus}>
