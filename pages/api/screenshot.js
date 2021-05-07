@@ -2,23 +2,7 @@ import { serializeError } from 'serialize-error';
 import chromium from 'chrome-aws-lambda';
 import puppeteer from 'puppeteer';
 
-// Allowed hostnames for URLs
-const HOSTNAMES = [
-  'neu.seebruecke.org',
-  'seebruecke.org',
-  'frontend-git-develop-seebruecke-org.vercel.app',
-  'localhost:3000'
-];
-
-function isValidUrl(string) {
-  try {
-    const url = new URL(string);
-
-    return url && HOSTNAMES.includes(url.host);
-  } catch (_) {
-    return false;
-  }
-}
+import { isValidSeebrueckeUrl } from '@/lib/url';
 
 async function getBrowserInstance() {
   const executablePath = await chromium.executablePath;
@@ -69,7 +53,7 @@ export default async function handler(req, res) {
   const { query } = req;
 
   try {
-    if (query.url && isValidUrl(query.url)) {
+    if (query.url && isValidSeebrueckeUrl(query.url)) {
       const screenshot = await takeScreenshot(query.url);
 
       if (screenshot) {
