@@ -48,14 +48,14 @@
     "next-plugin-preact": "^3.0.4",
     "next-transpile-modules": "^7.0.0",
     "playwright-core": "^1.10.0",
-    "postcss": "^8.2.13",
+    "postcss": "^8.2.14",
     "postcss-preset-env": "^6.7.0",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.19",
-    "puppeteer": "^9.1.0",
+    "puppeteer": "^9.1.1",
     "react": "npm:@preact/compat@0.0.4",
     "react-accessible-accordion": "^3.3.4",
-    "react-children-utilities": "^2.5.0",
+    "react-children-utilities": "^2.5.1",
     "react-dom": "npm:@preact/compat@0.0.4",
     "react-hook-form": "^6.15.7",
     "react-hot-toast": "^1.0.2",
@@ -81,7 +81,7 @@
     "unified": "^9.2.1",
     "urql": "^2.0.2",
     "uuid": "^8.3.2",
-    "zustand": "^3.4.2"
+    "zustand": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
