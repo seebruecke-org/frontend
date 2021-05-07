@@ -44,13 +44,13 @@ function Burger({ onClick = () => {} }) {
     <button
       type="button"
       className={clsx(
-        'font-rubik text-3xs uppercase text-white text-center p-0 leading-none ml-10 sm:ml-auto justify-end tracking-wide',
+        'font-rubik text-3xs uppercase text-white hover:text-black focus:text-black text-center leading-none ml-8 sm:ml-auto justify-end tracking-wide outline-none',
         styles.burger
       )}
       onClick={onClick}
     >
-      <BarsIcon className="w-16 h-16" />
-      <span className="-mt-1 block">Menu</span>
+      <BarsIcon className="w-16 h-auto" />
+      <span className="block font-bold">Menu</span>
     </button>
   );
 }
@@ -94,10 +94,10 @@ export default function Header({ metaItems, items }) {
           <a
             className={clsx(
               styles.logoContainer,
-              'flex items-end justify-center pl-8 xl:pl-0'
+              'flex items-end justify-center pl-5 xl:pl-0'
             )}
           >
-            <Logo className="w-auto h-12 sm:h-12 md:h-14" />
+            <Logo className="w-auto h-10 sm:h-12 md:h-14" />
           </a>
         </Link>
 
@@ -184,7 +184,7 @@ export default function Header({ metaItems, items }) {
                 link={cta[0]}
                 className={clsx(
                   styles.cta,
-                  'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-8 md:px-7 bg-white rounded-full whitespace-nowrap tracking-wide self-end'
+                  'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide self-end'
                 )}
               />
 
