@@ -32,15 +32,15 @@ export default function Unterbrecher({
   blockContext: { previous, next }
 }) {
   const background = getBackgroundColor(type);
-  const hasPaddingTop = !blockNameMatches(previous, 'Unterbrecher');
-  const hasPaddingBottom = !blockNameMatches(next, 'Unterbrecher');
+  const prevIsUntercher = blockNameMatches(previous, 'Unterbrecher');
+  const nextIsUnterbrecher = blockNameMatches(next, 'Unterbrecher');
 
   return (
     <section
       className={clsx(
         'flex flex-col relative z-10 md:flex-row md:items-center col-span-full',
-        hasPaddingTop && 'pt-48 md:pt-24',
-        hasPaddingBottom && 'pb-20 md:pb-24',
+        !prevIsUntercher && 'pt-48 md:pt-24',
+        !nextIsUnterbrecher && 'pb-20 md:pb-24',
         !reversed && 'flex-col-reverse md:flex-row-reverse',
         size === 'small' && 'md:col-start-3 md:col-span-9',
         size === 'large' && 'md:col-start-2 md:col-span-12'
@@ -50,9 +50,8 @@ export default function Unterbrecher({
         className={clsx(
           background,
           styles.contentContainer,
-          'flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-4 md:mx-0 z-10 relative',
-          !hasPaddingBottom && '-mt-80 md:mt-0',
-          hasPaddingBottom && '-mb-80 md:mb-0'
+          'flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-2 sm:mx-4 md:mx-0 z-10 relative',
+          !nextIsUnterbrecher && reversed ? '-mb-80 md:mb-0' : '-mt-80 md:mt-0'
         )}
       >
         <div
