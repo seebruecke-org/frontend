@@ -1,10 +1,12 @@
 const { createClient } = require('urql');
+const runtimeCaching = require('next-pwa/cache');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: isProduction()
 });
 const withPlugins = require('next-compose-plugins');
 const withPreact = require('next-plugin-preact');
+const withPWA = require('next-pwa');
 const withTranspiledModules = require('next-transpile-modules')([
   'react-children-utilities'
 ]);
@@ -104,7 +106,20 @@ function createRewrites(slugs, locale) {
 }
 
 module.exports = withPlugins(
-  [withTranspiledModules, withPreact, withBundleAnalyzer],
+  [
+    withTranspiledModules,
+    withPreact,
+    withBundleAnalyzer,
+    [
+      withPWA,
+      {
+        pwa: {
+          dest: 'public',
+          runtimeCaching
+        }
+      }
+    ]
+  ],
   {
     i18n,
 

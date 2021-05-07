@@ -46,6 +46,7 @@
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^8.2.0",
     "next-plugin-preact": "^3.0.4",
+    "next-pwa": "^5.2.21",
     "next-transpile-modules": "^7.0.0",
     "playwright-core": "^1.10.0",
     "postcss": "^8.2.14",

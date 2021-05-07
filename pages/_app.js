@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { StoreProvider } from '../lib/store/store';
 import { useHydrate } from '../lib/store/zustand';
 
+import Head from 'next/head';
 import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
@@ -24,6 +25,11 @@ function SBApp({ Component, pageProps = {} }) {
 
   return (
     <StoreProvider store={store}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="manifest" href="/static/manifest.json" />
+      </Head>
+
       <Layout menus={menus}>
         <Toaster />
         <Component {...props} />
