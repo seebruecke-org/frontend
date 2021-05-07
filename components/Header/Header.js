@@ -97,7 +97,7 @@ export default function Header({ metaItems, items }) {
               'flex items-end justify-center pl-8 xl:pl-0'
             )}
           >
-            <Logo className="w-auto h-14 sm:h-12 md:h-14" />
+            <Logo className="w-auto h-12 sm:h-12 md:h-14" />
           </a>
         </Link>
 
