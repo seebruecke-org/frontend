@@ -23,7 +23,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
 
   return (
     <section
-      className="col-span-full md:col-start-2 md:col-span-12 pt-10 md:pt-12 pb-20 md:pb-32"
+      className="col-span-full md:col-start-2 md:col-span-12 pt-10 md:pt-12 pb-20 md:pb-32 px-1 md:px-0"
       ref={ref}
     >
       {show_map && (

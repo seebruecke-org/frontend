@@ -7,14 +7,16 @@ function Wrapper({ slug, children }) {
   if (slug) {
     return (
       <NextLink href={`/${t('action.slug')}/${slug}`}>
-        <a className="block bg-turquoise-300 hover:bg-black hover:text-white p-10 h-full">
+        <a className="block bg-turquoise-300 hover:bg-black hover:text-white px-7 py-10 md:p-10 h-full">
           {children}
         </a>
       </NextLink>
     );
   }
 
-  return <div className="bg-turquoise-300 p-10 h-full">{children}</div>;
+  return (
+    <div className="bg-turquoise-300 px-7 py-10 md:p-10 h-full">{children}</div>
+  );
 }
 
 export default function ActionTeaser({ title, meta, intro, slug }) {
