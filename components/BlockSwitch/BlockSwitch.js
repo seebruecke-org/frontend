@@ -5,44 +5,44 @@ import { blockNameMatches } from '@/lib/blocks';
 import { BLOCK_PREFIX } from '@/lib/constants';
 
 const blockMap = {
-  [`${BLOCK_PREFIX}Actions`]: dynamic(() =>
+  Actions: dynamic(() =>
     import('@/components/Blocks/Actions')
   ),
-  [`${BLOCK_PREFIX}Contact`]: dynamic(() =>
+  Contact: dynamic(() =>
     import('@/components/Blocks/Contact')
   ),
-  [`${BLOCK_PREFIX}Fundraisingbox`]: dynamic(() =>
+  Fundraisingbox: dynamic(() =>
     import('@/components/Blocks/Fundraisingbox')
   ),
-  [`${BLOCK_PREFIX}Heading`]: dynamic(() =>
+  Heading: dynamic(() =>
     import('@/components/Blocks/Heading')
   ),
-  [`${BLOCK_PREFIX}Material`]: dynamic(() =>
+  Material: dynamic(() =>
     import('@/components/Blocks/Material')
   ),
-  [`${BLOCK_PREFIX}Media`]: dynamic(() => import('@/components/Blocks/Media')),
-  [`${BLOCK_PREFIX}Newsletter`]: dynamic(() =>
+  Media: dynamic(() => import('@/components/Blocks/Media')),
+  Newsletter: dynamic(() =>
     import('@/components/Blocks/Newsletter')
   ),
-  [`${BLOCK_PREFIX}Richtext`]: dynamic(() =>
+  Richtext: dynamic(() =>
     import('@/components/Blocks/Richtext')
   ),
-  [`${BLOCK_PREFIX}StageMedium`]: dynamic(() =>
+  StageMedium: dynamic(() =>
     import('@/components/Blocks/StageMedium')
   ),
-  [`${BLOCK_PREFIX}StageLarge`]: dynamic(() =>
+  StageLarge: dynamic(() =>
     import('@/components/Blocks/StageLarge')
   ),
-  [`${BLOCK_PREFIX}SubNavigation`]: dynamic(() =>
+  SubNavigation: dynamic(() =>
     import('@/components/Blocks/SubNavigation')
   ),
-  [`${BLOCK_PREFIX}TeaserLarge`]: dynamic(() =>
+  TeaserLarge: dynamic(() =>
     import('@/components/Blocks/TeaserLarge')
   ),
-  [`${BLOCK_PREFIX}TeasersSmall`]: dynamic(() =>
+  TeasersSmall: dynamic(() =>
     import('@/components/Blocks/TeasersSmall')
   ),
-  [`${BLOCK_PREFIX}Unterbrecher`]: dynamic(() =>
+  Unterbrecher: dynamic(() =>
     import('@/components/Blocks/Unterbrecher')
   )
 };
@@ -60,7 +60,8 @@ export default function BlockSwitch({
   return (
     <div className={clsx('grid grid-layout-primary', className)}>
       {blocks.map(({ __typename: type, ...props }, index) => {
-        const BlockComponent = blockMap[type] || null;
+        const shortBlockName = type.replace(BLOCK_PREFIX, '');
+        const BlockComponent = blockMap[shortBlockName] || null;
         const extraBlockProps = Object.entries(blockProps).reduce(
           (acc, [key, value]) => {
             if (blockNameMatches(key, type)) {
