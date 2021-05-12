@@ -49,7 +49,7 @@ export async function sideloadData({ cta, filter, max_actions_to_show }) {
 
   return {
     cta: cta?.link ? await fetchLink(cta?.link) : null,
-    actions: endrichedActions || null
+    actions: endrichedActions || []
   };
 }
 
