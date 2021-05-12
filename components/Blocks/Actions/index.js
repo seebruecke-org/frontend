@@ -1,9 +1,5 @@
-import { buildGraphQLQuery } from '@/lib/actions';
-import { toMapboxCoordinates } from '@/lib/coordinates';
-import { fetchAPI } from '@/lib/api';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import Actions from './Actions';
-import { fetchLink } from '@/lib/link';
 
 export default Actions;
 
@@ -25,6 +21,11 @@ export const FRAGMENT = `
 `;
 
 export async function sideloadData({ cta, filter, max_actions_to_show }) {
+  const { buildGraphQLQuery } = await import('@/lib/actions');
+  const { toMapboxCoordinates } = await import('@/lib/coordinates');
+  const { fetchAPI } = await import('@/lib/api');
+  const { fetchLink } = await import('@/lib/link');
+
   const query = buildGraphQLQuery(
     [
       'id',
@@ -55,7 +56,6 @@ export async function sideloadData({ cta, filter, max_actions_to_show }) {
 
 export const block = {
   name: 'Actions',
-  Component: Actions,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

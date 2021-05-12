@@ -16,6 +16,5 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'StageMedium',
-  Component: StageMedium,
   Fragment: FRAGMENT
 };

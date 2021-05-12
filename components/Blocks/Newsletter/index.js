@@ -11,6 +11,5 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'Newsletter',
-  Component: Newsletter,
   Fragment: FRAGMENT
 };

@@ -13,6 +13,5 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'Accordion',
-  Component: Accordion,
   Fragment: FRAGMENT
 };

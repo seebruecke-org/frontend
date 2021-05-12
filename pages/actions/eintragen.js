@@ -3,17 +3,16 @@ import React from 'react';
 
 import { query as queryGlobalData } from '../../lib/global';
 
-import Form, {
-  Button,
-  Checkbox,
-  Fieldset,
-  Row,
-  TextInput,
-  Textarea,
-  Radio
-} from '@/components/Form';
+import Form from '@/components/Form';
+import Button from '@/components/Form/Button';
+import Checkbox from '@/components/Form/Checkbox';
+import Fieldset from '@/components/Form/Fieldset';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
+import Radio from '@/components/Form/Radio';
+import Row from '@/components/Form/Row';
+import Textarea from '@/components/Form/Textarea';
+import TextInput from '@/components/Form/TextInput';
 
 export default function FormPage() {
   const { register, handleSubmit, errors } = useForm();

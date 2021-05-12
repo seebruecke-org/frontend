@@ -10,6 +10,5 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'Richtext',
-  Component: Richtext,
   Fragment: FRAGMENT
 };

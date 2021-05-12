@@ -1,18 +1,23 @@
 import { memo, useRef } from 'react';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 
 import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import useCityFilter from '@/lib/hooks/useCityFilter';
 
-import { FederalCountry, Country, Map } from '@/components/Map';
 import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
-import Form, { Row, TextInput } from '@/components/Form';
+import Form from '@/components/Form';
+import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
+import TextInput from '@/components/Form/TextInput';
 
+const Country = dynamic(() => import('@/components/Map/Country'));
+const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
+const Map = dynamic(() => import('@/components/Map'));
 const MemoizedMap = memo(Map);
 
 function sortCities(cities) {

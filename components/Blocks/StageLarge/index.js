@@ -1,7 +1,6 @@
 import StageLarge from './StageLarge';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
-import { fetchLink } from '@/lib/link';
 
 export default StageLarge;
 
@@ -24,6 +23,8 @@ export const FRAGMENT = `
 `;
 
 async function sideloadData({ cta, subnavigation }) {
+  const { fetchLink } = await import('@/lib/link');
+
   return {
     cta: cta && (await fetchLink(cta.link)),
     subnavigation: await Promise.all(
@@ -34,7 +35,6 @@ async function sideloadData({ cta, subnavigation }) {
 
 export const block = {
   name: 'StageLarge',
-  Component: StageLarge,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };
