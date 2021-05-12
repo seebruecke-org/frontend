@@ -55,7 +55,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
         </div>
       )}
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-8 md:px-0">
         {actions.map(({ location, start, intro, title, slug }, index) => (
           <li key={`action-${index}`}>
             <Action

@@ -7,7 +7,7 @@ function Wrapper({ slug, children }) {
   if (slug) {
     return (
       <NextLink href={`/${t('action.slug')}/${slug}`}>
-        <a className="block bg-turquoise-300 hover:bg-black hover:text-white px-7 py-10 md:p-10 h-full">
+        <a className="block bg-turquoise-300 hover:bg-black hover:text-white px-8 py-10 md:p-10 h-full">
           {children}
         </a>
       </NextLink>

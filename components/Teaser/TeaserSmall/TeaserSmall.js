@@ -21,7 +21,7 @@ export default function TeaserSmall({ title, link, type = 'internal' }) {
   return (
     <div
       className={clsx(
-        'relative px-7 py-10 md:p-10 h-full flex flex-col',
+        'relative px-8 py-10 md:p-10 h-full flex flex-col',
         background,
         'hover:bg-black hover:text-white'
       )}
