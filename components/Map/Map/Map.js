@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import dynamic from 'next/dynamic';
 
-const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
+const MapboxMap = dynamic(() => import('@/components/MapboxMap'), {
+  ssr: false
+});
 const MemoizedMap = memo(MapboxMap);
 
 export default function Map(props) {
