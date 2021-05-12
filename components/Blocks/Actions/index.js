@@ -43,13 +43,14 @@ export async function sideloadData({ cta, filter, max_actions_to_show }) {
   );
 
   const { actions = [] } = await fetchAPI(query);
+  const endrichedActions = actions && actions.map(({ coordinates, ...action }) => ({
+    ...action,
+    coordinates: toMapboxCoordinates(coordinates)
+  }));
 
   return {
     cta: cta?.link ? await fetchLink(cta?.link) : null,
-    actions: actions.map(({ coordinates, ...action }) => ({
-      ...action,
-      coordinates: toMapboxCoordinates(coordinates)
-    }))
+    actions: endrichedActions || null
   };
 }
 
