@@ -1,10 +1,21 @@
 {
   "name": "Seebrücke",
   "short_name": "Seebrücke",
-  "icons": [],
   "theme_color": "#FFFFFF",
   "background_color": "#f55511",
   "start_url": "/?pwa",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
