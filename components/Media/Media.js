@@ -64,7 +64,7 @@ export default function Media({
               onClick={() => {
                 setIsCaptionOpen(!isCaptionOpen);
               }}
-              className={clsx('absolute z-30', captionIconClassName)}
+              className={clsx('absolute z-30 p-3 sm:p-1', captionIconClassName)}
               aria-label={t(
                 isCaptionOpen ? 'media.caption.close' : 'media.caption.open'
               )}
