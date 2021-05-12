@@ -1,4 +1,3 @@
-import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { appWithTranslation } from 'next-i18next';
 import { Toaster } from 'react-hot-toast';
 import Head from 'next/head';
@@ -9,6 +8,12 @@ import Layout from '@/components/Layout';
 import '@/styles/tailwind.css';
 import 'swiper/swiper-bundle.css';
 
+async function mountZustandDevtool(store) {
+  return import('simple-zustand-devtools').then((tool) =>
+    tool.mountStoreDevtool('Store', store)
+  );
+}
+
 function SBApp({ Component, pageProps = {} }) {
   const { initialState = {}, ...props } = pageProps;
   const { menus, ...hydrate } = initialState;
@@ -18,7 +23,7 @@ function SBApp({ Component, pageProps = {} }) {
   });
 
   if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
-    mountStoreDevtool('Store', store);
+    mountZustandDevtool(store);
   }
 
   return (
