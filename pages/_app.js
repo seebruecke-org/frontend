@@ -1,11 +1,9 @@
 import { mountStoreDevtool } from 'simple-zustand-devtools';
 import { appWithTranslation } from 'next-i18next';
 import { Toaster } from 'react-hot-toast';
-
-import { StoreProvider } from '../lib/store/store';
-import { useHydrate } from '../lib/store/zustand';
-
 import Head from 'next/head';
+
+import { useHydrate, Provider } from '@/lib/store/zustand';
 import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
@@ -24,9 +22,8 @@ function SBApp({ Component, pageProps = {} }) {
   }
 
   return (
-    <StoreProvider store={store}>
+    <Provider initialStore={store}>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
 
@@ -34,7 +31,7 @@ function SBApp({ Component, pageProps = {} }) {
         <Toaster />
         <Component {...props} />
       </Layout>
-    </StoreProvider>
+    </Provider>
   );
 }
 
