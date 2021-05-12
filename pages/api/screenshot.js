@@ -13,15 +13,6 @@ async function getBrowserInstance() {
     }
   };
 
-  if (!executablePath) {
-    return puppeteer.launch({
-      ...defaults,
-      args: chromium.args,
-      headless: true,
-      ignoreHTTPSErrors: true
-    });
-  }
-
   return chromium.puppeteer.launch({
     ...defaults,
     args: chromium.args,
