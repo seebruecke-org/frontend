@@ -33,7 +33,7 @@ export default function BlockSwitch({
   }
 
   return (
-    <div className={clsx('grid grid-layout-primary', className)}>
+    <div className={clsx('grid grid-layout-primary max-w-full', className)}>
       {blocks.map(({ __typename: type, ...props }, index) => {
         const shortBlockName = type.replace(BLOCK_PREFIX, '');
         const BlockComponent = blockMap[shortBlockName] || null;
