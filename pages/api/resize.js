@@ -1,4 +1,5 @@
 import { serializeError } from 'serialize-error';
+import imageSize from 'request-image-size';
 import path from 'path';
 import sharp from 'sharp';
 
@@ -17,15 +18,37 @@ function isValidSize(name) {
   return !!SIZES[name];
 }
 
+function getImageFit(width, height) {
+  let value = 'contain';
+  let longEdge = width;
+  let shortEdge = height;
+
+  if (!width || !height) {
+    return value;
+  }
+
+  if (height > width) {
+    longEdge = height;
+    shortEdge = width;
+  }
+
+  if (longEdge / shortEdge >= 1.5) {
+    value = 'cover';
+  }
+
+  return value;
+}
+
 async function resizeImage(url, size) {
   const imageBuffer = await fetch(url).then((res) => res.arrayBuffer());
   const parsedUrl = new URL(url);
   const filename = path.extname(parsedUrl.pathname);
   const filenameWithoutDot = filename.split('.').pop();
+  const imgSize = await imageSize(url);
 
   return await sharp(Buffer.from(imageBuffer))
     .resize(...getSize(size), {
-      fit: 'contain',
+      fit: getImageFit(imgSize?.width, imgSize?.height),
       background: { r: 245, g: 85, b: 17 }
     })
     .toFormat(filenameWithoutDot)
