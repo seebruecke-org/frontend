@@ -39,8 +39,8 @@ export default function Unterbrecher({
     <section
       className={clsx(
         'flex flex-col relative z-10 md:flex-row md:items-center col-span-full',
-        !prevIsUntercher && 'pt-48 md:pt-24',
-        !nextIsUnterbrecher && 'pb-20 md:pb-24',
+        !prevIsUntercher && 'pt-8 md:pt-24',
+        !nextIsUnterbrecher && 'pb-8 md:pb-24',
         !reversed && 'flex-col-reverse md:flex-row-reverse',
         size === 'small' && 'md:col-start-3 md:col-span-9',
         size === 'large' && 'md:col-start-2 md:col-span-12'
