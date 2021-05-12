@@ -22,7 +22,9 @@ import StageMedium from '@/components/Stages/Medium';
 
 const Actions = dynamic(() => import('@/components/Blocks/Actions'));
 const Breadcrumbs = dynamic(() => import('@/components/Blocks/Breadcrumbs'));
-const SectionNavigation = dynamic(() => import('@/components/SectionNavigation'));
+const SectionNavigation = dynamic(() =>
+  import('@/components/SectionNavigation')
+);
 
 export default function TakePartPage({
   breadcrumbs,

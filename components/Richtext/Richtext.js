@@ -1,7 +1,6 @@
 import Markdown from '@/components/Markdown';
 
 import Heading from '@/components/Blocks/Heading';
-import Image from './Image';
 import Link from './Link';
 import List, { ListItem } from './List';
 import Paragraph from './Paragraph';

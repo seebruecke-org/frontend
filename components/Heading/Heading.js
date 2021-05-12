@@ -11,12 +11,9 @@ export default function Heading({
   ...props
 }) {
   const levels = {
-    h1:
-      'font-brezel leading-none text-2xl md:text-4xl font-bold italic break-words sm:break-normal',
-    h2:
-      'font-rubik leading-tight text-large md:text-2xl font-bold break-words sm:break-normal',
-    h3:
-      'font-rubik leading-tight text-medium md:text-xl font-bold break-words sm:break-normal',
+    h1: 'font-brezel leading-none text-2xl md:text-4xl font-bold italic break-words sm:break-normal',
+    h2: 'font-rubik leading-tight text-large md:text-2xl font-bold break-words sm:break-normal',
+    h3: 'font-rubik leading-tight text-medium md:text-xl font-bold break-words sm:break-normal',
     h4: 'font-rubik leading-tight text-base md:text-large font-bold'
   };
 
