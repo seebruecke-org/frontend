@@ -39,6 +39,7 @@ export default function NewsEntryPage({
           blockProps={{
             Richtext: {
               renderers: {
+                // eslint-disable-next-line react/display-name
                 image: ({ src, alt }) => {
                   return (
                     <RichtextBlockImage

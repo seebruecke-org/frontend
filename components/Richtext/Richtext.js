@@ -13,6 +13,7 @@ export default function Richtext({
   ...props
 }) {
   const RENDERERS = {
+    // eslint-disable-next-line react/display-name
     heading: ({ level, children }) => {
       return (
         <Heading level={level - 1} scrollMargin={scrollMargin}>
@@ -21,14 +22,17 @@ export default function Richtext({
       );
     },
 
+    // eslint-disable-next-line react/display-name
     link: ({ node: { url }, children }) => {
       return <Link href={url}>{children}</Link>;
     },
 
+    // eslint-disable-next-line react/display-name
     list: ({ ordered, children }) => {
       return <List ordered={ordered}>{children}</List>;
     },
 
+    // eslint-disable-next-line react/display-name
     listItem: ({ children }) => {
       return (
         <ListItem>
@@ -37,6 +41,7 @@ export default function Richtext({
       );
     },
 
+    // eslint-disable-next-line react/display-name
     paragraph: ({ children }) => {
       // Don't wrap images in paragraph tags
       if (children && children.length === 1 && children?.[0]?.props?.src) {

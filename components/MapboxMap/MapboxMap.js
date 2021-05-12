@@ -19,7 +19,7 @@ export default function MapboxMap({
   });
 
   const hasFeatures = defaultFeatures.length > 0;
-  const [collection, setCollection] = useState({
+  const [collection] = useState({
     type: 'FeatureCollection',
     features: defaultFeatures
   });

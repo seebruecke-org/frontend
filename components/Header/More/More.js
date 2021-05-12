@@ -10,12 +10,9 @@ function Footer() {
 
   return (
     <footer className="flex justify-end bg-gray-700 md:hidden mt-auto border-gray-600 border-t">
-      <a
-        href=""
-        className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600"
-      >
+      <button className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600">
         {t('header.myPlace')}
-      </a>
+      </button>
 
       <a
         href={t('slugs.search')}
