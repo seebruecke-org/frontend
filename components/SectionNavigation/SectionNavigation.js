@@ -62,14 +62,14 @@ export default forwardRef(function SectionNavigation(
       className={clsx(
         'bg-orange-200',
         primaryGrid && 'grid grid-layout-primary',
-        'py-6 sm:py-7 md:py-8 relative',
+        'py-6 sm:py-7 md:py-8 relative -top-px',
         styles.navigation,
         className
       )}
     >
       <span
         className={clsx(
-          'w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply',
+          'w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply hidden md:block',
           styles.border
         )}
       />
