@@ -14,7 +14,6 @@ import {
 import { query as queryGlobalData } from '@/lib/global';
 import { useTranslation } from 'next-i18next';
 import BlockSwitch from '@/components/BlockSwitch';
-import Demands from '@/components/Demands/SafeHarbour';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
@@ -22,6 +21,7 @@ import StageMedium from '@/components/Stages/Medium';
 
 const Actions = dynamic(() => import('@/components/Blocks/Actions'));
 const Breadcrumbs = dynamic(() => import('@/components/Blocks/Breadcrumbs'));
+const Demands = dynamic(() => import('@/components/Demands/SafeHarbour'));
 const SectionNavigation = dynamic(() =>
   import('@/components/SectionNavigation')
 );
@@ -125,7 +125,7 @@ export default function TakePartPage({
       {!isGroup && safe_harbour?.demands && (
         <>
           <Heading level={2} scrollMargin={hasAnchorNavigation}>
-            Unsere Forderungen
+            {t('group.demandsTitle')}
           </Heading>
           <Demands
             demands={safe_harbour?.demands}
