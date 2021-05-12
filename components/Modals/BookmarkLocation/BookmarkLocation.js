@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 
-import Form, { TextInput } from '@/components/Form';
+import Form from '@/components/Form';
+import TextInput from '@/components/Form/TextInput';
 import Heading from '@/components/Heading';
 import Modal from '@/components/Modal';
 

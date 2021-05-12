@@ -3,11 +3,14 @@ import { useRouter } from 'next/router';
 
 import { search } from '@/lib/search';
 import { query as queryGlobalData } from '@/lib/global';
-import Form, { Button, TextInput, Row } from '@/components/Form';
+import Button from '@/components/Form/Button';
+import Form from '@/components/Form';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
+import Row from '@/components/Form/Row';
 import SearchEntry from '@/components/Teaser/SearchEntry';
 import SEO from '@/components/SEO';
+import TextInput from '@/components/Form/TextInput';
 
 export default function SearchPage({ results }) {
   const { query } = useRouter();

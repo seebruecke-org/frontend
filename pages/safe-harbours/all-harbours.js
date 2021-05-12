@@ -4,16 +4,21 @@ import { query as queryGlobalData } from '@/lib/global';
 import { useTranslation } from 'next-i18next';
 import { memo, useRef } from 'react';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 import format from 'date-fns/format';
 
-import { FederalCountry, Country, Map } from '@/components/Map';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
-import Form, { Row, TextInput } from '@/components/Form';
+import Form from '@/components/Form';
+import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
+import TextInput from '@/components/Form/TextInput';
 
 import useCityFilter from '@/lib/hooks/useCityFilter';
 
+const Country = dynamic(() => import('@/components/Map/Country'));
+const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
+const Map = dynamic(() => import('@/components/Map'));
 const MemoizedMap = memo(Map);
 
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {

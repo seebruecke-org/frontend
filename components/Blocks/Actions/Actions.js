@@ -7,7 +7,9 @@ import dynamic from 'next/dynamic';
 import Action from '@/components/Teaser/Action';
 import CTA from '@/components/CTA';
 
-const MapboxMap = dynamic(() => import('@/components/MapboxMap'));
+const MapboxMap = dynamic(() => import('@/components/MapboxMap'), {
+  ssr: false
+});
 
 import * as styles from './actions.module.css';
 
