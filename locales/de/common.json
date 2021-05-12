@@ -26,6 +26,10 @@
     "upcomingActions": "Nächste Aktionen"
   },
 
+  "actions": {
+    "pluralTitle": "Aktionen"
+  },
+
   "action": {
     "singleTitle": "Aktion",
     "pluralTitle": "Aktionen",
