@@ -5,46 +5,21 @@ import { blockNameMatches } from '@/lib/blocks';
 import { BLOCK_PREFIX } from '@/lib/constants';
 
 const blockMap = {
-  Actions: dynamic(() =>
-    import('@/components/Blocks/Actions')
-  ),
-  Contact: dynamic(() =>
-    import('@/components/Blocks/Contact')
-  ),
-  Fundraisingbox: dynamic(() =>
-    import('@/components/Blocks/Fundraisingbox')
-  ),
-  Heading: dynamic(() =>
-    import('@/components/Blocks/Heading')
-  ),
-  Material: dynamic(() =>
-    import('@/components/Blocks/Material')
-  ),
+  Accordion: dynamic(() => import('@/components/Blocks/Accordion')),
+  Actions: dynamic(() => import('@/components/Blocks/Actions')),
+  Contact: dynamic(() => import('@/components/Blocks/Contact')),
+  Fundraisingbox: dynamic(() => import('@/components/Blocks/Fundraisingbox')),
+  Heading: dynamic(() => import('@/components/Blocks/Heading')),
+  Material: dynamic(() => import('@/components/Blocks/Material')),
   Media: dynamic(() => import('@/components/Blocks/Media')),
-  Newsletter: dynamic(() =>
-    import('@/components/Blocks/Newsletter')
-  ),
-  Richtext: dynamic(() =>
-    import('@/components/Blocks/Richtext')
-  ),
-  StageMedium: dynamic(() =>
-    import('@/components/Blocks/StageMedium')
-  ),
-  StageLarge: dynamic(() =>
-    import('@/components/Blocks/StageLarge')
-  ),
-  SubNavigation: dynamic(() =>
-    import('@/components/Blocks/SubNavigation')
-  ),
-  TeaserLarge: dynamic(() =>
-    import('@/components/Blocks/TeaserLarge')
-  ),
-  TeasersSmall: dynamic(() =>
-    import('@/components/Blocks/TeasersSmall')
-  ),
-  Unterbrecher: dynamic(() =>
-    import('@/components/Blocks/Unterbrecher')
-  )
+  Newsletter: dynamic(() => import('@/components/Blocks/Newsletter')),
+  Richtext: dynamic(() => import('@/components/Blocks/Richtext')),
+  StageMedium: dynamic(() => import('@/components/Blocks/StageMedium')),
+  StageLarge: dynamic(() => import('@/components/Blocks/StageLarge')),
+  SubNavigation: dynamic(() => import('@/components/Blocks/SubNavigation')),
+  TeaserLarge: dynamic(() => import('@/components/Blocks/TeaserLarge')),
+  TeasersSmall: dynamic(() => import('@/components/Blocks/TeasersSmall')),
+  Unterbrecher: dynamic(() => import('@/components/Blocks/Unterbrecher'))
 };
 
 export default function BlockSwitch({
