@@ -1,4 +1,3 @@
-import { getFullCMSUrl } from '@/lib/url';
 import Material from './Material';
 
 export default Material;
@@ -23,6 +22,8 @@ export const FRAGMENT = `
 `;
 
 export async function sideloadData({ items }) {
+  const { getFullCMSUrl } = await import('@/lib/url');
+
   return {
     items: items.map(({ file, ...item }) => {
       if (!file?.url) {
@@ -45,7 +46,6 @@ export async function sideloadData({ items }) {
 
 export const block = {
   name: 'Material',
-  Component: Material,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

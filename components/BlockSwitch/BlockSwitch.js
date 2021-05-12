@@ -1,15 +1,51 @@
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 
-import contentBlocks from '@/components/Blocks';
 import { blockNameMatches } from '@/lib/blocks';
 import { BLOCK_PREFIX } from '@/lib/constants';
 
-const blockMap = contentBlocks.reduce((acc, block) => {
-  const { name, Component } = block;
-  acc[`${BLOCK_PREFIX}${name}`] = Component;
-
-  return acc;
-}, {});
+const blockMap = {
+  [`${BLOCK_PREFIX}Actions`]: dynamic(() =>
+    import('@/components/Blocks/Actions')
+  ),
+  [`${BLOCK_PREFIX}Contact`]: dynamic(() =>
+    import('@/components/Blocks/Contact')
+  ),
+  [`${BLOCK_PREFIX}Fundraisingbox`]: dynamic(() =>
+    import('@/components/Blocks/Fundraisingbox')
+  ),
+  [`${BLOCK_PREFIX}Heading`]: dynamic(() =>
+    import('@/components/Blocks/Heading')
+  ),
+  [`${BLOCK_PREFIX}Material`]: dynamic(() =>
+    import('@/components/Blocks/Material')
+  ),
+  [`${BLOCK_PREFIX}Media`]: dynamic(() => import('@/components/Blocks/Media')),
+  [`${BLOCK_PREFIX}Newsletter`]: dynamic(() =>
+    import('@/components/Blocks/Newsletter')
+  ),
+  [`${BLOCK_PREFIX}Richtext`]: dynamic(() =>
+    import('@/components/Blocks/Richtext')
+  ),
+  [`${BLOCK_PREFIX}StageMedium`]: dynamic(() =>
+    import('@/components/Blocks/StageMedium')
+  ),
+  [`${BLOCK_PREFIX}StageLarge`]: dynamic(() =>
+    import('@/components/Blocks/StageLarge')
+  ),
+  [`${BLOCK_PREFIX}SubNavigation`]: dynamic(() =>
+    import('@/components/Blocks/SubNavigation')
+  ),
+  [`${BLOCK_PREFIX}TeaserLarge`]: dynamic(() =>
+    import('@/components/Blocks/TeaserLarge')
+  ),
+  [`${BLOCK_PREFIX}TeasersSmall`]: dynamic(() =>
+    import('@/components/Blocks/TeasersSmall')
+  ),
+  [`${BLOCK_PREFIX}Unterbrecher`]: dynamic(() =>
+    import('@/components/Blocks/Unterbrecher')
+  )
+};
 
 export default function BlockSwitch({
   blocks,

@@ -2,16 +2,21 @@ import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import { useState, useEffect, memo, useRef } from 'react';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 
 import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { getPage } from '@/lib/pages';
 
-import { FederalCountry, Map } from '@/components/Map';
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
-import Form, { Row, TextInput } from '@/components/Form';
+import Form from '@/components/Form';
+import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
+import TextInput from '@/components/Form/TextInput';
+
+const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
+const Map = dynamic(() => import('@/components/Map'));
 
 function filterActions(actions, term) {
   return Object.keys(actions).reduce((acc, key) => {

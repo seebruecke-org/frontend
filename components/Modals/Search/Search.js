@@ -1,8 +1,10 @@
 import { useTranslation } from 'next-i18next';
 
-import Form, { Button, TextInput } from '@/components/Form';
+import Form from '@/components/Form';
+import Button from '@/components/Form/Button';
 import Heading from '@/components/Heading';
 import Modal from '@/components/Modal';
+import TextInput from '@/components/Form/TextInput';
 
 export default function SearchFormModal({ onClose = () => {} }) {
   const { t } = useTranslation();

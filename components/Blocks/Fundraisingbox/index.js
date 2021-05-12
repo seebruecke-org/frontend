@@ -10,6 +10,5 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'Fundraisingbox',
-  Component: Fundraisingbox,
   Fragment: FRAGMENT
 };

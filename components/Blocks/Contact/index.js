@@ -16,6 +16,5 @@ export const FRAGMENT = `
 
 export const block = {
   name: 'Contact',
-  Component: Contact,
   Fragment: FRAGMENT
 };

@@ -1,5 +1,4 @@
 import TeasersSmall from './TeasersSmall';
-import { fetchLink } from '@/lib/link';
 
 export default TeasersSmall;
 
@@ -14,6 +13,8 @@ export const FRAGMENT = `
 `;
 
 export async function sideloadData({ items }) {
+  const { fetchLink } = await import('@/lib/link');
+
   if (!items) {
     return items;
   }
@@ -30,7 +31,6 @@ export async function sideloadData({ items }) {
 
 export const block = {
   name: 'TeasersSmall',
-  Component: TeasersSmall,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };

@@ -1,4 +1,3 @@
-import { scaleImageTo } from '@/lib/media';
 import Media from './Media';
 import { FRAGMENT as MEDIA_FRAGMENT } from '@/components/Media';
 
@@ -18,6 +17,7 @@ async function sideloadData({
     ...image
   }
 }) {
+  const { scaleImageTo } = await import('@/lib/media');
   const [scaledWidth, scaledHeight] = scaleImageTo(800, [width, height]);
 
   return {
@@ -34,7 +34,6 @@ async function sideloadData({
 
 export const block = {
   name: 'Media',
-  Component: Media,
   Fragment: FRAGMENT,
   sideload: sideloadData
 };
