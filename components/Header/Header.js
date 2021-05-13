@@ -187,8 +187,9 @@ export default function Header({ metaItems, items }) {
         <nav className="flex flex-col w-full relative">
           <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-52 hidden md:flex md:mb-3 pt-5">
             <Locales locales={otherLocales} />
-            <Search />
+
             <Bookmark />
+            <Search />
 
             {metaItems &&
               metaItems.length > 0 &&

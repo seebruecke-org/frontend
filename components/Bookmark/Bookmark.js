@@ -9,6 +9,7 @@ export default function Bookmark({ name, link }) {
   const { t } = useTranslation();
   const [isHover, setIsHover] = useState(false);
   const { location, bookmark } = useBookmarkedLocation();
+  const isCurrentLocation = location && location?.name === name;
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function Bookmark({ name, link }) {
           );
         }}
       >
-        {(location && location?.name === name) || isHover ? (
+        {isCurrentLocation || isHover ? (
           <BookmarkSolidIcon className="w-10" />
         ) : (
           <BookmarkIcon className="w-10" />
@@ -36,7 +37,7 @@ export default function Bookmark({ name, link }) {
 
         <span className="font-rubik text-xs ml-2">
           {t(
-            location && location?.name
+            isCurrentLocation
               ? 'city.bookmarkedLocation'
               : 'city.bookmarkLocation'
           )}
