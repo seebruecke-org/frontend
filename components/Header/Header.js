@@ -186,13 +186,15 @@ export default function Header({ metaItems, items }) {
             <Search />
             <Bookmark />
 
-            {metaItems.map((item) => (
-              <StrapiLink
-                key={`menu-${item.label}`}
-                link={item}
-                className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-              />
-            ))}
+            {metaItems &&
+              metaItems.length > 0 &&
+              metaItems.map((item) => (
+                <StrapiLink
+                  key={`menu-${item.label}`}
+                  link={item}
+                  className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                />
+              ))}
           </div>
 
           {primaryItems && primaryItems.length > 0 && (
