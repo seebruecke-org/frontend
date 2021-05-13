@@ -41,6 +41,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "graphql": "^15.5.0",
     "is-relative-url": "^3.0.0",
+    "js-cookie": "^2.2.1",
     "json-to-graphql-query": "^2.0.0",
     "mapbox-gl": "^2.2.0",
     "next": "^10.2.1-canary.5",
@@ -80,12 +81,12 @@
     "tailwindcss": "^2.1.2",
     "truncate": "^2.1.0",
     "unified": "^9.2.1",
-    "urql": "^2.0.2",
+    "urql": "^2.0.3",
     "uuid": "^8.3.2",
     "zustand": "^3.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
+    "@babel/core": "^7.14.2",
     "@storybook/addon-viewport": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "babel-loader": "^8.2.2",

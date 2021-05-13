@@ -1,21 +1,32 @@
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
+import Link from 'next/link';
 
+import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation';
 import TimesIcon from '@/public/icons/times.svg';
 
 import * as styles from './more.module.css';
 
 function Footer() {
   const { t } = useTranslation();
+  const { location } = useBookmarkedLocation();
 
   return (
     <footer className="flex justify-end bg-gray-700 md:hidden mt-auto border-gray-600 border-t">
-      <button className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600">
-        {t('header.myPlace')}
-      </button>
+      {location && location?.link ? (
+        <Link href={location.link}>
+          <a className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600">
+            {t('header.gotoMyPlace')}
+          </a>
+        </Link>
+      ) : (
+        <button className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600">
+          {t('header.myPlace')}
+        </button>
+      )}
 
       <a
-        href={t('slugs.search')}
+        href={`/${t('slugs.search')}`}
         className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase"
       >
         {t('header.search')}

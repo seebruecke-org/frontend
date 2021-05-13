@@ -1,7 +1,9 @@
 import { appWithTranslation } from 'next-i18next';
 import { Toaster } from 'react-hot-toast';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
 
+import { BOOKMARKED_LOCATION_COOKIE_NAME } from '@/lib/constants';
 import { useHydrate, Provider } from '@/lib/store/zustand';
 import useZustandDevtool from '@/lib/hooks/useZustandDevtool';
 import Layout from '@/components/Layout';
@@ -12,9 +14,13 @@ import 'swiper/swiper-bundle.css';
 function SBApp({ Component, pageProps = {} }) {
   const { initialState = {}, ...props } = pageProps;
   const { menus, ...hydrate } = initialState;
+  const bookmarkedLocation = Cookies.get(BOOKMARKED_LOCATION_COOKIE_NAME);
 
   const store = useHydrate({
-    ...hydrate
+    ...hydrate,
+    bookmarkedLocation: bookmarkedLocation
+      ? JSON.parse(bookmarkedLocation)
+      : null
   });
 
   useZustandDevtool(store);
