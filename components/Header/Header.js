@@ -27,6 +27,7 @@ const BookmarkLocationModal = dynamic(
 );
 
 function MoreToggle({ onClick = () => {}, isOpen }) {
+  const { t } = useTranslation();
   const Icon = isOpen ? ChevronUpIcon : ChevronDownIcon;
 
   return (
@@ -38,7 +39,7 @@ function MoreToggle({ onClick = () => {}, isOpen }) {
       )}
       onClick={onClick}
     >
-      mehr
+      {t('header.more')}
       <Icon className="w-6 h-6 ml-2" />
     </button>
   );
