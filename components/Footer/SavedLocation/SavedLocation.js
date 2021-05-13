@@ -37,7 +37,7 @@ export default function SavedLocation() {
 
   return (
     <>
-      <Wrapper path={location?.link}>
+      <Wrapper path={location && location?.link}>
         <span className="font-brezel text-xs italic pl-14">
           {t(
             location?.name

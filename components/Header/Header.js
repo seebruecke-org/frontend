@@ -60,13 +60,85 @@ function Burger({ onClick = () => {} }) {
   );
 }
 
+function Bookmark() {
+  const { t } = useTranslation();
+  const [saveBookmarkLocationOpen, setBookmarkLocationOpen] = useState(false);
+  const { location } = useBookmarkedLocation();
+
+  if (location && location?.link) {
+    return (
+      <Link href={location?.link}>
+        <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2 flex-nowrap">
+          <span>{t('header.gotoMyPlace')}</span>
+          <BookmarkSolidIcon className="w-7 h-7 ml-2" />
+        </a>
+      </Link>
+    );
+  }
+
+  return (
+    <>
+      <button
+        type="button"
+        className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2 flex-nowrap"
+        onClick={() => setBookmarkLocationOpen(true)}
+      >
+        {t('header.myPlace')}
+        <BookmarkIcon className="w-7 h-7 ml-2" />
+      </button>
+
+      {saveBookmarkLocationOpen && (
+        <BookmarkLocationModal onClose={() => setBookmarkLocationOpen(false)} />
+      )}
+    </>
+  );
+}
+
+function Search() {
+  const { t } = useTranslation();
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  return (
+    <>
+      <Link href={`/${t('slugs.search')}`}>
+        <a
+          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+          onClick={(event) => {
+            event.preventDefault();
+            setSearchOpen(true);
+          }}
+        >
+          {t('header.search')}
+          <SearchIcon className="w-7 h-7 ml-2" />
+        </a>
+      </Link>
+
+      {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
+    </>
+  );
+}
+
+function Locales({ locales }) {
+  return (
+    <>
+      {locales.map((currentLocale, index) => (
+        <a
+          href="/"
+          locale={currentLocale}
+          key={`header-lang-nav-${index}`}
+          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+        >
+          {currentLocale.toUpperCase()}
+        </a>
+      ))}
+    </>
+  );
+}
+
 export default function Header({ metaItems, items }) {
   const { locale, locales, asPath } = useRouter();
   const { t } = useTranslation();
   const [moreIsOpen, setmoreIsOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [saveLocationOpen, setSaveLocationOpen] = useState(false);
-  const { location } = useBookmarkedLocation();
 
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
@@ -108,69 +180,19 @@ export default function Header({ metaItems, items }) {
         </Link>
 
         <nav className="flex flex-col w-full relative">
-          {metaItems && metaItems?.length > 0 && (
-            <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-52 hidden md:flex md:mb-3 pt-5">
-              {otherLocales.map((currentLocale, index) => (
-                <a
-                  href="/"
-                  locale={currentLocale}
-                  key={`header-lang-nav-${index}`}
-                  className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                >
-                  {currentLocale.toUpperCase()}
-                </a>
-              ))}
+          <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-52 hidden md:flex md:mb-3 pt-5">
+            <Locales locales={otherLocales} />
+            <Search />
+            <Bookmark />
 
-              <a
-                href={t('slugs.search')}
-                type="button"
-                className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setSearchOpen(true);
-                }}
-              >
-                {t('header.search')}
-                <SearchIcon className="w-7 h-7 ml-2" />
-              </a>
-
-              {searchOpen && (
-                <SearchModal onClose={() => setSearchOpen(false)} />
-              )}
-
-              {location && location?.link ? (
-                <Link href={location.link}>
-                  <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2 flex-nowrap">
-                    {t('header.gotoMyPlace')}
-                    <BookmarkSolidIcon className="w-7 h-7 ml-2" />
-                  </a>
-                </Link>
-              ) : (
-                <button
-                  type="button"
-                  className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                  onClick={() => setSaveLocationOpen(true)}
-                >
-                  {t('header.myPlace')}
-                  <BookmarkIcon className="w-7 h-7 ml-2" />
-                </button>
-              )}
-
-              {saveLocationOpen && (
-                <BookmarkLocationModal
-                  onClose={() => setSaveLocationOpen(false)}
-                />
-              )}
-
-              {metaItems.map((item) => (
-                <StrapiLink
-                  key={`menu-${item.label}`}
-                  link={item}
-                  className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                />
-              ))}
-            </div>
-          )}
+            {metaItems.map((item) => (
+              <StrapiLink
+                key={`menu-${item.label}`}
+                link={item}
+                className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+              />
+            ))}
+          </div>
 
           {primaryItems && primaryItems.length > 0 && (
             <div
