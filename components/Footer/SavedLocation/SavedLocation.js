@@ -11,7 +11,7 @@ const BookmarkLocationModal = dynamic(
   { ssr: false }
 );
 
-function Wrapper({ link, children }) {
+function Wrapper({ link, children, onToggle = () => {} }) {
   const className =
     'flex flex-col bg-white text-black hover:bg-orange-800 hover:text-white rounded-xl p-8 pb-10 text-left';
 
@@ -24,7 +24,7 @@ function Wrapper({ link, children }) {
           </a>
         </NextLink>
       ) : (
-        <button type="button" className={className}>
+        <button type="button" className={className} onClick={onToggle}>
           {children}
         </button>
       )}
@@ -40,7 +40,10 @@ export default function SavedLocation() {
 
   return (
     <>
-      <Wrapper link={location && location?.link}>
+      <Wrapper
+        link={location && location?.link}
+        onToggle={() => setSaveLocationOpen(true)}
+      >
         <span className="font-brezel text-xs italic pl-14">
           {t(
             locationName
