@@ -67,7 +67,7 @@ function Bookmark() {
 
   if (location && location?.link) {
     return (
-      <Link href={location?.link}>
+      <Link href={location.link}>
         <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2 flex-nowrap">
           <span>{t('header.gotoMyPlace')}</span>
           <BookmarkSolidIcon className="w-7 h-7 ml-2" />
