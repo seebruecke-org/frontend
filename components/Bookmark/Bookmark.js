@@ -1,20 +1,13 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import dynamic from 'next/dynamic';
 
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
 import BookmarkSolidIcon from '@/public/icons/bookmark-solid.svg';
 import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation';
 
-const BookmarkLocationModal = dynamic(
-  () => import('@/components/Modals/BookmarkLocation'),
-  { ssr: false }
-);
-
-export default function Bookmark() {
+export default function Bookmark({ name, link }) {
   const { t } = useTranslation();
   const [isHover, setIsHover] = useState(false);
-  const [saveLocationOpen, setSaveLocationOpen] = useState(false);
   const { location, bookmark } = useBookmarkedLocation();
 
   return (
@@ -25,14 +18,17 @@ export default function Bookmark() {
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         onClick={() => {
-          if (location) {
-            bookmark(null);
-          } else {
-            setSaveLocationOpen(true);
-          }
+          bookmark(
+            location
+              ? null
+              : {
+                  name,
+                  link
+                }
+          );
         }}
       >
-        {location || isHover ? (
+        {(location && location?.name === name) || isHover ? (
           <BookmarkSolidIcon className="w-10" />
         ) : (
           <BookmarkIcon className="w-10" />
@@ -44,10 +40,6 @@ export default function Bookmark() {
           )}
         </span>
       </button>
-
-      {saveLocationOpen && (
-        <BookmarkLocationModal onClose={() => setSaveLocationOpen(false)} />
-      )}
     </>
   );
 }

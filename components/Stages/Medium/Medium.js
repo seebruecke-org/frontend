@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
@@ -14,6 +15,7 @@ export default forwardRef(function StageMedium(
   ref
 ) {
   const hasImage = !!image;
+  const { asPath } = useRouter();
 
   return (
     <section
@@ -56,7 +58,7 @@ export default forwardRef(function StageMedium(
           </p>
         )}
 
-        {allowBookmark && <Bookmark />}
+        {allowBookmark && <Bookmark name={title} link={asPath} />}
       </div>
     </section>
   );
