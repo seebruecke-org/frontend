@@ -11,22 +11,24 @@ const BookmarkLocationModal = dynamic(
   { ssr: false }
 );
 
-function Wrapper({ path, children }) {
-  const innerClassName =
+function Wrapper({ link, children }) {
+  const className =
     'flex flex-col bg-white text-black hover:bg-orange-800 hover:text-white rounded-xl p-8 pb-10 text-left';
 
-  if (path) {
-    return (
-      <NextLink href={path}>
-        <a className={innerClassName}>{children}</a>
-      </NextLink>
-    );
-  }
-
   return (
-    <button type="button" className={innerClassName}>
-      {children}
-    </button>
+    <>
+      {link ? (
+        <NextLink href={link}>
+          <a>
+            <div className={className}>{children}</div>
+          </a>
+        </NextLink>
+      ) : (
+        <button type="button" className={className}>
+          {children}
+        </button>
+      )}
+    </>
   );
 }
 
@@ -34,20 +36,21 @@ export default function SavedLocation() {
   const { t } = useTranslation();
   const [saveLocationOpen, setSaveLocationOpen] = useState(false);
   const { location } = useBookmarkedLocation();
+  const locationName = location?.name;
 
   return (
     <>
-      <Wrapper path={location && location?.link}>
+      <Wrapper link={location && location?.link}>
         <span className="font-brezel text-xs italic pl-14">
           {t(
-            location?.name
+            locationName
               ? 'footer.bookmarkedLocation'
               : 'footer.bookmarkLocation'
           )}
         </span>
         <span className="font-rubik text-base font-bold flex space-x-6 leading-none items-center">
           <BookmarkIcon className="w-8 h-auto flex-shrink-0" />
-          <span>{location?.name || t('footer.bookmarkYourLocation')}</span>
+          <span>{locationName || t('footer.bookmarkYourLocation')}</span>
         </span>
       </Wrapper>
 
