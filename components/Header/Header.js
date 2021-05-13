@@ -7,18 +7,23 @@ import Link from 'next/link';
 
 import BarsIcon from '@/public/icons/bars.svg';
 import BookmarkIcon from '@/public/icons/bookmark-regular.svg';
+import BookmarkSolidIcon from '@/public/icons/bookmark-solid.svg';
 import ChevronDownIcon from '@/public/icons/chevron-down-light.svg';
 import ChevronUpIcon from '@/public/icons/chevron-up-light.svg';
 import Logo from '@/components/Logo';
 import StrapiLink from '@/components/StrapiLink';
 import More from './More';
 import SearchIcon from '@/public/icons/search-regular.svg';
+import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation.js';
 
 import * as styles from './header.module.css';
 
-const SearchModal = dynamic(() => import('@/components/Modals/Search'));
-const BookmarkLocationModal = dynamic(() =>
-  import('@/components/Modals/BookmarkLocation')
+const SearchModal = dynamic(() => import('@/components/Modals/Search'), {
+  ssr: false
+});
+const BookmarkLocationModal = dynamic(
+  () => import('@/components/Modals/BookmarkLocation'),
+  { ssr: false }
 );
 
 function MoreToggle({ onClick = () => {}, isOpen }) {
@@ -61,6 +66,7 @@ export default function Header({ metaItems, items }) {
   const [moreIsOpen, setmoreIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [saveLocationOpen, setSaveLocationOpen] = useState(false);
+  const { location } = useBookmarkedLocation();
 
   const otherLocales = locales.filter(
     (currentLocale) => currentLocale !== locale
@@ -132,14 +138,23 @@ export default function Header({ metaItems, items }) {
                 <SearchModal onClose={() => setSearchOpen(false)} />
               )}
 
-              <button
-                type="button"
-                className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-                onClick={() => setSaveLocationOpen(true)}
-              >
-                {t('header.myPlace')}
-                <BookmarkIcon className="w-7 h-7 ml-2" />
-              </button>
+              {location && location?.link ? (
+                <Link href={location.link}>
+                  <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2 flex-nowrap">
+                    {t('header.gotoMyPlace')}
+                    <BookmarkSolidIcon className="w-7 h-7 ml-2" />
+                  </a>
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                  onClick={() => setSaveLocationOpen(true)}
+                >
+                  {t('header.myPlace')}
+                  <BookmarkIcon className="w-7 h-7 ml-2" />
+                </button>
+              )}
 
               {saveLocationOpen && (
                 <BookmarkLocationModal

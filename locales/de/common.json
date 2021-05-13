@@ -1,6 +1,7 @@
 {
   "header": {
     "myPlace": "Mein Ort",
+    "gotoMyPlace": "Gemerkter Ort",
     "search": "Suche"
   },
 
@@ -15,7 +16,8 @@
   },
 
   "city": {
-    "bookmark_place": "Ort merken"
+    "bookmarkLocation": "Ort merken",
+    "bookmarkedLocation": "Gemerkter Ort"
   },
 
   "group": {
