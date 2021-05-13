@@ -36,7 +36,9 @@ export default function Bookmark({ name, link }) {
 
         <span className="font-rubik text-xs ml-2">
           {t(
-            location?.name ? 'city.bookmarkLocation' : 'city.bookmarkedLocation'
+            location && location?.name
+              ? 'city.bookmarkedLocation'
+              : 'city.bookmarkLocation'
           )}
         </span>
       </button>
