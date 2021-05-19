@@ -6,11 +6,13 @@ import dynamic from 'next/dynamic';
 import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
+import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 import useCityFilter from '@/lib/hooks/useCityFilter';
 
 import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form from '@/components/Form';
+import PageBody from '@/components/PageBody';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
@@ -89,7 +91,10 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
   const citiesListRef = useRef(null);
 
   return (
-    <article>
+    <PageBody
+      firstBlock={getFirstBlockName(page?.metadata)}
+      lastBlock={getLastBlockName(page?.content)}
+    >
       <SEO title={page?.title} metadata={page?.metadata} />
 
       <BlockSwitch blocks={page?.content} />
@@ -170,7 +175,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
           </ul>
         </div>
       </div>
-    </article>
+    </PageBody>
   );
 }
 
