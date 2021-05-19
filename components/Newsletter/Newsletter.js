@@ -20,7 +20,7 @@ export default function Newsletter({ title, intro }) {
       }
     });
 
-    const toast = await import('react-hot-toast');
+    const toast = (await import('react-hot-toast')).default;
 
     if (result.ok) {
       toast.success(t('newsletter.form.success'));
