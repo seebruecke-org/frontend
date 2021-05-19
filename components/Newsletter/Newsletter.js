@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
-import toast from 'react-hot-toast';
 import { getFullClientUrl } from '@/lib/url';
 import Form from '@/components/Form';
 import Button from '@/components/Form/Button';
@@ -20,6 +19,8 @@ export default function Newsletter({ title, intro }) {
         'Content-Type': 'application/json'
       }
     });
+
+    const toast = await import('react-hot-toast');
 
     if (result.ok) {
       toast.success(t('newsletter.form.success'));
@@ -58,7 +59,10 @@ export default function Newsletter({ title, intro }) {
           <Checkbox
             name="consent"
             ref={register({
-              required: t('newsletter.form.consent.required')
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: t('newsletter.form.consent.required')
+              }
             })}
             error={errors?.consent}
           >
