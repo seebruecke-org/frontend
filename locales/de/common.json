@@ -104,7 +104,7 @@
     "slug": "aktuelles",
     "dateFormat": "dd. LLLL yyy",
     "type": {
-      "news": "Aktuelles",
+      "news": "News",
       "pressrelease": "Pressemitteilung"
     }
   },
