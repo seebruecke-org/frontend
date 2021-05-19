@@ -12,6 +12,7 @@ const blockMap = {
   Heading: dynamic(() => import('@/components/Blocks/Heading')),
   Material: dynamic(() => import('@/components/Blocks/Material')),
   Media: dynamic(() => import('@/components/Blocks/Media')),
+  MediaGallery: dynamic(() => import('@/components/Blocks/MediaGallery')),
   Newsletter: dynamic(() => import('@/components/Blocks/Newsletter')),
   Richtext: dynamic(() => import('@/components/Blocks/Richtext')),
   StageMedium: dynamic(() => import('@/components/Blocks/StageMedium')),
