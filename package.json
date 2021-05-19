@@ -21,7 +21,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.40",
+    "@mailchimp/mailchimp_marketing": "^3.0.42",
     "@next/bundle-analyzer": "^10.2.0",
     "@reach/dialog": "^0.15.0",
     "@svgr/webpack": "^5.5.0",
@@ -44,12 +44,12 @@
     "js-cookie": "^2.2.1",
     "json-to-graphql-query": "^2.0.0",
     "mapbox-gl": "^2.2.0",
-    "next": "^10.2.1-canary.5",
+    "next": "^10.2.0",
     "next-compose-plugins": "^2.2.1",
-    "next-i18next": "^8.2.0",
+    "next-i18next": "^8.3.0",
     "next-plugin-preact": "^3.0.4",
     "next-pwa": "^5.2.21",
-    "next-transpile-modules": "^7.0.0",
+    "next-transpile-modules": "^7.1.1",
     "postcss": "^8.2.15",
     "postcss-preset-env": "^6.7.0",
     "preact": "^10.5.13",
@@ -60,7 +60,7 @@
     "react-dom": "npm:@preact/compat@0.0.4",
     "react-hook-form": "^6.15.7",
     "react-hot-toast": "^1.0.2",
-    "react-intersection-observer": "^8.31.1",
+    "react-intersection-observer": "^8.32.0",
     "react-load-script": "0.0.6",
     "react-mapbox-gl": "^5.1.1",
     "react-markdown": "^5.0.3",
@@ -86,7 +86,7 @@
     "zustand": "^3.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.2",
+    "@babel/core": "^7.14.3",
     "@storybook/addon-viewport": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "babel-loader": "^8.2.2",
