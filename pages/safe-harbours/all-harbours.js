@@ -119,6 +119,10 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                             singularKicker={t('safeHarbour.singleTitle')}
                             pluralKicker={t('safeHarbour.pluralTitle')}
                             name={federalCountryName}
+                            uri={
+                              cities[countryName].countries[federalCountryName]
+                                .uri
+                            }
                           />
 
                           <ul className="grid md:grid-cols-2 gap-8 px-6">
