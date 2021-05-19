@@ -32,7 +32,7 @@ export default forwardRef(function StageMedium(
           objectFit="cover"
           layout="fill"
           priority
-          className="col-span-full h-96 md:h-full w-full relative md:static"
+          className="col-span-full h-72 md:h-full w-full relative md:static"
         />
       )}
 
