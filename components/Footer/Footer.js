@@ -8,13 +8,26 @@ import Logo from '@/components/Logo';
 import StrapiLink from '@/components/StrapiLink';
 import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
+import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 
 function SocialMedia({ className = '' }) {
   return (
     <div className={clsx('flex space-x-4', className)}>
-      <FacebookIcon className="w-12 h-12" />
-      <InstagramIcon className="w-12 h-12" />
-      <TwitterIcon className="w-12 h-12" />
+      <a href="https://www.facebook.com/SeebrueckeSchafftsichereHaefen/">
+        <FacebookIcon className="w-12 h-auto" />
+      </a>
+
+      <a href="https://www.instagram.com/seebrueckeoffiziell/">
+        <InstagramIcon className="w-12 h-auto" />
+      </a>
+
+      <a href="https://twitter.com/_Seebruecke">
+        <TwitterIcon className="w-12 h-auto" />
+      </a>
+
+      <a href="https://www.youtube.com/channel/UCpFA2nMmOBnUXi9f37BQqxQ">
+        <YoutubeIcon className="w-12 h-auto" />
+      </a>
     </div>
   );
 }
