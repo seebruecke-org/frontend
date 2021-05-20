@@ -50,7 +50,12 @@ export default function Newsletter({ title, intro }) {
             label={t('newsletter.form.email.label')}
             className="w-full md:w-3/4"
             name="email"
-            ref={register({ required: t('newsletter.form.email.required') })}
+            ref={register({
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: t('newsletter.form.email.required')
+              }
+            })}
             error={errors?.email}
           />
         </Row>
@@ -59,10 +64,7 @@ export default function Newsletter({ title, intro }) {
           <Checkbox
             name="consent"
             ref={register({
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: t('newsletter.form.consent.required')
-              }
+              required: t('newsletter.form.email.required')
             })}
             error={errors?.consent}
           >
