@@ -9,7 +9,9 @@ import Row from '@/components/Form/Row';
 import Richtext from '@/components/Blocks/Richtext';
 
 export default function Newsletter({ title, intro }) {
-  const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm({
+    reValidateMode: 'onSubmit'
+  });
   const { t } = useTranslation();
   const onSubmit = async function (data) {
     const result = await fetch(getFullClientUrl('/api/newsletter/subscribe'), {
