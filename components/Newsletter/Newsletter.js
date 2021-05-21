@@ -53,6 +53,10 @@ export default function Newsletter({ title, intro }) {
             className="w-full md:w-3/4"
             name="email"
             ref={register({
+              minLength: {
+                value: 3,
+                message: t('newsletter.form.email.required')
+              },
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: t('newsletter.form.email.required')
