@@ -66,7 +66,7 @@ export default function Newsletter({ title, intro }) {
           <Checkbox
             name="consent"
             ref={register({
-              required: t('newsletter.form.email.required')
+              required: t('newsletter.form.consent.required')
             })}
             error={errors?.consent}
           >
