@@ -73,7 +73,7 @@ export default function Unterbrecher({
 
         {cta && (
           <div className="mt-12 md:mt-16">
-            <CTA link={cta} />
+            <CTA link={cta} rel="nofollow" className="relative z-30" />
           </div>
         )}
       </div>
@@ -102,6 +102,8 @@ export default function Unterbrecher({
         }}
         className="absolute top-0 left-0 w-full h-full opacity-0 z-20"
         aria-label={title.text}
+        tabindex="-1"
+        aria-hidden="true"
       />
     </section>
   );
