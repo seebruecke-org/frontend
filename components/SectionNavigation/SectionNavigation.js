@@ -22,7 +22,7 @@ function Control({ direction, ...props }) {
     <button
       type="button"
       className={clsx(
-        'absolute top-0 h-full z-10 flex items-center',
+        'absolute -top-1 h-full z-10 flex items-center',
         isDirectionPrev
           ? 'left-0 md:-left-4 pl-4 pr-2'
           : 'right-0 md:-right-4 pr-4 pl-2',
