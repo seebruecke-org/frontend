@@ -5,14 +5,28 @@ import TextInput from '@/components/Form/TextInput';
 import Heading from '@/components/Heading';
 import Modal from '@/components/Modal';
 
+import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation';
+
 export default function BookmarkLocationFormModal({ onClose = () => {} }) {
   const { t } = useTranslation();
+  const { location, bookmark } = useBookmarkedLocation();
 
   return (
     <Modal isOpen={true} onClose={onClose}>
       <Heading level={2} as={4}>
         {t('modal.bookmark.title')}
       </Heading>
+
+      <button
+        onClick={() => {
+          bookmark({
+            name: 'Berlin',
+            link: '/mach-mit/deutschland/berlin'
+          });
+        }}
+      >
+        bookmark this thing
+      </button>
 
       <Form>
         <div className="col-span-full">

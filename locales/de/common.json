@@ -1,7 +1,9 @@
 {
   "header": {
     "myPlace": "Mein Ort",
-    "search": "Suche"
+    "gotoMyPlace": "Gemerkter Ort",
+    "search": "Suche",
+    "more": "mehr"
   },
 
   "footer": {
@@ -15,7 +17,8 @@
   },
 
   "city": {
-    "bookmark_place": "Ort merken"
+    "bookmarkLocation": "Ort merken",
+    "bookmarkedLocation": "Gemerkter Ort"
   },
 
   "group": {
@@ -24,7 +27,7 @@
     "slug": "mach-mit",
     "searchCity": "Ort suchen ...",
     "upcomingActions": "Nächste Aktionen",
-    "demandsTitle": "Unsere Forderungen"
+    "ourDemands": "Unsere Forderungen"
   },
 
   "actions": {
@@ -101,7 +104,7 @@
     "slug": "aktuelles",
     "dateFormat": "dd. LLLL yyy",
     "type": {
-      "news": "Aktuelles",
+      "news": "News",
       "pressrelease": "Pressemitteilung"
     }
   },

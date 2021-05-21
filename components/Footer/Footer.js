@@ -8,13 +8,26 @@ import Logo from '@/components/Logo';
 import StrapiLink from '@/components/StrapiLink';
 import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
+import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 
 function SocialMedia({ className = '' }) {
   return (
     <div className={clsx('flex space-x-4', className)}>
-      <FacebookIcon className="w-12 h-12" />
-      <InstagramIcon className="w-12 h-12" />
-      <TwitterIcon className="w-12 h-12" />
+      <a href="https://www.facebook.com/SeebrueckeSchafftsichereHaefen/">
+        <FacebookIcon className="w-12 h-auto" />
+      </a>
+
+      <a href="https://www.instagram.com/seebrueckeoffiziell/">
+        <InstagramIcon className="w-12 h-auto" />
+      </a>
+
+      <a href="https://twitter.com/_Seebruecke">
+        <TwitterIcon className="w-12 h-auto" />
+      </a>
+
+      <a href="https://www.youtube.com/channel/UCpFA2nMmOBnUXi9f37BQqxQ">
+        <YoutubeIcon className="w-12 h-auto" />
+      </a>
     </div>
   );
 }
@@ -42,16 +55,12 @@ function Menu({ title, items }) {
 
 export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
   const { t } = useTranslation();
-  const hasBookmarkedItem = false;
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
       <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3 flex-col space-y-8">
-          <SavedLocation
-            name={hasBookmarkedItem ? 'Berlin' : false}
-            path={hasBookmarkedItem ? '/mach-mit/deutschland/berlin' : false}
-          />
+          <SavedLocation />
 
           <a href="/" className="font-bold block">
             {t('footer.langEn')}

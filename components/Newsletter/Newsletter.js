@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
-import toast from 'react-hot-toast';
 import { getFullClientUrl } from '@/lib/url';
 import Form from '@/components/Form';
 import Button from '@/components/Form/Button';
@@ -10,7 +9,9 @@ import Row from '@/components/Form/Row';
 import Richtext from '@/components/Blocks/Richtext';
 
 export default function Newsletter({ title, intro }) {
-  const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm({
+    reValidateMode: 'onSubmit'
+  });
   const { t } = useTranslation();
   const onSubmit = async function (data) {
     const result = await fetch(getFullClientUrl('/api/newsletter/subscribe'), {
@@ -20,6 +21,8 @@ export default function Newsletter({ title, intro }) {
         'Content-Type': 'application/json'
       }
     });
+
+    const toast = (await import('react-hot-toast')).default;
 
     if (result.ok) {
       toast.success(t('newsletter.form.success'));
@@ -49,7 +52,16 @@ export default function Newsletter({ title, intro }) {
             label={t('newsletter.form.email.label')}
             className="w-full md:w-3/4"
             name="email"
-            ref={register({ required: t('newsletter.form.email.required') })}
+            ref={register({
+              minLength: {
+                value: 3,
+                message: t('newsletter.form.email.required')
+              },
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: t('newsletter.form.email.required')
+              }
+            })}
             error={errors?.email}
           />
         </Row>

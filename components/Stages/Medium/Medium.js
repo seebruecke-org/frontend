@@ -1,19 +1,21 @@
-import { useTranslation } from 'next-i18next';
 import { forwardRef } from 'react';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 
-import Bookmark from '@/components/Bookmark';
 import Heading from '@/components/Heading';
-import Media from '@/components/Media';
 
 import * as styles from './medium.module.css';
+
+const Bookmark = dynamic(() => import('@/components/Bookmark'));
+const Media = dynamic(() => import('@/components/Media'));
 
 export default forwardRef(function StageMedium(
   { kicker, title, intro, image, className, allowBookmark = false },
   ref
 ) {
-  const { t } = useTranslation();
   const hasImage = !!image;
+  const { asPath } = useRouter();
 
   return (
     <section
@@ -30,7 +32,7 @@ export default forwardRef(function StageMedium(
           objectFit="cover"
           layout="fill"
           priority
-          className="col-span-full h-96 md:h-full w-full relative md:static"
+          className="col-span-full h-72 md:h-full w-full relative md:static"
         />
       )}
 
@@ -56,7 +58,7 @@ export default forwardRef(function StageMedium(
           </p>
         )}
 
-        {allowBookmark && <Bookmark label={t('city.bookmark_place')} />}
+        {allowBookmark && <Bookmark name={title} link={asPath} />}
       </div>
     </section>
   );

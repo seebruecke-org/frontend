@@ -1,16 +1,19 @@
-import { memo, useRef } from 'react';
+import { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
+import { BLOCK_PREFIX } from '@/lib/constants';
 import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
+import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 import useCityFilter from '@/lib/hooks/useCityFilter';
 
 import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form from '@/components/Form';
+import PageBody from '@/components/PageBody';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
@@ -18,7 +21,8 @@ import TextInput from '@/components/Form/TextInput';
 const Country = dynamic(() => import('@/components/Map/Country'));
 const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
 const Map = dynamic(() => import('@/components/Map'));
-const MemoizedMap = memo(Map);
+
+const ALLOWED_BLOCKS_TOP = ['Heading', 'Richtext'];
 
 function sortCities(cities) {
   return cities.sort(({ name: cityAName }, { name: cityBName }) =>
@@ -87,15 +91,29 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
     })
     .flat();
   const citiesListRef = useRef(null);
+  const indexFirstBottomBlock = page?.content?.findIndex(
+    ({ __typename }) =>
+      !ALLOWED_BLOCKS_TOP.includes(__typename.replace(BLOCK_PREFIX, ''))
+  );
+  const topBlocks = page?.content?.slice(
+    indexFirstBottomBlock > -1 ? indexFirstBottomBlock : 0
+  );
+  const bottomBlocks =
+    topBlocks.length != page?.content?.length
+      ? page?.content?.slice(indexFirstBottomBlock, page?.content?.length)
+      : [];
 
   return (
-    <article>
+    <PageBody
+      firstBlock={getFirstBlockName(page?.metadata)}
+      lastBlock={getLastBlockName(page?.content)}
+    >
       <SEO title={page?.title} metadata={page?.metadata} />
 
-      <BlockSwitch blocks={page?.content} />
+      <BlockSwitch blocks={topBlocks} />
 
       <div className="grid grid-layout-primary">
-        <MemoizedMap
+        <Map
           features={mapCities.map(
             ({ name, id, coordinates: { geometry } }) => ({
               type: 'Feature',
@@ -170,7 +188,9 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
           </ul>
         </div>
       </div>
-    </article>
+
+      <BlockSwitch blocks={bottomBlocks} />
+    </PageBody>
   );
 }
 

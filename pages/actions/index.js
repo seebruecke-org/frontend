@@ -7,10 +7,11 @@ import dynamic from 'next/dynamic';
 import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { getPage } from '@/lib/pages';
-
+import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form from '@/components/Form';
+import PageBody from '@/components/PageBody';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
@@ -50,7 +51,10 @@ export default function TakePartPage({ actions: defaultActions, page }) {
   }, [filterValue]);
 
   return (
-    <article>
+    <PageBody
+      firstBlock={getFirstBlockName(page?.content)}
+      lastBlock={getLastBlockName(page?.content)}
+    >
       <SEO title={t('actions.pluralTitle')} />
 
       <BlockSwitch blocks={page?.content} />
@@ -147,7 +151,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
           </ul>
         </div>
       </div>
-    </article>
+    </PageBody>
   );
 }
 
