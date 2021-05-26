@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-export default function CityMarker() {
+export default function CityMarker({ name }) {
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -15,6 +15,7 @@ export default function CityMarker() {
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-auto"
+        aria-label={name}
         onMouseEnter={() => setIsActive(true)}
         onMouseLeave={() => setIsActive(false)}
       >
