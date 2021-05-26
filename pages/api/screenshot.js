@@ -30,8 +30,6 @@ async function takeScreenshot(url) {
     await page.goto(url);
 
     return await page.screenshot({ type: 'png' });
-  } catch (error) {
-    return null;
   } finally {
     if (browser) {
       await browser.close();
@@ -50,9 +48,9 @@ export default async function handler(req, res) {
         res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24}`);
         res.setHeader('Content-Type', 'image/png');
         res.status(200).send(screenshot);
+      } else {
+        res.status(500).send();
       }
-
-      res.status(500).send();
     } else {
       throw new Error(
         "Either the url parameter wasn't passed of the URL is not allowed to be screenshotted."
