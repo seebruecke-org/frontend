@@ -12,25 +12,24 @@ function Footer() {
   const { location } = useBookmarkedLocation();
 
   return (
-    <footer className="flex justify-end bg-gray-700 md:hidden mt-auto border-gray-600 border-t">
+    <footer className="flex bg-gray-700 md:hidden mt-auto border-gray-600 border-t fixed w-full bottom-0 left-0">
       {location && location?.link ? (
         <Link href={location.link}>
-          <a className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600">
+          <a className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800">
             {t('header.gotoMyPlace')}
           </a>
         </Link>
       ) : (
-        <button className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600">
+        <button className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800">
           {t('header.myPlace')}
         </button>
       )}
 
-      <a
-        href={`/${t('slugs.search')}`}
-        className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase"
-      >
-        {t('header.search')}
-      </a>
+      <Link href={`/${t('slugs.search')}`}>
+        <a className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800">
+          {t('header.search')}
+        </a>
+      </Link>
     </footer>
   );
 }
@@ -49,7 +48,7 @@ export default function More({ children, onDismiss = () => {} }) {
 
       <button
         type="button"
-        className="justify-end ml-auto mr-5 mb-20 md:hidden"
+        className="justify-end ml-auto mr-5 mb-20 md:hidden flex flex-col items-center outline-none"
         onClick={onDismiss}
       >
         <TimesIcon className="w-16 h-auto" />

@@ -185,7 +185,7 @@ export default function Header({ metaItems, items }) {
         </Link>
 
         <nav className="flex flex-col w-full relative">
-          <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-52 hidden md:flex md:mb-3 pt-5">
+          <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-64 hidden md:flex md:mb-2 pt-5">
             <Locales locales={otherLocales} />
 
             <Bookmark />
@@ -206,7 +206,7 @@ export default function Header({ metaItems, items }) {
             <div
               className={clsx(
                 styles.primaryItemsContainer,
-                'flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-5'
+                'flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-7 lg:tracking-wider'
               )}
             >
               {primaryItems.map((item, index) => (
@@ -233,7 +233,7 @@ export default function Header({ metaItems, items }) {
                 link={cta[0]}
                 className={clsx(
                   styles.cta,
-                  'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide self-end'
+                  'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide self-end lg:ml-7 relative lg:top-1'
                 )}
               />
 
@@ -242,19 +242,32 @@ export default function Header({ metaItems, items }) {
               {moreIsOpen && (
                 <More onDismiss={() => setmoreIsOpen(false)}>
                   {primaryItems && primaryItems.length > 0 && (
-                    <div>
-                      {primaryItems.map((item, index) => (
+                    <div className="px-14 flex flex-col space-y-16">
+                      <ul>
+                        {primaryItems.map((item, index) => (
+                          <li key={`menu-more-${item.label}`}>
+                            <StrapiLink
+                              link={item}
+                              className={clsx(
+                                'font-rubik font-rubik-features text-small uppercase font-bold leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-white hover:text-gray-800 tracking-wide',
+                                styles.itemMore,
+                                styles[`item--more-${index + 1}`]
+                              )}
+                              onClick={() => setmoreIsOpen(false)}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div>
                         <StrapiLink
-                          key={`menu-more-${item.label}`}
-                          link={item}
+                          link={cta[0]}
                           className={clsx(
-                            'font-rubik font-rubik-features text-small uppercase font-bold leading-none py-10 md:py-5 px-20 mx-14 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-gray-600',
-                            styles.itemMore,
-                            styles[`item--more-${index + 1}`]
+                            styles.cta,
+                            'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide'
                           )}
-                          onClick={() => setmoreIsOpen(false)}
                         />
-                      ))}
+                      </div>
                     </div>
                   )}
                 </More>
