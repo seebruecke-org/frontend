@@ -22,7 +22,12 @@ const Country = dynamic(() => import('@/components/Map/Country'));
 const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
 const Map = dynamic(() => import('@/components/Map'));
 
-const ALLOWED_BLOCKS_TOP = ['Heading', 'Richtext'];
+const ALLOWED_BLOCKS_TOP = [
+  'Heading',
+  'Richtext',
+  'StageMedium',
+  'SubNavigation'
+];
 
 function sortCities(cities) {
   return cities.sort(({ name: cityAName }, { name: cityBName }) =>
@@ -95,18 +100,21 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
     ({ __typename }) =>
       !ALLOWED_BLOCKS_TOP.includes(__typename.replace(BLOCK_PREFIX, ''))
   );
-  const topBlocks = page?.content?.slice(
-    indexFirstBottomBlock > -1 ? indexFirstBottomBlock : 0
-  );
-  const bottomBlocks =
-    topBlocks.length != page?.content?.length
-      ? page?.content?.slice(indexFirstBottomBlock, page?.content?.length)
-      : [];
+  let topBlocks = page?.content;
+  let bottomBlocks = null;
+
+  if (indexFirstBottomBlock !== -1) {
+    topBlocks = page?.content?.slice(0, indexFirstBottomBlock);
+    bottomBlocks = page?.content?.slice(
+      indexFirstBottomBlock,
+      page?.content?.length
+    );
+  }
 
   return (
     <PageBody
-      firstBlock={getFirstBlockName(page?.metadata)}
-      lastBlock={getLastBlockName(page?.content)}
+      firstBlock={getFirstBlockName(topBlocks)}
+      lastBlock={getLastBlockName(bottomBlocks || topBlocks)}
     >
       <SEO title={page?.title} metadata={page?.metadata} />
 
@@ -189,7 +197,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
         </div>
       </div>
 
-      <BlockSwitch blocks={bottomBlocks} />
+      {bottomBlocks && <BlockSwitch blocks={bottomBlocks} />}
     </PageBody>
   );
 }
