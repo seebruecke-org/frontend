@@ -14,7 +14,7 @@ export default function StrapiLink({ link, children, locale, ...props }) {
 
   if (linkProps.url.startsWith('#')) {
     return (
-      <a href={linkProps.url.toLowerCase()} {...props}>
+      <a href={linkProps.url} {...props}>
         {linkProps.label}
         {children}
       </a>
@@ -22,7 +22,7 @@ export default function StrapiLink({ link, children, locale, ...props }) {
   }
 
   return (
-    <Link href={linkProps.url.toLowerCase()} locale={locale}>
+    <Link href={linkProps.url} locale={locale}>
       <a {...props}>
         {linkProps.label}
         {children}
