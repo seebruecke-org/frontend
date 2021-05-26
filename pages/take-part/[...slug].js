@@ -47,9 +47,7 @@ export default function TakePartPage({
   const hasNavigation = navigation && navigation.length > 1;
   const contentBlocks = group?.content || safe_harbour?.content || content;
   let kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
-  const featuredImage = isGroup
-    ? group?.image?.image
-    : safe_harbour?.image?.image;
+  const featuredImage = isGroup ? group?.image : safe_harbour?.image;
   const hasAnchorNavigation =
     (isGroup && group?.actions?.length > 0 && group?.headlines?.length > 0) ||
     (group?.actions?.length === 0 && group?.headlines?.length > 1);
