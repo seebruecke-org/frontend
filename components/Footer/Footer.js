@@ -21,7 +21,7 @@ function SocialMedia({ className = '' }) {
         <InstagramIcon className="w-12 h-auto" />
       </a>
 
-      <a href="https://twitter.com/_Seebruecke">
+      <a href="https://twitter.com/_Seebruecke_">
         <TwitterIcon className="w-12 h-auto" />
       </a>
 

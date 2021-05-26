@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
@@ -83,18 +83,24 @@ function FederalCountries({ countries }) {
 export default function TakePartOverview({ cities: defaultCities, page }) {
   const { t } = useTranslation();
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
-  const mapCities = Object.keys(cities)
-    .map((countryName) => {
-      const federalCountryNames = Object.keys(cities[countryName].countries);
+  const mapCities = useMemo(
+    () =>
+      Object.keys(cities)
+        .map((countryName) => {
+          const federalCountryNames = Object.keys(
+            cities[countryName].countries
+          );
 
-      return federalCountryNames
-        .map(
-          (federalCountryName) =>
-            cities[countryName].countries[federalCountryName].cities
-        )
-        .flat();
-    })
-    .flat();
+          return federalCountryNames
+            .map(
+              (federalCountryName) =>
+                cities[countryName].countries[federalCountryName].cities
+            )
+            .flat();
+        })
+        .flat(),
+    [cities]
+  );
   const citiesListRef = useRef(null);
   const indexFirstBottomBlock = page?.content?.findIndex(
     ({ __typename }) =>
@@ -123,12 +129,13 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
       <div className="grid grid-layout-primary">
         <Map
           features={mapCities.map(
-            ({ name, id, coordinates: { geometry } }) => ({
+            ({ name, id, uri, coordinates: { geometry } }) => ({
               type: 'Feature',
               properties: {
                 name,
                 id,
-                type: 'city'
+                type: 'city',
+                uri
               },
               geometry: {
                 ...geometry,
