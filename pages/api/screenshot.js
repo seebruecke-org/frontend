@@ -4,18 +4,13 @@ import chromium from 'chrome-aws-lambda';
 import { isValidSeebrueckeUrl } from '@/lib/url';
 
 async function getBrowserInstance() {
-  const executablePath = await chromium.executablePath;
-  const defaults = {
+  return chromium.puppeteer.launch({
+    args: chromium.args,
     defaultViewport: {
       width: 1280,
       height: 640
-    }
-  };
-
-  return chromium.puppeteer.launch({
-    ...defaults,
-    args: chromium.args,
-    executablePath,
+    },
+    executablePath: await chromium.executablePath,
     headless: chromium.headless,
     ignoreHTTPSErrors: true
   });
@@ -26,7 +21,9 @@ async function takeScreenshot(url) {
 
   try {
     browser = await getBrowserInstance();
+
     const page = await browser.newPage();
+
     await page.goto(url);
 
     return await page.screenshot({ type: 'png' });
