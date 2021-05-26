@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import { useEffect, useRef } from 'react';
 
 import Form from '@/components/Form';
 import Button from '@/components/Form/Button';
@@ -8,6 +9,13 @@ import TextInput from '@/components/Form/TextInput';
 
 export default function SearchFormModal({ onClose = () => {} }) {
   const { t } = useTranslation();
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef?.current) {
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
 
   return (
     <Modal isOpen={true} onClose={onClose}>
@@ -17,7 +25,11 @@ export default function SearchFormModal({ onClose = () => {} }) {
 
       <Form method="get" action={`/${t('slugs.search')}`}>
         <div className="col-span-full">
-          <TextInput placeholder={t('modal.search.placeholder')} name="query" />
+          <TextInput
+            placeholder={t('modal.search.placeholder')}
+            name="query"
+            ref={inputRef}
+          />
         </div>
 
         <div className="col-span-full pt-6">

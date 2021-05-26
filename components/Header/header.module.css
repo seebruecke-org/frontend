@@ -43,7 +43,7 @@
   }
 
   .logoContainer {
-    @apply py-7;
+    @apply py-9;
   }
 }
 
