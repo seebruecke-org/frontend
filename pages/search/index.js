@@ -5,7 +5,7 @@ import { search } from '@/lib/search';
 import { query as queryGlobalData } from '@/lib/global';
 import Button from '@/components/Form/Button';
 import Form from '@/components/Form';
-import Heading from '@/components/Blocks/Heading';
+import Heading from '@/components/Heading';
 import PageBody from '@/components/PageBody';
 import Row from '@/components/Form/Row';
 import SearchEntry from '@/components/Teaser/SearchEntry';
@@ -23,15 +23,15 @@ export default function SearchPage({ results }) {
       />
 
       <Form method="get" highlight className="pb-20">
-        <Row>
+        <Row className="pt-20">
           <Heading level={1}>{t('search.title')}</Heading>
         </Row>
-        <Row direction="row">
+        <Row className="flex-col md:flex-row">
           <div className="w-5/6">
             <TextInput name="query" value={query?.query ?? ''} />
           </div>
 
-          <div className="w-2/12 pl-10">
+          <div className="w-2/12 mt-10 md:mt-0 md:pl-10">
             <Button>{t('search.submit')}</Button>
           </div>
         </Row>
