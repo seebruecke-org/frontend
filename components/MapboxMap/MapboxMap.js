@@ -58,16 +58,17 @@ export default function MapboxMap({ features = [], ...props }) {
   const [viewport, setViewport] = useState({
     height: '100%',
     width: '100%',
+    scrollZoom: true,
     ...bounds,
     ...props
   });
 
   return (
     <ReactMapGL
-      {...viewport}
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       mapStyle="mapbox://styles/gustavpursche/cklm62sl630z117nn1lcg83e1"
       onViewportChange={setViewport}
+      {...viewport}
     >
       {markers}
     </ReactMapGL>
