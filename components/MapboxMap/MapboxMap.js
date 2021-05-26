@@ -1,9 +1,17 @@
-import ReactMapGL, { WebMercatorViewport, Source, Layer } from 'react-map-gl';
+import ReactMapGL, { WebMercatorViewport, Marker } from 'react-map-gl';
 import { featureCollection } from '@turf/helpers';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import bbox from '@turf/bbox';
 
+import ActionMarker from '@/components/MapboxMap/Marker/Action';
+import CityMarker from '@/components/MapboxMap/Marker/City';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+const MARKER_TYPE_MAP = {
+  action: ActionMarker,
+  city: CityMarker
+};
 
 const getBounds = (features) => {
   const [minX, minY, maxX, maxY] = bbox(featureCollection(features));
@@ -25,16 +33,27 @@ const getFitBounds = (features) => {
   return { longitude, latitude, zoom };
 };
 
-export default function MapboxMap({
-  features: defaultFeatures = [],
-  ...props
-}) {
-  const hasFeatures = defaultFeatures.length > 0;
-  const [collection] = useState({
-    type: 'FeatureCollection',
-    features: defaultFeatures
-  });
-  const bounds = getFitBounds(collection.features);
+export default function MapboxMap({ features = [], ...props }) {
+  const bounds = getFitBounds(features);
+  const markers = useMemo(
+    () =>
+      features.map(
+        ({ geometry: { coordinates }, properties: { id, type } }) => {
+          const Component = MARKER_TYPE_MAP[type];
+
+          return (
+            <Marker
+              key={`marker-${id}`}
+              longitude={coordinates[0]}
+              latitude={coordinates[1]}
+            >
+              <Component />
+            </Marker>
+          );
+        }
+      ),
+    [features]
+  );
 
   const [viewport, setViewport] = useState({
     height: '100%',
@@ -43,21 +62,6 @@ export default function MapboxMap({
     ...props
   });
 
-  const dataLayer = {
-    id: 'data',
-    type: 'circle',
-    paint: {
-      'circle-radius': 8,
-      'circle-color': [
-        'match',
-        ['get', 'type'],
-        'action',
-        'rgb(69, 238, 191)',
-        'rgb(245, 181, 17)'
-      ]
-    }
-  };
-
   return (
     <ReactMapGL
       {...viewport}
@@ -65,11 +69,7 @@ export default function MapboxMap({
       mapStyle="mapbox://styles/gustavpursche/cklm62sl630z117nn1lcg83e1"
       onViewportChange={setViewport}
     >
-      {hasFeatures && (
-        <Source type="geojson" data={collection}>
-          <Layer {...dataLayer} />
-        </Source>
-      )}
+      {markers}
     </ReactMapGL>
   );
 }
