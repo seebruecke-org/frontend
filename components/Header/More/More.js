@@ -1,7 +1,9 @@
 import { useTranslation } from 'next-i18next';
+import { useRef } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
+import useScrollLock from '@/lib/hooks/useScrollLock';
 import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation';
 import TimesIcon from '@/public/icons/times.svg';
 
@@ -45,9 +47,15 @@ function Footer({ onDismiss }) {
 
 export default function More({ children, onDismiss = () => {} }) {
   const { t } = useTranslation();
+  const ref = useRef(null);
+
+  useScrollLock(ref);
 
   return (
-    <div className="flex flex-col bg-gray-800 absolute top-0 md:top-full right-0 w-screen md:w-auto h-screen md:h-auto pt-5 md:pt-16 md:pl-16 md:pr-16 z-40">
+    <div
+      className="flex flex-col bg-gray-800 absolute top-0 md:top-full right-0 w-screen md:w-auto h-screen md:h-auto pt-5 md:pt-16 md:pl-16 md:pr-16 z-40 pb-48 md:pb-0 overflow-y-auto"
+      ref={ref}
+    >
       <span
         className={clsx(
           'w-0 h-0 border text-gray-800 absolute left-2/4',

@@ -264,7 +264,7 @@ export default function Header({ metaItems, items }) {
                           link={cta[0]}
                           className={clsx(
                             styles.cta,
-                            'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide'
+                            'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide md:hidden'
                           )}
                           onClick={() => setmoreIsOpen(false)}
                         />
