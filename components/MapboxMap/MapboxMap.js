@@ -38,7 +38,10 @@ export default function MapboxMap({ features = [], ...props }) {
   const markers = useMemo(
     () =>
       features.map(
-        ({ geometry: { coordinates }, properties: { id, name, type } }) => {
+        ({
+          geometry: { coordinates },
+          properties: { id, name, type, uri }
+        }) => {
           const Component = MARKER_TYPE_MAP[type];
           const [longitude, latitude] = coordinates;
 
@@ -48,7 +51,7 @@ export default function MapboxMap({ features = [], ...props }) {
               longitude={longitude}
               latitude={latitude}
             >
-              <Component label={name} />
+              <Component label={name} uri={uri} />
             </Marker>
           );
         }
