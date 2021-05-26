@@ -7,7 +7,7 @@ import TimesIcon from '@/public/icons/times.svg';
 
 import * as styles from './more.module.css';
 
-function Footer() {
+function Footer({ onDismiss }) {
   const { t } = useTranslation();
   const { location } = useBookmarkedLocation();
 
@@ -15,18 +15,27 @@ function Footer() {
     <footer className="flex bg-gray-700 md:hidden mt-auto border-gray-600 border-t fixed w-full bottom-0 left-0">
       {location && location?.link ? (
         <Link href={location.link}>
-          <a className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800">
+          <a
+            className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800"
+            onClick={onDismiss}
+          >
             {t('header.gotoMyPlace')}
           </a>
         </Link>
       ) : (
-        <button className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800">
+        <button
+          className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800"
+          onClick={onDismiss}
+        >
           {t('header.myPlace')}
         </button>
       )}
 
       <Link href={`/${t('slugs.search')}`}>
-        <a className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800">
+        <a
+          className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"
+          onClick={onDismiss}
+        >
           {t('header.search')}
         </a>
       </Link>
@@ -59,7 +68,7 @@ export default function More({ children, onDismiss = () => {} }) {
 
       {children}
 
-      <Footer />
+      <Footer onDismiss={onDismiss} />
     </div>
   );
 }
