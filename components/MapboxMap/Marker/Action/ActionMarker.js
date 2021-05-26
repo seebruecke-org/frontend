@@ -1,10 +1,23 @@
-export default function ActionMarker() {
+import { useState } from 'react';
+import clsx from 'clsx';
+
+export default function ActionMarker({ name }) {
+  const [isActive, setIsActive] = useState(false);
+
   return (
-    <div className="w-8 h-auto opacity-80 text-turquoise-300">
+    <div
+      className={clsx(
+        'w-8 h-auto',
+        isActive ? 'text-black cursor-pointer' : 'text-turquoise-300 opacity-80'
+      )}
+    >
       <svg
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-auto"
+        aria-label={name}
+        onMouseEnter={() => setIsActive(true)}
+        onMouseLeave={() => setIsActive(false)}
       >
         <circle cx="50" cy="50" r="50" fill="currentColor" />
       </svg>
