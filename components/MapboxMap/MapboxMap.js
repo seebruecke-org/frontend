@@ -34,20 +34,21 @@ const getFitBounds = (features) => {
 };
 
 export default function MapboxMap({ features = [], ...props }) {
-  const bounds = getFitBounds(features);
+  const bounds = useMemo(() => getFitBounds(features), [features]);
   const markers = useMemo(
     () =>
       features.map(
-        ({ geometry: { coordinates }, properties: { id, type } }) => {
+        ({ geometry: { coordinates }, properties: { id, name, type } }) => {
           const Component = MARKER_TYPE_MAP[type];
+          const [longitude, latitude] = coordinates;
 
           return (
             <Marker
               key={`marker-${id}`}
-              longitude={coordinates[0]}
-              latitude={coordinates[1]}
+              longitude={longitude}
+              latitude={latitude}
             >
-              <Component />
+              <Component label={name} />
             </Marker>
           );
         }
@@ -58,7 +59,7 @@ export default function MapboxMap({ features = [], ...props }) {
   const [viewport, setViewport] = useState({
     height: '100%',
     width: '100%',
-    scrollZoom: true,
+    scrollZoom: { smooth: true },
     ...bounds,
     ...props
   });
