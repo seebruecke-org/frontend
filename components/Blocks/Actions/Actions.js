@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import { useInView } from 'react-intersection-observer';
+import { useMemo } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
@@ -18,6 +19,25 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
   const { ref, inView } = useInView({
     triggerOnce: true
   });
+  const mapActions = useMemo(
+    () =>
+      actions
+        .filter(({ coordinates }) => !!coordinates?.geometry)
+        .map(({ title, id, slug, coordinates: { geometry } }) => ({
+          type: 'Feature',
+          properties: {
+            name: title,
+            id,
+            type: 'action',
+            uri: `/${t('action.slug')}/${slug}`
+          },
+          geometry: {
+            ...geometry,
+            coordinates: geometry.coordinates
+          }
+        })),
+    [actions]
+  );
 
   if (actions.length === 0) {
     return null;
@@ -28,32 +48,14 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
       className="col-span-full md:col-start-2 md:col-span-12 pt-10 md:pt-12 pb-20 md:pb-32 px-1 md:px-0"
       ref={ref}
     >
-      {show_map && (
+      {show_map && mapActions && (
         <div
           className={clsx(
             'bg-gray-500 mb-8 overflow-hidden',
             styles.mapContainer
           )}
         >
-          {inView && (
-            <MapboxMap
-              factory={{ scrollZoom: false }}
-              features={actions
-                .filter(({ coordinates }) => !!coordinates?.geometry)
-                .map(({ title, id, coordinates: { geometry } }) => ({
-                  type: 'Feature',
-                  properties: {
-                    name: title,
-                    id,
-                    type: 'action'
-                  },
-                  geometry: {
-                    ...geometry,
-                    coordinates: geometry.coordinates
-                  }
-                }))}
-            />
-          )}
+          {inView && <MapboxMap scrollZoom={false} features={mapActions} />}
         </div>
       )}
 

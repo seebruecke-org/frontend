@@ -63,7 +63,7 @@
     "react-hot-toast": "^1.0.2",
     "react-intersection-observer": "^8.32.0",
     "react-load-script": "0.0.6",
-    "react-mapbox-gl": "^5.1.1",
+    "react-map-gl": "^6.1.15",
     "react-markdown": "^5.0.3",
     "react-measure": "^2.5.2",
     "react-modal": "^3.13.1",
