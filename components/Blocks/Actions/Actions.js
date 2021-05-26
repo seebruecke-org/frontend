@@ -37,7 +37,6 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
         >
           {inView && (
             <MapboxMap
-              factory={{ scrollZoom: false }}
               features={actions
                 .filter(({ coordinates }) => !!coordinates?.geometry)
                 .map(({ title, id, coordinates: { geometry } }) => ({

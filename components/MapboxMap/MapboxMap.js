@@ -1,66 +1,75 @@
-import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
+import ReactMapGL, { WebMercatorViewport, Source, Layer } from 'react-map-gl';
 import { featureCollection } from '@turf/helpers';
 import { useState } from 'react';
 import bbox from '@turf/bbox';
-import clsx from 'clsx';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+const getBounds = (features) => {
+  const [minX, minY, maxX, maxY] = bbox(featureCollection(features));
+
+  return [
+    [minX, minY],
+    [maxX, maxY]
+  ];
+};
+
+const getFitBounds = (features) => {
+  const bounds = getBounds(features);
+  const viewport = new WebMercatorViewport({
+    width: 800,
+    height: 600
+  }).fitBounds(bounds, { padding: 100 });
+
+  const { longitude, latitude, zoom } = viewport;
+  return { longitude, latitude, zoom };
+};
+
 export default function MapboxMap({
-  factory = {},
-  className = '',
   features: defaultFeatures = [],
   ...props
 }) {
-  const Map = ReactMapboxGl({
-    accessToken: process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN,
-    attributionControl: false,
-    ...factory
-  });
-
   const hasFeatures = defaultFeatures.length > 0;
   const [collection] = useState({
     type: 'FeatureCollection',
     features: defaultFeatures
   });
+  const bounds = getFitBounds(collection.features);
 
-  const getBounds = (features) => {
-    const [minX, minY, maxX, maxY] = bbox(featureCollection(features));
+  const [viewport, setViewport] = useState({
+    height: '100%',
+    width: '100%',
+    ...bounds,
+    ...props
+  });
 
-    return [
-      [minX, minY],
-      [maxX, maxY]
-    ];
+  const dataLayer = {
+    id: 'data',
+    type: 'circle',
+    paint: {
+      'circle-radius': 8,
+      'circle-color': [
+        'match',
+        ['get', 'type'],
+        'action',
+        'rgb(69, 238, 191)',
+        'rgb(245, 181, 17)'
+      ]
+    }
   };
 
   return (
-    <Map
-      style="mapbox://styles/gustavpursche/cklm62sl630z117nn1lcg83e1"
-      className={clsx('h-full', className)}
-      fitBounds={hasFeatures && getBounds(collection.features)}
-      fitBoundsOptions={
-        collection && {
-          duration: 0,
-          padding: 100
-        }
-      }
-      {...props}
+    <ReactMapGL
+      {...viewport}
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
+      mapStyle="mapbox://styles/gustavpursche/cklm62sl630z117nn1lcg83e1"
+      onViewportChange={setViewport}
     >
       {hasFeatures && (
-        <GeoJSONLayer
-          data={collection}
-          circlePaint={{
-            'circle-color': [
-              'match',
-              ['get', 'type'],
-              'action',
-              'rgb(69, 238, 191)',
-              'rgb(245, 181, 17)'
-            ],
-            'circle-radius': 8
-          }}
-        />
+        <Source type="geojson" data={collection}>
+          <Layer {...dataLayer} />
+        </Source>
       )}
-    </Map>
+    </ReactMapGL>
   );
 }
