@@ -18,9 +18,6 @@ import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation.js';
 
 import * as styles from './header.module.css';
 
-const SearchModal = dynamic(() => import('@/components/Modals/Search'), {
-  ssr: false
-});
 const BookmarkLocationModal = dynamic(
   () => import('@/components/Modals/BookmarkLocation'),
   { ssr: false }
@@ -101,24 +98,15 @@ function Bookmark() {
 
 function Search() {
   const { t } = useTranslation();
-  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <>
       <Link href={`/${t('slugs.search')}`}>
-        <a
-          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
-          onClick={(event) => {
-            event.preventDefault();
-            setSearchOpen(true);
-          }}
-        >
+        <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2">
           {t('header.search')}
           <SearchIcon className="w-7 h-7 ml-2" />
         </a>
       </Link>
-
-      {searchOpen && <SearchModal onClose={() => setSearchOpen(false)} />}
     </>
   );
 }
