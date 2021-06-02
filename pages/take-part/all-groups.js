@@ -126,7 +126,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 
       <BlockSwitch blocks={topBlocks} />
 
-      <div className="grid grid-layout-primary">
+      <div className="grid grid-layout-primary -mt-1">
         <Map
           features={mapCities.map(
             ({ name, id, uri, coordinates: { geometry } }) => ({
@@ -148,7 +148,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
           <Form
             primaryGrid={false}
-            className="grid-cols-6"
+            className="grid-cols-6 md:px-2"
             onSubmit={(event) => {
               event.preventDefault();
 

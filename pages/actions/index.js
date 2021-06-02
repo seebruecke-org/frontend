@@ -58,7 +58,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 
       <BlockSwitch blocks={page?.content} />
 
-      <div className="grid grid-layout-primary">
+      <div className="grid grid-layout-primary border-gray-400 border-t-2 mt-12 md:mt-24">
         <MemoizedMap
           features={Object.keys(actions)
             .map((key) => actions[key])
