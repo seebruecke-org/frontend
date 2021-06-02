@@ -45,7 +45,7 @@ export default function Heading({
         <small
           className={clsx(
             kickers[`h${as ?? level}`],
-            'block font-normal leading-none'
+            'block font-normal leading-none tracking-normal'
           )}
         >
           {kicker}

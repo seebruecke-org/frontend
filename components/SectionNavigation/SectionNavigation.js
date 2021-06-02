@@ -114,8 +114,8 @@ export default forwardRef(function SectionNavigation(
                 <StrapiLink
                   link={item}
                   className={clsx(
-                    'block py-3 px-2 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap hover:bg-white col-span-2 text-center',
-                    isActive && 'bg-white',
+                    'block py-3 px-2 md:p-3 uppercase font-rubik font-rubik-features font-bold text-xs md:text-base leading-none whitespace-nowrap col-span-2 text-center',
+                    isActive ? 'bg-white' : 'hover:bg-white',
                     index === 0 && 'col-start-2'
                   )}
                 />
