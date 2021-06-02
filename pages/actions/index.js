@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next';
-import { format } from 'date-fns';
 import { useState, useEffect, memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
@@ -133,12 +132,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                       <li key={`action-${actionIndex}`} className="h-full">
                         <Action
                           title={location}
-                          meta={`${format(
-                            new Date(start),
-                            `${t('action.dateFormat')}, ${t(
-                              'action.timeFormat'
-                            )}`
-                          )} ${t('action.timePostfix')}`}
+                          meta={`${start} ${t('action.timePostfix')}`}
                           intro={intro || title}
                           slug={slug}
                         />

@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next';
-import { format } from 'date-fns';
 import { useInView } from 'react-intersection-observer';
 import { useMemo } from 'react';
 import clsx from 'clsx';
@@ -64,10 +63,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
           <li key={`action-${index}`}>
             <Action
               title={location}
-              meta={`${format(
-                new Date(start),
-                `${t('action.dateFormat')}, ${t('action.timeFormat')}`
-              )} ${t('action.timePostfix')}`}
+              meta={`${start} ${t('action.timePostfix')}`}
               intro={intro || title}
               slug={slug}
             />

@@ -39,7 +39,7 @@
     "pluralTitle": "Aktionen",
     "slug": "aktionen",
     "dateFormat": "dd. LLL yyy",
-    "timeFormat": "hh:mm",
+    "timeFormat": "HH:mm",
     "timePostfix": "Uhr",
     "organizedBy": "Organisiert von der Lokalgruppe",
     "filter": "Aktionen filtern ..."
