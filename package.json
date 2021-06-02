@@ -45,7 +45,7 @@
     "js-cookie": "^2.2.1",
     "json-to-graphql-query": "^2.0.0",
     "mapbox-gl": "^2.3.0",
-    "next": "^10.2.3",
+    "next": "^10.2.4-canary.1",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^8.4.0",
     "next-plugin-preact": "^3.0.6",
