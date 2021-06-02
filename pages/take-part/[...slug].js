@@ -69,7 +69,7 @@ export default function TakePartPage({
     >
       <SEO title={`${kicker} ${name}`} />
 
-      {!isCountry && (
+      {!isCountry && Array.isArray(breadcrumbs) && (
         <Breadcrumbs
           crumbs={[
             ...(isGroup
