@@ -44,6 +44,8 @@ export default function TakePartPage({
   });
 
   const isGroup = pageType === 'group';
+  const isSafeHarbour = pageType === 'safe-harbour';
+  const isCountry = pageType === 'country';
   const hasNavigation = navigation && navigation.length > 1;
   const contentBlocks = group?.content || safe_harbour?.content || content;
   let kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
@@ -67,9 +69,32 @@ export default function TakePartPage({
     >
       <SEO title={`${kicker} ${name}`} />
 
-      {pageType !== 'country' && <Breadcrumbs crumbs={breadcrumbs} />}
+      {!isCountry && (
+        <Breadcrumbs
+          crumbs={[
+            ...(isGroup
+              ? [
+                  {
+                    url: `/${t('slugs.take-part/all-groups')}`,
+                    label: `${t('group.pluralTitle')}`
+                  }
+                ]
+              : []),
 
-      {isGroup || pageType === 'safe-harbour' ? (
+            ...(isSafeHarbour
+              ? [
+                  {
+                    url: `/${t('slugs.safe-harbours/all-harbours')}`,
+                    label: `${t('safeHarbour.pluralTitle')}`
+                  }
+                ]
+              : []),
+            ...breadcrumbs
+          ]}
+        />
+      )}
+
+      {isGroup || isSafeHarbour ? (
         <StageMedium
           title={name}
           kicker={kicker}
