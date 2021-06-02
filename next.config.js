@@ -52,8 +52,9 @@ async function fetchAllRedirects() {
 
       return {
         source: from,
-        destination: to,
-        permanent: type === 'permanently'
+        destination: `/de${to}`,
+        permanent: type === 'permanently',
+        locale: false
       };
     });
   } catch {
