@@ -61,10 +61,6 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
       <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3 flex-col space-y-8">
           <SavedLocation />
-
-          <a href="/" className="font-bold block">
-            {t('footer.langEn')}
-          </a>
         </div>
 
         <div className="md:col-start-4 md:col-span-3">
