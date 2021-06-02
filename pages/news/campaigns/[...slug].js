@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
   fetchCampaignBySlug,
   fetchAllPaths as fetchAllCampaignPaths
@@ -12,6 +14,8 @@ import SEO from '@/components/SEO';
 import { getLastBlockName } from '@/lib/blocks';
 
 export default function CampaignPage({ content, title }) {
+  const { t } = useTranslation();
+
   return (
     <>
       <SEO title={title} />
@@ -20,13 +24,12 @@ export default function CampaignPage({ content, title }) {
         <Breadcrumbs
           crumbs={[
             {
-              url: '/aktuelles',
-              label: 'Aktuelles'
+              url: t('slugs.news'),
+              label: t('news.singleTitle')
             },
 
             {
-              url: '/aktuelles/kampagnen',
-              label: 'Kampagnen'
+              label: t('campaign.pluralTitle')
             }
           ]}
         />

@@ -101,6 +101,7 @@
   },
 
   "news": {
+    "singleTitle": "Aktuelles",
     "slug": "aktuelles",
     "dateFormat": "dd. LLLL yyy",
     "type": {
@@ -111,6 +112,10 @@
 
   "press": {
     "longTitle": "Pressemitteilungen"
+  },
+
+  "campaign": {
+    "pluralTitle": "Kampagnen"
   },
 
   "slugs": {
