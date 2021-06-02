@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 function Wrapper({ uri = null, className, children }) {
-  const cssClassName = clsx('w-8 h-auto block cursor-pointer', className);
+  const cssClassName = clsx('w-7 h-auto block cursor-pointer', className);
 
   if (uri) {
     return (
