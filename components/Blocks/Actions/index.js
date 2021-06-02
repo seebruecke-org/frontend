@@ -21,7 +21,7 @@ export const FRAGMENT = `
 `;
 
 export async function sideloadData({ cta, filter, max_actions_to_show }) {
-  const { buildGraphQLQuery } = await import('@/lib/actions');
+  const { buildGraphQLQuery, formatTime } = await import('@/lib/actions');
   const { toMapboxCoordinates } = await import('@/lib/coordinates');
   const { fetchAPI } = await import('@/lib/api');
   const { fetchLink } = await import('@/lib/link');
@@ -45,8 +45,10 @@ export async function sideloadData({ cta, filter, max_actions_to_show }) {
   const { actions = [] } = await fetchAPI(query);
   const endrichedActions =
     actions &&
-    actions.map(({ coordinates, ...action }) => ({
+    actions.map(({ coordinates, start, end, ...action }) => ({
       ...action,
+      start: formatTime(start),
+      end: formatTime(end),
       coordinates: toMapboxCoordinates(coordinates)
     }));
 
