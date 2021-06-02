@@ -110,7 +110,11 @@ export default function TakePartPage({
       )}
 
       {hasNavigation && (
-        <SectionNavigation items={navigation} className="col-span-full" />
+        <SectionNavigation
+          items={navigation}
+          className="col-span-full"
+          alwaysShowBorder={isGroup || isSafeHarbour}
+        />
       )}
 
       {hasAnchorNavigation && (

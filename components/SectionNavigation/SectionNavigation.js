@@ -40,7 +40,7 @@ function Control({ direction, ...props }) {
 }
 
 export default forwardRef(function SectionNavigation(
-  { items = [], className, primaryGrid = true },
+  { items = [], className, primaryGrid = true, alwaysShowBorder = false },
   ref
 ) {
   const { asPath } = useRouter();
@@ -69,7 +69,8 @@ export default forwardRef(function SectionNavigation(
     >
       <span
         className={clsx(
-          'w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply hidden md:block',
+          'w-full bg-gray-400 absolute top-0 left-0 opacity-50 mix-blend-multiply',
+          alwaysShowBorder ? 'block' : 'hidden md:block',
           styles.border
         )}
       />

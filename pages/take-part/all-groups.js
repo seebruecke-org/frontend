@@ -124,7 +124,14 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
     >
       <SEO title={page?.title} metadata={page?.metadata} />
 
-      <BlockSwitch blocks={topBlocks} />
+      <BlockSwitch
+        blocks={topBlocks}
+        blockProps={{
+          SubNavigation: {
+            alwaysShowBorder: true
+          }
+        }}
+      />
 
       <div className="grid grid-layout-primary -mt-1">
         <Map

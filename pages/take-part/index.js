@@ -15,7 +15,15 @@ export default function GenericPage({ page }) {
       lastBlock={getLastBlockName(page?.content)}
     >
       <SEO title={page?.title} metadata={page?.metadata} />
-      <BlockSwitch blocks={page?.content} />
+
+      <BlockSwitch
+        blocks={page?.content}
+        blockProps={{
+          SubNavigation: {
+            alwaysShowBorder: true
+          }
+        }}
+      />
     </PageBody>
   );
 }
