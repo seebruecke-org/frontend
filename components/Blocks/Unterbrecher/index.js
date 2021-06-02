@@ -30,7 +30,7 @@ export async function sideloadData({ uCTA }) {
   const { fetchLink } = await import('@/lib/link');
 
   return {
-    uCTA: await fetchLink(uCTA?.link)
+    uCTA: uCTA?.link ? await fetchLink(uCTA?.link) : null
   };
 }
 
