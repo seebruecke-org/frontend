@@ -39,7 +39,14 @@ export default function StageLarge({
         )}
       >
         <div className="max-w-7xl px-8 md:px-20">
-          {heading && <Heading {...heading}>{heading.text}</Heading>}
+          {heading && (
+            <Heading
+              level={parseInt(heading.level.substr(1), 10)}
+              kicker={heading.kicker}
+            >
+              {heading.text}
+            </Heading>
+          )}
 
           {cta && (
             <div className="mt-12">
