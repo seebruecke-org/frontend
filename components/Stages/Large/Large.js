@@ -38,7 +38,7 @@ export default function StageLarge({
           hasSubnavigation ? 'pt-20 md:pt-28' : 'py-20 md:py-28'
         )}
       >
-        <div className="max-w-6xl px-8 md:px-20">
+        <div className="max-w-7xl px-8 md:px-20">
           {heading && <Heading {...heading}>{heading.text}</Heading>}
 
           {cta && (
