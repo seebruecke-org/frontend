@@ -1,7 +1,7 @@
 import StageLarge from './StageLarge';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
-import { FRAGMENT as FRAGMENT_HEADING } from '@/components/Heading';
+import { FRAGMENT as FRAGMENT_HEADING } from '@/components/Blocks/Heading';
 
 export default StageLarge;
 
