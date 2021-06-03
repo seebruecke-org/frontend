@@ -13,7 +13,7 @@
     "url": "git+https://github.com/seebruecke-org/frontend.git"
   },
   "scripts": {
-    "build": "next build",
+    "build": "next build --no-lint",
     "dev": "next",
     "start": "next start",
     "storybook": "start-storybook -p 9000 -c .storybook",
