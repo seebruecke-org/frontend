@@ -21,7 +21,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.43",
+    "@mailchimp/mailchimp_marketing": "^3.0.44",
     "@next/bundle-analyzer": "^10.2.3",
     "@reach/dialog": "^0.15.0",
     "@svgr/webpack": "^5.5.0",
@@ -45,7 +45,7 @@
     "js-cookie": "^2.2.1",
     "json-to-graphql-query": "^2.0.0",
     "mapbox-gl": "^2.3.0",
-    "next": "^10.2.4-canary.2",
+    "next": "^10.2.4-canary.3",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^8.4.0",
     "next-plugin-preact": "^3.0.6",
@@ -59,7 +59,7 @@
     "puppeteer-core": "^10.0.0",
     "react": "npm:@preact/compat@0.0.4",
     "react-accessible-accordion": "^3.3.4",
-    "react-children-utilities": "^2.5.2",
+    "react-children-utilities": "^2.5.3",
     "react-dom": "npm:@preact/compat@0.0.4",
     "react-hook-form": "^6.15.7",
     "react-hot-toast": "^2.0.0",
