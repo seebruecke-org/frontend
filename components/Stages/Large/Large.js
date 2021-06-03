@@ -14,7 +14,7 @@ const SectionNavigation = dynamic(() =>
 export default function StageLarge({
   image,
   className,
-  title,
+  title: { kicker, level, text },
   cta = null,
   subnavigation
 }) {
@@ -39,8 +39,8 @@ export default function StageLarge({
         )}
       >
         <div className="max-w-6xl px-8 md:px-20">
-          <Heading kicker="Kampagne" level={1}>
-            {title}
+          <Heading kicker={kicker} level={level}>
+            {text}
           </Heading>
 
           {cta && (

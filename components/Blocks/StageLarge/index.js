@@ -1,12 +1,15 @@
 import StageLarge from './StageLarge';
 import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
 import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
+import { FRAGMENT as FRAGMENT_HEADING } from '@/components/Heading';
 
 export default StageLarge;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageLarge {
-    title
+    title {
+      ${FRAGMENT_HEADING}
+    }
 
     image {
       ${FRAGMENT_MEDIA}
