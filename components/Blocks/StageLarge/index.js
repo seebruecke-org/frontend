@@ -7,7 +7,7 @@ export default StageLarge;
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksStageLarge {
-    title {
+    heading {
       ${FRAGMENT_HEADING}
     }
 
