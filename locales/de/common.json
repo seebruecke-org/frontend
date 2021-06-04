@@ -33,7 +33,8 @@
   },
 
   "actions": {
-    "pluralTitle": "Aktionen"
+    "pluralTitle": "Aktionen",
+    "resetFilter": "Filter zurücksetzen"
   },
 
   "action": {
