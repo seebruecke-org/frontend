@@ -187,5 +187,9 @@
       "close": "Bildbeschreibung anzeigen",
       "open": "Bildbeschreibung ausblenden"
     }
+  },
+
+  "logo": {
+    "label": "SEEBRÜCKE Logo"
   }
 }
