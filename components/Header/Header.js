@@ -63,7 +63,7 @@ function Bookmark() {
   const [saveBookmarkLocationOpen, setBookmarkLocationOpen] = useState(false);
   const { location } = useBookmarkedLocation();
   const className =
-    'flex items-center flex-nowrap font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2';
+    'flex items-center flex-nowrap font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2';
 
   return (
     <span>
@@ -102,7 +102,7 @@ function Search() {
   return (
     <>
       <Link href={`/${t('slugs.search')}`}>
-        <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2">
+        <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2">
           {t('header.search')}
           <SearchIcon className="w-7 h-7 ml-2" />
         </a>
@@ -119,7 +119,7 @@ function Locales({ locales }) {
           href="/"
           locale={currentLocale}
           key={`header-locale-${index}`}
-          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
         >
           {currentLocale.toUpperCase()}
         </a>
@@ -185,7 +185,7 @@ export default function Header({ metaItems, items }) {
                 <StrapiLink
                   key={`menu-meta-${item.label}`}
                   link={item}
-                  className="font-rubik font-rubik-features text-xs uppercase leading-none text-gray-800 hover:text-white p-2"
+                  className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
                 />
               ))}
           </div>
@@ -237,7 +237,7 @@ export default function Header({ metaItems, items }) {
                             <StrapiLink
                               link={item}
                               className={clsx(
-                                'font-rubik font-rubik-features text-small uppercase font-bold leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-white hover:text-gray-800 tracking-wide',
+                                'font-rubik font-rubik-features text-small uppercase font-bold leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-white hover:text-black tracking-wide',
                                 styles.itemMore,
                                 styles[`item--more-${index + 1}`]
                               )}
@@ -252,7 +252,7 @@ export default function Header({ metaItems, items }) {
                           link={cta[0]}
                           className={clsx(
                             styles.cta,
-                            'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide md:hidden'
+                            'font-rubik font-rubik-features text-2xs uppercase leading-none text-black hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide md:hidden'
                           )}
                           onClick={() => setmoreIsOpen(false)}
                         />
