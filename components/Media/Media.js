@@ -87,6 +87,14 @@ export default function Media({
             </button>
           )}
 
+          {/* For a11y resons the figcaption needs to be duplicated, because
+              the children of the portal render outside the figure element */}
+          {hasCaption && (
+            <figcaption className="hidden">
+              <Richtext content={imageCaption} size="tiny" />
+            </figcaption>
+          )}
+
           {!showCaption && isCaptionOpen && hasCaption && (
             <Portal>
               <figcaption
