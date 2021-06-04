@@ -24,7 +24,7 @@ export default function CampaignPage({ content, title, metadata }) {
         <Breadcrumbs
           crumbs={[
             {
-              url: t('slugs.news'),
+              url: `/${t('slugs.news')}`,
               label: t('news.singleTitle')
             },
 
