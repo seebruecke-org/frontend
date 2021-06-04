@@ -11,6 +11,8 @@ export const FRAGMENT = `
       ${FRAGMENT_HEADING}
     }
 
+    intro
+
     image {
       ${FRAGMENT_MEDIA}
     }

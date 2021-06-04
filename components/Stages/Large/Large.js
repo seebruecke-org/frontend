@@ -7,6 +7,7 @@ import Media from '@/components/Media';
 
 import * as styles from './large.module.css';
 
+const Richtext = dynamic(() => import('@/components/Richtext'));
 const SectionNavigation = dynamic(() =>
   import('@/components/SectionNavigation')
 );
@@ -16,7 +17,8 @@ export default function StageLarge({
   className,
   heading,
   cta = null,
-  subnavigation
+  subnavigation,
+  intro
 }) {
   const hasSubnavigation =
     subnavigation && Array.isArray(subnavigation) && subnavigation.length > 0;
@@ -38,18 +40,30 @@ export default function StageLarge({
           hasSubnavigation ? 'pt-20 md:pt-28' : 'py-20 md:py-28'
         )}
       >
-        <div className="max-w-7xl px-8 md:px-20">
+        <div className="max-w-7xl">
           {heading && (
             <Heading
               level={parseInt(heading.level.substr(1), 10)}
               kicker={heading.kicker}
+              className="px-8 md:px-20"
             >
               {heading.text}
             </Heading>
           )}
 
+          {intro && (
+            <div className="mt-8 md:mt-10 md:px-20">
+              <Richtext content={intro} />
+            </div>
+          )}
+
           {cta && (
-            <div className="mt-12">
+            <div
+              className={clsx(
+                'px-8 md:px-20 mt-8',
+                intro ? 'md:mt-10' : 'md:mt-12'
+              )}
+            >
               <CTA link={cta} />
             </div>
           )}
