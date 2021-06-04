@@ -13,12 +13,12 @@ import SEO from '@/components/SEO';
 
 import { getLastBlockName } from '@/lib/blocks';
 
-export default function CampaignPage({ content, title }) {
+export default function CampaignPage({ content, title, metadata }) {
   const { t } = useTranslation();
 
   return (
     <>
-      <SEO title={title} />
+      <SEO metadata={metadata} title={title} />
 
       <div className="grid grid-layout-primary">
         <Breadcrumbs

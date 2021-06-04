@@ -29,11 +29,9 @@ export default function SEO({ title, metadata: defaultMetadata }) {
       <link rel="icon" type="image/png" href="/favicon.png" />
 
       {metadata &&
-        Object.entries(metadata).map(([key, value]) => {
-          return (
-            <meta name={key} content={value} key={`meta-${key}-${value}`} />
-          );
-        })}
+        Object.entries(metadata).map(([key, value]) => (
+          <meta name={key} content={value} key={`meta-${key}-${value}`} />
+        ))}
     </Head>
   );
 }
