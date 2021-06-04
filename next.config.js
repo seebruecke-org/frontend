@@ -48,11 +48,20 @@ async function fetchAllRedirects() {
     }
 
     return redirects.map(({ from, to, type }) => {
-      console.log('Create redirect: ', from, ' --> ', to, ' : ', type);
+      const destination = to.startsWith('/') ? `/de${to}` : to;
+      let source = from;
+
+      if (source.endsWith('/')) {
+        source = source.replace(/\/$/, '(\\/)?$');
+      } else {
+        source = `${source}(\\/)?$`;
+      }
+
+      console.log('Redirect: ', source, destination);
 
       return {
-        source: from,
-        destination: `/de${to}`,
+        source,
+        destination,
         permanent: type === 'permanently',
         locale: false
       };
