@@ -41,7 +41,7 @@ export default function StageLarge({
 
       <div
         className={clsx(
-          'bg-orange-200 md:w-8/12 ml-2 md:ml-0 mr-2 md:mr-0 -mt-64 md:absolute md:-bottom-32 md:left-auto md:right-0 w-auto relative z-10',
+          'bg-orange-200 md:w-8/12 ml-2 md:ml-0 mr-2 md:mr-0 -mt-80 md:absolute md:-bottom-32 md:left-auto md:right-0 w-auto relative z-10',
           hasSubnavigation ? 'pt-20 md:pt-28' : 'py-20 md:py-28'
         )}
       >
