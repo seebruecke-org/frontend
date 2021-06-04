@@ -52,9 +52,9 @@ async function fetchAllRedirects() {
       let source = from;
 
       if (source.endsWith('/')) {
-        source = source.replace(/\/$/, '(\\/)?$');
+        source = source.replace(/\/$/, '((\\/)?$)');
       } else {
-        source = `${source}(\\/)?$`;
+        source = `${source}((\\/)?$)`;
       }
 
       console.log('Redirect: ', source, destination);
