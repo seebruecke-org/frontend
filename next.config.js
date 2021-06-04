@@ -47,25 +47,37 @@ async function fetchAllRedirects() {
       return [];
     }
 
-    return redirects.map(({ from, to, type }) => {
-      const destination = to.startsWith('/') ? `/de${to}` : to;
-      let source = from;
+    return redirects
+      .map(({ from, to, type }) => {
+        const destination = to.startsWith('/') ? `/de${to}` : to;
+        let source = from;
+        const redirect = [];
+        const permanent = type === 'permanently';
 
-      if (source.endsWith('/')) {
-        source = source.replace(/\/$/, '((\\/)?$)');
-      } else {
-        source = `${source}((\\/)?$)`;
-      }
+        console.log('Redirect', source, destination);
 
-      console.log('Redirect: ', source, destination);
+        redirect.push({
+          source,
+          destination,
+          permanent,
+          locale: false
+        });
 
-      return {
-        source,
-        destination,
-        permanent: type === 'permanently',
-        locale: false
-      };
-    });
+        // Create a second redirect either with or without the slash at the
+        // end. Ideally this would be a regex, but I couldn't figure out how
+        // to do it
+        redirect.push({
+          source: source.endsWith('/')
+            ? source.replace(/\/$/, '')
+            : `${source}/`,
+          destination,
+          permanent,
+          locale: false
+        });
+
+        return redirect;
+      })
+      .flat();
   } catch {
     return [];
   }
