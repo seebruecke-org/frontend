@@ -53,7 +53,7 @@ export default function Heading({
         </small>
       )}
 
-      {children}
+      <span dangerouslySetInnerHTML={{ __html: text }} />
     </Tag>
   );
 }
