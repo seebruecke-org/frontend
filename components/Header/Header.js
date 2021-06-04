@@ -160,7 +160,14 @@ export default function Header({ metaItems, items }) {
 
   return (
     <header className="bg-orange-800 text-white flex flex-row justify-center w-full">
-      <div className="flex flex-row align-bottom max-w-wide w-full">
+      <div className="flex flex-row align-bottom max-w-wide w-full relative">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:absolute top-2 left-0 whitespace-nowrap font-rubik font-rubik-features text-2xs uppercase leading-none text-black hover:text-white"
+        >
+          {t('header.skipToContent')}
+        </a>
+
         <Link href="/">
           <a
             className={clsx(
