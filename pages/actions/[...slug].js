@@ -1,7 +1,4 @@
 import { useTranslation } from 'next-i18next';
-import { format } from 'date-fns';
-import isSameDay from 'date-fns/isSameDay';
-import React from 'react';
 
 import { fetchAllActionPaths } from '@/lib/actions';
 import { query as queryGlobalData } from '../../lib/global';
@@ -18,33 +15,12 @@ export default function ActionPage({
   title,
   metadata,
   content,
-  start,
-  end,
+  formattedDateRange,
   location,
   location_detail,
   group
 }) {
   const { t } = useTranslation();
-
-  const formatDate = (date, prevDate = null) => {
-    const start = date && new Date(date);
-    const end = prevDate && new Date(prevDate);
-
-    if (end && isSameDay(start, end)) {
-      return `${format(start, `${t('action.timeFormat')}`)} ${t(
-        'action.timePostfix'
-      )}`;
-    }
-
-    if (!start && !end) {
-      return '';
-    }
-
-    return `${format(
-      start,
-      `${t('action.dateFormat')}, ${t('action.timeFormat')}`
-    )} ${t('action.timePostfix')}`;
-  };
 
   return (
     <PageBody firstBlock="Heading">
@@ -55,7 +31,7 @@ export default function ActionPage({
 
         <div className="col-span-full md:col-start-3 md:col-span-7 mt-20 px-1 md:px-0">
           <Action
-            title={`${formatDate(start)} - ${formatDate(end, start)}`}
+            title={formattedDateRange}
             intro={`${location} ${location_detail}`}
           />
         </div>

@@ -107,7 +107,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                   onClick={() => setFilterValue('')}
                   className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
                 >
-                  Filter zurücksetzen
+                  {t('actions.resetFilter')}
                 </button>
               )}
             </Row>
