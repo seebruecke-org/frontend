@@ -58,38 +58,30 @@ async function resizeImage(url, size) {
 export default async function handler(req, res) {
   const { query } = req;
 
-  if (query.url && isValidSeebrueckeUrl(query.url)) {
-    const { url, size } = query;
+  try {
+    if (query.url && isValidSeebrueckeUrl(query.url)) {
+      const { url, size } = query;
 
-    if (size && isValidSize(size)) {
-      const image = await resizeImage(url, size);
+      if (size && isValidSize(size)) {
+        const image = await resizeImage(url, size);
 
-      res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24}`);
-      res.setHeader('Content-Type', 'image/png');
-      res.status(200).send(image);
+        res.setHeader('Cache-Control', `max-age=${60 * 60 * 24}, public`);
+        res.setHeader('Content-Type', 'image/jpg');
+        res.status(200).send(image);
+      } else {
+        throw new Error('The size parameter is invalid.');
+      }
     } else {
-      res
-        .status(500)
-        .send(
-          process.env.NODE_ENV !== 'production'
-            ? JSON.stringify(
-                serializeError(
-                  new Error('You must provide a valid size param.')
-                )
-              )
-            : ''
-        );
+      throw new Error(
+        "Either the url parameter wasn't passed of the URL is not allowed to be resized."
+      );
     }
-  } else {
+  } catch (error) {
     res
       .status(500)
       .send(
         process.env.NODE_ENV !== 'production'
-          ? JSON.stringify(
-              serializeError(
-                new Error('You must provide a valid Seebrücke hostname.')
-              )
-            )
+          ? JSON.stringify(serializeError(error))
           : ''
       );
   }

@@ -41,21 +41,19 @@ export default async function handler(req, res) {
     if (query.url && isValidSeebrueckeUrl(query.url)) {
       const screenshot = await takeScreenshot(query.url);
 
-      if (screenshot) {
-        res.setHeader('Cache-Control', `public, max-age=${60 * 60 * 24}`);
-        res.setHeader('Content-Type', 'image/png');
-        res.status(200).send(screenshot);
-      } else {
-        res.status(500).send();
+      if (!screenshot) {
+        throw new Error('Screenshot could not be generated.');
       }
+
+      res.setHeader('Cache-Control', `max-age=${60 * 60 * 24}, public`);
+      res.setHeader('Content-Type', 'image/png');
+      res.status(200).send(screenshot);
     } else {
       throw new Error(
         "Either the url parameter wasn't passed of the URL is not allowed to be screenshotted."
       );
     }
   } catch (error) {
-    console.log(error);
-
     res
       .status(500)
       .send(
