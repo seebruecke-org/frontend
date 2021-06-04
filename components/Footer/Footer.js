@@ -11,21 +11,35 @@ import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 
 function SocialMedia({ className = '' }) {
+  const { t } = useTranslation();
+
   return (
     <div className={clsx('flex space-x-4', className)}>
-      <a href="https://www.facebook.com/SeebrueckeSchafftsichereHaefen/">
+      <a
+        href="https://www.facebook.com/SeebrueckeSchafftsichereHaefen/"
+        aria-label={t('footer.social', { network: 'Facebook' })}
+      >
         <FacebookIcon className="w-12 h-auto" />
       </a>
 
-      <a href="https://www.instagram.com/seebrueckeoffiziell/">
+      <a
+        href="https://www.instagram.com/seebrueckeoffiziell/"
+        aria-label={t('footer.social', { network: 'Instagram' })}
+      >
         <InstagramIcon className="w-12 h-auto" />
       </a>
 
-      <a href="https://twitter.com/_Seebruecke_">
+      <a
+        href="https://twitter.com/_Seebruecke_"
+        aria-label={t('footer.social', { network: 'Twitter' })}
+      >
         <TwitterIcon className="w-12 h-auto" />
       </a>
 
-      <a href="https://www.youtube.com/channel/UCpFA2nMmOBnUXi9f37BQqxQ">
+      <a
+        href="https://www.youtube.com/channel/UCpFA2nMmOBnUXi9f37BQqxQ"
+        aria-label={t('footer.social', { network: 'Youtube' })}
+      >
         <YoutubeIcon className="w-12 h-auto" />
       </a>
     </div>

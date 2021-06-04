@@ -13,7 +13,8 @@
     "switzerland": "SEEBRÜCKE Schweiz",
     "bookmarkedLocation": "Gemerkter Ort",
     "bookmarkLocation": "Ort merken",
-    "bookmarkYourLocation": "Merke dir einen Ort"
+    "bookmarkYourLocation": "Merke dir einen Ort",
+    "social": "Folge SEEBRÜCKE auf {{network}}"
   },
 
   "city": {
