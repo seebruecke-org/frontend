@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/_next/image(.*)",
+      "source": "/(.*).(avif|jpg|jpeg|png|webp)",
       "headers": [
         {
           "key": "Cache-Control",
