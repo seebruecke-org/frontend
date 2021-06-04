@@ -28,7 +28,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
             name: title,
             id,
             type: 'action',
-            uri: `/${t('action.slug')}/${slug}`
+            uri: `/${t('slugs.actions')}/${slug}`
           },
           geometry: {
             ...geometry,

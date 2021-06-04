@@ -62,7 +62,9 @@ export default function Custom404() {
 }
 
 export async function getStaticProps({ locale }) {
-  const { initialState = null, ...globalData } = await queryGlobalData(locale);
+  const { initialState = null, ...globalData } = await queryGlobalData(locale, [
+    '404'
+  ]);
 
   return {
     revalidate: 20,

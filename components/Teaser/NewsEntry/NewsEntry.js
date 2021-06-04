@@ -43,7 +43,7 @@ export default function NewsEntry({
             {translatedType}
           </header>
 
-          <NextLink href={`/${t('news.slug')}/${slug}/`}>
+          <NextLink href={`/${t('slugs.news')}/${slug}/`}>
             <a className="group-hover:underline">
               <Heading level={2} as={3}>
                 {title}
@@ -58,7 +58,7 @@ export default function NewsEntry({
           )}
         </div>
 
-        <NextLink href={`/${t('news.slug')}/${slug}/`}>
+        <NextLink href={`/${t('slugs.news')}/${slug}/`}>
           <a
             className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
             tabIndex="-1"
