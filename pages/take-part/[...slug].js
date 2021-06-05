@@ -56,9 +56,7 @@ export default function TakePartPage({
     (group?.actions?.length === 0 && group?.headlines?.length > 1);
 
   if (!isGroup && safe_harbour?.since) {
-    kicker += ` · ${t('since').toLowerCase()} ${
-      safe_harbour.since
-    }`;
+    kicker += ` · ${t('since').toLowerCase()} ${safe_harbour.since}`;
   }
 
   return (
