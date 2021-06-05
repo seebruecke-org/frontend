@@ -15,6 +15,7 @@ export default function NewsEntry({
   index
 }) {
   const { t } = useTranslation('news');
+  const { t: ts } = useTranslation('slugs');
   const translatedType = t(`type.${type}`);
 
   return (
@@ -42,7 +43,7 @@ export default function NewsEntry({
             {translatedType}
           </header>
 
-          <NextLink href={`/${t('slugs.news')}/${slug}/`}>
+          <NextLink href={`/${ts('news')}/${slug}/`}>
             <a className="group-hover:underline">
               <Heading level={2} as={3}>
                 {title}
@@ -57,7 +58,7 @@ export default function NewsEntry({
           )}
         </div>
 
-        <NextLink href={`/${t('slugs.news')}/${slug}/`}>
+        <NextLink href={`/${ts('news')}/${slug}/`}>
           <a
             className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
             tabIndex="-1"

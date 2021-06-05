@@ -15,6 +15,7 @@ import * as styles from './actions.module.css';
 
 export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
   const { t } = useTranslation();
+  const { t: ts } = useTranslation('slugs');
   const { ref, inView } = useInView({
     triggerOnce: true
   });
@@ -28,7 +29,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
             name: title,
             id,
             type: 'action',
-            uri: `/${t('slugs.actions')}/${slug}`
+            uri: `/${ts('actions')}/${slug}`
           },
           geometry: {
             ...geometry,
