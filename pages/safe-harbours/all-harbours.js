@@ -21,7 +21,8 @@ const Map = dynamic(() => import('@/components/Map'));
 const MemoizedMap = memo(Map);
 
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('safe-harbour');
+  const { t: tg } = useTranslation('group');
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
   const mapCities = Object.keys(cities)
     .map((countryName) => {
@@ -76,7 +77,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput
                 name="filter"
-                placeholder={t('group.searchCity')}
+                placeholder={t('searchCity')}
                 onChange={(event) => {
                   setFilter(event.target.value);
                 }}
@@ -89,7 +90,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                   onClick={() => setFilter('')}
                   className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
                 >
-                  Filter zurücksetzen
+                  {t('resetFilter')}
                 </button>
               )}
             </Row>
@@ -115,8 +116,8 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                               cities[countryName].countries[federalCountryName]
                                 .cities.length
                             }
-                            singularKicker={t('safeHarbour.singleTitle')}
-                            pluralKicker={t('safeHarbour.pluralTitle')}
+                            singularKicker={t('singleTitle')}
+                            pluralKicker={t('pluralTitle')}
                             name={federalCountryName}
                             uri={
                               cities[countryName].countries[federalCountryName]
@@ -142,18 +143,13 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                                     uri
                                   }
                                 }) => {
-                                  let description = t(
-                                    'safeHarbour.demand.fullfilledFrom',
-                                    {
-                                      fullfilled: demands_fullfilled,
-                                      count: demands_count
-                                    }
-                                  );
+                                  let description = t('demand.fullfilledFrom', {
+                                    fullfilled: demands_fullfilled,
+                                    count: demands_count
+                                  });
 
                                   if (demands_fullfilled === null) {
-                                    description = t(
-                                      'safeHarbour.demand.stateUnknown'
-                                    );
+                                    description = t('demand.stateUnknown');
                                   }
 
                                   return (
@@ -184,7 +180,9 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 export async function getStaticProps({ locale }) {
   const groups = await fetchAllSafeHarbours();
   const page = await getPage('haefen');
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale, [
+    'safe-harbour'
+  ]);
 
   return {
     // TODO: find a good magic number here

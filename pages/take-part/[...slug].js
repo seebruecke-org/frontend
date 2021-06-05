@@ -36,7 +36,9 @@ export default function TakePartPage({
   navigation,
   pageType
 }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('safe-harbour');
+  const { t: tg } = useTranslation('group');
+  const { t: ts } = useTranslation('slugs');
   const { ref: refStage, inView: inViewStage } = useInView({
     threshold: 0,
     initialInView: true
@@ -47,14 +49,14 @@ export default function TakePartPage({
   const isCountry = pageType === 'country';
   const hasNavigation = navigation && navigation.length > 1;
   const contentBlocks = group?.content || safe_harbour?.content || content;
-  let kicker = t(isGroup ? 'group.singleTitle' : 'safeHarbour.singleTitle');
+  let kicker = isGroup ? tg('singleTitle') : t('singleTitle');
   const featuredImage = isGroup ? group?.image : safe_harbour?.image;
   const hasAnchorNavigation =
     (isGroup && group?.actions?.length > 0 && group?.headlines?.length > 0) ||
     (group?.actions?.length === 0 && group?.headlines?.length > 1);
 
   if (!isGroup && safe_harbour?.since) {
-    kicker += ` · ${t('safeHarbour.since').toLowerCase()} ${
+    kicker += ` · ${t('since').toLowerCase()} ${
       safe_harbour.since
     }`;
   }
@@ -73,8 +75,8 @@ export default function TakePartPage({
             ...(isGroup
               ? [
                   {
-                    url: `/${t('slugs.take-part/all-groups')}`,
-                    label: `${t('group.pluralTitle')}`
+                    url: `/${ts('take-part/all-groups')}`,
+                    label: `${tg('pluralTitle')}`
                   }
                 ]
               : []),
@@ -82,8 +84,8 @@ export default function TakePartPage({
             ...(isSafeHarbour
               ? [
                   {
-                    url: `/${t('slugs.safe-harbours/all-harbours')}`,
-                    label: `${t('safeHarbour.pluralTitle')}`
+                    url: `/${ts('safe-harbours/all-harbours')}`,
+                    label: `${t('pluralTitle')}`
                   }
                 ]
               : []),
@@ -128,7 +130,7 @@ export default function TakePartPage({
                 ? [
                     {
                       url: '#aktionen',
-                      label: t('group.upcomingActions')
+                      label: tg('upcomingActions')
                     }
                   ]
                 : []),
@@ -142,7 +144,7 @@ export default function TakePartPage({
       {isGroup && group?.actions && group.actions.length > 0 && (
         <>
           <Heading level={2} id="aktionen" scrollMargin={hasAnchorNavigation}>
-            {t('group.upcomingActions')}
+            {tg('upcomingActions')}
           </Heading>
           <Actions actions={group.actions} />
         </>
@@ -151,7 +153,7 @@ export default function TakePartPage({
       {(demands || safe_harbour?.demands) && (
         <>
           <Heading level={2} scrollMargin={hasAnchorNavigation}>
-            {t('group.ourDemands')}
+            {tg('ourDemands')}
           </Heading>
           <Demands
             demands={demands || safe_harbour?.demands}
@@ -183,7 +185,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const { type, data, ...res } = await query(slug, locale);
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale, [
+    'safe-harbour',
+    'group'
+  ]);
 
   if (type === RETURN_CODES.REDIRECT) {
     return {

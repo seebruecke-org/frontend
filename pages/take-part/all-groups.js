@@ -48,7 +48,7 @@ function Cities({ cities }) {
 }
 
 function FederalCountries({ countries }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('group');
   const numberOfCities = countries.reduce((acc, { cities }) => {
     acc = acc + cities.length;
 
@@ -67,8 +67,8 @@ function FederalCountries({ countries }) {
         <li key={`federalCountry-${name}`}>
           <FederalCountry
             count={cities.length}
-            singularKicker={t('group.singleTitle')}
-            pluralKicker={t('group.pluralTitle')}
+            singularKicker={t('singleTitle')}
+            pluralKicker={t('pluralTitle')}
             name={name}
             uri={uri}
           />
@@ -81,7 +81,7 @@ function FederalCountries({ countries }) {
 }
 
 export default function TakePartOverview({ cities: defaultCities, page }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('group');
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
   const mapCities = useMemo(
     () =>
@@ -167,7 +167,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
             <Row primaryGrid={false} className="md:col-span-5 flex-nowrap">
               <TextInput
                 name="filter"
-                placeholder={t('group.searchCity')}
+                placeholder={t('searchCity')}
                 value={filter}
                 onChange={(event) => {
                   setFilter(event.target.value);
@@ -181,7 +181,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                   onClick={() => setFilter('')}
                   className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
                 >
-                  Filter zurücksetzen
+                  {t('resetFilter')}
                 </button>
               )}
             </Row>
@@ -219,7 +219,9 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 export async function getStaticProps({ locale }) {
   const groups = await fetchAllGroups();
   const page = await getPage('lokalgruppen');
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale, [
+    'group'
+  ]);
 
   return {
     // TODO: find a good magic number here

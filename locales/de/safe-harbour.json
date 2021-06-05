@@ -1,0 +1,56 @@
+{
+  "singleTitle": "Sicherer Hafen",
+  "pluralTitle": "Sichere Häfen",
+  "dateFormat": "dd.LL.yyy",
+  "since": "Seit",
+  "searchCity": "Ort suchen ...",
+  "resetFilter": "Filter zurücksetzen",
+  "disclaimer": "Die Angaben berufen sich auf die Interpretation der Beschlüsse. Wenn etwas fehlt oder geändert werden soll, oder du Fragen oder Anmerkungen hast, schreibe uns gerne.",
+  "lastUpdated": "Zuletzt aktualisiert am",
+
+  "demand": {
+    "decided": "entschieden",
+    "fullfilled": "umgesetzt",
+    "not": "Nicht",
+    "unknown": "Unbekannt ob",
+    "readMore": "Details anzeigen",
+    "readLess": "Details ausblenden",
+    "stateUnknown": "Status unbekannt",
+    "fullfilledFrom": "{{fullfilled}} von {{count}} Forderungen umgesetzt"
+  },
+
+  "demands": {
+    "public_solidarity_declaration": {
+      "title": "Öffentliche Solidaritätserklärung",
+      "description": "erklärt sich mit Menschen auf der Flucht und den Zielen der SEEBRÜCKE solidarisch."
+    },
+    "supports_searescue_actively": {
+      "title": "Aktive Unterstützung der Seenotrettung",
+      "description": "positioniert sich öffentlich gegen die Kriminalisierung der Seenotrettung auf dem Mittelmeer, unterstützt diese aktiv und übernimmt die Patenschaft und finanzielle Unterstützung für ein ziviles Seenotrettungsschiff oder beteiligt sich daran."
+    },
+    "admission_in_addition_quota": {
+      "title": "Aufnahme zusätzlich zur Quote",
+      "description": "stellt die schnelle und unkomplizierte Aufnahme und Unterbringung von aus Seenot geretteten Menschen zusätzlich zur Verteilungsquote von Schutzsuchenden sicher:\n - {{city}} erklärt sich bereit, aus Seenot gerettete Menschen, beispielsweise von einem zivilen Seenotrettungsboot, ähnlich eines Relocation-Programms, direkt aufzunehmen und unterzubringen. Diese Aufnahme geschieht zusätzlich zur Verteilungsquote Asylsuchender. Hierzu wird ein Einvernehmen mit dem Bundesministerium für Inneres und Sport, dem Bundesamt für Migration und Flüchtlinge und dem Bundesland {{federal_country}} hergestellt."
+    },
+    "admission_program": {
+      "title": "Aufnahmeprogramme unterstützen",
+      "description": "setzt sich gegenüber dem eigenen Bundesland und der Bundesregierung für die Einrichtung neuer bzw. die deutliche Ausweitung bestehender Programme zur legalen Aufnahme von Flüchtenden ein und bietet dazu selbst zusätzliche Aufnahmeplätze an:\n- {{city}} fordert die Regierung des Bundeslandes {{federal_country}} auf, ein eigenständiges humanitäres Aufnahmeprogramm für Flüchtende gem. § 23 Absatz 1 AufenthG einzuführen und damit Flüchtenden die legale Einreise nach Deutschland und einen legalen Aufenthalt zu ermöglichen.\n- {{city}} fordert die Regierung des Bundeslandes {{federal_country}} und die Bundesregierung auf, im Rahmen des Resettlements gem. § 23 Absatz 4 AufenthG und anderen Programmen der legalen Aufnahme von Flüchtenden dauerhaft und verlässlich erheblich höhere Aufnahmequoten als bisher zu vereinbaren. Nur so kann Deutschland seiner Verantwortung nachkommen, Menschen die Flucht auf gefährlichen illegalisierten Wegen ersparen.\n- {{city}} erklärt sich dem Bundesland {{federal_country}} und der Bundesregierung gegenüber bereit, zusätzliche Aufnahmeplätze für Einreisende in diesen Programmen verlässlich zur Verfügung zu stellen.\n- Zudem setzt sich die Stadt / der Landkreis über das Land für die Streichung des Satzes 3 des § 23 Abs. 1 AufenthG ein, wodurch die Zustimmungserfordernis des Bundes für eine Flüchtlingsaufnahme entfiele.\n- Die Stadt / der Landkreis fordert die Einführung einer eigenständigen Norm zur kommunalen Aufnahme entsprechend dem § 23 Abs. 1 AufenthG zur eigenständigen Aufnahme durch die Länder."
+    },
+    "communal_reception": {
+      "title": "Kommunales Ankommen gewährleisten",
+      "description": "sorgt für ein langfristiges Ankommen, indem alle notwendigen Ressourcen für eine menschenwürdige Versorgung, insbesondere in den Bereichen Wohnen, medizinische Versorgung und Bildung, zur Verfügung gestellt werden."
+    },
+    "national_international_networking": {
+      "title": "Nationale und europäische Vernetzung",
+      "description": "setzt sich auf regionaler, nationaler und europäischer Ebene aktiv für die Umsetzung der oben genannten Punkte ein."
+    },
+    "alliance_safe_harbours": {
+      "title": "Bündnis Städte Sichere Häfen",
+      "description": "beteiligt sich in dem Bündnis Städte Sicherer Häfen in Europa und setzt sich aktiv für eine menschenrechtskonforme europäische Migrationspolitik ein."
+    },
+    "transparency": {
+      "title": "Transparenz",
+      "description": "veröffentlicht alle unternommenen Handlungen, mit denen die Kommune zu einem Sicheren Hafen wird."
+    }
+  }
+}

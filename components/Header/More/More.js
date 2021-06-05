@@ -11,6 +11,7 @@ import * as styles from './more.module.css';
 
 function Footer({ onDismiss }) {
   const { t } = useTranslation();
+  const { t: ts } = useTranslation('slugs');
   const { location } = useBookmarkedLocation();
 
   return (
@@ -33,7 +34,7 @@ function Footer({ onDismiss }) {
         </button>
       )}
 
-      <Link href={`/${t('slugs.search')}`}>
+      <Link href={`/${ts('search')}`}>
         <a
           className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"
           onClick={onDismiss}
