@@ -14,9 +14,8 @@ export default function NewsEntry({
   slug,
   index
 }) {
-  const { t } = useTranslation();
-
-  const translatedType = t(`news.type.${type}`);
+  const { t } = useTranslation('news');
+  const translatedType = t(`type.${type}`);
 
   return (
     <article className="grid grid-layout-primary col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group overflow-x-hidden">
