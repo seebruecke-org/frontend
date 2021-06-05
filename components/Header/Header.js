@@ -98,10 +98,11 @@ function Bookmark() {
 
 function Search() {
   const { t } = useTranslation();
+  const { t: ts } = useTranslation('slugs');
 
   return (
     <>
-      <Link href={`/${t('slugs.search')}`}>
+      <Link href={`/${ts('search')}`}>
         <a className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2">
           {t('header.search')}
           <SearchIcon className="w-7 h-7 ml-2" />
@@ -130,7 +131,7 @@ function Locales({ locales }) {
 
 export default function Header({ metaItems, items }) {
   const { locale, locales, asPath } = useRouter();
-  const { t } = useTranslation();
+  const { t } = useTranslation('slugs');
   const [moreIsOpen, setmoreIsOpen] = useState(false);
 
   const otherLocales = locales.filter(
@@ -146,7 +147,7 @@ export default function Header({ metaItems, items }) {
     }
 
     const firstPagePathFragment = currentPagePath.split('/')[1];
-    const slug = `slugs.${firstPagePathFragment}`;
+    const slug = firstPagePathFragment;
     const currentPathFragmentLocalized = t(slug);
 
     let normalizedPagePath = firstPagePathFragment;

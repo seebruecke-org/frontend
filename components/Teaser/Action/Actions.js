@@ -2,11 +2,11 @@ import { useTranslation } from 'next-i18next';
 import NextLink from 'next/link';
 
 function Wrapper({ slug, children }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('slugs');
 
   if (slug) {
     return (
-      <NextLink href={`/${t('action.slug')}/${slug}`}>
+      <NextLink href={`/${t('actions')}/${slug}`}>
         <a className="block bg-turquoise-300 hover:bg-black hover:text-white px-8 py-10 md:p-10 h-full">
           {children}
         </a>

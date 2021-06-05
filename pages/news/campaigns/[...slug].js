@@ -15,6 +15,8 @@ import { getLastBlockName } from '@/lib/blocks';
 
 export default function CampaignPage({ content, title, metadata }) {
   const { t } = useTranslation();
+  const { t: tn } = useTranslation('news');
+  const { t: ts } = useTranslation('slugs');
 
   return (
     <>
@@ -24,8 +26,8 @@ export default function CampaignPage({ content, title, metadata }) {
         <Breadcrumbs
           crumbs={[
             {
-              url: `/${t('slugs.news')}`,
-              label: t('news.singleTitle')
+              url: `/${ts('news')}`,
+              label: tn('singleTitle')
             },
 
             {
@@ -53,7 +55,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const { data } = await fetchCampaignBySlug(slug, locale);
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale, [
+    'news'
+  ]);
 
   if (data === null) {
     return {

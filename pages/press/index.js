@@ -27,7 +27,9 @@ export default function PressOverview({ news, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale, [
+    'news'
+  ]);
   const page = await getPage('presse');
   const news = await fetchRecentNews({ filter: 'pressrelease' });
 

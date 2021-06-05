@@ -26,7 +26,7 @@ const KEYS = [
 ];
 
 function Heading({ index, decided = false, fullfilled = false, demand }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('safe-harbour');
   let color = 'bg-gray-500';
 
   if (decided === false && fullfilled === false) {
@@ -46,21 +46,21 @@ function Heading({ index, decided = false, fullfilled = false, demand }) {
       </span>
       <div className="ml-4 md:ml-8">
         <span className="font-rubik font-rubik-features text-base md:text-large font-bold leading-tight">
-          {t(`safeHarbour.demands.${demand}.title`)}
+          {t(`demands.${demand}.title`)}
         </span>
         <span className="block font-rubik font-normal text-xs mt-2">
-          {decided === false && `${t('safeHarbour.demand.not')} `}
-          {decided === null && `${t('safeHarbour.demand.unknown')} `}
-          {t('safeHarbour.demand.decided')} &middot;{' '}
-          {fullfilled === false && `${t('safeHarbour.demand.not')} `}
-          {fullfilled === null && `${t('safeHarbour.demand.unknown')} `}
-          {t('safeHarbour.demand.fullfilled')}
+          {decided === false && `${t('demand.not')} `}
+          {decided === null && `${t('demand.unknown')} `}
+          {t('demand.decided')} &middot;{' '}
+          {fullfilled === false && `${t('demand.not')} `}
+          {fullfilled === null && `${t('demand.unknown')} `}
+          {t('demand.fullfilled')}
         </span>
 
         <AccordionItemState>
           {({ expanded }) => (
             <span className="flex font-rubik text-2xs font-normal md:hidden mt-6 items-center text-gray-600">
-              {t(`safeHarbour.demand.${expanded ? 'readLess' : 'readMore'}`)}
+              {t(`demand.${expanded ? 'readLess' : 'readMore'}`)}
 
               {expanded ? (
                 <ChevronUpIcon className="w-4 h-auto ml-2" />
@@ -80,20 +80,19 @@ export default function SafeHarbourDemands({
   federalCountryName = '',
   demands: { last_updated, cta, ...demands }
 }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('safe-harbour');
 
   return (
     <div className="col-span-full md:col-start-3 md:col-span-9 my-12">
       {last_updated && (
         <p className="font-rubik text-small md:text-base mb-16 px-8 md:px-0">
-          {t('safeHarbour.lastUpdated')}{' '}
-          {format(new Date(last_updated), t('safeHarbour.dateFormat'))}
+          {t('lastUpdated')} {format(new Date(last_updated), t('dateFormat'))}
         </p>
       )}
 
       <Accordion allowMultipleExpanded allowZeroExpanded>
         {KEYS.map((demandKey, demandIndex) => {
-          let description = t(`safeHarbour.demands.${demandKey}.description`, {
+          let description = t(`demands.${demandKey}.description`, {
             city: cityName,
             federal_country: federalCountryName
           });
@@ -124,7 +123,7 @@ export default function SafeHarbourDemands({
       </Accordion>
 
       <p className="font-rubik text-base text-gray-600 mt-12 px-8 md:px-0">
-        {t('safeHarbour.disclaimer')}
+        {t('disclaimer')}
       </p>
 
       {cta && (

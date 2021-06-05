@@ -28,7 +28,9 @@ export default function NewsOverview({ news, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const { initialState, ...globalData } = await queryGlobalData(locale, [
+    'news'
+  ]);
   const page = await getPage('aktuelles');
   const news = await fetchRecentNews();
 

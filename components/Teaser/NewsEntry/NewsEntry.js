@@ -14,9 +14,9 @@ export default function NewsEntry({
   slug,
   index
 }) {
-  const { t } = useTranslation();
-
-  const translatedType = t(`news.type.${type}`);
+  const { t } = useTranslation('news');
+  const { t: ts } = useTranslation('slugs');
+  const translatedType = t(`type.${type}`);
 
   return (
     <article className="grid grid-layout-primary col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group overflow-x-hidden">
@@ -43,7 +43,7 @@ export default function NewsEntry({
             {translatedType}
           </header>
 
-          <NextLink href={`/${t('news.slug')}/${slug}/`}>
+          <NextLink href={`/${ts('news')}/${slug}/`}>
             <a className="group-hover:underline">
               <Heading level={2} as={3}>
                 {title}
@@ -58,7 +58,7 @@ export default function NewsEntry({
           )}
         </div>
 
-        <NextLink href={`/${t('news.slug')}/${slug}/`}>
+        <NextLink href={`/${ts('news')}/${slug}/`}>
           <a
             className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
             tabIndex="-1"

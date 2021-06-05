@@ -13,6 +13,8 @@ const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'));
 
 export default function GenericPage({ page }) {
   const { t } = useTranslation();
+  const { t: tn } = useTranslation('news');
+  const { t: ts } = useTranslation('slugs');
   const hasCampaign = !!page?.campaign;
 
   return (
@@ -27,8 +29,8 @@ export default function GenericPage({ page }) {
           <Breadcrumbs
             crumbs={[
               {
-                url: t('slugs.news'),
-                label: t('news.singleTitle')
+                url: ts('news'),
+                label: tn('singleTitle')
               },
 
               {
@@ -46,7 +48,7 @@ export default function GenericPage({ page }) {
 
 export async function getStaticPaths({ defaultLocale }) {
   const sidePaths = await paths();
-  const { slugs } = await import(`@/locales/de/common.json`);
+  const slugs = await import(`@/locales/de/slugs.json`);
 
   const customPages = Object.values(slugs);
 
@@ -72,10 +74,12 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
-  const { slugs } = await import(`@/locales/de/common.json`);
+  const slugs = await import(`@/locales/de/slugs.json`);
   const normalizedSlug = slug ? slug.map((slug) => slugs[slug] || slug) : slug;
   const { data } = await query(normalizedSlug, locale);
-  const { initialState = null, ...globalData } = await queryGlobalData(locale);
+  const { initialState = null, ...globalData } = await queryGlobalData(locale, [
+    'news'
+  ]);
 
   if (data === null) {
     return {

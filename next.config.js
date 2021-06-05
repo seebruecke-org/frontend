@@ -12,7 +12,7 @@ const withTranspiledModules = require('next-transpile-modules')([
 ]);
 
 const { i18n } = require('./next-i18next.config');
-const { slugs: slugsDe } = require('./locales/de/common.json');
+const slugsDe = require('./locales/de/slugs.json');
 
 function isProduction() {
   return process.env.NODE_ENV === 'production';
