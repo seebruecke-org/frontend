@@ -12,7 +12,7 @@ import TeasersSmall from '@/components/Blocks/TeasersSmall';
 
 export default function Custom404() {
   const { asPath } = useRouter();
-  const { t } = useTranslation();
+  const { t } = useTranslation('404');
 
   useEffect(() => {
     fetch(`/api/notify?subject=404&body=${encodeURIComponent(asPath)}`);
@@ -20,14 +20,14 @@ export default function Custom404() {
 
   return (
     <PageBody firstBlock="Heading" lastBlock="Richtext">
-      <SEO title={t('404.title.content')} />
+      <SEO title={t('title.content')} />
 
       <div className="grid grid-layout-primary">
-        <Heading level={1} kicker={t('404.title.kicker')}>
-          {t('404.title.content')}
+        <Heading level={1} kicker={t('title.kicker')}>
+          {t('title.content')}
         </Heading>
 
-        <Richtext richtext={t('404.intro')} />
+        <Richtext richtext={t('intro')} />
 
         <TeasersSmall
           items={[
