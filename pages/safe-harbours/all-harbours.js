@@ -78,7 +78,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             <Row primaryGrid={false} className="md:col-span-5">
               <TextInput
                 name="filter"
-                placeholder={tg('searchCity')}
+                placeholder={t('searchCity')}
                 onChange={(event) => {
                   setFilter(event.target.value);
                 }}
@@ -91,7 +91,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                   onClick={() => setFilter('')}
                   className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
                 >
-                  Filter zurücksetzen
+                  {t('resetFilter')}
                 </button>
               )}
             </Row>
