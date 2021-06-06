@@ -85,7 +85,7 @@ export default function SafeHarbourDemands({
     <div className="col-span-full md:col-start-3 md:col-span-9 my-12">
       {last_updated && (
         <p className="font-rubik text-small md:text-base mb-16 px-8 md:px-0">
-          {t('safeHarbour.lastUpdated')} {last_updated}
+          {t('lastUpdated')} {last_updated}
         </p>
       )}
 
