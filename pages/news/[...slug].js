@@ -18,7 +18,7 @@ export default function NewsEntryPage({
   published_at,
   type
 }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('news');
 
   return (
     <>
@@ -26,10 +26,7 @@ export default function NewsEntryPage({
 
       <PageBody lastBlock={getLastBlockName(content)}>
         <div className="grid grid-layout-primary">
-          <Heading
-            level={1}
-            kicker={`${published_at} · ${t(`news.type.${type}`)}`}
-          >
+          <Heading level={1} kicker={`${published_at} · ${t(`type.${type}`)}`}>
             {title}
           </Heading>
         </div>

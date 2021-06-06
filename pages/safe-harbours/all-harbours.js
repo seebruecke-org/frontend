@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import { memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import format from 'date-fns/format';
 
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -159,10 +158,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
                                         uri={uri}
                                         name={name}
                                         description={description}
-                                        since={format(
-                                          new Date(since),
-                                          t('dateFormat')
-                                        )}
+                                        since={since}
                                       />
                                     </li>
                                   );

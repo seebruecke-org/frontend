@@ -1,7 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import format from 'date-fns/format';
 
 import { RETURN_CODES } from '@/lib/constants';
 import { getLastBlockName } from '@/lib/blocks';
@@ -57,10 +56,7 @@ export default function TakePartPage({
     (group?.actions?.length === 0 && group?.headlines?.length > 1);
 
   if (!isGroup && safe_harbour?.since) {
-    kicker += ` · ${t('since').toLowerCase()} ${format(
-      new Date(safe_harbour?.since),
-      t('dateFormat')
-    )}`;
+    kicker += ` · ${t('since').toLowerCase()} ${safe_harbour.since}`;
   }
 
   return (
