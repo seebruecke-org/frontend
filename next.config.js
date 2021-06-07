@@ -47,16 +47,37 @@ async function fetchAllRedirects() {
       return [];
     }
 
-    return redirects.map(({ from, to, type }) => {
-      console.log('Create redirect: ', from, ' --> ', to, ' : ', type);
+    const normalized = redirects.reduce((acc, { from, to, type }) => {
+      let source = from;
+      let destination = `/de${to}`;
 
-      return {
-        source: from,
-        destination: `/de${to}`,
+      if (destination.endsWith('/')) {
+        destination = destination.replace(/\/$/, '');
+      }
+
+      if (source.endsWith('/')) {
+        source = source.replace(/\/$/, '');
+      }
+
+      const redirect = {
+        source,
+        destination,
         permanent: type === 'permanently',
         locale: false
       };
-    });
+
+      if (!acc.has(source)) {
+        console.log('Redirect: ', source, destination);
+
+        acc.set(source, redirect);
+      } else {
+        console.error('Redirect not created (source duplicated): ', source);
+      }
+
+      return acc;
+    }, new Map());
+
+    return Array.from(normalized.values());
   } catch {
     return [];
   }
