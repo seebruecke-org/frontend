@@ -1,19 +1,19 @@
-import { block as accordion } from './Accordion';
-import { block as actions } from './Actions';
-import { block as contact } from './Contact';
-import { block as fundraisingBox } from './Fundraisingbox';
-import { block as heading } from './Heading';
-import { block as material } from './Material';
-import { block as media } from './Media';
-import { block as gallery } from './MediaGallery';
-import { block as newsletter } from './Newsletter';
-import { block as richtext } from './Richtext';
-import { block as stageMedium } from './StageMedium';
-import { block as stageLarge } from './StageLarge';
-import { block as subNavigation } from './SubNavigation';
-import { block as teaserLarge } from './TeaserLarge';
-import { block as teasersSmall } from './TeasersSmall';
-import { block as unterbrecher } from './Unterbrecher';
+import accordion from './Accordion/block';
+import actions from './Actions/block';
+import contact from './Contact/block';
+import fundraisingBox from './Fundraisingbox/block';
+import heading from './Heading/block';
+import material from './Material/block';
+import media from './Media/block';
+import gallery from './MediaGallery/block';
+import newsletter from './Newsletter/block';
+import richtext from './Richtext/block';
+import stageMedium from './StageMedium/block';
+import stageLarge from './StageLarge/block';
+import subNavigation from './SubNavigation/block';
+import teaserLarge from './TeaserLarge/block';
+import teasersSmall from './TeasersSmall/block';
+import unterbrecher from './Unterbrecher/block';
 
 import { blockNameMatches } from '@/lib/blocks';
 
