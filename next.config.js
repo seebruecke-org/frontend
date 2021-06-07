@@ -48,7 +48,7 @@ async function fetchAllRedirects() {
     }
 
     const normalized = redirects.reduce((acc, { from, to, type }) => {
-      let source = from;
+      let source = `/de${from}`;
       let destination = `/de${to}`;
 
       if (destination.endsWith('/')) {
@@ -66,7 +66,7 @@ async function fetchAllRedirects() {
         locale: false
       };
 
-      if (!acc.has(source)) {
+      if (!acc.has(source) && source !== '/en') {
         console.log('Redirect: ', source, destination);
 
         acc.set(source, redirect);
@@ -153,9 +153,7 @@ module.exports = withPlugins(
     },
 
     async redirects() {
-      const redirects = await fetchAllRedirects();
-
-      return redirects;
+      return await fetchAllRedirects();
     },
 
     webpack(config) {
