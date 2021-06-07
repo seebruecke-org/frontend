@@ -1,6 +1,6 @@
 export { default } from './TeaserLarge';
 
-import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+import FRAGMENT_LINK from '@/components/StrapiLink/fragment';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksTeaserLarge {
