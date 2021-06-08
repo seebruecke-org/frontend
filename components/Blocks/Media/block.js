@@ -1,4 +1,4 @@
-import { FRAGMENT as MEDIA_FRAGMENT } from '@/components/Media';
+import MEDIA_FRAGMENT from '@/components/Media/fragment';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMedia {

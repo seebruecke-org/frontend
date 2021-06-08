@@ -1,6 +1,6 @@
-import { FRAGMENT as FRAGMENT_MEDIA } from '@/components/Media';
 import { FRAGMENT as FRAGMENT_TITLE } from '@/components/Blocks/Heading/block';
-import { FRAGMENT as FRAGMENT_LINK } from '@/components/StrapiLink';
+import FRAGMENT_LINK from '@/components/StrapiLink/fragment';
+import FRAGMENT_MEDIA from '@/components/Media/fragment';
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksUnterbrecher {
