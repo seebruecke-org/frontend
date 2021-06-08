@@ -51,12 +51,20 @@ async function fetchAllRedirects() {
       let source = `/de${from}`;
       let destination = `/de${to}`;
 
+      if (destination.startsWith('/en')) {
+        destination = destination.replace(/^\/en/, '');
+      }
+
       if (destination.endsWith('/')) {
         destination = destination.replace(/\/$/, '');
       }
 
       if (source.endsWith('/')) {
         source = source.replace(/\/$/, '');
+      }
+
+      if (source.startsWith('/en')) {
+        source = source.replace(/^\/en/, '');
       }
 
       const redirect = {
@@ -66,12 +74,12 @@ async function fetchAllRedirects() {
         locale: false
       };
 
-      if (!acc.has(source) && source !== '/en') {
+      if (!acc.has(source)) {
         console.log('Redirect: ', source, destination);
 
         acc.set(source, redirect);
       } else {
-        console.error('Redirect not created (source duplicated): ', source);
+        console.error('Invalid Redirect (duplicate): ', source);
       }
 
       return acc;
