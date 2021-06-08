@@ -49,7 +49,7 @@ async function fetchAllRedirects() {
 
     const normalized = redirects.reduce((acc, { from, to, type }) => {
       let source = `${from.startsWith('/en') ? '' : '/de'}${from}`;
-      let destination = `${from.startsWith('/en') ? '' : '/de'}${to}`;
+      let destination = `${to.startsWith('/en') ? '' : '/de'}${to}`;
 
       if (destination.endsWith('/')) {
         destination = destination.replace(/\/$/, '');
