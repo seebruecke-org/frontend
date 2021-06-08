@@ -48,12 +48,8 @@ async function fetchAllRedirects() {
     }
 
     const normalized = redirects.reduce((acc, { from, to, type }) => {
-      let source = `/de${from}`;
-      let destination = `/de${to}`;
-
-      if (destination.startsWith('/de/en')) {
-        destination = destination.replace(/^\/de\/en/, '/de');
-      }
+      let source = `${from.startsWith('/en') ? '' : '/de'}${from}`;
+      let destination = `${from.startsWith('/en') ? '' : '/de'}${to}`;
 
       if (destination.endsWith('/')) {
         destination = destination.replace(/\/$/, '');
@@ -63,8 +59,8 @@ async function fetchAllRedirects() {
         source = source.replace(/\/$/, '');
       }
 
-      if (source.startsWith('/en')) {
-        source = source.replace(/^\/de\/en/, '/de');
+      if (!destination) {
+        destination = '/de';
       }
 
       const redirect = {
@@ -75,11 +71,11 @@ async function fetchAllRedirects() {
       };
 
       if (!acc.has(source)) {
-        console.log('Redirect: ', source, destination);
+        console.log('Redirect:', source, destination);
 
         acc.set(source, redirect);
       } else {
-        console.error('Invalid Redirect (duplicate): ', source);
+        console.error('Invalid Redirect (duplicate):', source);
       }
 
       return acc;
@@ -129,7 +125,7 @@ function createRewrites(slugs, locale) {
     .flat();
 
   rewrites.forEach(({ source, destination }) =>
-    console.log('Create rewrite: ', source, ' --> ', destination)
+    console.log('Rewrite:', source, destination)
   );
 
   return rewrites;
