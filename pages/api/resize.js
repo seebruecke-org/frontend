@@ -65,7 +65,10 @@ export default async function handler(req, res) {
       if (size && isValidSize(size)) {
         const image = await resizeImage(url, size);
 
-        res.setHeader('Cache-Control', `max-age=${60 * 60 * 24}, public`);
+        res.setHeader(
+          'Cache-Control',
+          `max-age=${60 * 60 * 24 * 30}, public, immutable`
+        );
         res.setHeader('Content-Type', 'image/jpg');
         res.status(200).send(image);
       } else {
