@@ -160,6 +160,21 @@ module.exports = withPlugins(
       return await fetchAllRedirects();
     },
 
+    async headers() {
+      return [
+        {
+          source: '/_next/image(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value:
+                'public, max-age=180, s-maxage=180, stale-while-revalidate=180'
+            }
+          ]
+        }
+      ];
+    },
+
     webpack(config) {
       config.module.rules.push({
         test: /\.svg$/,
