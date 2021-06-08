@@ -51,8 +51,8 @@ async function fetchAllRedirects() {
       let source = `/de${from}`;
       let destination = `/de${to}`;
 
-      if (destination.startsWith('/en')) {
-        destination = destination.replace(/^\/en/, '');
+      if (destination.startsWith('/de/en')) {
+        destination = destination.replace(/^\/de\/en/, '/de');
       }
 
       if (destination.endsWith('/')) {
@@ -64,7 +64,7 @@ async function fetchAllRedirects() {
       }
 
       if (source.startsWith('/en')) {
-        source = source.replace(/^\/en/, '');
+        source = source.replace(/^\/de\/en/, '/de');
       }
 
       const redirect = {
