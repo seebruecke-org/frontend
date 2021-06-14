@@ -186,11 +186,10 @@ module.exports = withPlugins(
     },
 
     images: {
-      domains: getImageHostnames()
+      domains: getImageHostnames(),
+      disableStaticImages: true
     },
 
-    future: {
-      webpack5: isProduction()
-    }
+    webpack5: true
   }
 );
