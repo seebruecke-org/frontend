@@ -6,6 +6,7 @@ import { memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
+import { getSlugFromI18nNext } from '@/lib/slug';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form from '@/components/Form';
@@ -178,11 +179,16 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const groups = await fetchAllSafeHarbours();
-  const page = await getPage('haefen');
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'safe-harbour'
   ]);
+  const pageSlug = getSlugFromI18nNext(
+    'safe-harbours/all-harbours',
+    locale,
+    globalData
+  );
+  const groups = await fetchAllSafeHarbours();
+  const page = await getPage(...pageSlug.split('/').reverse());
 
   return {
     // TODO: find a good magic number here

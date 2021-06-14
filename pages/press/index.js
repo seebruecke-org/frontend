@@ -5,6 +5,7 @@ import SEO from '@/components/SEO';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchRecentNews } from '@/lib/news';
 import { getPage } from '@/lib/pages';
+import { getSlugFromI18nNext } from '@/lib/slug';
 
 export default function PressOverview({ news, page }) {
   return (
@@ -30,7 +31,8 @@ export async function getStaticProps({ locale }) {
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
-  const page = await getPage('presse');
+  const pageSlug = getSlugFromI18nNext('press', locale, globalData);
+  const page = await getPage(pageSlug);
   const news = await fetchRecentNews({ filter: 'pressrelease' });
 
   return {
