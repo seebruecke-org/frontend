@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router'
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -113,6 +114,7 @@ function Search() {
 
 export default function Header({ metaItems, items }) {
   const { t } = useTranslation('slugs');
+  const { asPath } = useRouter();
   const [moreIsOpen, setmoreIsOpen] = useState(false);
 
   const primaryItems = items && items.slice(0, items.length - 1);
