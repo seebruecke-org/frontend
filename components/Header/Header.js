@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -112,31 +112,11 @@ function Search() {
   );
 }
 
-function Locales({ locales }) {
-  return (
-    <>
-      {locales.map((currentLocale, index) => (
-        <a
-          href="/"
-          locale={currentLocale}
-          key={`header-locale-${index}`}
-          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
-        >
-          {currentLocale.toUpperCase()}
-        </a>
-      ))}
-    </>
-  );
-}
-
 export default function Header({ metaItems, items }) {
-  const { locale, locales, asPath } = useRouter();
   const { t } = useTranslation('slugs');
+  const { asPath } = useRouter();
   const [moreIsOpen, setmoreIsOpen] = useState(false);
 
-  const otherLocales = locales.filter(
-    (currentLocale) => currentLocale !== locale
-  );
   const primaryItems = items && items.slice(0, items.length - 1);
   const cta = items && items.slice(items.length - 1);
 
@@ -182,8 +162,6 @@ export default function Header({ metaItems, items }) {
 
         <nav className="flex flex-col w-full relative">
           <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-64 hidden md:flex md:mb-2 pt-5">
-            <Locales locales={otherLocales} />
-
             <Bookmark />
             <Search />
 
