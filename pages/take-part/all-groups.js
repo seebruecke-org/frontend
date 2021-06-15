@@ -8,6 +8,7 @@ import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
+import { getSlugFromI18nNext } from '@/lib/slug';
 import useCityFilter from '@/lib/hooks/useCityFilter';
 
 import Group from '@/components/Teaser/Group';
@@ -217,11 +218,16 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const groups = await fetchAllGroups();
-  const page = await getPage('lokalgruppen');
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'group'
   ]);
+  const pageSlug = getSlugFromI18nNext(
+    'take-part/all-groups',
+    locale,
+    globalData
+  );
+  const groups = await fetchAllGroups();
+  const page = await getPage(...pageSlug.split('/').reverse());
 
   return {
     // TODO: find a good magic number here

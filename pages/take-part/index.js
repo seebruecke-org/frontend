@@ -3,6 +3,7 @@ import React from 'react';
 import { query as queryGlobalData } from '@/lib/global';
 import { query } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
+import { getSlugFromI18nNext } from '@/lib/slug';
 
 import BlockSwitch from '@/components/BlockSwitch';
 import PageBody from '@/components/PageBody';
@@ -29,8 +30,9 @@ export default function GenericPage({ page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const { data } = await query(['mach-mit'], locale);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
+  const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
+  const { data } = await query([pageSlug], locale);
 
   if (data === null) {
     return {

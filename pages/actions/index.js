@@ -3,6 +3,7 @@ import { useState, useEffect, memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
+import { getSlugFromI18nNext } from '@/lib/slug';
 import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { getPage } from '@/lib/pages';
@@ -150,9 +151,10 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const actions = await fetchAllActions(locale);
-  const page = await getPage('aktionen');
   const { initialState, ...globalData } = await queryGlobalData(locale);
+  const actions = await fetchAllActions(locale);
+  const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
+  const page = await getPage(pageSlug);
 
   return {
     // TODO: find a good magic number here
