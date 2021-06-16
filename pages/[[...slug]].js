@@ -47,7 +47,7 @@ export default function GenericPage({ page }) {
 }
 
 export async function getStaticPaths({ defaultLocale }) {
-  const sidePaths = await paths();
+  const sidePaths = await paths(defaultLocale);
   const slugs = await import(`@/locales/de/slugs.json`);
 
   const customPages = Object.values(slugs);
