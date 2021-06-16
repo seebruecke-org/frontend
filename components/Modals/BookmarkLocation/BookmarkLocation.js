@@ -9,7 +9,7 @@ import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation';
 
 export default function BookmarkLocationFormModal({ onClose = () => {} }) {
   const { t } = useTranslation();
-  const { location, bookmark } = useBookmarkedLocation();
+  const { bookmark } = useBookmarkedLocation();
 
   return (
     <Modal isOpen={true} onClose={onClose}>

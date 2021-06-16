@@ -23,7 +23,6 @@ const MemoizedMap = memo(Map);
 
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
   const { t } = useTranslation('safe-harbour');
-  const { t: tg } = useTranslation('group');
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
   const mapCities = Object.keys(cities)
     .map((countryName) => {

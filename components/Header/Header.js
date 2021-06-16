@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
