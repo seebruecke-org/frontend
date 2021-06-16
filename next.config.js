@@ -12,7 +12,6 @@ const withTranspiledModules = require('next-transpile-modules')([
 ]);
 
 const { i18n } = require('./next-i18next.config');
-const slugsDe = require('./locales/de/slugs.json');
 
 function isProduction() {
   return process.env.NODE_ENV === 'production';
@@ -105,20 +104,26 @@ function createRewrites(slugs, locale) {
 
       const rewrite = [];
 
-      // TODO: remove hard coded take-part condition
       if (postfix) {
+        const source = `/${locale}/${slugs[key]}`;
+        const destination = `/${locale}/${key}`;
+
+        if (source !== destination) {
+          rewrite.push({
+            source,
+            destination,
+            locale: false
+          });
+        }
+      }
+
+      if (source !== destination) {
         rewrite.push({
-          source: `/${locale}/${slugs[key]}`,
-          destination: `/${locale}/${key}`,
+          source,
+          destination,
           locale: false
         });
       }
-
-      rewrite.push({
-        source,
-        destination,
-        locale: false
-      });
 
       return rewrite;
     })
@@ -151,8 +156,15 @@ module.exports = withPlugins(
     i18n,
 
     async rewrites() {
+      const { locales } = i18n;
+      const rewrites = locales.reduce((acc, locale) => {
+        const slugs = require(`./locales/${locale}/slugs.json`);
+
+        return [...acc, ...createRewrites(slugs, locale)];
+      }, []);
+
       return {
-        beforeFiles: createRewrites(slugsDe, 'de')
+        beforeFiles: rewrites
       };
     },
 
