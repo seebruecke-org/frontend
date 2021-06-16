@@ -1,11 +1,96 @@
 {
   "header": {
-    "myPlace": "My Place",
-    "search": "Search"
+    "myPlace": "My Location",
+    "gotoMyPlace": "Bookmarked Location",
+    "search": "Search",
+    "more": "more",
+    "skipToContent": "Zum Inhalt springen"
   },
 
   "footer": {
-    "langEn": "Deutsche Version",
-    "tagline": "Die SEEBRÜCKE ist eine internationale Bewegung, die sich für sichere Fluchtwege, für ungehinderte Seenotrettung und für ein Ende des Sterbens an den europäischen Grenzen engagiert."
+    "langEn": "English Version",
+    "tagline": "Die SEEBRÜCKE ist eine internationale Bewegung, die sich für sichere Fluchtwege, für ungehinderte Seenotrettung und für ein Ende des Sterbens an den europäischen Grenzen engagiert.",
+    "austria": "SEEBRÜCKE Österreich",
+    "switzerland": "SEEBRÜCKE Schweiz",
+    "bookmarkedLocation": "Gemerkter Ort",
+    "bookmarkLocation": "Ort merken",
+    "bookmarkYourLocation": "Merke dir einen Ort",
+    "social": "Follow SEEBRÜCKE on {{network}}"
+  },
+
+  "city": {
+    "bookmarkLocation": "Ort merken",
+    "bookmarkedLocation": "Gemerkter Ort"
+  },
+
+  "actions": {
+    "pluralTitle": "Aktionen",
+    "resetFilter": "Filter zurücksetzen"
+  },
+
+  "action": {
+    "singleTitle": "Action",
+    "pluralTitle": "Actions",
+    "dateFormat": "dd. LLL yyy",
+    "timeFormat": "HH:mm",
+    "timePostfix": "Uhr",
+    "organizedBy": "Organisiert von der Lokalgruppe",
+    "filter": "Filter actions ..."
+  },
+
+  "press": {
+    "longTitle": "Pressreleases"
+  },
+
+  "campaign": {
+    "pluralTitle": "Campaigns"
+  },
+
+  "fundraisingbox": {
+    "activateJS": "Bitte aktiviere Javascript um zu spenden.",
+    "logoAlt": "Fundraisingbox Logo"
+  },
+
+  "modal": {
+    "close": "Close",
+
+    "bookmark": {
+      "title": "Bookmark location",
+      "placeholder": "Name"
+    }
+  },
+
+  "search": {
+    "title": "Search",
+    "submit": "Submit"
+  },
+
+  "newsletter": {
+    "form": {
+      "success": "Du hast dich erfolgreich für unseren Newsletter eingetragen!",
+      "error": "Leider ist etwas schiefgelaufen. Versuch's nochmal.",
+      "email": {
+        "required": "Bitte gib eine E-Mail-Adresse ein.",
+        "label": "Deine E-Mail-Adresse"
+      },
+      "consent": {
+        "required": "Bitte akzeptiere die Datenschutzerklärung.",
+        "label": "Ja, ich möchte per E-Mail informiert werden."
+      },
+      "submit": {
+        "label": "Newsletter abonnieren"
+      }
+    }
+  },
+
+  "media": {
+    "caption": {
+      "close": "Bildbeschreibung anzeigen",
+      "open": "Bildbeschreibung ausblenden"
+    }
+  },
+
+  "logo": {
+    "label": "SEEBRÜCKE Logo"
   }
 }

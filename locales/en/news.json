@@ -1,0 +1,8 @@
+{
+  "singleTitle": "News",
+  "dateFormat": "dd. LLLL yyy",
+  "type": {
+    "news": "News",
+    "pressrelease": "Pressrelease"
+  }
+}
