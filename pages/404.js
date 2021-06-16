@@ -15,7 +15,13 @@ export default function Custom404() {
   const { t } = useTranslation('404');
 
   useEffect(() => {
-    if (!asPath.startsWith('/events/') && !asPath.startsWith('/news/')) {
+    if (
+      !asPath.startsWith('/events') &&
+      !asPath.startsWith('/en/events') &&
+      !asPath.startsWith('/news') &&
+      !asPath.startsWith('/en/news') &&
+      !asPath.startsWith('/press')
+    ) {
       fetch(`/api/notify?subject=404&body=${encodeURIComponent(asPath)}`);
     }
   }, []);
