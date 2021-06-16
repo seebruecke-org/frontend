@@ -32,9 +32,12 @@ export default function Media({
     caption,
     media: { caption: mediaCaption, url, width, height, alternativeText }
   } = image;
+
+  const src = getFullCMSUrl(url);
+
   const imageProps = {
     alt: alternativeText,
-    src: getFullCMSUrl(url),
+    src,
     width: props?.layout === 'fill' ? undefined : width,
     height: props?.layout === 'fill' ? undefined : height,
     ...props

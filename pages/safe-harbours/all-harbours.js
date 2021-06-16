@@ -187,8 +187,8 @@ export async function getStaticProps({ locale }) {
     locale,
     globalData
   );
-  const groups = await fetchAllSafeHarbours();
-  const page = await getPage(...pageSlug.split('/').reverse());
+  const groups = await fetchAllSafeHarbours(locale);
+  const page = await getPage(...pageSlug.split('/').reverse(), locale);
 
   return {
     // TODO: find a good magic number here
