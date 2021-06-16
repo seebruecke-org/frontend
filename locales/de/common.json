@@ -54,12 +54,6 @@
   "modal": {
     "close": "Schließen",
 
-    "search": {
-      "title": "Suche",
-      "placeholder": "Suchbegriff",
-      "submit": "Suche abschicken"
-    },
-
     "bookmark": {
       "title": "Ort merken",
       "placeholder": "Name"
