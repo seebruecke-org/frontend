@@ -66,7 +66,7 @@ export async function getStaticPaths({ defautLocale }) {
 export async function getStaticProps({ locale, params }) {
   const { slug } = params;
 
-  const { data } = await fetchActionBySlug(slug);
+  const { data } = await fetchActionBySlug(slug, locale);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {
