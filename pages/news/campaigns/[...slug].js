@@ -44,8 +44,8 @@ export default function CampaignPage({ content, title, metadata }) {
   );
 }
 
-export async function getStaticPaths() {
-  const paths = await fetchAllCampaignPaths();
+export async function getStaticPaths({ defaultLocale }) {
+  const paths = await fetchAllCampaignPaths(defaultLocale);
 
   return {
     fallback: true,

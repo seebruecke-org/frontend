@@ -54,8 +54,8 @@ export default function ActionPage({
   );
 }
 
-export async function getStaticPaths() {
-  const paths = await fetchAllActionPaths();
+export async function getStaticPaths({ defautLocale }) {
+  const paths = await fetchAllActionPaths(defautLocale);
 
   return {
     fallback: true,
