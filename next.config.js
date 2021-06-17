@@ -21,6 +21,18 @@ function getImageHostnames() {
   return [process.env.NEXT_PUBLIC_IMAGE_HOSTNAME];
 }
 
+function normalizeRedirect(url) {
+  let normalizedUrl = url;
+
+  normalizedUrl = normalizedUrl.replace('?', `\\?`);
+
+  if (normalizedUrl.endsWith('/')) {
+    normalizedUrl = normalizedUrl.replace(/\/$/, '');
+  }
+
+  return normalizedUrl;
+}
+
 async function fetchAllRedirects() {
   const client = createClient({
     url: process.env.NEXT_PUBLIC_GRAPHQL_API
@@ -47,16 +59,12 @@ async function fetchAllRedirects() {
     }
 
     const normalized = redirects.reduce((acc, { from, to, type }) => {
-      let source = `${from.startsWith('/en') ? '' : '/de'}${from}`;
-      let destination = `${to.startsWith('/en') ? '' : '/de'}${to}`;
-
-      if (destination.endsWith('/')) {
-        destination = destination.replace(/\/$/, '');
-      }
-
-      if (source.endsWith('/')) {
-        source = source.replace(/\/$/, '');
-      }
+      let source = normalizeRedirect(
+        `${from.startsWith('/en') ? '' : '/de'}${from}`
+      );
+      let destination = normalizeRedirect(
+        `${to.startsWith('/en') ? '' : '/de'}${to}`
+      );
 
       if (!destination) {
         destination = '/de';
