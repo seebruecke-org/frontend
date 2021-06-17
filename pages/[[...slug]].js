@@ -86,7 +86,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   }
 
   return {
-    revalidate: 20,
+    revalidate: 60,
     props: {
       ...data,
       ...globalData,
