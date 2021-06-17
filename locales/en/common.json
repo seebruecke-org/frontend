@@ -4,28 +4,28 @@
     "gotoMyPlace": "Bookmarked Location",
     "search": "Search",
     "more": "more",
-    "skipToContent": "Zum Inhalt springen"
+    "skipToContent": "Jump to content"
   },
 
   "footer": {
     "langEn": "English Version",
     "tagline": "Die SEEBRÜCKE ist eine internationale Bewegung, die sich für sichere Fluchtwege, für ungehinderte Seenotrettung und für ein Ende des Sterbens an den europäischen Grenzen engagiert.",
-    "austria": "SEEBRÜCKE Österreich",
-    "switzerland": "SEEBRÜCKE Schweiz",
-    "bookmarkedLocation": "Gemerkter Ort",
-    "bookmarkLocation": "Ort merken",
-    "bookmarkYourLocation": "Merke dir einen Ort",
+    "austria": "SEEBRÜCKE Austria",
+    "switzerland": "SEEBRÜCKE Switzerland",
+    "bookmarkedLocation": "Bookmarked Location",
+    "bookmarkLocation": "Bookmark Location",
+    "bookmarkYourLocation": "Bookmark a location",
     "social": "Follow SEEBRÜCKE on {{network}}"
   },
 
   "city": {
-    "bookmarkLocation": "Ort merken",
-    "bookmarkedLocation": "Gemerkter Ort"
+    "bookmarkLocation": "Bookmark Location",
+    "bookmarkedLocation": "Bookmarked Location"
   },
 
   "actions": {
-    "pluralTitle": "Aktionen",
-    "resetFilter": "Filter zurücksetzen"
+    "pluralTitle": "Actions",
+    "resetFilter": "Reset filter"
   },
 
   "action": {
@@ -33,8 +33,8 @@
     "pluralTitle": "Actions",
     "dateFormat": "dd. LLL yyy",
     "timeFormat": "HH:mm",
-    "timePostfix": "Uhr",
-    "organizedBy": "Organisiert von der Lokalgruppe",
+    "timePostfix": "",
+    "organizedBy": "Organized the by the local group",
     "filter": "Filter actions ..."
   },
 
@@ -47,7 +47,7 @@
   },
 
   "fundraisingbox": {
-    "activateJS": "Bitte aktiviere Javascript um zu spenden.",
+    "activateJS": "Please activate JavaScript to donate.",
     "logoAlt": "Fundraisingbox Logo"
   },
 
@@ -67,26 +67,26 @@
 
   "newsletter": {
     "form": {
-      "success": "Du hast dich erfolgreich für unseren Newsletter eingetragen!",
+      "success": "You have been successfully subscribed to our newsletter!",
       "error": "Leider ist etwas schiefgelaufen. Versuch's nochmal.",
       "email": {
-        "required": "Bitte gib eine E-Mail-Adresse ein.",
-        "label": "Deine E-Mail-Adresse"
+        "required": "Please enter a valid email.",
+        "label": "Your Email"
       },
       "consent": {
         "required": "Bitte akzeptiere die Datenschutzerklärung.",
         "label": "Ja, ich möchte per E-Mail informiert werden."
       },
       "submit": {
-        "label": "Newsletter abonnieren"
+        "label": "Subscribe"
       }
     }
   },
 
   "media": {
     "caption": {
-      "close": "Bildbeschreibung anzeigen",
-      "open": "Bildbeschreibung ausblenden"
+      "close": "Show image caption",
+      "open": "Hide image caption"
     }
   },
 
