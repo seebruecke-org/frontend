@@ -1,11 +1,12 @@
+import { forwardRef } from 'react';
 import Link from 'next/link';
 
-export default function StrapiLink({ link, children, locale, ...props }) {
+function StrapiLink({ link, children, locale, ...props }, ref) {
   let linkProps = link;
 
   if (!linkProps.url) {
     return (
-      <span {...props}>
+      <span {...props} ref={ref}>
         {linkProps.label}
         {children}
       </span>
@@ -14,7 +15,7 @@ export default function StrapiLink({ link, children, locale, ...props }) {
 
   if (linkProps.url.startsWith('#')) {
     return (
-      <a href={linkProps.url} {...props}>
+      <a href={linkProps.url} {...props} ref={ref}>
         {linkProps.label}
         {children}
       </a>
@@ -23,10 +24,12 @@ export default function StrapiLink({ link, children, locale, ...props }) {
 
   return (
     <Link href={linkProps.url} locale={locale}>
-      <a {...props}>
+      <a {...props} ref={ref}>
         {linkProps.label}
         {children}
       </a>
     </Link>
   );
 }
+
+export default forwardRef(StrapiLink);
