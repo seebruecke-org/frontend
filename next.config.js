@@ -30,7 +30,7 @@ async function fetchAllRedirects() {
     const { redirects } = await client
       .query(
         `
-    query {
+    query AllRedirects {
       redirects {
         from
         to
@@ -88,7 +88,6 @@ async function fetchAllRedirects() {
 
 function createRewrites(slugs, locale) {
   const PATH_POSTFIXES = {
-    // eslint-disable-next-line no-useless-escape
     'take-part': ':slug*',
     actions: ':slug',
     news: ':slug',

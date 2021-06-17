@@ -170,10 +170,10 @@ export default function TakePartPage({
   );
 }
 
-export async function getStaticPaths() {
-  const groupPaths = await fetchAllGroupPaths();
-  const countryPaths = await fetchAllCountryPaths();
-  const federalCountryPaths = await fetchAllFederalCountryPaths();
+export async function getStaticPaths({ defaultLocale }) {
+  const groupPaths = await fetchAllGroupPaths(defaultLocale);
+  const countryPaths = await fetchAllCountryPaths(defaultLocale);
+  const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale);
 
   return {
     fallback: true,

@@ -33,8 +33,8 @@ export async function getStaticProps({ locale }) {
     'news'
   ]);
   const pageSlug = getSlugFromI18nNext('news', locale, globalData);
-  const page = await getPage(pageSlug);
-  const news = await fetchRecentNews();
+  const page = await getPage(pageSlug, null, locale);
+  const news = await fetchRecentNews({ locale });
 
   return {
     // TODO: find a good magic number here

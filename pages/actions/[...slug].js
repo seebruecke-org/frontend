@@ -54,8 +54,8 @@ export default function ActionPage({
   );
 }
 
-export async function getStaticPaths() {
-  const paths = await fetchAllActionPaths();
+export async function getStaticPaths({ defautLocale }) {
+  const paths = await fetchAllActionPaths(defautLocale);
 
   return {
     fallback: true,
@@ -66,7 +66,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ locale, params }) {
   const { slug } = params;
 
-  const { data } = await fetchActionBySlug(slug);
+  const { data } = await fetchActionBySlug(slug, locale);
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
 
   if (data === null) {
