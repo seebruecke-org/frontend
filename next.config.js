@@ -24,6 +24,10 @@ function getImageHostnames() {
 function normalizeRedirect(url) {
   let normalizedUrl = url;
 
+  if (normalizedUrl.startsWith('http')) {
+    return url;
+  }
+
   normalizedUrl = normalizedUrl.replace('?', `\\?`);
 
   if (normalizedUrl.endsWith('/')) {
