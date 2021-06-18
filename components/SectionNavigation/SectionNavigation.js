@@ -116,7 +116,7 @@ function Wrapped({ swiper = false, items, setItemRef = () => {} }) {
   }
 
   return (
-    <div className="flex space-x-2 lg:space-x-4">
+    <div className="flex space-x-2 lg:space-x-4 overflow-x-hidden">
       {items.map((item, index) => {
         const isActive = arePathsEqual(asPath, item.url);
 
