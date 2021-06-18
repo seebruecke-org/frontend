@@ -28,6 +28,10 @@ function normalizeRedirect(url) {
     return url;
   }
 
+  if (!normalizedUrl.startsWith('/en')) {
+    normalizedUrl = `/de${normalizedUrl}`;
+  }
+
   normalizedUrl = normalizedUrl.replace('?', `\\?`);
 
   if (normalizedUrl.endsWith('/')) {
@@ -63,12 +67,8 @@ async function fetchAllRedirects() {
     }
 
     const normalized = redirects.reduce((acc, { from, to, type }) => {
-      let source = normalizeRedirect(
-        `${from.startsWith('/en') ? '' : '/de'}${from}`
-      );
-      let destination = normalizeRedirect(
-        `${to.startsWith('/en') ? '' : '/de'}${to}`
-      );
+      let source = normalizeRedirect(from);
+      let destination = normalizeRedirect(to);
 
       if (!destination) {
         destination = '/de';
