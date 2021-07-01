@@ -1,12 +1,18 @@
 import ReactMapGL, { WebMercatorViewport, Marker } from 'react-map-gl';
 import { featureCollection } from '@turf/helpers';
 import { useState, useMemo } from 'react';
+import { options } from 'preact';
 import bbox from '@turf/bbox';
 
 import ActionMarker from '@/components/MapboxMap/Marker/Action';
 import CityMarker from '@/components/MapboxMap/Marker/City';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+// See https://github.com/preactjs/preact/issues/3211
+options.debounceRendering = function (q) {
+  q();
+};
 
 const MARKER_TYPE_MAP = {
   action: ActionMarker,
