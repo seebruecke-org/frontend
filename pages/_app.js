@@ -1,5 +1,6 @@
 import { appWithTranslation } from 'next-i18next';
 import { Toaster } from 'react-hot-toast';
+import { options } from 'preact';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
 
@@ -10,6 +11,11 @@ import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
 import 'swiper/swiper-bundle.css';
+
+// See https://github.com/preactjs/preact/issues/3211
+options.debounceRendering = function (q) {
+  q();
+};
 
 function SBApp({ Component, pageProps = {} }) {
   const { initialState = {}, ...props } = pageProps;
