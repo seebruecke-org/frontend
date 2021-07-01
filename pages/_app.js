@@ -26,7 +26,7 @@ function SBApp({ Component, pageProps = {} }) {
   useZustandDevtool(store);
 
   return (
-    <Provider initialStore={store}>
+    <Provider createStore={store}>
       <Head>
         <link rel="manifest" href="/manifest.json" />
       </Head>
