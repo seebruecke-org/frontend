@@ -177,6 +177,22 @@ module.exports = withPlugins(
   {
     i18n,
 
+    async headers() {
+      const imgMaxAge = 60 * 60 * 6;
+
+      return [
+        {
+          source: '/(.*).(jpeg|jpg|png|webp)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: `public, max-age=${imgMaxAge}, s-maxage=${imgMaxAge}`
+            }
+          ]
+        }
+      ];
+    },
+
     async rewrites() {
       const { locales } = i18n;
       const rewrites = locales.reduce((acc, locale) => {
