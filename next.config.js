@@ -45,7 +45,7 @@ function getStaticRedirects() {
   return [
     {
       source: '/wp-content/:path*',
-      destination: 'https://cms.seeruecke.org/wp-content/:path',
+      destination: 'https://cms.seebruecke.org/wp-content/:path',
       permanent: true,
       locale: false,
     }
