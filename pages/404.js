@@ -11,7 +11,7 @@ import SEO from '@/components/SEO';
 import TeasersSmall from '@/components/Blocks/TeasersSmall';
 
 export default function Custom404() {
-  const { asPath } = useRouter();
+  const { asPath, locale } = useRouter();
   const { t } = useTranslation('404');
 
   useEffect(() => {
@@ -22,7 +22,11 @@ export default function Custom404() {
       !asPath.startsWith('/en/news') &&
       !asPath.startsWith('/press')
     ) {
-      fetch(`/api/notify?subject=404&body=${encodeURIComponent(asPath)}`);
+      fetch(
+        `/api/notify?subject=404&body=${encodeURIComponent(
+          `/${locale}${asPath}`
+        )}`
+      );
     }
   }, []);
 
