@@ -44,12 +44,12 @@ function normalizeRedirect(url) {
 function getStaticRedirects() {
   return [
     {
-      source: '/wp-content/:path*',
+      source: '/de/wp-content/:path*',
       destination: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/wp-content/:path`,
       permanent: true,
-      locale: false,
+      locale: false
     }
-  ]
+  ];
 }
 
 async function fetchAllRedirects() {
@@ -194,10 +194,7 @@ module.exports = withPlugins(
       const dynamicRedirects = await fetchAllRedirects();
       const staticRedirects = getStaticRedirects();
 
-      return [
-        ...staticRedirects,
-        ...dynamicRedirects
-      ];
+      return [...staticRedirects, ...dynamicRedirects];
     },
 
     webpack(config) {
