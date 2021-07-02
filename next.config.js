@@ -41,6 +41,17 @@ function normalizeRedirect(url) {
   return normalizedUrl;
 }
 
+function getStaticRedirects() {
+  return [
+    {
+      source: '/wp-content/:path*',
+      destination: 'https://cms.seeruecke.org/wp-content/:path',
+      permanent: true,
+      locale: false,
+    }
+  ]
+}
+
 async function fetchAllRedirects() {
   const client = createClient({
     url: process.env.NEXT_PUBLIC_GRAPHQL_API
@@ -180,7 +191,13 @@ module.exports = withPlugins(
     },
 
     async redirects() {
-      return await fetchAllRedirects();
+      const dynamicRedirects = await fetchAllRedirects();
+      const staticRedirects = getStaticRedirects();
+
+      return [
+        ...staticRedirects,
+        ...dynamicRedirects
+      ];
     },
 
     webpack(config) {
