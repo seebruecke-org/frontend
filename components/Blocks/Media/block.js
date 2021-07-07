@@ -8,18 +8,21 @@ export const FRAGMENT = `
   }
 `;
 
-async function sideloadData({
-  image: {
-    media: { width, height, ...media },
-    ...image
+async function sideloadData({ image }) {
+  if (!image?.media) {
+    return image;
   }
-}) {
+
+  const {
+    media: { width, height, ...media },
+    ...imageProps
+  } = image;
   const { scaleImageTo } = await import('@/lib/media');
   const [scaledWidth, scaledHeight] = scaleImageTo(800, [width, height]);
 
   return {
     image: {
-      ...image,
+      ...imageProps,
       media: {
         ...media,
         width: scaledWidth,
