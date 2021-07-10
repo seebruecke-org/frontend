@@ -1,5 +1,5 @@
 import { serializeError } from 'serialize-error';
-import imageSize from 'request-image-size';
+import sizeOf from 'buffer-image-size';
 import path from 'path';
 import sharp from 'sharp';
 
@@ -40,13 +40,14 @@ function getImageFit(width, height) {
 }
 
 async function resizeImage(url, size) {
-  const imageBuffer = await fetch(url).then((res) => res.arrayBuffer());
+  const image = await fetch(url).then((res) => res.arrayBuffer());
+  const imageBuffer = Buffer.from(image);
   const parsedUrl = new URL(url);
   const filename = path.extname(parsedUrl.pathname);
   const filenameWithoutDot = filename.split('.').pop();
-  const imgSize = await imageSize(url);
+  const imgSize = sizeOf(imageBuffer);
 
-  return await sharp(Buffer.from(imageBuffer))
+  return await sharp(imageBuffer)
     .resize(...getSize(size), {
       fit: getImageFit(imgSize?.width, imgSize?.height),
       background: { r: 245, g: 85, b: 17 }
