@@ -215,8 +215,7 @@ module.exports = withPlugins(
     },
 
     images: {
-      domains: getImageHostnames(),
-      disableStaticImages: true
+      domains: getImageHostnames()
     }
   }
 );

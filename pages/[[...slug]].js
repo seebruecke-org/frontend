@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { query as queryGlobalData } from '@/lib/global';
 import { query, paths } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
+import { getAllSlugs } from '@/lib/slug';
 
 import BlockSwitch from '@/components/BlockSwitch';
 import PageBody from '@/components/PageBody';
@@ -48,7 +49,7 @@ export default function GenericPage({ page }) {
 
 export async function getStaticPaths({ defaultLocale }) {
   const sidePaths = await paths(defaultLocale);
-  const slugs = await import(`@/locales/de/slugs.json`);
+  const slugs = await getAllSlugs('de');
 
   const customPages = Object.values(slugs);
 

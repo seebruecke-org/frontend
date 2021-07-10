@@ -34,6 +34,7 @@
     "dateFormat": "dd. LLL yyy",
     "timeFormat": "HH:mm",
     "timePostfix": "Uhr",
+    "dateTimeFormat": "dd. LLL yyy HH:mm",
     "organizedBy": "Organisiert von der Lokalgruppe",
     "filter": "Aktionen filtern ..."
   },

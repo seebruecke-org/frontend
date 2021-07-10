@@ -152,7 +152,15 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 
 export async function getStaticProps({ locale }) {
   const { initialState, ...globalData } = await queryGlobalData(locale);
-  const actions = await fetchAllActions(locale);
+  const {
+    common: {
+      action: { dateFormat, dateTimeFormat }
+    }
+  } = globalData._nextI18Next.initialI18nStore[locale];
+  const actions = await fetchAllActions(locale, {
+    dateFormat,
+    dateTimeFormat
+  });
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
   const page = await getPage(pageSlug);
 
