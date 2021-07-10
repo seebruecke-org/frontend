@@ -55,6 +55,13 @@ function getStaticRedirects() {
       destination: 'http://mail.seebruecke.org/mailman/:path',
       permanent: true,
       locale: false
+    },
+
+    {
+      source: '/de/uploads/:path*',
+      destination: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/uploads/:path`,
+      permanent: true,
+      locale: false
     }
   ];
 }
