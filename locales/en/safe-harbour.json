@@ -1,7 +1,6 @@
 {
   "singleTitle": "Safe Harbour",
   "pluralTitle": "Safe Harbours",
-  "dateFormat": "dd.LL.yyy",
   "since": "Since",
   "searchCity": "Search for a location ...",
   "resetFilter": "Reset filter",

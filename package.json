@@ -79,7 +79,6 @@
     "request-image-size": "^2.2.0",
     "serialize-error": "^8.1.0",
     "sharp": "^0.28.3",
-    "simple-zustand-devtools": "^1.0.0",
     "slugify": "^1.5.3",
     "swiper": "^6.7.5",
     "tailwindcss": "^2.2.4",

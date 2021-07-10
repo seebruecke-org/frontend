@@ -38,6 +38,7 @@ const MemoizedMap = memo(Map);
 
 export default function TakePartPage({ actions: defaultActions, page }) {
   const { t } = useTranslation();
+  const { t: tf } = useTranslation('format');
   const [filterValue, setFilterValue] = useState(null);
   const [actions, setActions] = useState(defaultActions);
   const actionsListRef = useRef(null);
@@ -133,7 +134,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                       <li key={`action-${actionIndex}`} className="h-full">
                         <Action
                           title={location}
-                          meta={`${start} ${t('action.timePostfix')}`}
+                          meta={`${start} ${tf('timePostfix')}`}
                           intro={intro || title}
                           slug={slug}
                         />
@@ -152,17 +153,13 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 
 export async function getStaticProps({ locale }) {
   const { initialState, ...globalData } = await queryGlobalData(locale);
-  const {
-    common: {
-      action: { dateFormat, dateTimeFormat }
-    }
-  } = globalData._nextI18Next.initialI18nStore[locale];
-  const actions = await fetchAllActions(locale, {
-    dateFormat,
-    dateTimeFormat
-  });
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
-  const page = await getPage(pageSlug);
+
+  const [actions, page] = await Promise.all([
+    await fetchAllActions(locale, format),
+    await getPage(pageSlug, undefined, locale, format)
+  ]);
 
   return {
     // TODO: find a good magic number here

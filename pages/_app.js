@@ -5,7 +5,6 @@ import Head from 'next/head';
 
 import { BOOKMARKED_LOCATION_COOKIE_NAME } from '@/lib/constants';
 import { useHydrate, Provider } from '@/lib/store/zustand';
-import useZustandDevtool from '@/lib/hooks/useZustandDevtool';
 import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
@@ -22,8 +21,6 @@ function SBApp({ Component, pageProps = {} }) {
       ? JSON.parse(bookmarkedLocation)
       : null
   });
-
-  useZustandDevtool(store);
 
   return (
     <Provider createStore={store}>

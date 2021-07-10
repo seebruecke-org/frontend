@@ -31,9 +31,12 @@ export async function getStaticProps({ locale }) {
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('press', locale, globalData);
-  const page = await getPage(pageSlug, null, locale);
-  const news = await fetchRecentNews({ filter: 'pressrelease', locale });
+  const [page, news] = await Promise.all([
+    await getPage(pageSlug, null, locale, format),
+    await fetchRecentNews({ filter: 'pressrelease' }, locale, format)
+  ]);
 
   return {
     // TODO: find a good magic number here

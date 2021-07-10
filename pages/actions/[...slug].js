@@ -65,17 +65,8 @@ export async function getStaticPaths({ defautLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
-  const {
-    common: {
-      action: { dateTimeFormat, dateFormat, timeFormat, timePostfix }
-    }
-  } = globalData._nextI18Next.initialI18nStore[locale];
-  const { data } = await fetchActionBySlug(slug, locale, {
-    dateTimeFormat,
-    dateFormat,
-    timeFormat,
-    timePostfix
-  });
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
+  const { data } = await fetchActionBySlug(slug, locale, format);
 
   if (data === null) {
     return {

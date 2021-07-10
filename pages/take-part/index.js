@@ -31,8 +31,9 @@ export default function GenericPage({ page }) {
 
 export async function getStaticProps({ locale }) {
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
-  const { data } = await query([pageSlug], locale);
+  const { data } = await query([pageSlug], locale, format);
 
   if (data === null) {
     return {

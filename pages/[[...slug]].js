@@ -75,10 +75,11 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
-  const { data } = await query(slug, locale);
   const { initialState = null, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
+  const { data } = await query(slug, locale, format);
 
   if (data === null) {
     return {
