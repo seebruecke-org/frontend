@@ -156,8 +156,7 @@ export async function getStaticProps({ locale }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
 
-  console.log('---->', format);
-  const [actions, page] = Promise.all([
+  const [actions, page] = await Promise.all([
     await fetchAllActions(locale, format),
     await getPage(pageSlug, undefined, locale, format)
   ]);
