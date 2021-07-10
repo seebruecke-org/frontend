@@ -54,9 +54,10 @@ export default function TakePartPage({
   const hasAnchorNavigation =
     (isGroup && group?.actions?.length > 0 && group?.headlines?.length > 0) ||
     (group?.actions?.length === 0 && group?.headlines?.length > 1);
+  const pageTitlePrefix = isCountry ? '' : kicker;
 
   if (!isGroup && safe_harbour?.since) {
-    kicker += ` · ${t('since').toLowerCase()} ${safe_harbour.since}`;
+    kicker += ` · ${t('since').toLowerCase()} ${safe_harbour.since} `;
   }
 
   return (
@@ -65,7 +66,7 @@ export default function TakePartPage({
       lastBlock={getLastBlockName(contentBlocks)}
       className="grid grid-layout-primary"
     >
-      <SEO title={`${kicker} ${name}`} />
+      <SEO title={`${pageTitlePrefix} ${name}`} />
 
       {!isCountry && Array.isArray(breadcrumbs) && (
         <Breadcrumbs
@@ -182,11 +183,12 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
-  const { type, data, ...res } = await query(slug, locale);
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'safe-harbour',
     'group'
   ]);
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
+  const { type, data, ...res } = await query(slug, locale, format);
 
   if (type === RETURN_CODES.REDIRECT) {
     return {

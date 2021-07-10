@@ -48,6 +48,13 @@ function getStaticRedirects() {
       destination: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/wp-content/:path`,
       permanent: true,
       locale: false
+    },
+
+    {
+      source: '/de/mailman/:path*',
+      destination: 'http://mail.seebruecke.org/mailman/:path',
+      permanent: true,
+      locale: false
     }
   ];
 }
@@ -208,8 +215,7 @@ module.exports = withPlugins(
     },
 
     images: {
-      domains: getImageHostnames(),
-      disableStaticImages: true
+      domains: getImageHostnames()
     }
   }
 );

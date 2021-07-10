@@ -16,6 +16,7 @@ import * as styles from './actions.module.css';
 export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
   const { t } = useTranslation();
   const { t: ts } = useTranslation('slugs');
+  const { t: tf } = useTranslation('format');
   const { ref, inView } = useInView({
     triggerOnce: true
   });
@@ -64,7 +65,7 @@ export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
           <li key={`action-${index}`}>
             <Action
               title={location}
-              meta={`${start} ${t('action.timePostfix')}`}
+              meta={`${start} ${tf('timePostfix')}`}
               intro={intro || title}
               slug={slug}
             />
