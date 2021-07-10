@@ -38,6 +38,7 @@ const MemoizedMap = memo(Map);
 
 export default function TakePartPage({ actions: defaultActions, page }) {
   const { t } = useTranslation();
+  const { t: tf } = useTranslation('format');
   const [filterValue, setFilterValue] = useState(null);
   const [actions, setActions] = useState(defaultActions);
   const actionsListRef = useRef(null);
@@ -133,7 +134,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                       <li key={`action-${actionIndex}`} className="h-full">
                         <Action
                           title={location}
-                          meta={`${start} ${t('action.timePostfix')}`}
+                          meta={`${start} ${tf('timePostfix')}`}
                           intro={intro || title}
                           slug={slug}
                         />

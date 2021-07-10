@@ -47,8 +47,8 @@ export async function sideloadData(
     actions &&
     actions.map(({ coordinates, start, end, ...action }) => ({
       ...action,
-      start: formatTime(start, formatting.time),
-      end: formatTime(end, formatting.time),
+      start: formatTime(start, formatting.dateTime),
+      end: formatTime(end, formatting.dateTime),
       coordinates: toMapboxCoordinates(coordinates)
     }));
 

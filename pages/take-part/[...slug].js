@@ -66,7 +66,7 @@ export default function TakePartPage({
       lastBlock={getLastBlockName(contentBlocks)}
       className="grid grid-layout-primary"
     >
-      <SEO title={`${pageTitlePrefix}${name}`} />
+      <SEO title={`${pageTitlePrefix} ${name}`} />
 
       {!isCountry && Array.isArray(breadcrumbs) && (
         <Breadcrumbs
