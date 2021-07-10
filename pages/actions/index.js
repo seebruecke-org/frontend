@@ -154,9 +154,13 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 export async function getStaticProps({ locale }) {
   const { initialState, ...globalData } = await queryGlobalData(locale);
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const actions = await fetchAllActions(locale, format);
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
-  const page = await getPage(pageSlug, undefined, locale, format);
+
+  console.log('---->', format);
+  const [actions, page] = Promise.all([
+    await fetchAllActions(locale, format),
+    await getPage(pageSlug, undefined, locale, format)
+  ]);
 
   return {
     // TODO: find a good magic number here

@@ -33,11 +33,10 @@ export async function getStaticProps({ locale }) {
   ]);
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('press', locale, globalData);
-  const page = await getPage(pageSlug, null, locale, format);
-  const news = await fetchRecentNews(
-    { filter: 'pressrelease', locale },
-    format
-  );
+  const [page, news] = await Promise.all([
+    await getPage(pageSlug, null, locale, format),
+    await fetchRecentNews({ filter: 'pressrelease' }, locale, format)
+  ]);
 
   return {
     // TODO: find a good magic number here

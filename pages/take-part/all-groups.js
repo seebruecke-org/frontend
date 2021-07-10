@@ -227,8 +227,10 @@ export async function getStaticProps({ locale }) {
     globalData
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const groups = await fetchAllGroups(locale);
-  const page = await getPage(...pageSlug.split('/').reverse(), locale, format);
+  const [groups, page] = await Promise.all([
+    await fetchAllGroups(locale),
+    await getPage(...pageSlug.split('/').reverse(), locale, format)
+  ]);
 
   return {
     // TODO: find a good magic number here

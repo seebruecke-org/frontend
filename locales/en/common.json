@@ -31,9 +31,6 @@
   "action": {
     "singleTitle": "Action",
     "pluralTitle": "Actions",
-    "dateFormat": "dd. LLL yyy",
-    "timeFormat": "HH:mm",
-    "timePostfix": "",
     "organizedBy": "Organized the by the local group",
     "filter": "Filter actions ..."
   },
