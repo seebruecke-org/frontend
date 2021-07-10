@@ -155,7 +155,7 @@ export async function getStaticProps({ locale }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const actions = await fetchAllActions(locale, format);
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
-  const page = await getPage(pageSlug);
+  const page = await getPage(pageSlug, undefined, locale, format);
 
   return {
     // TODO: find a good magic number here

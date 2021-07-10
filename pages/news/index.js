@@ -34,7 +34,7 @@ export async function getStaticProps({ locale }) {
   ]);
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('news', locale, globalData);
-  const page = await getPage(pageSlug, null, locale);
+  const page = await getPage(pageSlug, null, locale, format);
   const news = await fetchRecentNews({ locale }, format);
 
   return {
