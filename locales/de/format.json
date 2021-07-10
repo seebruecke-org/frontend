@@ -1,0 +1,6 @@
+{
+  "date": "dd. LLL yyy",
+  "time": "HH:mm",
+  "dateTime": "dd. LLL yyy HH:mm",
+  "timePostfix": "Uhr"
+}

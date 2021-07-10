@@ -1,6 +1,5 @@
 {
   "singleTitle": "Aktuelles",
-  "dateFormat": "dd. LLLL yyy",
   "type": {
     "news": "News",
     "pressrelease": "Pressemitteilung"

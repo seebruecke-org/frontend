@@ -186,7 +186,8 @@ export async function getStaticProps({ locale }) {
     locale,
     globalData
   );
-  const groups = await fetchAllSafeHarbours(locale);
+  const { format } = globalData._nextI18Next.initialI18nStore[locale];
+  const groups = await fetchAllSafeHarbours(locale, format);
   const page = await getPage(...pageSlug.split('/').reverse(), locale);
 
   return {
