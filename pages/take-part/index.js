@@ -42,8 +42,7 @@ export async function getStaticProps({ locale }) {
   }
 
   return {
-    // TODO: find a good magic number here
-    revalidate: 60,
+    revalidate: 60 * 60,
     props: {
       ...data,
       ...globalData,
