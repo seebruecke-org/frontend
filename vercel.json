@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "pages/api/resize.js": {
+      "memory": 320,
+      "maxDuration": 10
+    },
+
+    "pages/api/screenshot.js": {
+      "memory": 1024,
+      "maxDuration": 20
+    },
+
+    "pages/api/newsletter/subscribe.js": {
+      "memory": 128,
+      "maxDuration": 60
+    }
+  }
+}
