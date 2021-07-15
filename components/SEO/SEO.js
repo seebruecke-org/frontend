@@ -1,24 +1,6 @@
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-import { getFullClientUrl } from '@/lib/url';
-
-export default function SEO({ title, metadata: defaultMetadata }) {
-  const { asPath } = useRouter();
-
-  const metadata = {
-    ...{
-      'twitter:image': getFullClientUrl(
-        `/api/screenshot?url=${getFullClientUrl(asPath)}`
-      ),
-
-      'og:image': getFullClientUrl(
-        `/api/screenshot?url=${getFullClientUrl(asPath)}`
-      )
-    },
-    ...defaultMetadata
-  };
-
+export default function SEO({ title, metadata }) {
   return (
     <Head>
       <title>{title} | Seebrücke</title>
