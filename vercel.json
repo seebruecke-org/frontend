@@ -1,4 +1,16 @@
 {
+  "headers": [
+    {
+        "source": "/(.*)",
+        "headers" : [
+            {
+                "key" : "Cache-Control",
+                "value" : "public, max-age=600, immutable"
+            }
+        ]
+    }
+  ],
+
   "functions": {
     "pages/api/resize.js": {
       "memory": 320,
