@@ -40,12 +40,13 @@ export default async function handler(req, res) {
   try {
     if (query.url && isValidSeebrueckeUrl(query.url)) {
       const screenshot = await takeScreenshot(query.url);
+      const maxAge = 60 * 60 * 24;
 
       if (!screenshot) {
         throw new Error('Screenshot could not be generated.');
       }
 
-      res.setHeader('Cache-Control', `max-age=${60 * 60 * 24}, public`);
+      res.setHeader('Cache-Control', `max-age=${maxAge}, public`);
       res.setHeader('Content-Type', 'image/png');
       res.status(200).send(screenshot);
     } else {
