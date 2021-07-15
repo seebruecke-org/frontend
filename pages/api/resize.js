@@ -65,9 +65,9 @@ export default async function handler(req, res) {
 
       if (size && isValidSize(size)) {
         const image = await resizeImage(url, size);
-        const maxAge = 60 * 60 * 24 * 30 * 12;
+        const maxAge = 31556952;
 
-        res.setHeader('Cache-Control', `max-age=${maxAge}, immutable`);
+        res.setHeader('Cache-Control', `public, max-age=${maxAge}, immutable`);
         res.setHeader('Content-Type', 'image/jpg');
         res.status(200).send(image);
       } else {
