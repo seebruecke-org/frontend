@@ -190,6 +190,7 @@ module.exports = withPlugins(
   ],
   {
     i18n,
+    poweredByHeader: false,
 
     async rewrites() {
       const { locales } = i18n;
