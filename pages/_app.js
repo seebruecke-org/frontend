@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import Head from 'next/head';
 
 import { BOOKMARKED_LOCATION_COOKIE_NAME } from '@/lib/constants';
-import { useHydrate, Provider } from '@/lib/store/zustand';
+import { useCreateStore, Provider } from '@/lib/store/zustand';
 import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
@@ -15,7 +15,7 @@ function SBApp({ Component, pageProps = {} }) {
   const { menus, ...hydrate } = initialState;
   const bookmarkedLocation = Cookies.get(BOOKMARKED_LOCATION_COOKIE_NAME);
 
-  const store = useHydrate({
+  const createStore = useCreateStore({
     ...hydrate,
     bookmarkedLocation: bookmarkedLocation
       ? JSON.parse(bookmarkedLocation)
@@ -23,7 +23,7 @@ function SBApp({ Component, pageProps = {} }) {
   });
 
   return (
-    <Provider createStore={store}>
+    <Provider createStore={createStore}>
       <Head>
         <link rel="manifest" href="/manifest.json" />
       </Head>
