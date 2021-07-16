@@ -1,18 +1,15 @@
 import { serializeError } from 'serialize-error';
-import chromium from 'chrome-aws-lambda';
+import * as puppeteer from 'puppeteer';
 
 import { isValidSeebrueckeUrl } from '@/lib/url';
 
 async function getBrowserInstance() {
-  return chromium.puppeteer.launch({
-    args: chromium.args,
+  return puppeteer.launch({
+    args: ['--no-sandbox'],
     defaultViewport: {
-      width: 1280,
-      height: 640
-    },
-    executablePath: await chromium.executablePath,
-    headless: chromium.headless,
-    ignoreHTTPSErrors: true
+      width: 1200,
+      height: 600
+    }
   });
 }
 
