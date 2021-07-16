@@ -55,13 +55,7 @@ export default async function handler(req, res) {
       );
     }
   } catch (error) {
-    res
-      .status(500)
-      .send(
-        process.env.NODE_ENV !== 'production'
-          ? JSON.stringify(serializeError(error))
-          : ''
-      );
+    res.status(500).send(JSON.stringify(serializeError(error)));
   }
 
   return {};
