@@ -82,6 +82,7 @@ export default function Unterbrecher({
         image={image}
         layout="fill"
         objectFit="cover"
+        sizes="(max-width: 780px) 100vw, 570px"
         className={clsx('block h-full w-full md:w-2/4', styles.square)}
         captionIconClassName={clsx(
           blockNameMatches(next, 'Unterbrecher') &&
