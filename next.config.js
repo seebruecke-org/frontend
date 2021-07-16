@@ -222,7 +222,8 @@ module.exports = withPlugins(
     },
 
     images: {
-      domains: getImageHostnames()
+      domains: getImageHostnames(),
+      minimumCacheTTL: 60 * 60 * 24
     }
   }
 );
