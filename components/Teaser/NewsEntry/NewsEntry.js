@@ -25,7 +25,11 @@ export default function NewsEntry({
       <div className="grid grid-layout-primary gap-8 col-span-full relative">
         {image && (
           <div className="col-span-full md:col-start-2 md:col-span-4">
-            <Media image={image} priority={index < 2} />
+            <Media
+              image={image}
+              priority={index < 2}
+              sizes="(max-width: 780px) 100vw, 400px"
+            />
           </div>
         )}
 
