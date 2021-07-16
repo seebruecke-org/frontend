@@ -233,8 +233,7 @@ export async function getStaticProps({ locale }) {
   ]);
 
   return {
-    // TODO: find a good magic number here
-    revalidate: 60 * 60 * 6,
+    revalidate: 60 * 60,
     props: {
       page,
       cities: groups,
