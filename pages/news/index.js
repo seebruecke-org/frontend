@@ -1,3 +1,5 @@
+import hirestime from 'hirestime';
+
 import BlockSwitch from '@/components/BlockSwitch';
 import NewsTeaser from '@/components/Teaser/NewsEntry';
 import PageBody from '@/components/PageBody';
@@ -29,6 +31,7 @@ export default function NewsOverview({ news, page }) {
 }
 
 export async function getStaticProps({ locale }) {
+  const getElapsed = hirestime();
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
@@ -38,6 +41,8 @@ export async function getStaticProps({ locale }) {
     await getPage(pageSlug, null, locale, format),
     await fetchRecentNews({ locale }, locale, format)
   ]);
+
+  console.log('Timing: news/index', getElapsed().seconds());
 
   return {
     revalidate: 60 * 2,

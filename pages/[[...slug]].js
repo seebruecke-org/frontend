@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import dynamic from 'next/dynamic';
+import hirestime from 'hirestime'
 
 import { query as queryGlobalData } from '@/lib/global';
 import { query, paths } from '@/lib/pages';
@@ -75,11 +76,14 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
+  const getElapsed = hirestime();
   const { initialState = null, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await query(slug, locale, format);
+
+  console.log('Timing: [[...slug]]', getElapsed().seconds());
 
   if (data === null) {
     return {
