@@ -42,7 +42,7 @@ export async function getStaticProps({ locale }) {
     await fetchRecentNews({ locale }, locale, format)
   ]);
 
-  console.log('Timing: news/index', getElapsed().seconds());
+  console.log('Timing: news/index', getElapsed.seconds());
 
   return {
     revalidate: 60 * 2,

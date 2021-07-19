@@ -83,7 +83,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await query(slug, locale, format);
 
-  console.log('Timing: [[...slug]]', getElapsed().seconds());
+  console.log('Timing: [[...slug]]', getElapsed.seconds());
 
   if (data === null) {
     return {
