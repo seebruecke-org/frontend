@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
+import hirestime from 'hirestime';
 
 import { getSlugFromI18nNext } from '@/lib/slug';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
@@ -178,6 +179,7 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 }
 
 export async function getStaticProps({ locale }) {
+  const getElapsed = hirestime();
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'safe-harbour'
   ]);
@@ -192,8 +194,10 @@ export async function getStaticProps({ locale }) {
     await getPage(...pageSlug.split('/').reverse(), locale, format)
   ]);
 
+  console.log('Timing: safe-harbours/all-harbours', getElapsed.seconds());
+
   return {
-    revalidate: 60,
+    revalidate: 60 * 2,
     props: {
       page,
       cities: groups,

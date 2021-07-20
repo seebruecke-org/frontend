@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import dynamic from 'next/dynamic';
-import hirestime from 'hirestime'
+import hirestime from 'hirestime';
 
 import { query as queryGlobalData } from '@/lib/global';
 import { query, paths } from '@/lib/pages';

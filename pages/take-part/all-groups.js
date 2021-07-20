@@ -2,6 +2,7 @@ import { useRef, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
+import hirestime from 'hirestime';
 
 import { BLOCK_PREFIX } from '@/lib/constants';
 import { getPage } from '@/lib/pages';
@@ -218,6 +219,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 }
 
 export async function getStaticProps({ locale }) {
+  const getElapsed = hirestime();
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'group'
   ]);
@@ -232,8 +234,10 @@ export async function getStaticProps({ locale }) {
     await getPage(...pageSlug.split('/').reverse(), locale, format)
   ]);
 
+  console.log('Timing: take-part/all-groups', getElapsed.seconds());
+
   return {
-    revalidate: 60 * 60,
+    revalidate: 60 * 2,
     props: {
       page,
       cities: groups,
