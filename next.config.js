@@ -225,6 +225,10 @@ module.exports = withPlugins(
     images: {
       domains: getImageHostnames(),
       minimumCacheTTL: 60 * 60 * 24
+    },
+
+    experimental: {
+      staticPageGenerationTimeout: 60 * 3
     }
   }
 );
