@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import hirestime from 'hirestime';
 
 import { getLastBlockName } from '@/lib/blocks';
 import { query as queryGlobalData } from '@/lib/global';
@@ -73,6 +74,7 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
+  const getElapsed = hirestime();
   const { initialState = null, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
@@ -84,6 +86,8 @@ export async function getStaticProps({ locale, params: { slug } }) {
       notFound: true
     };
   }
+
+  console.log(`Timing: news/[${slug}]`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 5,
