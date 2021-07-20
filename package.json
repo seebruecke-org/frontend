@@ -21,7 +21,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.54",
+    "@mailchimp/mailchimp_marketing": "^3.0.55",
     "@next/bundle-analyzer": "^11.0.1",
     "@reach/dialog": "^0.15.3",
     "@svgr/webpack": "^5.5.0",
@@ -35,7 +35,7 @@
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
     "date-fns-tz": "^1.1.4",
-    "eslint": "^7.30.0",
+    "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
@@ -47,11 +47,11 @@
     "js-cookie": "^2.2.1",
     "json-to-graphql-query": "^2.1.0",
     "mapbox-gl": "^2.3.1",
-    "next": "^11.0.2-canary.16",
+    "next": "^11.0.2-canary.18",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^8.5.5",
     "next-plugin-preact": "^3.0.6",
-    "next-pwa": "^5.2.23",
+    "next-pwa": "^5.2.24",
     "next-transpile-modules": "^8.0.0",
     "nodemailer": "^6.6.3",
     "postcss": "^8.3.5",
@@ -86,7 +86,7 @@
     "unified": "^10.0.0",
     "urql": "^2.0.4",
     "uuid": "^8.3.2",
-    "webpack": "^5.44.0",
+    "webpack": "^5.45.1",
     "zustand": "^3.5.7"
   },
   "devDependencies": {
