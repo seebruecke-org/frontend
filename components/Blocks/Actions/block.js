@@ -33,6 +33,7 @@ export async function sideloadData(
       'slug',
       'intro',
       'start',
+      'end',
       'slug',
       'location',
       'location_detail',
