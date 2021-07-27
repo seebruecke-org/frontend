@@ -23,6 +23,7 @@
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.56",
     "@next/bundle-analyzer": "^11.0.1",
+    "@prefresh/webpack": "^3.3.2",
     "@reach/dialog": "^0.15.3",
     "@svgr/webpack": "^5.5.0",
     "@tailwindcss/typography": "^0.4.1",
@@ -88,7 +89,6 @@
     "unified": "^10.0.1",
     "urql": "^2.0.4",
     "uuid": "^8.3.2",
-    "webpack": "^5.47.0",
     "zustand": "^3.5.7"
   },
   "devDependencies": {
