@@ -228,7 +228,7 @@ module.exports = withPlugins(
     },
 
     experimental: {
-      staticPageGenerationTimeout: 60 * 3
+      staticPageGenerationTimeout: 60 * 5
     }
   }
 );
