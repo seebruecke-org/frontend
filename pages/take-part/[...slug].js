@@ -1,6 +1,7 @@
 import { useInView } from 'react-intersection-observer';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
+import hirestime from 'hirestime';
 
 import { RETURN_CODES } from '@/lib/constants';
 import { getLastBlockName } from '@/lib/blocks';
@@ -183,12 +184,15 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
+  const getElapsed = hirestime();
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'safe-harbour',
     'group'
   ]);
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { type, data, ...res } = await query(slug, locale, format);
+
+  console.log(`Timing: take-part/[${slug}]`, getElapsed.seconds());
 
   if (type === RETURN_CODES.REDIRECT) {
     return {

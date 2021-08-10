@@ -1,3 +1,5 @@
+import hirestime from 'hirestime';
+
 import BlockSwitch from '@/components/BlockSwitch';
 import NewsTeaser from '@/components/Teaser/NewsEntry';
 import SEO from '@/components/SEO';
@@ -28,6 +30,7 @@ export default function PressOverview({ news, page }) {
 }
 
 export async function getStaticProps({ locale }) {
+  const getElapsed = hirestime();
   const { initialState, ...globalData } = await queryGlobalData(locale, [
     'news'
   ]);
@@ -37,6 +40,8 @@ export async function getStaticProps({ locale }) {
     await getPage(pageSlug, null, locale, format),
     await fetchRecentNews({ filter: 'pressrelease' }, locale, format)
   ]);
+
+  console.log(`Timing: press/index`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 2,

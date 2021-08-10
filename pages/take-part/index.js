@@ -1,4 +1,4 @@
-import React from 'react';
+import hirestime from 'hirestime';
 
 import { query as queryGlobalData } from '@/lib/global';
 import { query } from '@/lib/pages';
@@ -30,10 +30,13 @@ export default function GenericPage({ page }) {
 }
 
 export async function getStaticProps({ locale }) {
+  const getElapsed = hirestime();
   const { initialState = null, ...globalData } = await queryGlobalData(locale);
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
   const { data } = await query([pageSlug], locale, format);
+
+  console.log(`Timing: take-part/index`, getElapsed.seconds());
 
   if (data === null) {
     return {
