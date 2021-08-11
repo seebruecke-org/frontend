@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.57",
-    "@next/bundle-analyzer": "^11.0.1",
+    "@next/bundle-analyzer": "^11.1.0",
     "@prefresh/webpack": "^3.3.2",
     "@reach/dialog": "^0.16.0",
     "@svgr/webpack": "^5.5.0",
@@ -50,9 +50,9 @@
     "json-to-graphql-query": "^2.1.0",
     "json5": "^2.2.0",
     "mapbox-gl": "^2.4.0",
-    "next": "^11.0.2-canary.28",
+    "next": "^11.1.0",
     "next-compose-plugins": "^2.2.1",
-    "next-i18next": "^8.5.5",
+    "next-i18next": "^8.6.0",
     "next-plugin-preact": "^3.0.6",
     "next-pwa": "^5.2.24",
     "next-transpile-modules": "^8.0.0",
@@ -98,7 +98,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-preset-react-app": "^10.0.0",
-    "eslint-config-next": "^11.0.1",
+    "eslint-config-next": "^11.1.0",
     "prettier": "^2.3.2"
   },
   "prettier": {
