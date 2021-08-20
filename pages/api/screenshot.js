@@ -23,7 +23,10 @@ async function takeScreenshot(url) {
 
     await page.goto(url);
 
-    return await page.screenshot({ type: 'png' });
+    const screenshot = await page.screenshot({ type: 'png' });
+    await page.close();
+
+    return screenshot;
   } finally {
     if (browser) {
       await browser.close();
