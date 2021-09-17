@@ -35,13 +35,13 @@
     "body-scroll-lock": "^3.1.5",
     "buffer-image-size": "^0.6.4",
     "clsx": "^1.1.1",
-    "date-fns": "^2.23.0",
+    "date-fns": "^2.24.0",
     "date-fns-tz": "^1.1.6",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.1",
-    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react": "^7.25.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "graphql": "^15.5.3",
     "hirestime": "^6.1.0",
@@ -99,7 +99,7 @@
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-preset-react-app": "^10.0.0",
     "eslint-config-next": "^11.1.2",
-    "prettier": "^2.4.0"
+    "prettier": "^2.4.1"
   },
   "prettier": {
     "arrowParens": "always",
