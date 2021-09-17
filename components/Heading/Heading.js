@@ -48,7 +48,7 @@ export default function Heading({
             'block font-normal leading-none tracking-normal'
           )}
         >
-          {kicker}
+          <span dangerouslySetInnerHTML={{ __html: kicker }} />
           <span className="sr-only">:</span>
         </small>
       )}
