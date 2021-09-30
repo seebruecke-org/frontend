@@ -76,7 +76,7 @@ export default function MapboxMap({ features = [], ...props }) {
   return (
     <ReactMapGL
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
-      mapStyle="mapbox://styles/gustavpursche/cklm62sl630z117nn1lcg83e1"
+      mapStyle="mapbox://styles/seebruecke/cku6wtvz63n2e18o2zsk1utkj"
       onViewportChange={setViewport}
       {...viewport}
     >
