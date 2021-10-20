@@ -29,6 +29,10 @@ const getBounds = (features) => {
 };
 
 const getFitBounds = (features) => {
+  if (features.length === 0) {
+    return null;
+  }
+
   const bounds = getBounds(features);
   const viewport = new WebMercatorViewport({
     width: 800,
@@ -72,6 +76,10 @@ export default function MapboxMap({ features = [], ...props }) {
     ...bounds,
     ...props
   });
+
+  if (!bounds) {
+    return null;
+  }
 
   return (
     <ReactMapGL
