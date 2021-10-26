@@ -224,7 +224,8 @@ module.exports = withPlugins(
 
     images: {
       domains: getImageHostnames(),
-      minimumCacheTTL: 60 * 60 * 24
+      minimumCacheTTL: 60 * 60 * 24,
+      formats: ['image/avif', 'image/webp']
     },
 
     experimental: {
