@@ -1,5 +1,9 @@
 .navigation::after {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .15), transparent);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
   content: '';
   height: 0.4rem;
   left: 0;
@@ -30,12 +34,20 @@
 }
 
 .fadeOutStart:before {
-  background-image: linear-gradient(to right, theme('colors.orange.200'), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    to right,
+    theme('colors.orange.200'),
+    rgba(255, 255, 255, 0)
+  );
   left: 100%;
 }
 
 .fadeOutEnd:before {
-  background-image: linear-gradient(to right, theme('colors.orange.200'), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    to right,
+    theme('colors.orange.200'),
+    rgba(255, 255, 255, 0)
+  );
   right: 100%;
   transform: rotate(-180deg);
 }

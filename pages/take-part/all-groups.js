@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 
+import { createClient } from '@/lib/api';
 import { BLOCK_PREFIX } from '@/lib/constants';
 import { getPage } from '@/lib/pages';
 import { fetchAllGroups } from '@/lib/take-part';
@@ -220,9 +221,12 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
 
 export async function getStaticProps({ locale }) {
   const getElapsed = hirestime();
-  const { initialState, ...globalData } = await queryGlobalData(locale, [
-    'group'
-  ]);
+  const client = createClient();
+  const { initialState, ...globalData } = await queryGlobalData(
+    locale,
+    ['group'],
+    { client }
+  );
   const pageSlug = getSlugFromI18nNext(
     'take-part/all-groups',
     locale,
@@ -230,8 +234,8 @@ export async function getStaticProps({ locale }) {
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const [groups, page] = await Promise.all([
-    await fetchAllGroups(locale),
-    await getPage(...pageSlug.split('/').reverse(), locale, format)
+    await fetchAllGroups(locale, { client }),
+    await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
   ]);
 
   console.log('Timing: take-part/all-groups', getElapsed.seconds());

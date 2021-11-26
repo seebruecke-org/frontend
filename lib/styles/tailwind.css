@@ -27,7 +27,7 @@ body {
   }
 
   .font-rubik-features {
-    font-feature-settings: "liga" on,"kern" on;
+    font-feature-settings: 'liga' on, 'kern' on;
   }
 }
 

@@ -1,5 +1,6 @@
 import hirestime from 'hirestime';
 
+import { createClient } from '@/lib/api';
 import { query as queryGlobalData } from '@/lib/global';
 import { query } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
@@ -31,10 +32,15 @@ export default function GenericPage({ page }) {
 
 export async function getStaticProps({ locale }) {
   const getElapsed = hirestime();
-  const { initialState = null, ...globalData } = await queryGlobalData(locale);
+  const client = createClient();
+  const { initialState = null, ...globalData } = await queryGlobalData(
+    locale,
+    null,
+    { client }
+  );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
-  const { data } = await query([pageSlug], locale, format);
+  const { data } = await query([pageSlug], locale, format, { client });
 
   console.log(`Timing: take-part/index`, getElapsed.seconds());
 
