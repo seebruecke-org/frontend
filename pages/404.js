@@ -1,6 +1,4 @@
 import { useTranslation } from 'next-i18next';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 import { query as queryGlobalData } from '@/lib/global';
 
@@ -11,24 +9,7 @@ import SEO from '@/components/SEO';
 import TeasersSmall from '@/components/Blocks/TeasersSmall';
 
 export default function Custom404() {
-  const { asPath, locale } = useRouter();
   const { t } = useTranslation('404');
-
-  useEffect(() => {
-    if (
-      !asPath.startsWith('/events') &&
-      !asPath.startsWith('/en/events') &&
-      !asPath.startsWith('/news') &&
-      !asPath.startsWith('/en/news') &&
-      !asPath.startsWith('/press')
-    ) {
-      fetch(
-        `/api/notify?subject=404&body=${encodeURIComponent(
-          `/${locale}${asPath}`
-        )}`
-      );
-    }
-  }, []);
 
   return (
     <PageBody firstBlock="Heading" lastBlock="Richtext">
