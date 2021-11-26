@@ -205,7 +205,8 @@ export async function getStaticProps({ locale, params: { slug } }) {
 
   if (data === null) {
     return {
-      notFound: true
+      notFound: true,
+      revalidate: 10
     };
   }
 

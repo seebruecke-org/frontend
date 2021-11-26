@@ -40,7 +40,8 @@ export async function getStaticProps({ locale }) {
 
   if (data === null) {
     return {
-      notFound: true
+      notFound: true,
+      revalidate: 10
     };
   }
 
