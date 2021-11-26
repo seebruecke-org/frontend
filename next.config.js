@@ -229,7 +229,7 @@ module.exports = withPlugins(
     },
 
     experimental: {
-      staticPageGenerationTimeout: 60 * 10,
+      staticPageGenerationTimeout: 60 * 3 * 10,
       esmExternals: true
     }
   }
