@@ -1,5 +1,5 @@
 .input:focus {
-  box-shadow: 0 0.35rem 0.35rem rgba(0, 0, 0, .15);
+  box-shadow: 0 0.35rem 0.35rem rgba(0, 0, 0, 0.15);
 }
 
 .input::placeholder {

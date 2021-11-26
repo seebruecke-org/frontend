@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 
+import { createClient } from '@/lib/api';
 import { query as queryGlobalData } from '@/lib/global';
 import { query, paths } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
@@ -49,7 +50,8 @@ export default function GenericPage({ page }) {
 }
 
 export async function getStaticPaths({ defaultLocale }) {
-  const sidePaths = await paths(defaultLocale);
+  const client = createClient();
+  const sidePaths = await paths(defaultLocale, { client });
   const slugs = await getAllSlugs('de');
 
   const customPages = Object.values(slugs);
@@ -77,11 +79,14 @@ export async function getStaticPaths({ defaultLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const getElapsed = hirestime();
-  const { initialState = null, ...globalData } = await queryGlobalData(locale, [
-    'news'
-  ]);
+  const client = createClient();
+  const { initialState = null, ...globalData } = await queryGlobalData(
+    locale,
+    ['news'],
+    { client }
+  );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const { data } = await query(slug, locale, format);
+  const { data } = await query(slug, locale, format, { client });
 
   console.log(`Timing: [[...${slug}]]`, getElapsed.seconds());
 

@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import hirestime from 'hirestime';
 
+import { createClient } from '@/lib/api';
 import { getLastBlockName } from '@/lib/blocks';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
@@ -65,7 +66,8 @@ export default function NewsEntryPage({
 }
 
 export async function getStaticPaths({ defaultLocale }) {
-  const paths = await fetchAllNewsPaths(defaultLocale);
+  const client = createClient();
+  const paths = await fetchAllNewsPaths(defaultLocale, { client });
 
   return {
     fallback: true,
@@ -75,11 +77,14 @@ export async function getStaticPaths({ defaultLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const getElapsed = hirestime();
-  const { initialState = null, ...globalData } = await queryGlobalData(locale, [
-    'news'
-  ]);
+  const client = createClient();
+  const { initialState = null, ...globalData } = await queryGlobalData(
+    locale,
+    ['news'],
+    { client }
+  );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const { data } = await fetchNewsBySlug(slug, locale, format);
+  const { data } = await fetchNewsBySlug(slug, locale, format, { client });
 
   if (data === null) {
     return {

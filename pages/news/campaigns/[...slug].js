@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import { createClient } from '@/lib/api';
 import {
   fetchCampaignBySlug,
   fetchAllPaths as fetchAllCampaignPaths
@@ -45,7 +46,8 @@ export default function CampaignPage({ content, title, metadata }) {
 }
 
 export async function getStaticPaths({ defaultLocale }) {
-  const paths = await fetchAllCampaignPaths(defaultLocale);
+  const client = createClient();
+  const paths = await fetchAllCampaignPaths(defaultLocale, { client });
 
   return {
     fallback: true,
@@ -54,11 +56,14 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
-  const { initialState, ...globalData } = await queryGlobalData(locale, [
-    'news'
-  ]);
+  const client = createClient();
+  const { initialState, ...globalData } = await queryGlobalData(
+    locale,
+    ['news'],
+    { client }
+  );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const { data } = await fetchCampaignBySlug(slug, locale, format);
+  const { data } = await fetchCampaignBySlug(slug, locale, format, { client });
 
   if (data === null) {
     return {

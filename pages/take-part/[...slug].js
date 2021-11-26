@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 
+import { createClient } from '@/lib/api';
 import { RETURN_CODES } from '@/lib/constants';
 import { getLastBlockName } from '@/lib/blocks';
 import {
@@ -173,9 +174,10 @@ export default function TakePartPage({
 }
 
 export async function getStaticPaths({ defaultLocale }) {
-  const groupPaths = await fetchAllGroupPaths(defaultLocale);
-  const countryPaths = await fetchAllCountryPaths(defaultLocale);
-  const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale);
+  const client = createClient();
+  const groupPaths = await fetchAllGroupPaths(defaultLocale, { client });
+  const countryPaths = await fetchAllCountryPaths(defaultLocale, { client });
+  const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale, { client });
 
   return {
     fallback: true,

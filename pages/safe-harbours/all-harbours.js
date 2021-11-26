@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 
+import { createClient } from '@/lib/api';
 import { getSlugFromI18nNext } from '@/lib/slug';
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -180,9 +181,12 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
 
 export async function getStaticProps({ locale }) {
   const getElapsed = hirestime();
-  const { initialState, ...globalData } = await queryGlobalData(locale, [
-    'safe-harbour'
-  ]);
+  const client = createClient();
+  const { initialState, ...globalData } = await queryGlobalData(
+    locale,
+    ['safe-harbour'],
+    { client }
+  );
   const pageSlug = getSlugFromI18nNext(
     'safe-harbours/all-harbours',
     locale,
@@ -190,8 +194,8 @@ export async function getStaticProps({ locale }) {
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const [groups, page] = await Promise.all([
-    await fetchAllSafeHarbours(locale, format),
-    await getPage(...pageSlug.split('/').reverse(), locale, format)
+    await fetchAllSafeHarbours(locale, format, { client }),
+    await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
   ]);
 
   console.log('Timing: safe-harbours/all-harbours', getElapsed.seconds());
