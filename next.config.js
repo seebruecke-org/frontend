@@ -231,10 +231,6 @@ module.exports = withPlugins(
     experimental: {
       staticPageGenerationTimeout: 60 * 10,
       esmExternals: true
-    },
-
-    httpAgentOptions: {
-      keepAlive: false
     }
   }
 );
