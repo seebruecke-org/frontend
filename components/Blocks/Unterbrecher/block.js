@@ -23,11 +23,11 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ uCTA }) {
+export async function sideloadData({ uCTA }, formatting, options) {
   const { fetchLink } = await import('@/lib/link');
 
   return {
-    uCTA: uCTA?.link ? await fetchLink(uCTA?.link) : null
+    uCTA: uCTA?.link ? await fetchLink(uCTA?.link, options) : null
   };
 }
 

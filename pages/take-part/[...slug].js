@@ -19,6 +19,7 @@ import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 import StageMedium from '@/components/Stages/Medium';
+import create from 'zustand';
 
 const Actions = dynamic(() => import('@/components/Blocks/Actions'));
 const Breadcrumbs = dynamic(() => import('@/components/Blocks/Breadcrumbs'));
@@ -189,12 +190,14 @@ export async function getStaticPaths({ defaultLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const getElapsed = hirestime();
-  const { initialState, ...globalData } = await queryGlobalData(locale, [
-    'safe-harbour',
-    'group'
-  ]);
+  const client = createClient();
+  const { initialState, ...globalData } = await queryGlobalData(
+    locale,
+    ['safe-harbour', 'group'],
+    { client }
+  );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const { type, data, ...res } = await query(slug, locale, format);
+  const { type, data, ...res } = await query(slug, locale, format, { client });
 
   console.log(`Timing: take-part/[${slug}]`, getElapsed.seconds());
 

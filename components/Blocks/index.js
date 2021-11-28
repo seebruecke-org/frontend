@@ -54,7 +54,7 @@ export function getFragments(options = {}) {
   return getFilteredBlocks(exclude).map(({ Fragment }) => Fragment);
 }
 
-export async function sideloadBlockData(content, key, formatting) {
+export async function sideloadBlockData(content, key, formatting, options) {
   if (!content) {
     return content;
   }
@@ -68,7 +68,11 @@ export async function sideloadBlockData(content, key, formatting) {
       let sideloadedData = '';
 
       if (block?.sideload) {
-        sideloadedData = await block.sideload(contentBlock, formatting);
+        sideloadedData = await block.sideload(
+          contentBlock,
+          formatting,
+          options
+        );
       }
 
       return {
