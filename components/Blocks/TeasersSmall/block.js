@@ -8,7 +8,7 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ items }) {
+export async function sideloadData({ items }, formatting, options) {
   const { fetchLink } = await import('@/lib/link');
 
   if (!items) {
@@ -19,7 +19,7 @@ export async function sideloadData({ items }) {
     items: await Promise.all(
       items.map(async (item) => ({
         ...item,
-        link: await fetchLink(item.link)
+        link: await fetchLink(item.link, options)
       }))
     )
   };
