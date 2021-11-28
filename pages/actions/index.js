@@ -3,6 +3,7 @@ import { useState, useEffect, memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 
+import { createClient } from '@/lib/api';
 import { getSlugFromI18nNext } from '@/lib/slug';
 import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
@@ -152,13 +153,16 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const { initialState, ...globalData } = await queryGlobalData(locale);
+  const client = createClient();
+  const { initialState, ...globalData } = await queryGlobalData(locale, [], {
+    client
+  });
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
 
   const [actions, page] = await Promise.all([
-    await fetchAllActions(locale, format),
-    await getPage(pageSlug, undefined, locale, format)
+    await fetchAllActions(locale, format, { client }),
+    await getPage(pageSlug, undefined, locale, format, { client })
   ]);
 
   return {

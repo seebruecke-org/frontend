@@ -35,7 +35,7 @@ export async function getStaticProps({ locale }) {
   const client = createClient();
   const { initialState = null, ...globalData } = await queryGlobalData(
     locale,
-    null,
+    [],
     { client }
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
