@@ -177,7 +177,9 @@ export async function getStaticPaths({ defaultLocale }) {
   const client = createClient();
   const groupPaths = await fetchAllGroupPaths(defaultLocale, { client });
   const countryPaths = await fetchAllCountryPaths(defaultLocale, { client });
-  const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale, { client });
+  const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale, {
+    client
+  });
 
   return {
     fallback: true,

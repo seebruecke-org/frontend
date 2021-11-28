@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next';
 
+import { createClient } from '@/lib/api';
 import { fetchAllActionPaths } from '@/lib/actions';
-import { query as queryGlobalData } from '../../lib/global';
-import { fetchActionBySlug } from '../../lib/actions';
+import { query as queryGlobalData } from '@/lib/global';
+import { fetchActionBySlug } from '@/lib/actions';
 
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -55,7 +56,8 @@ export default function ActionPage({
 }
 
 export async function getStaticPaths({ defautLocale }) {
-  const paths = await fetchAllActionPaths(defautLocale);
+  const client = createClient();
+  const paths = await fetchAllActionPaths(defautLocale, { client });
 
   return {
     fallback: true,
@@ -64,9 +66,14 @@ export async function getStaticPaths({ defautLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
-  const { initialState = null, ...globalData } = await queryGlobalData(locale);
+  const client = createClient();
+  const { initialState = null, ...globalData } = await queryGlobalData(
+    locale,
+    [],
+    { client }
+  );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const { data } = await fetchActionBySlug(slug, locale, format);
+  const { data } = await fetchActionBySlug(slug, locale, format, { client });
 
   if (data === null) {
     return {
