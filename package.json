@@ -50,6 +50,7 @@
     "json-to-graphql-query": "^2.1.0",
     "json5": "^2.2.0",
     "mapbox-gl": "^2.6.1",
+    "matomo-tracker": "^2.2.4",
     "next": "12.0.1",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^9.2.0",
