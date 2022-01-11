@@ -228,6 +228,10 @@ module.exports = withPlugins(
       formats: ['image/avif', 'image/webp']
     },
 
-    staticPageGenerationTimeout: 60 * 3 * 10
+    staticPageGenerationTimeout: 60 * 3 * 10,
+
+    experimental: {
+      esmExternals: false
+    }
   }
 );
