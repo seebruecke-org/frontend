@@ -238,7 +238,7 @@ export async function getStaticProps({ locale }) {
     await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
   ]);
 
-  console.log('Timing: take-part/all-groups', getElapsed.seconds());
+  console.log(`Timing: ${locale}/take-part/all-groups`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 2,

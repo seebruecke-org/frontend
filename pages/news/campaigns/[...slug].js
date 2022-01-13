@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import hirestime from 'hirestime';
 
 import { createClient } from '@/lib/api';
 import {
@@ -56,6 +57,7 @@ export async function getStaticPaths({ defaultLocale }) {
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
+  const getElapsed = hirestime();
   const client = createClient();
   const { initialState, ...globalData } = await queryGlobalData(
     locale,
@@ -64,6 +66,11 @@ export async function getStaticProps({ locale, params: { slug } }) {
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchCampaignBySlug(slug, locale, format, { client });
+
+  console.log(
+    `Timing: ${locale}/news/campaigns/[${slug}]`,
+    getElapsed.seconds()
+  );
 
   if (data === null) {
     return {

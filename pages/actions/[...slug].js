@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import hirestime from 'hirestime';
 
 import { createClient } from '@/lib/api';
 import { fetchAllActionPaths } from '@/lib/actions';
@@ -67,6 +68,7 @@ export async function getStaticPaths({ defautLocale }) {
 
 export async function getStaticProps({ locale, params: { slug } }) {
   const client = createClient();
+  const getElapsed = hirestime();
   const { initialState = null, ...globalData } = await queryGlobalData(
     locale,
     [],
@@ -74,6 +76,8 @@ export async function getStaticProps({ locale, params: { slug } }) {
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchActionBySlug(slug, locale, format, { client });
+
+  console.log(`Timing: ${locale}/actions/[${slug}]`, getElapsed.seconds());
 
   if (data === null) {
     return {

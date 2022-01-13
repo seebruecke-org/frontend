@@ -199,7 +199,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { type, data, ...res } = await query(slug, locale, format, { client });
 
-  console.log(`Timing: take-part/[${slug}]`, getElapsed.seconds());
+  console.log(`Timing: ${locale}/take-part/[${slug}]`, getElapsed.seconds());
 
   if (type === RETURN_CODES.REDIRECT) {
     return {

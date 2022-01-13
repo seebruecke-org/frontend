@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { useState, useEffect, memo, useRef } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
+import hirestime from 'hirestime';
 
 import { createClient } from '@/lib/api';
 import { getSlugFromI18nNext } from '@/lib/slug';
@@ -154,6 +155,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
 
 export async function getStaticProps({ locale }) {
   const client = createClient();
+  const getElapsed = hirestime();
   const { initialState, ...globalData } = await queryGlobalData(locale, [], {
     client
   });
@@ -164,6 +166,8 @@ export async function getStaticProps({ locale }) {
     await fetchAllActions(locale, format, { client }),
     await getPage(pageSlug, undefined, locale, format, { client })
   ]);
+
+  console.log(`Timing: ${locale}/actions/index`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 2,

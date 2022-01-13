@@ -47,7 +47,7 @@ export async function getStaticProps({ locale }) {
     })
   ]);
 
-  console.log(`Timing: press/index`, getElapsed.seconds());
+  console.log(`Timing: ${locale}/press/index`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 2,

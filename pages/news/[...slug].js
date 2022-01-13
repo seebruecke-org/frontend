@@ -93,7 +93,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
     };
   }
 
-  console.log(`Timing: news/[${slug}]`, getElapsed.seconds());
+  console.log(`Timing: ${locale}/news/[${slug}]`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 5,

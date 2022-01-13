@@ -198,7 +198,10 @@ export async function getStaticProps({ locale }) {
     await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
   ]);
 
-  console.log('Timing: safe-harbours/all-harbours', getElapsed.seconds());
+  console.log(
+    `Timing: ${locale}/safe-harbours/all-harbours`,
+    getElapsed.seconds()
+  );
 
   return {
     revalidate: 60 * 2,

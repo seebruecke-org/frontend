@@ -42,7 +42,7 @@ export async function getStaticProps({ locale }) {
   const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
   const { data } = await query([pageSlug], locale, format, { client });
 
-  console.log(`Timing: take-part/index`, getElapsed.seconds());
+  console.log(`Timing: ${locale}/take-part/index`, getElapsed.seconds());
 
   if (data === null) {
     return {
