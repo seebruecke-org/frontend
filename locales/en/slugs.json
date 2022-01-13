@@ -1,6 +1,6 @@
 {
   "safe-harbours/all-harbours": "safe-harbours/harbours",
-  "take-part/all-groups": "join/local-groups",
+  "take-part/all-groups": "join/localgroups",
   "take-part": "join",
   "news/campaigns": "news/campaigns",
   "news": "news",
