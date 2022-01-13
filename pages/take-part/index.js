@@ -43,19 +43,25 @@ export async function getStaticProps({ locale }) {
   const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
   const { data } = await query([pageSlug], locale, format, { client });
 
+  if (data === null) {
+    logger.error({
+      message: '404',
+      locale,
+      path: `${locale}/take-part/index`
+    });
+
+    return {
+      notFound: true,
+      revalidate: 10
+    };
+  }
+
   logger.info({
     message: 'timing',
     locale,
     path: `${locale}/take-part/index`,
     time: getElapsed.seconds()
   });
-
-  if (data === null) {
-    return {
-      notFound: true,
-      revalidate: 10
-    };
-  }
 
   return {
     revalidate: 60,

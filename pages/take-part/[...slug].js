@@ -200,13 +200,6 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { type, data, ...res } = await query(slug, locale, format, { client });
 
-  logger.info({
-    message: 'timing',
-    locale,
-    path: `${locale}/take-part/[${slug}]`,
-    time: getElapsed.seconds()
-  });
-
   if (type === RETURN_CODES.REDIRECT) {
     return {
       redirect: {
@@ -217,11 +210,24 @@ export async function getStaticProps({ locale, params: { slug } }) {
   }
 
   if (data === null) {
+    logger.error({
+      message: '404',
+      locale,
+      path: `${locale}/take-part/[${slug}]`
+    });
+
     return {
       notFound: true,
       revalidate: 10
     };
   }
+
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/take-part/[${slug}]`,
+    time: getElapsed.seconds()
+  });
 
   return {
     revalidate: 60,

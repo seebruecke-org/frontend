@@ -91,19 +91,25 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await query(slug, locale, format, { client });
 
+  if (data === null) {
+    logger.error({
+      message: '404',
+      locale,
+      path: `[[...${locale}/${slug || ''}]]`
+    });
+
+    return {
+      notFound: true,
+      revalidate: 30
+    };
+  }
+
   logger.info({
     message: 'timing',
     locale,
     path: `[[...${locale}/${slug || ''}]]`,
     time: getElapsed.seconds()
   });
-
-  if (data === null) {
-    return {
-      notFound: true,
-      revalidate: 30
-    };
-  }
 
   return {
     revalidate: 60,

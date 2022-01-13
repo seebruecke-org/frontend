@@ -68,19 +68,25 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchCampaignBySlug(slug, locale, format, { client });
 
+  if (data === null) {
+    logger.error({
+      message: '404',
+      locale,
+      path: `${locale}/news/campaigns/[${slug}]`
+    });
+
+    return {
+      notFound: true,
+      revalidate: 10
+    };
+  }
+
   logger.info({
     message: 'timing',
     locale,
     path: `${locale}/news/campaigns/[${slug}]`,
     time: getElapsed.seconds()
   });
-
-  if (data === null) {
-    return {
-      notFound: true,
-      revalidate: 10
-    };
-  }
 
   return {
     revalidate: 30,
