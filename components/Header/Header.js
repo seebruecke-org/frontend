@@ -114,7 +114,7 @@ function Search() {
 
 export default function Header({ metaItems, items }) {
   const { t } = useTranslation('slugs');
-  const { asPath } = useRouter();
+  const { asPath, locales } = useRouter();
   const [moreIsOpen, setmoreIsOpen] = useState(false);
 
   const primaryItems = items && items.slice(0, items.length - 1);
@@ -162,6 +162,14 @@ export default function Header({ metaItems, items }) {
 
         <nav className="flex flex-col w-full relative">
           <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-64 hidden md:flex md:mb-2 pt-5">
+            {locales.map((locale) => (
+              <Link href="/" locale={locale} key={`locale-switch-${locale}`}>
+                <a className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2">
+                  {locale}
+                </a>
+              </Link>
+            ))}
+
             <Bookmark />
             <Search />
 
