@@ -64,7 +64,7 @@ export async function getStaticPaths({ locales }) {
           }
 
           return {
-            locale: locale,
+            locale,
             params: {
               slug
             }
