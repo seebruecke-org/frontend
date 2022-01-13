@@ -4,7 +4,7 @@ import hirestime from 'hirestime';
 
 import { createClient } from '@/lib/api';
 import { query as queryGlobalData } from '@/lib/global';
-import { query, paths } from '@/lib/pages';
+import { query, paths as fetchPagePaths } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 import { getAllSlugs } from '@/lib/slug';
 
@@ -49,31 +49,33 @@ export default function GenericPage({ page }) {
   );
 }
 
-export async function getStaticPaths({ defaultLocale }) {
+export async function getStaticPaths({ locales }) {
   const client = createClient();
-  const sidePaths = await paths(defaultLocale, { client });
-  const slugs = await getAllSlugs('de');
 
-  const customPages = Object.values(slugs);
+  const paths = await Promise.all(
+    locales.map(async (locale) => {
+      const pagePaths = await fetchPagePaths(locale, { client });
+      const slugs = await getAllSlugs(locale);
+      return pagePaths
+        .map((slug) => {
+          if (Object.values(slugs).includes(slug.join('/'))) {
+            return null;
+          }
 
-  const staticPaths = sidePaths
-    .map((slug) => {
-      if (customPages.includes(slug.join('/'))) {
-        return null;
-      }
-
-      return {
-        locale: defaultLocale,
-        params: {
-          slug
-        }
-      };
+          return {
+            locale: locale,
+            params: {
+              slug
+            }
+          };
+        })
+        .filter(Boolean);
     })
-    .filter(Boolean);
+  );
 
   return {
     fallback: true,
-    paths: staticPaths
+    paths: paths.flat()
   };
 }
 
@@ -88,17 +90,17 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await query(slug, locale, format, { client });
 
-  console.log(`Timing: [[...${slug}]]`, getElapsed.seconds());
+  console.log(`Timing: [[...${locale}/${slug}]]`, getElapsed.seconds());
 
   if (data === null) {
     return {
       notFound: true,
-      revalidate: 10
+      revalidate: 30
     };
   }
 
   return {
-    revalidate: 30,
+    revalidate: 60,
     props: {
       ...data,
       ...globalData,
