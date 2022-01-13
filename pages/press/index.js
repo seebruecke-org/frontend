@@ -9,6 +9,7 @@ import { query as queryGlobalData } from '@/lib/global';
 import { fetchRecentNews } from '@/lib/news';
 import { getPage } from '@/lib/pages';
 import { getSlugFromI18nNext } from '@/lib/slug';
+import logger from '@/lib/logger';
 
 export default function PressOverview({ news, page }) {
   return (
@@ -47,7 +48,12 @@ export async function getStaticProps({ locale }) {
     })
   ]);
 
-  console.log(`Timing: ${locale}/press/index`, getElapsed.seconds());
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/press/index`,
+    time: getElapsed.seconds()
+  });
 
   return {
     revalidate: 60 * 2,

@@ -5,6 +5,7 @@ import { createClient } from '@/lib/api';
 import { fetchAllActionPaths } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchActionBySlug } from '@/lib/actions';
+import logger from '@/lib/logger';
 
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -77,7 +78,12 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchActionBySlug(slug, locale, format, { client });
 
-  console.log(`Timing: ${locale}/actions/[${slug}]`, getElapsed.seconds());
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/actions/[${slug}]`,
+    time: getElapsed.seconds()
+  });
 
   if (data === null) {
     return {

@@ -5,6 +5,7 @@ import { query as queryGlobalData } from '@/lib/global';
 import { query } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 import { getSlugFromI18nNext } from '@/lib/slug';
+import logger from '@/lib/logger';
 
 import BlockSwitch from '@/components/BlockSwitch';
 import PageBody from '@/components/PageBody';
@@ -42,7 +43,12 @@ export async function getStaticProps({ locale }) {
   const pageSlug = getSlugFromI18nNext('take-part', locale, globalData);
   const { data } = await query([pageSlug], locale, format, { client });
 
-  console.log(`Timing: ${locale}/take-part/index`, getElapsed.seconds());
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/take-part/index`,
+    time: getElapsed.seconds()
+  });
 
   if (data === null) {
     return {

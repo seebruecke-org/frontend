@@ -5,6 +5,7 @@ import { createClient } from '@/lib/api';
 import { getLastBlockName } from '@/lib/blocks';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchNewsBySlug, fetchAllNewsPaths } from '@/lib/news';
+import logger from '@/lib/logger';
 
 import { Image as RichtextBlockImage } from '@/components/Richtext';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -86,14 +87,19 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchNewsBySlug(slug, locale, format, { client });
 
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/news/[${slug}]`,
+    time: getElapsed.seconds()
+  });
+
   if (data === null) {
     return {
       notFound: true,
       revalidate: 10
     };
   }
-
-  console.log(`Timing: ${locale}/news/[${slug}]`, getElapsed.seconds());
 
   return {
     revalidate: 60 * 5,

@@ -7,6 +7,7 @@ import {
   fetchAllPaths as fetchAllCampaignPaths
 } from '@/lib/campaigns';
 import { query as queryGlobalData } from '@/lib/global';
+import logger from '@/lib/logger';
 
 import BlockSwitch from '@/components/BlockSwitch';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -67,10 +68,12 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchCampaignBySlug(slug, locale, format, { client });
 
-  console.log(
-    `Timing: ${locale}/news/campaigns/[${slug}]`,
-    getElapsed.seconds()
-  );
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/news/campaigns/[${slug}]`,
+    time: getElapsed.seconds()
+  });
 
   if (data === null) {
     return {

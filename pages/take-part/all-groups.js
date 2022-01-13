@@ -12,6 +12,7 @@ import { query as queryGlobalData } from '@/lib/global';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
 import { getSlugFromI18nNext } from '@/lib/slug';
 import useCityFilter from '@/lib/hooks/useCityFilter';
+import logger from '@/lib/logger';
 
 import Group from '@/components/Teaser/Group';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -238,7 +239,12 @@ export async function getStaticProps({ locale }) {
     await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
   ]);
 
-  console.log(`Timing: ${locale}/take-part/all-groups`, getElapsed.seconds());
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/take-part/all-groups`,
+    time: getElapsed.seconds()
+  });
 
   return {
     revalidate: 60 * 2,

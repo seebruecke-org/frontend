@@ -1,4 +1,5 @@
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'next-i18next';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
@@ -13,13 +14,13 @@ import {
   fetchAllFederalCountryPaths
 } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
-import { useTranslation } from 'next-i18next';
+import logger from '@/lib/logger';
+
 import BlockSwitch from '@/components/BlockSwitch';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 import StageMedium from '@/components/Stages/Medium';
-import create from 'zustand';
 
 const Actions = dynamic(() => import('@/components/Blocks/Actions'));
 const Breadcrumbs = dynamic(() => import('@/components/Blocks/Breadcrumbs'));
@@ -199,7 +200,12 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { type, data, ...res } = await query(slug, locale, format, { client });
 
-  console.log(`Timing: ${locale}/take-part/[${slug}]`, getElapsed.seconds());
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/take-part/[${slug}]`,
+    time: getElapsed.seconds()
+  });
 
   if (type === RETURN_CODES.REDIRECT) {
     return {

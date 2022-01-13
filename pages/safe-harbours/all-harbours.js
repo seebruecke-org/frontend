@@ -9,14 +9,15 @@ import hirestime from 'hirestime';
 
 import { createClient } from '@/lib/api';
 import { getSlugFromI18nNext } from '@/lib/slug';
+import useCityFilter from '@/lib/hooks/useCityFilter';
+import logger from '@/lib/logger';
+
 import SafeHarbour from '@/components/Teaser/SafeHarbour';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form from '@/components/Form';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
-
-import useCityFilter from '@/lib/hooks/useCityFilter';
 
 const Country = dynamic(() => import('@/components/Map/Country'));
 const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
@@ -198,10 +199,12 @@ export async function getStaticProps({ locale }) {
     await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
   ]);
 
-  console.log(
-    `Timing: ${locale}/safe-harbours/all-harbours`,
-    getElapsed.seconds()
-  );
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/safe-harbours/all-harbours`,
+    time: getElapsed.seconds()
+  });
 
   return {
     revalidate: 60 * 2,

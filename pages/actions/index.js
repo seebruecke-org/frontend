@@ -10,6 +10,8 @@ import { fetchAllActions } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { getPage } from '@/lib/pages';
 import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
+import logger from '@/lib/logger';
+
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
 import Form from '@/components/Form';
@@ -167,7 +169,12 @@ export async function getStaticProps({ locale }) {
     await getPage(pageSlug, undefined, locale, format, { client })
   ]);
 
-  console.log(`Timing: ${locale}/actions/index`, getElapsed.seconds());
+  logger.info({
+    message: 'timing',
+    locale,
+    path: `${locale}/actions/index`,
+    time: getElapsed.seconds()
+  });
 
   return {
     revalidate: 60 * 2,
