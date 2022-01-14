@@ -8,11 +8,16 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ items = [] }, formatting, options) {
+export async function sideloadData(
+  { items = [] },
+  formatting,
+  options,
+  locale
+) {
   const { fetchLink } = await import('@/lib/link');
 
   const itemsEnrichted = await Promise.all(
-    items.map(({ link }) => fetchLink(link, options))
+    items.map(({ link }) => fetchLink(link, options, locale))
   );
 
   return {

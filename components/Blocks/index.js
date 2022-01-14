@@ -54,7 +54,13 @@ export function getFragments(options = {}) {
   return getFilteredBlocks(exclude).map(({ Fragment }) => Fragment);
 }
 
-export async function sideloadBlockData(content, key, formatting, options) {
+export async function sideloadBlockData(
+  content,
+  key,
+  formatting,
+  options,
+  locale
+) {
   if (!content) {
     return content;
   }
@@ -71,7 +77,8 @@ export async function sideloadBlockData(content, key, formatting, options) {
         sideloadedData = await block.sideload(
           contentBlock,
           formatting,
-          options
+          options,
+          locale
         );
       }
 
