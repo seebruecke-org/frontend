@@ -11,11 +11,11 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ cta }, formatting, options) {
+export async function sideloadData({ cta }, formatting, options, locale) {
   const { fetchLink } = await import('@/lib/link');
 
   return {
-    cta: await fetchLink(cta?.link, options)
+    cta: await fetchLink(cta?.link, options, locale)
   };
 }
 
