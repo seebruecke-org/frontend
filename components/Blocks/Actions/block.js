@@ -41,7 +41,7 @@ export async function sideloadData(
       'location_detail',
       'coordinates'
     ],
-    filter,
+    [...filter, { value: locale, key: 'locale' }],
     max_actions_to_show,
     locale
   );
