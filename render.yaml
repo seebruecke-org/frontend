@@ -4,6 +4,7 @@ services:
     env: node
     plan: pro
     buildCommand: npm install; npm run build
+    pullRequestPreviewsEnabled: true
     region: frankfurt
     repo: https://github.com/seebruecke-org/frontend
     startCommand: npm run start
