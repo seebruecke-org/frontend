@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: seebruecke/frontend
+    env: node
+    plan: pro
+    buildCommand: npm install; npm run build
+    region: frankfurt
+    repo: https://github.com/seebruecke-org/frontend
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_CMS_DOMAIN
+        value: https://cms.seebruecke.org
+      - key: NEXT_PUBLIC_GRAPHQL_API
+        value: https://api.seebruecke.org/graphql
+      - key: NEXT_PUBLIC_IMAGE_HOSTNAME
+        value: cms.seebruecke.org
+      - 
+    domains:
+      - seebruecke.org
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+      targetMemoryPercent: 60
+      targetCPUPercent: 60
+    disk:
+      name: next.js image cache
+      mountPath: /opt/render/project/src/.next/cache/images
+      sizeGB: 1
