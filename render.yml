@@ -31,11 +31,6 @@ services:
         sync: false
     domains:
       - seebruecke.org
-    scaling:
-      minInstances: 1
-      maxInstances: 3
-      targetMemoryPercent: 60
-      targetCPUPercent: 60
     disk:
       name: next.js image cache
       mountPath: /opt/render/project/src/.next/cache/images
