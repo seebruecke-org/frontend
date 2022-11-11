@@ -31,7 +31,7 @@ services:
       - key: MAILCHIMP_SERVER
         sync: false
     domains:
-      - seebruecke.org
+      - next.seebruecke.org
     disk:
       name: next.js image cache
       mountPath: /opt/render/project/src/.next/cache/images
