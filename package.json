@@ -13,6 +13,7 @@
     "url": "git+https://github.com/seebruecke-org/frontend.git"
   },
   "scripts": {
+    "build_and_log": "next build --no-lint > build.log",
     "build": "next build --no-lint",
     "dev": "next",
     "start": "next start",
