@@ -2,6 +2,7 @@
   "singleTitle": "Aktuelles",
   "type": {
     "news": "News",
-    "pressrelease": "Pressemitteilung"
+    "pressrelease": "Pressemitteilung",
+    "commentary": "Kommentar"
   }
 }
