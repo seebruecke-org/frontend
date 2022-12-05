@@ -240,7 +240,7 @@ export async function getStaticProps({ locale }) {
   ]);
 
   logger.info({
-    message: 'timing',
+    message: 'timing all-groups',
     locale,
     path: `${locale}/take-part/all-groups`,
     time: getElapsed.seconds()
