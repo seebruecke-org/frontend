@@ -223,7 +223,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   }
 
   logger.info({
-    message: 'timing',
+    message: 'timing take-part',
     locale,
     path: `${locale}/take-part/[${slug}]`,
     time: getElapsed.seconds()
