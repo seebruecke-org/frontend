@@ -4,5 +4,23 @@
     "content": "404 — Page not found"
   },
 
-  "intro": "We couldn't find what you were looking for. Maybe the following links do help you?"
+  "intro": "We couldn't find what you were looking for. Maybe the following links do help you?",
+
+  "locals": {
+    "title": "Alle local group",
+    "url": "/en/join-us/local-groups",
+    "label": "To the overview"
+  },
+
+  "contact": {
+    "title": "Contact",
+    "url": "/en/contact",
+    "label": "To the page"
+  },
+
+  "donation": {
+    "title": "Donation",
+    "url": "/en/donate",
+    "label": "To the page"
+  }
 }
