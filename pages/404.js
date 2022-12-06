@@ -25,26 +25,26 @@ export default function Custom404() {
         <TeasersSmall
           items={[
             {
-              title: 'Alle Lokalgruppen',
+              title: t('locals.title'),
               link: {
-                url: '/mach-mit/lokalgruppen',
-                label: 'Zur Übersicht'
+                url: t('locals.url'),
+                label: t('locals.label')
               }
             },
 
             {
-              title: 'Kontakt',
+              title: t('contact.title'),
               link: {
-                url: '/kontakt',
-                label: 'Zur Seite'
+                url: t('contact.url'),
+                label: t('contact.label')
               }
             },
 
             {
-              title: 'Spenden',
+              title: t('donation.title'),
               link: {
-                url: '/spenden',
-                label: 'Zur Seite'
+                url: t('donation.url'),
+                label: t('donation.label')
               }
             }
           ]}

@@ -4,5 +4,24 @@
     "content": "404 — Seite nicht gefunden"
   },
 
-  "intro": "Wir konnten das was du suchst, leider nicht finden. Vielleicht helfen dir folgende Links weiter?"
+  "intro": "Wir konnten das was du suchst, leider nicht finden. Vielleicht helfen dir folgende Links weiter?",
+
+  "locals": {
+    "title": "Alle Lokalgruppen",
+    "url": "/mach-mit/lokalgruppen",
+    "label": "Zur Übersicht"
+  },
+
+  "contact": {
+    "title": "Kontakt",
+    "url": "/kontakt",
+    "label": "Zur Seite"
+  },
+
+  "donation": {
+    "title": "Spenden",
+    "url": "/spenden",
+    "label": "Zur Seite"
+  }
+
 }
