@@ -2,6 +2,7 @@
   "singleTitle": "News",
   "type": {
     "news": "News",
-    "pressrelease": "Pressrelease"
+    "pressrelease": "Pressrelease",
+    "commentary": "Kommentar"
   }
 }
