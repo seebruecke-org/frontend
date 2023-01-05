@@ -8,14 +8,14 @@
   "lastUpdated": "Last updated on",
 
   "demand": {
-    "decided": "entschieden",
-    "fullfilled": "umgesetzt",
-    "not": "Nicht",
-    "unknown": "Unbekannt ob",
-    "readMore": "Details anzeigen",
-    "readLess": "Details ausblenden",
-    "stateUnknown": "Status unbekannt",
-    "fullfilledFrom": "{{fullfilled}} von {{count}} Forderungen umgesetzt"
+    "decided": "decided",
+    "fullfilled": "fullfilled",
+    "not": "not",
+    "unknown": "unknown",
+    "readMore": "Read more",
+    "readLess": "Hide Details",
+    "stateUnknown": "State Unknown",
+    "fullfilledFrom": "{{fullfilled}} of {{count}} demands fullfilled"
   },
 
   "demands": {
