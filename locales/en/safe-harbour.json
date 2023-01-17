@@ -4,7 +4,7 @@
   "since": "Since",
   "searchCity": "Search for a location ...",
   "resetFilter": "Reset filter",
-  "disclaimer": "Die Angaben berufen sich auf die Interpretation der Beschlüsse. Wenn etwas fehlt oder geändert werden soll, oder du Fragen oder Anmerkungen hast, schreibe uns gerne.",
+  "disclaimer": "The information is based on the interpretation of the resolutions. If something is missing or should be changed, or you have questions or comments, feel free to write us.",
   "lastUpdated": "Last updated on",
 
   "demand": {
@@ -20,36 +20,36 @@
 
   "demands": {
     "public_solidarity_declaration": {
-      "title": "Öffentliche Solidaritätserklärung",
-      "description": "erklärt sich mit Menschen auf der Flucht und den Zielen der SEEBRÜCKE solidarisch."
+      "title": "Public declaration of solidarity",
+      "description": "Declares solidarity with people in flight and the goals of SEEBRÜCKE."
     },
     "supports_searescue_actively": {
-      "title": "Aktive Unterstützung der Seenotrettung",
-      "description": "positioniert sich öffentlich gegen die Kriminalisierung der Seenotrettung auf dem Mittelmeer, unterstützt diese aktiv und übernimmt die Patenschaft und finanzielle Unterstützung für ein ziviles Seenotrettungsschiff oder beteiligt sich daran."
+      "title": "Active support of sea rescue",
+      "description": "Positions itself publicly against the criminalization of sea rescue in the Mediterranean, actively supports it and takes over the sponsorship and financial support for a civilian sea rescue ship or participates in it."
     },
     "admission_in_addition_quota": {
-      "title": "Aufnahme zusätzlich zur Quote",
-      "description": "stellt die schnelle und unkomplizierte Aufnahme und Unterbringung von aus Seenot geretteten Menschen zusätzlich zur Verteilungsquote von Schutzsuchenden sicher:\n - {{city}} erklärt sich bereit, aus Seenot gerettete Menschen, beispielsweise von einem zivilen Seenotrettungsboot, ähnlich eines Relocation-Programms, direkt aufzunehmen und unterzubringen. Diese Aufnahme geschieht zusätzlich zur Verteilungsquote Asylsuchender. Hierzu wird ein Einvernehmen mit dem Bundesministerium für Inneres und Sport, dem Bundesamt für Migration und Flüchtlinge und dem Bundesland {{federal_country}} hergestellt."
+      "title": "Reception in addition to the quota",
+      "description": "ensures the quick and uncomplicated reception and accommodation of people rescued from distress at sea in addition to the distribution quota of people seeking protection:\n - {{city}} agrees to directly receive and house people rescued from distress at sea, for example from a civilian rescue boat, similar to a relocation program. This reception is in addition to the distribution quota of asylum seekers. For this purpose, agreement is reached with the Federal Ministry of the Interior and Sports, the Federal Office for Migration and Refugees, and the federal state {{federal_country}}."
     },
     "admission_program": {
-      "title": "Aufnahmeprogramme unterstützen",
-      "description": "setzt sich gegenüber dem eigenen Bundesland und der Bundesregierung für die Einrichtung neuer bzw. die deutliche Ausweitung bestehender Programme zur legalen Aufnahme von Flüchtenden ein und bietet dazu selbst zusätzliche Aufnahmeplätze an:\n- {{city}} fordert die Regierung des Bundeslandes {{federal_country}} auf, ein eigenständiges humanitäres Aufnahmeprogramm für Flüchtende gem. § 23 Absatz 1 AufenthG einzuführen und damit Flüchtenden die legale Einreise nach Deutschland und einen legalen Aufenthalt zu ermöglichen.\n- {{city}} fordert die Regierung des Bundeslandes {{federal_country}} und die Bundesregierung auf, im Rahmen des Resettlements gem. § 23 Absatz 4 AufenthG und anderen Programmen der legalen Aufnahme von Flüchtenden dauerhaft und verlässlich erheblich höhere Aufnahmequoten als bisher zu vereinbaren. Nur so kann Deutschland seiner Verantwortung nachkommen, Menschen die Flucht auf gefährlichen illegalisierten Wegen ersparen.\n- {{city}} erklärt sich dem Bundesland {{federal_country}} und der Bundesregierung gegenüber bereit, zusätzliche Aufnahmeplätze für Einreisende in diesen Programmen verlässlich zur Verfügung zu stellen.\n- Zudem setzt sich die Stadt / der Landkreis über das Land für die Streichung des Satzes 3 des § 23 Abs. 1 AufenthG ein, wodurch die Zustimmungserfordernis des Bundes für eine Flüchtlingsaufnahme entfiele.\n- Die Stadt / der Landkreis fordert die Einführung einer eigenständigen Norm zur kommunalen Aufnahme entsprechend dem § 23 Abs. 1 AufenthG zur eigenständigen Aufnahme durch die Länder."
+      "title": "Support admission programs",
+      "description": "Advocates to its own federal state and the federal government for the establishment of new or the significant expansion of existing programs for the legal admission of refugees and offers additional admission places for this purpose itself:\n- {{city}} calls on the government of the federal state {{federal_country}} to introduce an independent humanitarian reception program for refugees according to § 23 paragraph 1 AufenthG (Residence Act) and thus enable refugees to enter and stay in Germany legally.\n- {{city}} calls on the government of the federal state {{federal_country}} and the federal government to agree on a permanent and reliable basis on significantly higher admission quotas than before within the framework of the resettlement pursuant to § 23 paragraph 4 AufenthG and other programs for the legal admission of refugees. Only in this way can Germany fulfill its responsibility to spare people the flight on dangerous illegalized ways.\n- {{city}} declares its willingness to the federal state {{federal_country}} and the federal government to reliably provide additional reception places for people entering these programs.\n- In addition, the city/county advocates through the state for the deletion of sentence 3 of section 23(1) of the Residence Act, which would eliminate the federal government's approval requirement for refugee admissions.\n- The city / county calls for the introduction of an independent standard for municipal admission corresponding to § 23 para 1 AufenthG for independent admission by the states."
     },
     "communal_reception": {
-      "title": "Kommunales Ankommen gewährleisten",
-      "description": "sorgt für ein langfristiges Ankommen, indem alle notwendigen Ressourcen für eine menschenwürdige Versorgung, insbesondere in den Bereichen Wohnen, medizinische Versorgung und Bildung, zur Verfügung gestellt werden."
+      "title": "Ensure municipal arrivals",
+      "description": "Ensures long-term arrivals by providing all necessary resources for humane care, especially in the areas of housing, medical care, and education."
     },
     "national_international_networking": {
-      "title": "Nationale und europäische Vernetzung",
-      "description": "setzt sich auf regionaler, nationaler und europäischer Ebene aktiv für die Umsetzung der oben genannten Punkte ein."
+      "title": "National and European networking",
+      "description": "Actively advocates at the regional, national and European levels for the implementation of the above."
     },
     "alliance_safe_harbours": {
-      "title": "Bündnis Städte Sichere Häfen",
-      "description": "beteiligt sich in dem Bündnis Städte Sicherer Häfen in Europa und setzt sich aktiv für eine menschenrechtskonforme europäische Migrationspolitik ein."
+      "title": "Alliance Cities Safe Harbours",
+      "description": "Participates in the Alliance Cities Safe Harbours in Europe and actively advocates for a European migration policy that complies with human rights."
     },
     "transparency": {
-      "title": "Transparenz",
-      "description": "veröffentlicht alle unternommenen Handlungen, mit denen die Kommune zu einem Sicheren Hafen wird."
+      "title": "Transparency",
+      "description": "Publishes all actions taken to make the municipality a Safe Harbour."
     }
   }
 }
