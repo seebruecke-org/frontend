@@ -171,7 +171,6 @@ export default function Header({ metaItems, items }) {
             ))}
 
             <Bookmark />
-            <Search />
 
             {metaItems &&
               metaItems.length > 0 &&
