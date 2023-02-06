@@ -113,7 +113,7 @@ function Search() {
 }
 
 export default function Header({ metaItems, items }) {
-  const { t } = useTranslation('slugs');
+  const { t } = useTranslation();
   const { asPath, locales } = useRouter();
   const [moreIsOpen, setmoreIsOpen] = useState(false);
 
