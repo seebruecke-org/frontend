@@ -16,13 +16,13 @@ export default function StageLarge({
   image,
   className,
   heading,
-  cta = null,
+  stagelargecta = null,
   subnavigation,
   intro
 }) {
   const hasSubnavigation =
     subnavigation && Array.isArray(subnavigation) && subnavigation.length > 0;
-
+  const cta = stagelargecta;
   return (
     <div
       className={clsx('relative md:mb-52 max-w-full', styles.stage, className)}

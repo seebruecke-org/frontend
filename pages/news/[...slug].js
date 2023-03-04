@@ -18,7 +18,7 @@ export default function NewsEntryPage({
   metadata,
   content,
   image,
-  published_at,
+  publishedAt,
   type
 }) {
   const { t } = useTranslation('news');
@@ -29,7 +29,7 @@ export default function NewsEntryPage({
 
       <PageBody lastBlock={getLastBlockName(content)}>
         <div className="grid grid-layout-primary">
-          <Heading level={1} kicker={`${published_at} · ${t(`type.${type}`)}`}>
+          <Heading level={1} kicker={`${publishedAt} · ${t(`type.${type}`)}`}>
             {title}
           </Heading>
         </div>

@@ -2,7 +2,9 @@ import FRAGMENT_MEDIA from '@/components/Media/fragment';
 
 export default `
   ... on NewsEntry {
-    id
+    metadata {
+      id
+    }
     title
     slug
     type

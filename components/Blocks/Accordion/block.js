@@ -1,6 +1,6 @@
 export const FRAGMENT = `
   ... on ComponentSharedBlocksAccordion {
-    items {
+    csba_items:items {
       title
       content
     }

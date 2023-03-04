@@ -1,6 +1,7 @@
 import Gallery from '@/components/Gallery';
 
-export default function MediaGallery({ items, blockContext: { index } }) {
+export default function MediaGallery({ csbmg_items, blockContext: { index } }) {
+  let items = csbmg_items;
   if (!items) {
     return null;
   }

@@ -2,22 +2,23 @@ export const FRAGMENT = `
   ... on ComponentSharedBlocksMaterial {
     mTitle: title
 
-    items {
+    csbm_items: items {
       id
       external_link
       name
       description
-      file {
+      file {data{attributes{
         name
         mime
         size
         url
-      }
+      }}}
     }
   }
 `;
 
-export async function sideloadData({ items }) {
+export async function sideloadData({ csbm_items }) {
+  let items = csbm_items
   const { getFullCMSUrl } = await import('@/lib/url');
 
   return {

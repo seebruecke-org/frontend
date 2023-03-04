@@ -137,9 +137,10 @@ function Wrapped({ swiper = false, items, setItemRef = () => {} }) {
 }
 
 export default forwardRef(function SectionNavigation(
-  { items = [], className, primaryGrid = true, alwaysShowBorder = false },
+  { csbsn_items = [], className, primaryGrid = true, alwaysShowBorder = false },
   ref
 ) {
+  let items = csbsn_items;
   const containerRef = useRef(null);
   const itemRefs = [];
   const [useSwiper, setUseSwiper] = useState(false);

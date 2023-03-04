@@ -14,7 +14,7 @@ export const FRAGMENT = `
       ${FRAGMENT_MEDIA}
     }
 
-    cta {
+    csbsl_cta: cta {
       ${FRAGMENT_LINK}
     }
 
@@ -24,24 +24,8 @@ export const FRAGMENT = `
   }
 `;
 
-async function sideloadData(
-  { cta, subnavigation },
-  formatting,
-  options,
-  locale
-) {
-  const { fetchLink } = await import('@/lib/link');
-
-  return {
-    cta: cta && (await fetchLink(cta.link, options, locale)),
-    subnavigation: await Promise.all(
-      subnavigation.map(({ link }) => fetchLink(link, options, locale))
-    )
-  };
-}
 
 export default {
   name: 'StageLarge',
-  Fragment: FRAGMENT,
-  sideload: sideloadData
+  Fragment: FRAGMENT
 };
