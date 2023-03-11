@@ -1,9 +1,8 @@
 import FRAGMENT_MEDIA from '@/components/Media/fragment';
 
-async function sideloadData({ items }) {
+async function sideloadData({ csbmg_items }) {
   const { scaleImageTo } = await import('@/lib/media');
-
-  return items.map(({ media: { width, height, ...media } }) => {
+  return csbmg_items.map(({ media: { width, height, ...media } }) => {
     const [scaledWidth, scaledHeight] = scaleImageTo(600, [width, height]);
 
     return {

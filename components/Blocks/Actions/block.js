@@ -1,4 +1,4 @@
-import FRAGMENT_LINK from '@/components/StrapiLink/fragment';
+import FRAGMENT_LINK from "@/components/StrapiLink/fragment";
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksActions {
@@ -39,7 +39,7 @@ export async function sideloadData(
       'location_detail',
       'coordinates'
     ],
-    [...filter, { key: 'locale', value: { key: 'eq', value: locale } }],
+    filter,
     max_actions_to_show,
     locale
   );
