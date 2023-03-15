@@ -1,31 +1,32 @@
-import dynamic from 'next/dynamic';
-import clsx from 'clsx';
+import dynamic from "next/dynamic";
+import clsx from "clsx";
 
-import CTA from '@/components/CTA';
-import Heading from '@/components/Heading';
-import Media from '@/components/Media';
+import CTA from "@/components/CTA";
+import Heading from "@/components/Heading";
+import Media from "@/components/Media";
 
-import * as styles from './large.module.css';
+import * as styles from "./large.module.css";
 
-const Richtext = dynamic(() => import('@/components/Richtext'));
+const Richtext = dynamic(() => import("@/components/Richtext"));
 const SectionNavigation = dynamic(() =>
-  import('@/components/SectionNavigation')
+  import("@/components/SectionNavigation")
 );
 
-export default function StageLarge({
-  image,
-  className,
-  heading,
-  stagelargecta = null,
-  subnavigation,
-  intro
-}) {
+export default function StageLarge(
+  {
+    image,
+    className,
+    heading,
+    csbsl_cta = null,
+    subnavigation,
+    intro
+  }) {
   const hasSubnavigation =
     subnavigation && Array.isArray(subnavigation) && subnavigation.length > 0;
-  const cta = stagelargecta;
+  const cta = csbsl_cta;
   return (
     <div
-      className={clsx('relative md:mb-52 max-w-full', styles.stage, className)}
+      className={clsx("relative md:mb-52 max-w-full", styles.stage, className)}
     >
       <Media
         image={image}
@@ -33,7 +34,7 @@ export default function StageLarge({
         layout="fill"
         priority
         className={clsx(
-          'col-span-full w-full relative md:absolute',
+          "col-span-full w-full relative md:absolute",
           styles.image
         )}
         captionIconClassName="top-4 md:bottom-4 md:top-auto left-2 md:left-4"
@@ -41,8 +42,8 @@ export default function StageLarge({
 
       <div
         className={clsx(
-          'bg-orange-200 md:w-8/12 ml-2 md:ml-0 mr-2 md:mr-0 -mt-80 md:absolute md:-bottom-32 md:left-auto md:right-0 w-auto relative z-10',
-          hasSubnavigation ? 'pt-20 md:pt-28' : 'py-20 md:py-28'
+          "bg-orange-200 md:w-8/12 ml-2 md:ml-0 mr-2 md:mr-0 -mt-80 md:absolute md:-bottom-32 md:left-auto md:right-0 w-auto relative z-10",
+          hasSubnavigation ? "pt-20 md:pt-28" : "py-20 md:py-28"
         )}
       >
         <div className="max-w-7xl">
@@ -65,8 +66,8 @@ export default function StageLarge({
           {cta && (
             <div
               className={clsx(
-                'px-8 md:px-20 mt-8',
-                intro ? 'md:mt-10' : 'md:mt-12'
+                "px-8 md:px-20 mt-8",
+                intro ? "md:mt-10" : "md:mt-12"
               )}
             >
               <CTA link={cta} />
