@@ -13,8 +13,8 @@ const MapboxMap = dynamic(() => import('@/components/MapboxMap'), {
 
 import * as styles from './actions.module.css';
 
-export default function ActionsBlock({ show_map = false, cta, actions = [] }) {
-  const { t } = useTranslation();
+export default function ActionsBlock({ show_map = false, actionsCTA, actions = [] }) {
+  const cta = actionsCTA;
   const { t: ts } = useTranslation('slugs');
   const { t: tf } = useTranslation('format');
   const { ref, inView } = useInView({

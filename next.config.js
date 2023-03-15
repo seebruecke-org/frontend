@@ -76,11 +76,11 @@ async function fetchAllRedirects() {
       .query(
         `
     query AllRedirects {
-      redirects {
+      redirects {data{attributes{
         from
         to
         type
-      }
+      }}}
     }
   `
       )

@@ -1,5 +1,7 @@
 export default `
   ... on ComponentHelperBlocksLink {
-    link
+    label
+    locale
+    url
   }
 `;

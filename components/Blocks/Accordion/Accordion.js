@@ -5,7 +5,8 @@ import {
 } from '@/components/Accordion';
 import Richtext from '../Richtext';
 
-export default function AccordionBlock({ items = [] }) {
+export default function AccordionBlock({ csba_items = [] }) {
+  let items = csba_items;
   return (
     <Accordion
       allowMultipleExpanded

@@ -23,16 +23,7 @@ export const FRAGMENT = `
   }
 `;
 
-export async function sideloadData({ uCTA }, formatting, options, locale) {
-  const { fetchLink } = await import('@/lib/link');
-
-  return {
-    uCTA: uCTA?.link ? await fetchLink(uCTA?.link, options, locale) : null
-  };
-}
-
 export default {
   name: 'Unterbrecher',
   Fragment: FRAGMENT,
-  sideload: sideloadData
 };

@@ -1,4 +1,4 @@
-import FRAGMENT_LINK from '@/components/StrapiLink/fragment';
+import FRAGMENT_LINK from "@/components/StrapiLink/fragment";
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksActions {
@@ -11,14 +11,14 @@ export const FRAGMENT = `
       key
     }
 
-    cta {
+    actionsCTA: cta {
       ${FRAGMENT_LINK}
     }
   }
 `;
 
 export async function sideloadData(
-  { cta, filter, max_actions_to_show },
+  { actionsCTA, filter, max_actions_to_show },
   formatting,
   options,
   locale
@@ -26,11 +26,9 @@ export async function sideloadData(
   const { buildGraphQLQuery, formatTime } = await import('@/lib/actions');
   const { toMapboxCoordinates } = await import('@/lib/coordinates');
   const { fetchAPI } = await import('@/lib/api');
-  const { fetchLink } = await import('@/lib/link');
 
   const query = buildGraphQLQuery(
     [
-      'id',
       'title',
       'slug',
       'intro',
@@ -41,7 +39,7 @@ export async function sideloadData(
       'location_detail',
       'coordinates'
     ],
-    [...filter, { value: locale, key: 'locale' }],
+    filter,
     max_actions_to_show,
     locale
   );
@@ -57,7 +55,7 @@ export async function sideloadData(
     }));
 
   return {
-    cta: cta?.link ? await fetchLink(cta?.link, options, locale) : null,
+    actionsCTA: actionsCTA,
     actions: endrichedActions || []
   };
 }

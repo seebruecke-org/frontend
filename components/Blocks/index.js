@@ -38,9 +38,9 @@ const blocks = [
 
 function getFilteredBlocks(exclude = []) {
   return blocks.filter(({ name }) => {
-    const hasExludes = Array.isArray(exclude);
+    const hasExcludes = Array.isArray(exclude);
 
-    if (hasExludes) {
+    if (hasExcludes) {
       return !exclude.includes(name);
     }
 
