@@ -9,6 +9,7 @@ const blockMap = {
   Actions: dynamic(() => import('@/components/Blocks/Actions')),
   Contact: dynamic(() => import('@/components/Blocks/Contact')),
   Fundraisingbox: dynamic(() => import('@/components/Blocks/Fundraisingbox')),
+  Embed: dynamic(() => import('@/components/Blocks/Embed')),
   Heading: dynamic(() => import('@/components/Blocks/Heading')),
   Material: dynamic(() => import('@/components/Blocks/Material')),
   Media: dynamic(() => import('@/components/Blocks/Media')),

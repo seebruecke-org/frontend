@@ -2,6 +2,7 @@ import accordion from './Accordion/block';
 import actions from './Actions/block';
 import contact from './Contact/block';
 import fundraisingBox from './Fundraisingbox/block';
+import embed from './Embed/block';
 import heading from './Heading/block';
 import material from './Material/block';
 import media from './Media/block';
@@ -22,6 +23,7 @@ const blocks = [
   actions,
   contact,
   fundraisingBox,
+  embed,
   heading,
   material,
   media,
