@@ -1,9 +1,9 @@
 const { createClient } = require('urql');
 const runtimeCaching = require('next-pwa/cache');
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: isProduction()
-});
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: isProduction()
+// });
 const withPlugins = require('next-compose-plugins');
 const withPreact = require('next-plugin-preact');
 const withPWA = require('next-pwa');
@@ -176,7 +176,7 @@ module.exports = withPlugins(
   [
     withTranspiledModules,
     withPreact,
-    withBundleAnalyzer,
+    // withBundleAnalyzer,
     [
       withPWA,
       {
