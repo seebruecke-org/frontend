@@ -72,7 +72,7 @@ async function fetchAllRedirects() {
   });
 
   try {
-    const { redirects } = await client
+    let { redirects } = await client
       .query(
         `
     query AllRedirects {
@@ -86,6 +86,8 @@ async function fetchAllRedirects() {
       )
       .toPromise()
       .then(({ data }) => data);
+
+    redirects = normalize(redirects);
 
     if (!redirects) {
       return [];
@@ -107,7 +109,7 @@ async function fetchAllRedirects() {
       };
 
       if (!acc.has(source)) {
-        console.log('Redirect:', source, destination);
+      //   console.log('Redirect:', source, destination);
 
         acc.set(source, redirect);
       } else {
@@ -165,9 +167,9 @@ function createRewrites(slugs, locale) {
     })
     .flat();
 
-  rewrites.forEach(({ source, destination }) =>
-    console.log('Rewrite:', source, destination)
-  );
+  // rewrites.forEach(({ source, destination }) =>
+  //   console.log('Rewrite:', source, destination)
+  // );
 
   return rewrites;
 }
@@ -191,6 +193,7 @@ module.exports = withPlugins(
   {
     i18n,
     poweredByHeader: false,
+    reactStrictMode: true,
 
     async rewrites() {
       const { locales } = i18n;
@@ -235,3 +238,47 @@ module.exports = withPlugins(
     }
   }
 );
+
+const normalize = (data) => {
+  const isObject = (data) =>
+    Object.prototype.toString.call(data) === "[object Object]";
+  const isArray = (data) =>
+    Object.prototype.toString.call(data) === "[object Array]";
+
+  const flatten = (data) => {
+    if (!data.attributes) return data;
+
+    let idret = {}
+    if (data.id) {
+      idret = {id: data.id}
+    }
+    return {
+      ...idret,
+      ...data.attributes
+    };
+  };
+
+  if (isArray(data)) {
+    return data.map((item) => normalize(item));
+  }
+
+  if (isObject(data)) {
+    if (isArray(data.data)) {
+      data = [...data.data];
+    } else if (isObject(data.data)) {
+      data = flatten({ ...data.data });
+    } else if (data.data === null) {
+      data = null;
+    } else {
+      data = flatten(data);
+    }
+
+    for (const key in data) {
+      data[key] = normalize(data[key]);
+    }
+
+    return data;
+  }
+
+  return data;
+};
