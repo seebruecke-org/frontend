@@ -250,6 +250,21 @@ export default function Header({ metaItems, items }) {
                           onClick={() => setmoreIsOpen(false)}
                         />
                       </div>
+                      <div className="">
+                        <Link href="/" locale="de" key={`locale-switch-de`}>
+                          <a className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide">
+                            de
+                          </a>
+                        </Link>
+                        <span className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide">
+                        |
+                        </span>
+                        <Link href="/" locale="en" key={`locale-switch-en`}>
+                          <a className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide">
+                            EN
+                          </a>
+                        </Link>
+                      </div>
                     </div>
                   )}
                 </More>

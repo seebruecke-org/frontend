@@ -26,7 +26,7 @@ export default function TeaserSmall({ title, link, type = 'internal' }) {
         'hover:bg-black hover:text-white'
       )}
     >
-      <h2>
+      <h2 style={{hyphens: "auto"}}>
         <StrapiLink
           link={{
             ...link,

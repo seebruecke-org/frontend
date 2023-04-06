@@ -19,7 +19,7 @@ function Footer({ onDismiss }) {
       {location && location?.link ? (
         <Link href={location.link}>
           <a
-            className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800"
+            className="py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"
             onClick={onDismiss}
           >
             {t('header.gotoMyPlace')}
@@ -27,21 +27,21 @@ function Footer({ onDismiss }) {
         </Link>
       ) : (
         <button
-          className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800"
+          className="py-5 w-full text-center font-rubik text-xs font-bold uppercase border-r border-gray-600 hover:bg-white hover:text-gray-800"
           onClick={onDismiss}
         >
           {t('header.myPlace')}
         </button>
       )}
 
-      <Link href={`/${ts('search')}`}>
-        <a
-          className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"
-          onClick={onDismiss}
-        >
-          {t('header.search')}
-        </a>
-      </Link>
+      {/*<Link href={`/${ts('search')}`}>*/}
+      {/*  <a*/}
+      {/*    className="w-1/2 py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"*/}
+      {/*    onClick={onDismiss}*/}
+      {/*  >*/}
+      {/*    {t('header.search')}*/}
+      {/*  </a>*/}
+      {/*</Link>*/}
     </footer>
   );
 }
