@@ -17,7 +17,6 @@
     "dev": "next",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "start-storybook -p 9000 -c .storybook",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
@@ -96,8 +95,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
-    "@storybook/addon-viewport": "^6.4.12",
-    "@storybook/react": "^6.4.12",
     "babel-loader": "^8.2.3",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-preset-react-app": "^10.0.1",
