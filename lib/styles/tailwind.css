@@ -33,7 +33,9 @@ body {
 
 @layer base {
   /* Brezel */
-
+  a {
+    word-break: break-all;
+  }
   @font-face {
     font-display: swap;
     font-family: Brezel;
