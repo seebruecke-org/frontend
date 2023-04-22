@@ -36,6 +36,11 @@ body {
   a {
     word-break: break-all;
   }
+
+  header a {
+    word-break: keep-all !important;
+  }
+
   @font-face {
     font-display: swap;
     font-family: Brezel;
