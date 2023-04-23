@@ -33,12 +33,8 @@ body {
 
 @layer base {
   /* Brezel */
-  a {
-    word-break: break-all;
-  }
-
-  header a {
-    word-break: keep-all !important;
+  main a {
+    word-wrap: break-word;
   }
 
   @font-face {
