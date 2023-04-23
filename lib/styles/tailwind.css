@@ -33,8 +33,12 @@ body {
 
 @layer base {
   /* Brezel */
-  main a {
+  main a, main p {
     word-wrap: break-word;
+  }
+
+  html[lang="de"] main *{
+    hyphens: auto;
   }
 
   @font-face {
