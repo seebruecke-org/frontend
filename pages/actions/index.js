@@ -42,6 +42,7 @@ const MemoizedMap = memo(Map);
 
 export default function TakePartPage({ actions: defaultActions, page }) {
   const { t } = useTranslation();
+  const { t: ts } = useTranslation('slugs');
   const { t: tf } = useTranslation('format');
   const [filterValue, setFilterValue] = useState(null);
   const [actions, setActions] = useState(defaultActions);
@@ -70,12 +71,13 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             .map((key) => actions[key])
             .flat()
             .filter(({ coordinates }) => !!coordinates?.geometry)
-            .map(({ title, id, coordinates: { geometry } }) => ({
+            .map(({ title, id, slug, coordinates: { geometry } }) => ({
               type: 'Feature',
               properties: {
                 name: title,
                 id,
-                type: 'action'
+                type: 'action',
+                uri: `/${ts('actions')}/${slug}`
               },
               geometry: {
                 ...geometry,
