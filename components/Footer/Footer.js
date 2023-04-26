@@ -94,14 +94,7 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
             </p>
 
             <div className="flex flex-col space-y-6 md:space-y-6 pt-6 md:pt-10">
-              <a
-                href="/mach-mit/oesterreich"
-                className="font-rubik text-xs font-rubik-features hover:underline"
-              >
-                {t('footer.austria')}
-              </a>
-
-              <a
+remo              <a
                 href="https://seebruecke.ch"
                 className="font-rubik text-xs font-rubik-features hover:underline"
               >
