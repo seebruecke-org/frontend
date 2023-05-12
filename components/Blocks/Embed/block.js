@@ -1,6 +1,6 @@
 export const FRAGMENT = `
   ... on ComponentSharedBlocksEmbed {
-    code
+    embed_data
   }
 `;
 
