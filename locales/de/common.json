@@ -90,7 +90,8 @@
     "title": "Zum Aktivieren des {{type}}s bitte auf den Link klicken.",
     "description": "Durch das Aktivieren werden Daten an <a class='underline' href='{{provider_url}}'>{{provider_name}}</a> übermittelt.",
     "button": "Inhalt anzeigen",
-    "checkbox": "Auswahl merken"
+    "checkbox": "Auswahl merken",
+    "youtube": "Inhalt von YouTube. Durch aktivieren werden Daten an Youtube vermittelt."
   },
 
   "logo": {

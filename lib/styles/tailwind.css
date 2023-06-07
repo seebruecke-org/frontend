@@ -106,3 +106,10 @@ body {
 
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+.embed iframe {
+  width: 100%;
+  aspect-ratio: var(--aspect-ratio, 16/9);
+  height: auto;
+}
