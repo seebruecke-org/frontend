@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
+import youtube from "@/components/Embed/providers/youtube";
 
 
 export default function Embed({ embed_data }) {
+  const data = JSON.parse(embed_data);
+  return youtube(data);
+
+}
+function Embed_old({ embed_data }) {
   const { t } = useTranslation("common");
 
   const data = JSON.parse(embed_data);
@@ -188,7 +194,8 @@ export default function Embed({ embed_data }) {
     });
   }
 
-  return (<div className="Embed" dangerouslySetInnerHTML={{ __html: embedHTML }}>
-
-    </div>);
+  return youtube(embed_data);
+  // return (<div className="Embed" dangerouslySetInnerHTML={{ __html: embedHTML }}>
+  //
+  //   </div>);
 }
