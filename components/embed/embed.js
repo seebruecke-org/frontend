@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import Youtube from "@/components/Embed/providers/youtube";
 import Twitter from "@/components/embed/providers/twitter";
+import Default from "@/components/embed/providers/default";
 
 
 export default function Embed({ embed_data }) {
@@ -13,9 +14,9 @@ export default function Embed({ embed_data }) {
 
 
   return (<div className="embed">
-    {comp({embed_data:data})}
+    <Default embed_data={data}/>
   </div>)
-
+// {comp({embed_data:data})}
 }
 function Embed_old({ embed_data }) {
   const { t } = useTranslation("common");
