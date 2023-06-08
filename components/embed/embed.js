@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import Youtube from "@/components/Embed/providers/youtube";
+import Twitter from "@/components/embed/providers/twitter";
 
 
 export default function Embed({ embed_data }) {
   const data = JSON.parse(embed_data);
+  const comp = {
+    'YouTube': Youtube,
+    'Twitter': Twitter
+  }[data.provider_name]
+
+
   return (<div className="embed">
-    <Youtube embed_data={data}/>
+    {comp({embed_data:data})}
   </div>)
 
 }

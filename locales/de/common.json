@@ -91,7 +91,8 @@
     "description": "Durch das Aktivieren werden Daten an <a class='underline' href='{{provider_url}}'>{{provider_name}}</a> übermittelt.",
     "button": "Inhalt anzeigen",
     "checkbox": "Auswahl merken",
-    "youtube": "Inhalt von YouTube. Durch aktivieren werden Daten an Youtube vermittelt."
+    "youtube": "Inhalt von YouTube. Durch aktivieren werden Daten an Youtube vermittelt.",
+    "twitter": "Inhalt von Twitter. Durch aktivieren werden Daten an Twitter vermittelt."
   },
 
   "logo": {

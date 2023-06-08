@@ -84,6 +84,7 @@
     "serialize-error": "^9.0.0",
     "sharp": "^0.29.3",
     "slugify": "^1.6.5",
+    "strip-js": "^1.2.0",
     "swiper": "^6.8.4",
     "tailwindcss": "^3.0.13",
     "truncate": "^3.0.0",

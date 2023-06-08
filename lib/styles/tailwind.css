@@ -113,3 +113,6 @@ body {
   aspect-ratio: var(--aspect-ratio, 16/9);
   height: auto;
 }
+.whitespace-no-wrap{
+  white-space: nowrap;
+}
