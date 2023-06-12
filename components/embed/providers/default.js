@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 
-export default function Default({ embed_data }) {
+export default function Default(embed_data) {
   const { t } = useTranslation();
 
   const [active, setActive] = useState(false);

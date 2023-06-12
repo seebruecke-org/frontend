@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import stripJs from "strip-js";
 
-export default function Twitter({ embed_data }) {
+export default function Twitter(embed_data ) {
   const { t } = useTranslation();
   const aspectRatio = embed_data.width / embed_data.height;
 

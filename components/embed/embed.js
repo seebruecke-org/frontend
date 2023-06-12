@@ -7,17 +7,17 @@ import Default from "@/components/embed/providers/default";
 
 export default function Embed({ embed_data }) {
   const data = JSON.parse(embed_data);
-  const comp = {
+  let comp = {
     'YouTube': Youtube,
     'Twitter': Twitter
-  }[data.provider_name]
-
+  }[data.provider_name] || Default
 
   return (<div className="embed">
-    <Default embed_data={data}/>
+    {comp(data)}
   </div>)
-// {comp({embed_data:data})}
 }
+
+
 function Embed_old({ embed_data }) {
   const { t } = useTranslation("common");
 
@@ -85,9 +85,9 @@ function Embed_old({ embed_data }) {
               ${titleText}
              </h2>
              <p class="block font-rubik text-small md:text-xs mt-5">
-               ${descriptionText} 
+               ${descriptionText}
              </p>
-             <a href="javascript:void(0);" 
+             <a href="javascript:void(0);"
                 class=" mt-10 font-rubik font-bold text-small md:text-base uppercase py-4 sm:py-5 md:py-6 px-7 sm:px-8 md:px-10 rounded-full inline-block text-center bg-white text-black hover:bg-black hover:text-white"
                 onclick="window._2ClickIframePrivacy.EnableContent('${type}'); return false;">
                   ${buttonText}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 
-export default function Youtube({ embed_data }) {
+export default function Youtube(embed_data) {
   const { t } = useTranslation();
   const aspectRatio = embed_data.width / embed_data.height;
 
