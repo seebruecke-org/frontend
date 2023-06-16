@@ -1,4 +1,4 @@
-import Embed from '@/components/Embed';
+import Embed from '@/components/embed';
 
 export default function EmbedBlock({ embed_data }) {
   return (
