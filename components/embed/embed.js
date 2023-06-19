@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
-import Youtube from "@/components/Embed/providers/youtube";
+import Youtube from "@/components/embed/providers/youtube";
 import Twitter from "@/components/embed/providers/twitter";
 import Default from "@/components/embed/providers/default";
 
