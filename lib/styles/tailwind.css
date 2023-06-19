@@ -108,7 +108,7 @@ body {
 @import 'tailwindcss/utilities';
 
 
-.embed iframe {
+.youtube-embed iframe {
   width: 100%;
   aspect-ratio: var(--aspect-ratio, 16/9);
   height: auto;

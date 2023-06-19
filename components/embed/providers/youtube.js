@@ -9,7 +9,7 @@ export default function Youtube(embed_data) {
 
   return (
     <div
-      className="embed embed-youtube bg-orange-800 text-white " style={{ "--aspect-ratio": aspectRatio }}>
+      className="youtube-embed embed-youtube bg-orange-800 text-white " style={{ "--aspect-ratio": aspectRatio }}>
       {active && (
         <div dangerouslySetInnerHTML={{ __html: embed_data.html }}></div>
       )}

@@ -3,13 +3,16 @@ import { useTranslation } from "next-i18next";
 import Youtube from "@/components/embed/providers/youtube";
 import Twitter from "@/components/embed/providers/twitter";
 import Default from "@/components/embed/providers/default";
+import Instagram from "@/components/embed/providers/instagram";
 
 
 export default function Embed({ embed_data }) {
   const data = JSON.parse(embed_data);
+  console.log(data);
   let comp = {
     'YouTube': Youtube,
-    'Twitter': Twitter
+    'Twitter': Twitter,
+    'Instagram': Instagram
   }[data.provider_name] || Default
 
   return (<div className="embed">
