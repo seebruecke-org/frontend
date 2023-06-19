@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { InstagramEmbed } from "react-social-media-embed";
-import { Helmet } from "react-helmet";
 
 export default function Instagram(embed_data) {
   const { t } = useTranslation();
