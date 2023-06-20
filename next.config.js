@@ -109,7 +109,7 @@ async function fetchAllRedirects() {
       };
 
       if (!acc.has(source)) {
-      //   console.log('Redirect:', source, destination);
+         console.log('Redirect:', source, destination);
 
         acc.set(source, redirect);
       } else {
