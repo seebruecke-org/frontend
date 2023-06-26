@@ -20,7 +20,7 @@ export default function Instagram(embed_data) {
           className="text-white bg-orange-800">
           <div className="px-8 md:px-16 md:py-16">
             <h2 className="block font-brezel text-xl italic font-bold leading-none mb-10">
-              {t("embed.default.title", { provider: "xx" })}
+              {t("embed.default.title", { provider: "Instagram" })}
             </h2>
             <p className="font-brezel text-base md:text-medium leading-tight
       mt-5  mx-2 sm:mx-4 md:mx-0 z-10">
