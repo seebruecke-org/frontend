@@ -113,6 +113,11 @@ body {
   aspect-ratio: var(--aspect-ratio, 16/9);
   height: auto;
 }
+
+.instagram-embed {
+  max-width: 50rem;
+}
+
 .whitespace-no-wrap{
   white-space: nowrap;
 }
