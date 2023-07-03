@@ -15,7 +15,7 @@ export default function Embed({ embed_data }) {
     'Instagram': Instagram
   }[data.provider_name] || Default
 
-  return (<div className="embed">
+  return (<div>
     {comp(data)}
   </div>)
 }
