@@ -88,14 +88,16 @@
   },
   "embed": {
     "default": {
-      "title": "{{provider}}-Inhalte zulassen?",
-      "description": "Wir bitten Sie um Ihre Zustimmung, bevor etwas geladen wird, da möglicherweise Cookies und andere Technologien verwendet werden.",
-      "button": "Laden"
+      "title": "Inhalt von {{provider}}",
+      "description": "Durch Anzeigen werden Daten an {{provider}} vermittelt.",
+      "button": "Anzeigen"
     },
     "button": "Inhalt anzeigen",
     "checkbox": "Auswahl merken",
-    "youtube": "Inhalt von YouTube. Durch aktivieren werden Daten an Youtube vermittelt.",
-    "twitter": "Inhalt von Twitter. Durch aktivieren werden Daten an Twitter vermittelt."
+
+    "youtube": "Inhalt von YouTube. Durch Abspielen werden Daten an Youtube vermittelt.",
+
+    "twitter": "Inhalt von Twitter. Durch Laden werden Daten an Twitter vermittelt."
   },
 
   "logo": {
