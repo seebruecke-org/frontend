@@ -139,6 +139,10 @@ export default function Header({ metaItems, items }) {
     return url.endsWith(normalizedPagePath);
   }
 
+
+  const router = useRouter()
+
+
   return (
     <header className="bg-orange-800 text-white flex flex-row justify-center w-full">
       <div className="flex flex-row align-bottom max-w-wide w-full relative">
@@ -163,11 +167,15 @@ export default function Header({ metaItems, items }) {
         <nav className="flex flex-col w-full relative">
           <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-64 hidden md:flex md:mb-2 pt-5">
             {locales.map((locale) => (
-              <Link href="/" locale={locale} key={`locale-switch-${locale}`}>
-                <a className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2">
+                <a className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
+                   href="javascript:void(0);"
+                   onClick={
+                     () => router.push(router.asPath, router.asPath, { locale })
+                   }
+
+                >
                   {locale}
                 </a>
-              </Link>
             ))}
 
             <Bookmark />
@@ -250,20 +258,33 @@ export default function Header({ metaItems, items }) {
                           onClick={() => setmoreIsOpen(false)}
                         />
                       </div>
+
                       <div className="">
-                        <Link href="/" locale="de" key={`locale-switch-de`}>
-                          <a className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide">
-                            de
-                          </a>
-                        </Link>
+                        <a className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide"
+                           href="javascript:void(0);"
+                           onClick={
+                             () => router.push(router.asPath, router.asPath, { locale: "de" })
+                           }
+
+                        >
+                          de
+                        </a>
+
                         <span className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide">
                         |
                         </span>
-                        <Link href="/" locale="en" key={`locale-switch-en`}>
-                          <a className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide">
-                            EN
-                          </a>
-                        </Link>
+                        <a className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide"
+                           href="javascript:void(0);"
+                           onClick={
+                             () => router.push(router.asPath, router.asPath, { locale: "en" })
+                           }
+
+                        >
+                          en
+                        </a>
+
+
+
                       </div>
                     </div>
                   )}
