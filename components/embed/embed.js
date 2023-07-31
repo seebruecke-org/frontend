@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "next-i18next";
+import React from "react";
 import Youtube from "@/components/embed/providers/youtube";
 import Twitter from "@/components/embed/providers/twitter";
 import Default from "@/components/embed/providers/default";
