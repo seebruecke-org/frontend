@@ -5,6 +5,7 @@ import InstagramIcon from '@/public/icons/instagram-brands.svg';
 import Link from '@/components/Richtext/Link';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
+import MastodonIcon from '@/public/icons/mastodon-brands.svg';
 
 export default function ContactBlock({
   email,
@@ -12,7 +13,8 @@ export default function ContactBlock({
   twitter,
   instagram,
   facebook,
-  youtube
+  youtube,
+  mastodon,
 }) {
   return (
     <ul className="flex flex-col space-y-2 col-span-full md:col-start-3 md:col-span-10 py-20 px-8 md:px-0">
@@ -59,6 +61,14 @@ export default function ContactBlock({
           <NextLink href={youtube}>
             <a className="hover:text-orange-200">
               <YoutubeIcon className="w-12 md:w-16 h-auto" />
+            </a>
+          </NextLink>
+        )}
+
+        {mastodon && (
+          <NextLink href={mastodon}>
+            <a className="hover:text-orange-200">
+              <MastodonIcon className="w-12 md:w-16 h-auto" />
             </a>
           </NextLink>
         )}

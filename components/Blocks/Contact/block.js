@@ -7,6 +7,7 @@ export const FRAGMENT = `
 
     email
     telephone
+    mastodon
   }
 `;
 
