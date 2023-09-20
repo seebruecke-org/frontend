@@ -14,9 +14,11 @@ function getHumanRedableFileFormat(mimeType) {
 
 export default function MaterialBlock({
   mTitle,
-  items = [],
+  csbm_items: csbm_items = [],
   blockContext: { next, previous }
 }) {
+
+  console.log(mTitle);
   let marginTop = 'mt-20';
   let marginBottom = next && 'mb-20';
 
@@ -39,7 +41,7 @@ export default function MaterialBlock({
       <Heading level={2}>{mTitle}</Heading>
 
       <ul className="flex flex-col space-y-10 col-span-full md:col-start-3 md:col-span-9 px-8 md:px-0 mt-10">
-        {items.map(({ id, description, external_link, name, file }) => (
+        {csbm_items.map(({ id, description, external_link, name, file }) => (
           <li
             key={`material-item-${id}`}
             className="flex flex-col space-y-2 relative"
