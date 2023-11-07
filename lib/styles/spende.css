@@ -1,4 +1,4 @@
-.spenden-styles :root {
+.slug-spenden2023 :root {
   --orange: rgba(245, 85, 17, 1);
   --gelb: rgba(245, 181, 17, 1);
   --turkis: rgba(69, 238, 191, 1);
@@ -20,13 +20,13 @@
   descent-override: 11%;
   line-gap-override: 7%;
 }
-.spenden-styles .font-brezel, .spenden-styles .highlight h3, .spenden-styles .highlight .h3, .spenden-styles .highlight h1, .spenden-styles .highlight .h1 {
+.slug-spenden2023 .font-brezel, .slug-spenden2023 .highlight h3, .slug-spenden2023 .highlight .h3, .slug-spenden2023 .bg-orange-200 h3, .slug-spenden2023 .bg-orange-200 .h3, .slug-spenden2023 .highlight h1, .slug-spenden2023 .highlight .h1, .slug-spenden2023 .bg-orange-200 h1, .slug-spenden2023 .bg-orange-200 .h1 {
   font-face: "Brezel", "Adjusted Tahoma Fallback";
 }
-.spenden-styles .font-rubik, .spenden-styles .highlight h4, .spenden-styles .highlight .h4, .spenden-styles .highlight p, .spenden-styles .highlight .p, .spenden-styles p, .spenden-styles .p, .spenden-styles h2, .spenden-styles .h2 {
+.slug-spenden2023 .font-rubik, .slug-spenden2023 .highlight h4, .slug-spenden2023 .highlight .h4, .slug-spenden2023 .highlight a.block, .slug-spenden2023 .bg-orange-200 h4, .slug-spenden2023 .bg-orange-200 .h4, .slug-spenden2023 .bg-orange-200 a.block, .slug-spenden2023 .highlight p, .slug-spenden2023 .highlight .p, .slug-spenden2023 .bg-orange-200 p, .slug-spenden2023 .bg-orange-200 .p, .slug-spenden2023 p, .slug-spenden2023 .p, .slug-spenden2023 h2, .slug-spenden2023 .h2 {
   font-family: "Rubik", "Adjusted Arial Fallback";
 }
-.spenden-styles h2, .spenden-styles .h2 {
+.slug-spenden2023 h2, .slug-spenden2023 .h2 {
   font-size: clamp(2.8rem, 1.364vw + 2.364rem, 4rem);
   font-weight: 700;
   font-style: normal;
@@ -35,7 +35,7 @@
   text-decoration: none;
   text-transform: none;
 }
-.spenden-styles p, .spenden-styles .p {
+.slug-spenden2023 p, .slug-spenden2023 .p {
   font-size: clamp(1.4rem, 0.682vw + 1.182rem, 2rem);
   font-weight: 400;
   font-style: normal;
@@ -43,7 +43,7 @@
   text-decoration: none;
   text-transform: none;
 }
-.spenden-styles .highlight h1, .spenden-styles .highlight .h1 {
+.slug-spenden2023 .highlight h1, .slug-spenden2023 .highlight .h1, .slug-spenden2023 .bg-orange-200 h1, .slug-spenden2023 .bg-orange-200 .h1 {
   font-size: clamp(2.8rem, 3.636vw + 1.636rem, 6rem);
   font-weight: 700;
   font-style: italic;
@@ -52,7 +52,7 @@
   text-decoration: none;
   text-transform: none;
 }
-.spenden-styles .highlight h3, .spenden-styles .highlight .h3 {
+.slug-spenden2023 .highlight h3, .slug-spenden2023 .highlight .h3, .slug-spenden2023 .bg-orange-200 h3, .slug-spenden2023 .bg-orange-200 .h3 {
   font-size: clamp(2.1rem, 1.023vw + 1.773rem, 3rem);
   font-weight: 700;
   font-style: italic;
@@ -61,7 +61,7 @@
   text-decoration: none;
   text-transform: none;
 }
-.spenden-styles .highlight p, .spenden-styles .highlight .p {
+.slug-spenden2023 .highlight p, .slug-spenden2023 .highlight .p, .slug-spenden2023 .bg-orange-200 p, .slug-spenden2023 .bg-orange-200 .p {
   font-size: clamp(1.4rem, 0.227vw + 1.327rem, 1.6rem);
   font-weight: 400;
   font-style: normal;
@@ -69,7 +69,7 @@
   text-decoration: none;
   text-transform: none;
 }
-.spenden-styles .highlight h4, .spenden-styles .highlight .h4 {
+.slug-spenden2023 .highlight h4, .slug-spenden2023 .highlight .h4, .slug-spenden2023 .highlight a.block, .slug-spenden2023 .bg-orange-200 h4, .slug-spenden2023 .bg-orange-200 .h4, .slug-spenden2023 .bg-orange-200 a.block {
   font-size: clamp(1.4rem, 0.682vw + 1.182rem, 2rem);
   font-weight: 700;
   font-style: normal;
@@ -77,6 +77,38 @@
   letter-spacing: -0.01em;
   text-decoration: none;
   text-transform: uppercase;
+}
+.slug-spenden2023 .stage.stage-medium {
+  max-width: 821px;
+  margin: auto;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .slug-spenden2023 .stage.stage-medium {
+    grid-column-start: 3 !important;
+    grid-column: span 10/span 10 !important;
+  }
+}
+.slug-spenden2023 .stage.stage-medium .stage-image {
+  flex: 1 0 auto;
+  height: auto;
+  max-width: 43rem !important;
+}
+.slug-spenden2023 .stage.stage-medium .stage-image img, .slug-spenden2023 .stage.stage-medium .stage-image span {
+  aspect-ratio: 1;
+  object-fit: cover;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-width: initial !important;
+  min-height: initial !important;
+  position: relative !important;
+}
+.slug-spenden2023 .stage.stage-medium .stage-text {
+  flex: 1 0 auto;
+  margin: 0;
+  top: auto;
+  left: auto;
 }
 
 /*# sourceMappingURL=spende.css.map */

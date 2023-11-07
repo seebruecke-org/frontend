@@ -1,4 +1,4 @@
-.spenden-styles {
+.slug-spenden2023 {
   :root {
     --orange: rgba(245, 85, 17, 1);
     --gelb: rgba(245, 181, 17, 1);
@@ -55,7 +55,7 @@
     text-transform: none;
   }
 
-  .highlight {
+  .highlight, .bg-orange-200 {
     h1, .h1 {
       @extend .font-brezel;
       font-size: clamp(2.8rem, 3.636vw + 1.636rem, 6rem);
@@ -88,7 +88,7 @@
       text-transform: none;
     }
 
-    h4, .h4 {
+    h4, .h4, a.block {
       @extend .font-rubik;
       font-size: clamp(1.4rem, 0.682vw + 1.182rem, 2rem);
       font-weight: 700;
