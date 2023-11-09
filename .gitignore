@@ -9,3 +9,11 @@ public/sw.js.map
 public/sw.js
 public/sw.map
 /.idea
+/xx.idea/.gitignore
+/xx.idea/codeStyles/codeStyleConfig.xml
+/xx.idea/frontendv4.iml
+/xx.idea/jsLibraryMappings.xml
+/xx.idea/modules.xml
+/xx.idea/codeStyles/Project.xml
+/xx.idea/vcs.xml
+/xx.idea/watcherTasks.xml
