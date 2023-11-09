@@ -63,9 +63,7 @@ export default function TeaserSmall({ title, text, link, type = 'internal' }) {
 
           <p>{text}</p>
         </div>
-
-        )}
-
+      )}
     </>
   );
 }
