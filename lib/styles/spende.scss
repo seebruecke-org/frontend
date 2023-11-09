@@ -1,10 +1,14 @@
 .slug-spenden2023 {
-  :root {
-    --orange: rgba(245, 85, 17, 1);
-    --gelb: rgba(245, 181, 17, 1);
-    --turkis: rgba(69, 238, 191, 1);
-    --white: rgba(255, 255, 255, 1);
+  --orange: rgba(245, 85, 17, 1);
+  --gelb: rgba(245, 181, 17, 1);
+  --turkis: rgba(69, 238, 191, 1);
+  --white: rgba(255, 255, 255, 1);
+  --grid-primary: calc(48vw - 60rem) repeat(12, 1fr) calc(48vw - 60rem);
+
+  html[lang="de"]  & * {
+    hyphens: manual;
   }
+
 
   @font-face {
     font-family: 'Adjusted Arial Fallback';
@@ -45,7 +49,7 @@
     text-transform: none;
   }
 
-  p, .p {
+  p, .p, .p-big.p-big, a {
     @extend .font-rubik;
     font-size: clamp(1.4rem, 0.682vw + 1.182rem, 2rem);
     font-weight: 400;
@@ -55,10 +59,23 @@
     text-transform: none;
   }
 
-  .highlight, .bg-orange-200 {
+  //Brighter page
+  @media (min-width: 768px) {
+    .grid.grid-layout-primary {
+
+      & > .md\:col-start-3 {
+
+        grid-column-start: 2;
+      }
+    }
+
+
+  }
+
+  .highlight, .bg-orange-200, .teaser-small {
     h1, .h1 {
       @extend .font-brezel;
-      font-size: clamp(2.8rem, 3.636vw + 1.636rem, 6rem);
+      font-size: clamp(2.8rem, 3.636vw + 1.636rem, 4rem);
       font-weight: 700;
       font-style: italic;
       line-height: 100%;
@@ -67,7 +84,7 @@
       text-transform: none;
     }
 
-    h3, .h3 {
+    h3, .h3, h2, .h2 {
       @extend .font-brezel;
       font-size: clamp(2.1rem, 1.023vw + 1.773rem, 3rem);
       font-weight: 700;
@@ -98,5 +115,11 @@
       text-decoration: none;
       text-transform: uppercase;
     }
+
+
+  }
+
+  .teaser-small{
+
   }
 }

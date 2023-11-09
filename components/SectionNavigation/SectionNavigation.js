@@ -167,7 +167,7 @@ export default forwardRef(function SectionNavigation(
       className={clsx(
         "bg-orange-200",
         primaryGrid && "grid grid-layout-primary",
-        "py-6 sm:py-7 md:py-8 relative -top-px",
+        "py-6 sm:py-7 md:py-8 relative",
         styles.navigation,
         className
       )}

@@ -5,6 +5,7 @@ export const FRAGMENT = `
     title
     kicker
     intro
+    layout
     image {
       ${FRAGMENT_MEDIA}
     }
