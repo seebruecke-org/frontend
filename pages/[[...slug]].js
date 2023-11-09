@@ -15,7 +15,7 @@ import SEO from '@/components/SEO';
 
 const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'));
 
-export default function GenericPage({ page }) {
+export default function GenericPage({ page, slugs }) {
   const { t } = useTranslation();
   const { t: tn } = useTranslation('news');
   const { t: ts } = useTranslation('slugs');
@@ -25,6 +25,7 @@ export default function GenericPage({ page }) {
     <PageBody
       firstBlock={getFirstBlockName(page?.content)}
       lastBlock={getLastBlockName(page?.content)}
+      className={slugs?.map(s => 'slug-'+s).join(' ')}
     >
       <SEO title={page?.title} metadata={page?.metadata} />
 
@@ -116,6 +117,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
     props: {
       ...data,
       ...globalData,
+      ...{slugs: slug || ['']},
       initialState
     }
   };

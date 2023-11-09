@@ -58,7 +58,8 @@ export default function NewsEntryPage({
 
 export async function getStaticPaths({ defaultLocale }) {
   const client = createClient();
-  const paths = await fetchAllNewsPaths(defaultLocale, { client });
+  const paths = [];
+  //await fetchAllNewsPaths(defaultLocale, { client });
 
   return {
     fallback: true, paths

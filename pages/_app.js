@@ -10,6 +10,7 @@ import { useCreateStore, Provider } from '@/lib/store/zustand';
 import Layout from '@/components/Layout';
 
 import '@/styles/tailwind.css';
+import '@/styles/spende.css';
 import 'swiper/swiper-bundle.css';
 
 function SBApp({ Component, pageProps = {} }) {

@@ -1,0 +1,91 @@
+.slug-spenden2023 {
+  --orange: rgba(245, 85, 17, 1);
+  --gelb: rgba(245, 181, 17, 1);
+  --turkis: rgba(69, 238, 191, 1);
+  --white: rgba(255, 255, 255, 1);
+  --grid-primary: calc(48vw - 60rem) repeat(12, 1fr) calc(48vw - 60rem);
+}
+html[lang=de] .slug-spenden2023 * {
+  hyphens: manual;
+}
+@font-face {
+  font-family: "Adjusted Arial Fallback";
+  src: local(Arial);
+  size-adjust: 105%;
+  ascent-override: 91%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Adjusted Tahoma Fallback";
+  src: local(Tahoma);
+  size-adjust: 97%;
+  ascent-override: 100%;
+  descent-override: 11%;
+  line-gap-override: 7%;
+}
+.slug-spenden2023 .font-brezel, .slug-spenden2023 .highlight h3, .slug-spenden2023 .highlight .h3, .slug-spenden2023 .highlight h2, .slug-spenden2023 .highlight .h2, .slug-spenden2023 .bg-orange-200 h3, .slug-spenden2023 .bg-orange-200 .h3, .slug-spenden2023 .bg-orange-200 h2, .slug-spenden2023 .bg-orange-200 .h2, .slug-spenden2023 .teaser-small h3, .slug-spenden2023 .teaser-small .h3, .slug-spenden2023 .teaser-small h2, .slug-spenden2023 .teaser-small .h2, .slug-spenden2023 .highlight h1, .slug-spenden2023 .highlight .h1, .slug-spenden2023 .bg-orange-200 h1, .slug-spenden2023 .bg-orange-200 .h1, .slug-spenden2023 .teaser-small h1, .slug-spenden2023 .teaser-small .h1 {
+  font-face: "Brezel", "Adjusted Tahoma Fallback";
+}
+.slug-spenden2023 .font-rubik, .slug-spenden2023 .highlight h4, .slug-spenden2023 .highlight .h4, .slug-spenden2023 .highlight a.block, .slug-spenden2023 .bg-orange-200 h4, .slug-spenden2023 .bg-orange-200 .h4, .slug-spenden2023 .bg-orange-200 a.block, .slug-spenden2023 .teaser-small h4, .slug-spenden2023 .teaser-small .h4, .slug-spenden2023 .teaser-small a.block, .slug-spenden2023 .highlight p, .slug-spenden2023 .highlight .p, .slug-spenden2023 .bg-orange-200 p, .slug-spenden2023 .bg-orange-200 .p, .slug-spenden2023 .teaser-small p, .slug-spenden2023 .teaser-small .p, .slug-spenden2023 p, .slug-spenden2023 .p, .slug-spenden2023 .p-big.p-big, .slug-spenden2023 a, .slug-spenden2023 h2, .slug-spenden2023 .h2 {
+  font-family: "Rubik", "Adjusted Arial Fallback";
+}
+.slug-spenden2023 h2, .slug-spenden2023 .h2 {
+  font-size: clamp(2.8rem, 1.364vw + 2.364rem, 4rem);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 130%;
+  letter-spacing: -1px;
+  text-decoration: none;
+  text-transform: none;
+}
+.slug-spenden2023 p, .slug-spenden2023 .p, .slug-spenden2023 .p-big.p-big, .slug-spenden2023 a {
+  font-size: clamp(1.4rem, 0.682vw + 1.182rem, 2rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 150%;
+  text-decoration: none;
+  text-transform: none;
+}
+@media (min-width: 768px) {
+  .slug-spenden2023 .grid.grid-layout-primary > .md\:col-start-3 {
+    grid-column-start: 2;
+  }
+}
+.slug-spenden2023 .highlight h1, .slug-spenden2023 .highlight .h1, .slug-spenden2023 .bg-orange-200 h1, .slug-spenden2023 .bg-orange-200 .h1, .slug-spenden2023 .teaser-small h1, .slug-spenden2023 .teaser-small .h1 {
+  font-size: clamp(2.8rem, 3.636vw + 1.636rem, 4rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 100%;
+  letter-spacing: -0.018em;
+  text-decoration: none;
+  text-transform: none;
+}
+.slug-spenden2023 .highlight h3, .slug-spenden2023 .highlight .h3, .slug-spenden2023 .highlight h2, .slug-spenden2023 .highlight .h2, .slug-spenden2023 .bg-orange-200 h3, .slug-spenden2023 .bg-orange-200 .h3, .slug-spenden2023 .bg-orange-200 h2, .slug-spenden2023 .bg-orange-200 .h2, .slug-spenden2023 .teaser-small h3, .slug-spenden2023 .teaser-small .h3, .slug-spenden2023 .teaser-small h2, .slug-spenden2023 .teaser-small .h2 {
+  font-size: clamp(2.1rem, 1.023vw + 1.773rem, 3rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  text-transform: none;
+}
+.slug-spenden2023 .highlight p, .slug-spenden2023 .highlight .p, .slug-spenden2023 .bg-orange-200 p, .slug-spenden2023 .bg-orange-200 .p, .slug-spenden2023 .teaser-small p, .slug-spenden2023 .teaser-small .p {
+  font-size: clamp(1.4rem, 0.227vw + 1.327rem, 1.6rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 150%;
+  text-decoration: none;
+  text-transform: none;
+}
+.slug-spenden2023 .highlight h4, .slug-spenden2023 .highlight .h4, .slug-spenden2023 .highlight a.block, .slug-spenden2023 .bg-orange-200 h4, .slug-spenden2023 .bg-orange-200 .h4, .slug-spenden2023 .bg-orange-200 a.block, .slug-spenden2023 .teaser-small h4, .slug-spenden2023 .teaser-small .h4, .slug-spenden2023 .teaser-small a.block {
+  font-size: clamp(1.4rem, 0.682vw + 1.182rem, 2rem);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 30px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=spende.css.map */

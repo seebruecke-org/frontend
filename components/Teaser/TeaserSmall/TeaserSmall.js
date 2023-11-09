@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import StrapiLink from '@/components/StrapiLink';
 
-export default function TeaserSmall({ title, link, type = 'internal' }) {
+export default function TeaserSmall({ title, text, link, type = 'internal' }) {
   let background = '';
 
   switch (type) {
@@ -19,33 +19,51 @@ export default function TeaserSmall({ title, link, type = 'internal' }) {
   }
 
   return (
-    <div
-      className={clsx(
-        'relative px-8 py-10 md:p-10 h-full flex flex-col',
-        background,
-        'hover:bg-black hover:text-white'
+    <>
+      {link && (
+        <div
+          className={clsx(
+            'relative px-8 py-10 md:p-10 h-full flex flex-col',
+            background,
+            'hover:bg-black hover:text-white'
+          )}
+        >
+          <h2 style={{hyphens: "auto"}}>
+            <StrapiLink
+              link={{
+                ...link,
+                label: title
+              }}
+              className="block font-brezel text-xl italic font-bold leading-none mb-10"
+            />
+          </h2>
+
+          <StrapiLink
+            link={link}
+            className="justify-end mt-auto text-small font-rubik"
+          />
+
+          <StrapiLink
+            link={link}
+            className="absolute top-0 left-0 w-full h-full opacity-0"
+            aria-hidden="true"
+          />
+        </div>
       )}
-    >
-      <h2 style={{hyphens: "auto"}}>
-        <StrapiLink
-          link={{
-            ...link,
-            label: title
-          }}
-          className="block font-brezel text-xl italic font-bold leading-none mb-10"
-        />
-      </h2>
+      {!link && (
+        <div
+          className={clsx(
+            'relative px-8 py-10 md:p-10 h-full flex flex-col',
+            background
+          )}
+        >
+          <h2 className="pb-8" style={{ hyphens: 'auto' }}>
+            {title}
+          </h2>
 
-      <StrapiLink
-        link={link}
-        className="justify-end mt-auto text-small font-rubik"
-      />
-
-      <StrapiLink
-        link={link}
-        className="absolute top-0 left-0 w-full h-full opacity-0"
-        aria-hidden="true"
-      />
-    </div>
+          <p>{text}</p>
+        </div>
+      )}
+    </>
   );
 }
