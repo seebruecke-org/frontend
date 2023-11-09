@@ -54,8 +54,7 @@ export default function TeaserSmall({ title, text, link, type = 'internal' }) {
         <div
           className={clsx(
             'relative px-8 py-10 md:p-10 h-full flex flex-col',
-            background,
-            'hover:bg-black hover:text-white'
+            background
           )}
         >
           <h2 className="pb-8" style={{ hyphens: 'auto' }}>
