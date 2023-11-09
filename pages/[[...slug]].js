@@ -117,7 +117,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
     props: {
       ...data,
       ...globalData,
-      ...{slugs: slug},
+      ...{slugs: slug || ['']},
       initialState
     }
   };
