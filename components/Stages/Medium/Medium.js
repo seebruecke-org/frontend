@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import Heading from '@/components/Heading';
 
 import * as styles from './medium.module.css';
+import Richtext from "@/components/Richtext";
 
 const Bookmark = dynamic(() => import('@/components/Bookmark'));
 const Media = dynamic(() => import('@/components/Media'));
@@ -46,9 +47,7 @@ export default forwardRef(function StageMedium(
             </Heading>
 
             {intro && (
-              <p className="p-big ">
-                {intro}
-              </p>
+              <Richtext content={intro} className="p-big"/>
             )}
 
             {allowBookmark && <Bookmark name={title} link={asPath}/>}

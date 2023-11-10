@@ -87,5 +87,8 @@ html[lang=de] .slug-spenden2023 * {
   text-decoration: none;
   text-transform: uppercase;
 }
+.slug-spenden2023 p + * {
+  margin-top: 1em;
+}
 
 /*# sourceMappingURL=spende.css.map */
