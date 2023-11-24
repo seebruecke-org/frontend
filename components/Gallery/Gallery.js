@@ -45,7 +45,7 @@ export default function Gallery({ items, layout, priority = false }) {
 
 function GalleryCompact({items, priority = false}) {
   return (
-    <div className="col-span-full md:col-start-3 md:col-span-9 space-y-10 mb-5 md:mb-10 mt-5 md:mt-10">
+    <div className="col-span-full md:col-start-2 md:col-span-12 py-10 md:py-24 px-8 md:px-0">
       <div className="galery galery-compact gap-8 grid grid-flow-col">
         {items.map((item, index) => (
           // eslint-disable-next-line react/jsx-key
