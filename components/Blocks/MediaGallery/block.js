@@ -17,6 +17,7 @@ async function sideloadData({ csbmg_items }) {
 
 export const FRAGMENT = `
   ... on ComponentSharedBlocksMediaGallery {
+    gallery_layout: layout,
     csbmg_items: items {
       ${FRAGMENT_MEDIA}
     }

@@ -1,4 +1,6 @@
 @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
   --grid-primary: calc(50vw - 60rem) repeat(12, 1fr) calc(50vw - 60rem);
@@ -104,8 +106,6 @@ body {
   }
 }
 
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
 
 .youtube-embed iframe {

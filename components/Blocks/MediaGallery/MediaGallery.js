@@ -1,14 +1,10 @@
 import Gallery from '@/components/Gallery';
 
-export default function MediaGallery({ csbmg_items, blockContext: { index } }) {
+export default function MediaGallery({ csbmg_items, gallery_layout, blockContext: { index } }) {
   let items = csbmg_items;
   if (!items) {
     return null;
   }
 
-  return (
-    <div className="grid grid-layout-primary col-span-full my-10 md:my-20">
-      <Gallery items={items} priority={index < 3} />
-    </div>
-  );
+  return <Gallery items={items} priority={index < 3} layout={gallery_layout} />;
 }

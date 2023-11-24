@@ -1,6 +1,6 @@
-import SwiperCore, { Keyboard, Mousewheel, Navigation, A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
+import SwiperCore, {Keyboard, Mousewheel, Navigation, A11y} from 'swiper';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {useState} from 'react';
 import clsx from 'clsx';
 import Measure from 'react-measure';
 
@@ -34,19 +34,43 @@ export default function Gallery({ items, priority = false }) {
     return null;
   }
 
+  if (layout === 'Carousel') {
+    return GalleryCarousel({items, priority});
+  }
+
+  if (layout === 'Compact') {
+    return GalleryCompact({items, priority});
+  }
+}
+
+function GalleryCompact({items, priority = false}) {
+  return (
+    <div className="col-span-full md:col-start-3 md:col-span-9 space-y-10 mb-5 md:mb-10 mt-5 md:mt-10">
+      <div className="galery galery-compact gap-8 grid grid-flow-col">
+        {items.map((item, index) => (
+          // eslint-disable-next-line react/jsx-key
+          <Media image={item} priority={index < 3 && priority}/>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function GalleryCarousel({items, priority = false}) {
+
   const [offsetLeft, setOffsetLeft] = useState({});
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   return (
-    <>
+    <div className="grid grid-layout-primary col-span-full my-10 md:my-20">
       <Measure
         offset
-        onResize={({ offset: { left } }) => {
+        onResize={({offset: {left}}) => {
           setOffsetLeft(left);
         }}
       >
-        {({ measureRef }) => (
+        {({measureRef}) => (
           <div
             className="col-span-full md:col-start-3 md:col-span-10"
             ref={measureRef}
@@ -92,23 +116,23 @@ export default function Gallery({ items, priority = false }) {
           mousewheel={{
             forceToAxis: true
           }}
-          onSlideChange={({ activeIndex }) => {
+          onSlideChange={({activeIndex}) => {
             setCurrentSlideIndex(activeIndex);
           }}
           onSwiper={(swiper) => setSwiperInstance(swiper)}
         >
           {offsetLeft > 0 && (
-            <SwiperSlide style={{ width: `${offsetLeft - SLIDE_GAP}px` }} />
+            <SwiperSlide style={{width: `${offsetLeft - SLIDE_GAP}px`}}/>
           )}
 
           {items.map((item, index) => (
             // eslint-disable-next-line react/jsx-key
             <SwiperSlide className={styles.slide}>
-              <Media image={item} priority={index < 3 && priority} />
+              <Media image={item} priority={index < 3 && priority}/>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-    </>
+    </div>
   );
 }
