@@ -29,7 +29,7 @@ function ControlButton({ children, className = '', ...props }) {
   );
 }
 
-export default function Gallery({ items, priority = false }) {
+export default function Gallery({ items, layout, priority = false }) {
   if (!items) {
     return null;
   }
