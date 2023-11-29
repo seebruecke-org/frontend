@@ -1,9 +1,8 @@
-import {useTranslation} from 'next-i18next';
-import {useEffect, useRef} from 'react'
-
+import { useTranslation } from 'next-i18next';
+import { useEffect, useRef } from 'react';
 
 export default function Fundraisingbox({ scriptUrl }) {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const scriptRoot = useRef(); // gets assigned to a root node
   const script = `<script type='text/javascript' src=${scriptUrl} ></script>`;
@@ -21,7 +20,7 @@ export default function Fundraisingbox({ scriptUrl }) {
   return (
     <div>
       {/* This div is used by the FB to inject all it's content */}
-      <div id="fbIframeDiv" className="relative"/>
+      <div id="fbIframeDiv" className="relative" ref={scriptRoot} />
       <noscript>{t('fundraisingbox.activateJS')}</noscript>
 
       <a
