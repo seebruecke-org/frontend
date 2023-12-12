@@ -66,6 +66,75 @@ function getStaticRedirects() {
   ];
 }
 
+async function fetchCityRedirects() {
+  const generateURI = (city) => {
+    const {
+      slug,
+      is_city_state: isCityState,
+      federal_country: federalCountry
+    } = city;
+
+    const prefix = 'de/mach-mit';
+    const federalCountrySlug = federalCountry?.slug;
+    const countrySlug = federalCountry?.country?.slug;
+    let uri = `/${prefix}/${countrySlug}`;
+
+    if (isCityState) {
+      uri = `${uri}/${slug}`;
+    } else {
+      uri = `${uri}/${federalCountrySlug}/${slug}`;
+    }
+
+    return uri;
+  };
+
+  const client = createClient({
+    url: process.env.NEXT_PUBLIC_GRAPHQL_API
+  });
+  try {
+    let { cities } = await client
+      .query(
+        `
+    query AllCities {
+      cities(
+        locale: "de",
+        pagination: { pageSize: 100000 }
+      ) {data{
+      attributes{
+        slug
+        is_city_state
+
+
+        federal_country {data{attributes{
+          slug
+
+          country {data{attributes{
+            slug
+          }}}
+        }}}
+      }}}
+    }
+  `
+      )
+      .toPromise()
+      .then(({ data }) => data);
+
+    cities = normalize(cities);
+    const ret = cities.reduce((ret, v) => {
+      ret.push({
+        source: `/de/${v.slug}`,
+        destination: generateURI(v),
+        permanent: false,
+        locale: false
+      });
+      return ret;
+    }, []);
+    return ret;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+}
 async function fetchAllRedirects() {
   const client = createClient({
     url: process.env.NEXT_PUBLIC_GRAPHQL_API
@@ -109,7 +178,6 @@ async function fetchAllRedirects() {
       };
 
       if (!acc.has(source)) {
-         console.log('Redirect:', source, destination);
 
         acc.set(source, redirect);
       } else {
@@ -211,8 +279,9 @@ module.exports = withPlugins(
     async redirects() {
       const dynamicRedirects = await fetchAllRedirects();
       const staticRedirects = getStaticRedirects();
+      const cityRedirects = await fetchCityRedirects();
 
-      return [...staticRedirects, ...dynamicRedirects];
+      return [...staticRedirects, ...dynamicRedirects, ...cityRedirects];
     },
 
     webpack(config) {
@@ -241,16 +310,16 @@ module.exports = withPlugins(
 
 const normalize = (data) => {
   const isObject = (data) =>
-    Object.prototype.toString.call(data) === "[object Object]";
+    Object.prototype.toString.call(data) === '[object Object]';
   const isArray = (data) =>
-    Object.prototype.toString.call(data) === "[object Array]";
+    Object.prototype.toString.call(data) === '[object Array]';
 
   const flatten = (data) => {
     if (!data.attributes) return data;
 
-    let idret = {}
+    let idret = {};
     if (data.id) {
-      idret = {id: data.id}
+      idret = { id: data.id };
     }
     return {
       ...idret,
