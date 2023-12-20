@@ -9,7 +9,7 @@ import StrapiLink from '@/components/StrapiLink';
 import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
-import BlueskyIcon from '@/public/icons/bluesky.png';
+import BlueskyIcon from '@/public/icons/bluesky.svg';
 
 function SocialMedia({ className = '' }) {
   const { t } = useTranslation();
@@ -48,13 +48,7 @@ function SocialMedia({ className = '' }) {
         href="https://bsky.app/profile/seebruecke.bsky.social"
         aria-label={t('footer.social', { network: 'Bluesky' })}
       >
-        <Image
-          src={BlueskyIcon}
-          className="w-12 h-auto"
-          width={27}
-          height={27}
-          alt="Folge uns auf Bluesky"
-        />
+        <BlueskyIcon className="w-12 h-auto" />
       </a>
     </div>
   );

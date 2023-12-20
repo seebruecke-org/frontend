@@ -6,7 +6,7 @@ import Link from '@/components/Richtext/Link';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 import MastodonIcon from '@/public/icons/mastodon-brands.svg';
-import BlueskyIcon from '@/public/icons/bluesky.png';
+import BlueskyIcon from '@/public/icons/bluesky.svg';
 
 export default function ContactBlock({
   email,
@@ -76,7 +76,7 @@ export default function ContactBlock({
         )}
 
         {bluesky && (
-          <NextLink href={mastodon}>
+          <NextLink href={bluesky}>
             <a className="hover:text-orange-200">
               <BlueskyIcon className="w-12 md:w-16 h-auto" />
             </a>
