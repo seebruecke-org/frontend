@@ -6,6 +6,7 @@ import Link from '@/components/Richtext/Link';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
 import MastodonIcon from '@/public/icons/mastodon-brands.svg';
+import BlueskyIcon from '@/public/icons/bluesky.png';
 
 export default function ContactBlock({
   email,
@@ -15,6 +16,7 @@ export default function ContactBlock({
   facebook,
   youtube,
   mastodon,
+  bluesky
 }) {
   return (
     <ul className="flex flex-col space-y-2 col-span-full md:col-start-3 md:col-span-10 py-20 px-8 md:px-0">
@@ -72,6 +74,15 @@ export default function ContactBlock({
             </a>
           </NextLink>
         )}
+
+        {bluesky && (
+          <NextLink href={mastodon}>
+            <a className="hover:text-orange-200">
+              <BlueskyIcon className="w-12 md:w-16 h-auto" />
+            </a>
+          </NextLink>
+        )}
+
       </li>
     </ul>
   );
