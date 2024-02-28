@@ -178,7 +178,6 @@ export default function Header({ metaItems, items }) {
                 </a>
             ))}
 
-            <Bookmark />
 
             {metaItems &&
               metaItems.length > 0 &&

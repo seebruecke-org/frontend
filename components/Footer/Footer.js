@@ -81,15 +81,11 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
       <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
-        <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-3 flex-col space-y-8">
-          <SavedLocation />
-        </div>
-
-        <div className="md:col-start-4 md:col-span-3">
+        <div className=" md:col-span-3">
           <Menu {...itemsTakePart} />
         </div>
 
-        <div className="md:col-start-7 md:col-span-3">
+        <div className="md:col-start-4 md:col-span-3">
           <Menu {...itemsAbout} />
         </div>
 
@@ -110,7 +106,7 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
               </a>
             </div>
 
-            <SocialMedia className="md:hidden pt-20" />
+            <SocialMedia className=" pt-20" />
           </div>
         </div>
 
@@ -119,14 +115,13 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
             <nav className="flex space-x-10">
               {itemsMeta.items.map((item, index) => (
                 <StrapiLink
-                  className="font-rubik text-xs font-bold hover:underline"
+                  className="font-rubik text-xs  hover:underline"
                   key={`footer-meta-${index}`}
                   link={item}
                 />
               ))}
             </nav>
 
-            <SocialMedia className="hidden md:flex mr-72" />
           </div>
         )}
       </div>
