@@ -62,7 +62,8 @@ function getStaticRedirects() {
       destination: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/uploads/:path*`,
       permanent: true,
       locale: false
-    }
+    },
+
   ];
 }
 

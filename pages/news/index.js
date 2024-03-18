@@ -47,15 +47,18 @@ export async function getStaticProps({ locale }) {
     await fetchRecentNews({ locale }, locale, format, { client })
   ]);
 
+  const redirect =
+    locale === 'de' ? { redirect: { destination: '/aktuelles/seite/1' } } : {};
+
   logger.info({
     message: 'timing',
     locale,
     path: `${locale}/news/index`,
     time: getElapsed.seconds()
   });
-
   return {
     revalidate: 60 * 2,
+    ...redirect,
     props: {
       ...globalData,
       initialState,
