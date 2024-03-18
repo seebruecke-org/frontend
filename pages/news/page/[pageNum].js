@@ -13,6 +13,23 @@ import Pagination from '@/components/Pagination';
 import Link from 'next/link';
 import { getPage } from '@/lib/pages';
 
+export function paginatedNews(news, pagination, pageNum, locale) {
+  return <div className="grid grid-layout-primary">
+    <ul className="col-span-full pb-20 md:pb-40">
+      {news?.map((newsEntry, index) => (
+        <li key={newsEntry.id} className="grid grid-layout-primary">
+          <NewsTeaser index={index} {...newsEntry} />
+        </li>
+      ))}
+    </ul>
+    <Pagination
+      total={pagination?.pageCount}
+      current={pageNum}
+      linkMaker={localedLinkMaker(locale)}
+    />
+  </div>;
+}
+
 export default function NewsOverview({
   news,
   page,
@@ -22,22 +39,9 @@ export default function NewsOverview({
 }) {
   return (
     <PageBody firstBlock="Richtext">
-      <SEO title={page?.title} metadata={page?.metadata} />
+      <SEO title={page?.title} metadata={page?.metadata}/>
 
-      <div className="grid grid-layout-primary">
-        <ul className="col-span-full pb-20 md:pb-40">
-          {news?.map((newsEntry, index) => (
-            <li key={newsEntry.id} className="grid grid-layout-primary">
-              <NewsTeaser index={index} {...newsEntry} />
-            </li>
-          ))}
-        </ul>
-        <Pagination
-          total={pagination?.pageCount}
-          current={pageNum}
-          linkMaker={localedLinkMaker(locale)}
-        />
-      </div>
+      {paginatedNews(news, pagination, pageNum, locale)}
     </PageBody>
   );
 }
