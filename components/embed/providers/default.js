@@ -13,13 +13,13 @@ export default function Default(embed_data) {
         <div dangerouslySetInnerHTML={{ __html: embed_data.html }}></div>
       )}
       {!active && (
-        <div className="px-8 md:px-16 md:py-16">
+        <div className="px-8 py-8 md:px-16 md:py-16">
           <h2 className="block font-brezel text-xl italic font-bold leading-none mb-10">
             {t("embed.default.title", {provider: embed_data.provider_name})}
           </h2>
           <p className="font-brezel text-base md:text-medium leading-tight
       mt-5  mx-2 sm:mx-4 md:mx-0 z-10">
-            {t("embed.default.description")}
+            {t("embed.default.description", {provider: embed_data.provider_name})}
           </p>
           <button
             className="
