@@ -57,6 +57,7 @@ export async function getStaticPaths({ locales }) {
   const paths = await Promise.all(
     locales.map(async (locale) => {
       const pagePaths = await fetchPagePaths(locale, { client });
+      console.log({pagePaths});
       const slugs = await getAllSlugs(locale);
       return pagePaths
         .map((slug) => {

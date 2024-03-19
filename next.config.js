@@ -62,7 +62,8 @@ function getStaticRedirects() {
       destination: `${process.env.NEXT_PUBLIC_CMS_DOMAIN}/uploads/:path*`,
       permanent: true,
       locale: false
-    }
+    },
+
   ];
 }
 
@@ -199,6 +200,7 @@ function createRewrites(slugs, locale) {
     actions: ':slug',
     news: ':slug',
     'news/campaigns': ':slug',
+    'news/page': ':slug',
     press: ':slug'
   };
 
@@ -235,9 +237,9 @@ function createRewrites(slugs, locale) {
     })
     .flat();
 
-  // rewrites.forEach(({ source, destination }) =>
-  //   console.log('Rewrite:', source, destination)
-  // );
+  rewrites.forEach(({ source, destination }) =>
+    console.log('Rewrite:', source, destination)
+  );
 
   return rewrites;
 }
