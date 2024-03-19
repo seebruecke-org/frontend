@@ -16,7 +16,7 @@ export default function Instagram(embed_data) {
       )}
       {!active && (
         <div className="text-white bg-orange-800">
-          <div className="px-8 md:px-16 md:py-16">
+          <div className="px-8 py-8 md:px-16 md:py-16">
             <h2 className="block font-brezel text-xl italic font-bold leading-none mb-10">
               {t('embed.default.title', { provider: 'Instagram' })}
             </h2>
