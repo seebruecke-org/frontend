@@ -77,7 +77,7 @@ export default function More({ children, onDismiss = () => {} }) {
 
       {children}
 
-      <Footer onDismiss={onDismiss} />
+      {/*<Footer onDismiss={onDismiss} />*/}
     </div>
   );
 }
