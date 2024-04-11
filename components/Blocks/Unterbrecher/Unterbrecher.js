@@ -38,10 +38,10 @@ export default function Unterbrecher({
   return (
     <section
       className={clsx(
-        'flex flex-col relative z-10 md:flex-row md:items-center col-span-full',
+        'flex flex-col-reverse relative z-10 md:flex-row md:items-center col-span-full',
         !prevIsUntercher && 'pt-8 md:pt-24',
         !nextIsUnterbrecher && 'pb-8 md:pb-24',
-        !reversed && 'flex-col-reverse md:flex-row-reverse',
+        !reversed && 'md:flex-row-reverse',
         size === 'small' && 'md:col-start-3 md:col-span-9',
         size === 'large' && 'md:col-start-2 md:col-span-12'
       )}
@@ -51,7 +51,7 @@ export default function Unterbrecher({
           background,
           styles.contentContainer,
           'flex flex-col justify-center md:min-h-full w-auto md:w-2/4 px-8 md:px-16 py-16 md:py-32 mx-2 sm:mx-4 md:mx-0 z-10 relative',
-          !nextIsUnterbrecher && reversed ? '-mb-80 md:mb-0' : '-mt-80 md:mt-0'
+          !nextIsUnterbrecher && reversed ? '-mt-80 md:mb-0' : '-mt-80 md:mt-0'
         )}
       >
         <div
@@ -92,7 +92,7 @@ export default function Unterbrecher({
             'top-4 md:top-auto md:bottom-8 left-4 md:left-8',
           reversed &&
             !blockNameMatches(next, 'Unterbrecher') &&
-            'bottom-4 md:bottom-8 left-4 md:left-auto md:right-8'
+            'top-4 md:bottom-8 left-4 md:left-auto md:right-8'
         )}
       />
 
