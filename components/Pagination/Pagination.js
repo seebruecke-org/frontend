@@ -6,7 +6,6 @@ import ForwardImage from "./Forward.svg"
 import FastForwardImage from "./FastForward.svg"
 import BackwardImage from "./Backward.svg"
 import FastBackwardImage from "./FastBackward.svg"
-import PaginationButton from "@/components/Pagination/PaginationButton";
 
 export default function Pagination({total, current, urlMaker, locale}) {
 
