@@ -1,37 +1,38 @@
 import hirestime from 'hirestime';
 
 import BlockSwitch from '@/components/BlockSwitch';
-import NewsTeaser from '@/components/Teaser/NewsEntry';
 import SEO from '@/components/SEO';
 
 import { createClient } from '@/lib/api';
 import { query as queryGlobalData } from '@/lib/global';
-import { fetchRecentNews } from '@/lib/news';
+import { fetchPaginatedNews } from '@/lib/news';
 import { getPage } from '@/lib/pages';
 import { getSlugFromI18nNext } from '@/lib/slug';
 import logger from '@/lib/logger';
+import { paginatedPress } from './page/[pageNum]';
 
-export default function PressOverview({ news, page }) {
+export default function PressOverview({
+  news,
+  page,
+  pagination,
+  pageNum,
+  locale
+}) {
   return (
     <article>
       <SEO title={page?.title} metadata={page?.metadata} />
 
       <BlockSwitch blocks={page?.content} />
 
-      <div className="grid grid-layout-primary">
-        <ul className="col-span-full pb-20 md:pb-40">
-          {news.map((newsEntry) => (
-            <li key={newsEntry.id} className="grid grid-layout-primary">
-              <NewsTeaser {...newsEntry} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {paginatedPress(news, pagination, pageNum, locale)}
     </article>
   );
 }
 
 export async function getStaticProps({ locale }) {
+  const perPage = 10;
+  const pageNum = 0;
+
   const getElapsed = hirestime();
   const client = createClient();
   const { initialState, ...globalData } = await queryGlobalData(
@@ -41,12 +42,20 @@ export async function getStaticProps({ locale }) {
   );
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const pageSlug = getSlugFromI18nNext('press', locale, globalData);
-  const [page, news] = await Promise.all([
-    await getPage(pageSlug, null, locale, format, { client }),
-    await fetchRecentNews({ filter: 'pressrelease' }, locale, format, {
+  const page = await getPage(pageSlug, null, locale, format, { client });
+  const { news, meta } = await fetchPaginatedNews(
+    {
+      filter: 'pressrelease',
+      locale,
+      pageNum,
+      perPage
+    },
+    locale,
+    format,
+    {
       client
-    })
-  ]);
+    }
+  );
 
   logger.info({
     message: 'timing',
@@ -60,8 +69,11 @@ export async function getStaticProps({ locale }) {
     props: {
       ...globalData,
       initialState,
-      news,
-      page
+      news: await news,
+      page,
+      pageNum,
+      pagination: meta.pagination,
+      locale
     }
   };
 }

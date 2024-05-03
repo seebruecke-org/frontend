@@ -7,14 +7,14 @@ import FastForwardImage from "./FastForward.svg"
 import BackwardImage from "./Backward.svg"
 import FastBackwardImage from "./FastBackward.svg"
 
-export default function Pagination({total, current, urlMaker, locale}) {
+export default function Pagination({total, current, urlMaker, locale, bigStep=10}) {
 
   return <div className="col-span-full pb-20 md:pb-40">
     <div className="grid grid-layout-primary">
       <div className="col-span-full md:col-start-2 md:col-span-12">
         <ul className={styles.pagination}>
           <li>
-            <PaginationLink pageNum={current - 10} locale={locale} urlMaker={urlMaker} total={total}>
+            <PaginationLink pageNum={current - bigStep} locale={locale} urlMaker={urlMaker} total={total}>
               <FastBackwardImage/>
             </PaginationLink>
           </li>
@@ -24,7 +24,7 @@ export default function Pagination({total, current, urlMaker, locale}) {
             </PaginationLink>
           </li>
           <li className='font-rubik-features font-rubik text-small md:text-medium font-bold'>
-            {current+1} / {total}
+            {(current ?? 0) + 1} / {total ?? "-"}
           </li>
           <li>
             <PaginationLink pageNum={current + 1} locale={locale} urlMaker={urlMaker} total={total}>
@@ -32,7 +32,7 @@ export default function Pagination({total, current, urlMaker, locale}) {
             </PaginationLink>
           </li>
           <li>
-            <PaginationLink pageNum={current + 10} locale={locale} urlMaker={urlMaker} total={total}>
+            <PaginationLink pageNum={current + bigStep} locale={locale} urlMaker={urlMaker} total={total}>
               <FastForwardImage/>
             </PaginationLink>
           </li>

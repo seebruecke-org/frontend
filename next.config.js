@@ -201,7 +201,8 @@ function createRewrites(slugs, locale) {
     news: ':slug',
     'news/campaigns': ':slug',
     'news/page': ':slug',
-    press: ':slug'
+    press: ':slug',
+    'press/page': ':slug'
   };
 
   const rewrites = Object.keys(slugs)
