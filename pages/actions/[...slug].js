@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import hirestime from 'hirestime';
 
 import { createClient } from '@/lib/api';
-import { fetchAllActionPaths } from '@/lib/actions';
+import { fetchLatestActionPaths } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchActionBySlug } from '@/lib/actions';
 import logger from '@/lib/logger';

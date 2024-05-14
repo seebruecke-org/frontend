@@ -9,7 +9,7 @@ import { RETURN_CODES } from '@/lib/constants';
 import { getLastBlockName } from '@/lib/blocks';
 import {
   query,
-  fetchAllGroupPaths,
+  fetchLatestGroupPaths,
   fetchAllCountryPaths,
   fetchAllFederalCountryPaths
 } from '@/lib/take-part';
@@ -176,17 +176,17 @@ export default function TakePartPage({
 }
 
 export async function getStaticPaths({ defaultLocale }) {
-  const client = createClient();
-  const groupPaths = await fetchAllGroupPaths(defaultLocale, { client });
-  const countryPaths = await fetchAllCountryPaths(defaultLocale, { client });
-  const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale, {
-    client
-  });
+  // const client = createClient();
+  // const groupPaths = await fetchLatestGroupPaths(defaultLocale, { client });
+  // const countryPaths = await fetchAllCountryPaths(defaultLocale, { client });
+  // const federalCountryPaths = await fetchAllFederalCountryPaths(defaultLocale, {
+  //   client
+  // })
 
   return {
     fallback: true,
-    paths: [...groupPaths, ...countryPaths, ...federalCountryPaths]
-  };
+    paths: []
+  }
 }
 
 export async function getStaticProps({ locale, params: { slug } }) {
