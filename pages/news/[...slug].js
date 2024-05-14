@@ -1,13 +1,13 @@
-import { useTranslation } from "next-i18next";
+import {useTranslation} from "next-i18next";
 import hirestime from "hirestime";
 
-import { createClient } from "@/lib/api";
-import { getLastBlockName } from "@/lib/blocks";
-import { query as queryGlobalData } from "@/lib/global";
-import { fetchNewsBySlug, fetchAllNewsPaths } from "@/lib/news";
+import {createClient} from "@/lib/api";
+import {getLastBlockName} from "@/lib/blocks";
+import {query as queryGlobalData} from "@/lib/global";
+import {fetchNewsBySlug, fetchAllNewsPaths} from "@/lib/news";
 import logger from "@/lib/logger";
 
-import { Image as RichtextBlockImage } from "@/components/Richtext";
+import {Image as RichtextBlockImage} from "@/components/Richtext";
 import BlockSwitch from "@/components/BlockSwitch";
 import Heading from "@/components/Blocks/Heading";
 import PageBody from "@/components/PageBody";
@@ -16,22 +16,22 @@ import SEO from "@/components/SEO";
 export default function NewsEntryPage({
                                         title, metadata, content, image, publishedAt, type
                                       }) {
-  const { t } = useTranslation("news");
+  const {t} = useTranslation("news");
   let bp = {};
   if (type !== "commentary") {
     bp = {
       Richtext: {
         renderers: {
-          image: ({ src, alt }) => {
+          image: ({src, alt}) => {
             return (<RichtextBlockImage
-                image={{
-                  caption: image?.caption || image?.media?.caption, media: {
-                    url: src, width: 270, height: 270, alternativeText: alt
-                  }
-                }}
-                priority
-                className="md:float-left md:mr-12 mb-10 md:-ml-16 xl:-ml-48 md:mt-4"
-              />);
+              image={{
+                caption: image?.caption || image?.media?.caption, media: {
+                  url: src, width: 270, height: 270, alternativeText: alt
+                }
+              }}
+              priority
+              className="md:float-left md:mr-12 mb-10 md:-ml-16 xl:-ml-48 md:mt-4"
+            />);
           }
         }
       }
@@ -39,11 +39,11 @@ export default function NewsEntryPage({
   }
 
   return (<>
-    <SEO title={title} metadata={metadata} />
+    <SEO title={title} metadata={metadata}/>
 
     <PageBody lastBlock={getLastBlockName(content)}>
       <div className="grid grid-layout-primary">
-        <Heading level={1} kicker={`${publishedAt} · ${t(`type.${type}`)}`}>
+        <Heading level={2} kicker={`${publishedAt} · ${t(`type.${type}`)}`}>
           {title}
         </Heading>
       </div>
@@ -56,7 +56,7 @@ export default function NewsEntryPage({
   </>);
 }
 
-export async function getStaticPaths({ defaultLocale }) {
+export async function getStaticPaths({defaultLocale}) {
   const client = createClient();
   const paths = [];
   //await fetchAllNewsPaths(defaultLocale, { client });
@@ -66,12 +66,12 @@ export async function getStaticPaths({ defaultLocale }) {
   };
 }
 
-export async function getStaticProps({ locale, params: { slug } }) {
+export async function getStaticProps({locale, params: {slug}}) {
   const getElapsed = hirestime();
   const client = createClient();
-  const { initialState = null, ...globalData } = await queryGlobalData(locale, ["news"], { client });
-  const { format } = globalData._nextI18Next.initialI18nStore[locale];
-  const { data } = await fetchNewsBySlug(slug, locale, format, { client });
+  const {initialState = null, ...globalData} = await queryGlobalData(locale, ["news"], {client});
+  const {format} = globalData._nextI18Next.initialI18nStore[locale];
+  const {data} = await fetchNewsBySlug(slug, locale, format, {client});
 
   if (data === null) {
     logger.error({
