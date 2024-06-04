@@ -5,7 +5,7 @@ const runtimeCaching = require('next-pwa/cache');
 //   enabled: isProduction()
 // });
 const withPlugins = require('next-compose-plugins');
-const withPreact = require('next-plugin-preact');
+// const withPreact = require('next-plugin-preact');
 const withPWA = require('next-pwa');
 const withTranspiledModules = require('next-transpile-modules')([
   'react-children-utilities'
@@ -248,7 +248,7 @@ function createRewrites(slugs, locale) {
 module.exports = withPlugins(
   [
     withTranspiledModules,
-    withPreact,
+    // withPreact,
     // withBundleAnalyzer,
     [
       withPWA,
