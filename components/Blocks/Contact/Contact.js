@@ -28,59 +28,56 @@ export default function ContactBlock({
 
       {telephone && (
         <li className="w-full">
-          <NextLink href={`tel:${telephone}`}>
-            <a className="font-rubik text-base md:text-medium">{telephone}</a>
+          <NextLink href={`tel:${telephone}`} className="font-rubik text-base md:text-medium">
+            {telephone}
           </NextLink>
         </li>
       )}
 
       <li className="flex space-x-4 items-center">
         {twitter && (
-          <NextLink href={twitter}>
-            <a className="hover:text-orange-200">
-              <TwitterIcon className="w-12 md:w-16 h-auto" />
-            </a>
+          <NextLink href={twitter} className="hover:text-orange-200">
+            <TwitterIcon className="w-12 md:w-16 h-auto" />
           </NextLink>
         )}
 
         {facebook && (
-          <NextLink href={facebook}>
-            <a className="hover:text-orange-200">
-              <FacebookIcon className="w-12 md:w-16 h-auto" />
-            </a>
+          <NextLink href={facebook} className="hover:text-orange-200">
+
+            <FacebookIcon className="w-12 md:w-16 h-auto" />
           </NextLink>
         )}
 
         {instagram && (
-          <NextLink href={instagram}>
-            <a className="hover:text-orange-200">
-              <InstagramIcon className="w-12 md:w-16 h-auto" />
-            </a>
-          </NextLink>
+          (<NextLink href={instagram} className="hover:text-orange-200">
+
+            <InstagramIcon className="w-12 md:w-16 h-auto" />
+
+          </NextLink>)
         )}
 
         {youtube && (
-          <NextLink href={youtube}>
-            <a className="hover:text-orange-200">
-              <YoutubeIcon className="w-12 md:w-16 h-auto" />
-            </a>
-          </NextLink>
+          (<NextLink href={youtube} className="hover:text-orange-200">
+
+            <YoutubeIcon className="w-12 md:w-16 h-auto" />
+
+          </NextLink>)
         )}
 
         {mastodon && (
-          <NextLink href={mastodon}>
-            <a className="hover:text-orange-200">
-              <MastodonIcon className="w-12 md:w-16 h-auto" />
-            </a>
-          </NextLink>
+          (<NextLink href={mastodon} className="hover:text-orange-200">
+
+            <MastodonIcon className="w-12 md:w-16 h-auto" />
+
+          </NextLink>)
         )}
 
         {bluesky && (
-          <NextLink href={bluesky}>
-            <a className="hover:text-orange-200">
-              <BlueskyIcon className="w-12 md:w-16 h-auto" />
-            </a>
-          </NextLink>
+          (<NextLink href={bluesky} className="hover:text-orange-200">
+
+            <BlueskyIcon className="w-12 md:w-16 h-auto" />
+
+          </NextLink>)
         )}
 
       </li>

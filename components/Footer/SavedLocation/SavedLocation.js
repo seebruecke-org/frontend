@@ -15,21 +15,19 @@ function Wrapper({ link, children, onToggle = () => {} }) {
   const className =
     'flex flex-col bg-white text-black hover:bg-orange-800 hover:text-white rounded-xl p-8 pb-10 text-left';
 
-  return (
-    <>
-      {link ? (
-        <NextLink href={link}>
-          <a>
-            <div className={className}>{children}</div>
-          </a>
-        </NextLink>
-      ) : (
-        <button type="button" className={className} onClick={onToggle}>
-          {children}
-        </button>
-      )}
-    </>
-  );
+  return <>
+    {link ? (
+      (<NextLink href={link}>
+
+        <div className={className}>{children}</div>
+
+      </NextLink>)
+    ) : (
+      <button type="button" className={className} onClick={onToggle}>
+        {children}
+      </button>
+    )}
+  </>;
 }
 
 export default function SavedLocation() {

@@ -17,17 +17,17 @@ function getRelativeURL(href) {
 
 export default function Link({ href, children, className = '', ...props }) {
   return (
-    <NextLink href={getRelativeURL(href)}>
-      <a
-        className={clsx(
-          'font-rubik text-base md:text-medium',
-          className,
-          styles.link
-        )}
-        {...props}
-      >
-        {children}
-      </a>
-    </NextLink>
+    (<NextLink
+      href={getRelativeURL(href)}
+      className={clsx(
+        'font-rubik text-base md:text-medium',
+        className,
+        styles.link
+      )}
+      {...props}>
+
+      {children}
+
+    </NextLink>)
   );
 }

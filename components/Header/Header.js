@@ -76,7 +76,7 @@ function Bookmark() {
       {location && location?.link ? (
         <Link href={location.link} className={className}>
           <span>{t('header.gotoMyPlace')}</span>
-          <BookmarkSolidIcon className="w-7 h-7 ml-2"/>
+          <BookmarkSolidIcon className="w-7 h-7 ml-2" />
         </Link>
       ) : (
         <>
@@ -104,15 +104,15 @@ function Search() {
   const {t} = useTranslation();
   const {t: ts} = useTranslation('slugs');
 
-  return (
-    <>
-      <Link href={`/${ts('search')}`}
-          className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2">
-          {t('header.search')}
-          <SearchIcon className="w-7 h-7 ml-2"/>
-      </Link>
-    </>
-  );
+  return <>
+    <Link
+      href={`/${ts('search')}`}
+      className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
+      >
+        {t('header.search')}
+        <SearchIcon className="w-7 h-7 ml-2"/>
+    </Link>
+  </>;
 }
 
 export default function Header({metaItems, items}) {
@@ -156,11 +156,12 @@ export default function Header({metaItems, items}) {
           {t('header.skipToContent')}
         </a>
 
-        <Link href="/"
-            className={clsx(
-              styles.logoContainer,
-              'flex items-end justify-center pl-5 xl:pl-0'
-            )}
+        <Link
+          href="/"
+          className={clsx(
+            styles.logoContainer,
+            'flex items-end justify-center pl-5 xl:pl-0'
+          )}
           >
             <Logo className="w-auto h-10 sm:h-12 md:h-14"/>
         </Link>

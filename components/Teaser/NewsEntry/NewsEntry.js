@@ -49,12 +49,12 @@ export default function NewsEntry({
             {translatedType}
           </header>
 
-          <NextLink href={`/${ts('news')}/${slug}/`}>
-            <a className="group-hover:underline">
-              <Heading level={2} as={3}>
-                {title}
-              </Heading>
-            </a>
+          <NextLink href={`/${ts('news')}/${slug}/`} className="group-hover:underline">
+
+            <Heading level={2} as={3}>
+              {title}
+            </Heading>
+
           </NextLink>
 
           {excerpt && (
@@ -64,14 +64,14 @@ export default function NewsEntry({
           )}
         </div>
 
-        <NextLink href={`/${ts('news')}/${slug}/`}>
-          <a
-            className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
-            tabIndex="-1"
-            aria-hidden
-          >
-            <Heading level={3}>{title}</Heading>
-          </a>
+        <NextLink
+          href={`/${ts('news')}/${slug}/`}
+          className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
+          tabIndex="-1"
+          aria-hidden>
+
+          <Heading level={3}>{title}</Heading>
+
         </NextLink>
       </div>
     </article>

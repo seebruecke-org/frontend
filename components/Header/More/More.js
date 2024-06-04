@@ -17,10 +17,11 @@ function Footer({ onDismiss }) {
   return (
     <footer className="flex bg-gray-700 md:hidden mt-auto border-gray-600 border-t fixed w-full bottom-0 left-0">
       {location && location?.link ? (
-        <Link href={location.link}
-            className="py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"
-            onClick={onDismiss}
-          >
+        <Link
+          href={location.link}
+          className="py-5 text-center font-rubik text-xs font-bold uppercase hover:bg-white hover:text-gray-800"
+          onClick={onDismiss}
+        >
             {t('header.gotoMyPlace')}
         </Link>
       ) : (
