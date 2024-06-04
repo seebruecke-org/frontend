@@ -7,8 +7,8 @@ function LinkWrapper({ children, uri }) {
   }
 
   return (
-    <Link href={uri}>
-      <a className="group">{children}</a>
+    <Link href={uri} className="group">
+      {children}
     </Link>
   );
 }

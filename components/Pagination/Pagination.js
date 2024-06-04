@@ -48,10 +48,8 @@ export function PaginationLink({urlMaker, pageNum, total, children, locale}) {
 
   const cls = 'font-rubik-features font-rubik text-small md:text-medium font-bold';
   return (<>
-    {enabled && (<Link href={urlMaker(pageNum, total, locale)}>
-      <a className={clsx(cls, "text-black")}>
+    {enabled && (<Link href={urlMaker(pageNum, total, locale)} className={clsx(cls, "text-black")}>
         {children}
-      </a>
     </Link>)}
     {!enabled && (<span className={clsx(cls, "text-gray-500")}>
           {children}

@@ -25,11 +25,9 @@ function StrapiLink({ link, children, locale, ...props }, ref) {
   }
 
   return (
-    <Link href={linkProps.url} locale={locale}>
-      <a {...props} ref={ref}>
+    <Link href={linkProps.url} locale={locale} {...props} ref={ref}>
         {linkProps.label}
         {children}
-      </a>
     </Link>
   );
 }

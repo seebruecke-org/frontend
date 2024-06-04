@@ -6,8 +6,8 @@ function Wrapper({ uri = null, className, children }) {
 
   if (uri) {
     return (
-      <Link href={uri}>
-        <a className={cssClassName}>{children}</a>
+      <Link href={uri} className={cssClassName}>
+        {children}
       </Link>
     );
   }
