@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Portal } from 'react-portal';
 import clsx from 'clsx';
 import Measure from 'react-measure';
-import NextImage from 'next/image';
+import NextImage from 'next/legacy/image';
 
 import { getFullCMSUrl } from '@/lib/url';
 import InfoCircleIcon from '@/public/icons/info-circle-duotone.svg';
