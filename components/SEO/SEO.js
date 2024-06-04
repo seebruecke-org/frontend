@@ -21,7 +21,7 @@ export default function SEO({ title, metadata: defaultMetadata }) {
 
   return (
     <Head>
-      <title>{title} | Seebrücke</title>
+      <title>{`${title}  | Seebrücke`}</title>
 
       <meta name="theme-color" content="#f55511" />
 
