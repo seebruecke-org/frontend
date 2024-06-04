@@ -172,7 +172,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
               <TextInput
                 name="filter"
                 placeholder={t('searchCity')}
-                value={filter}
+                value={filter ?? ''}
                 onChange={(event) => {
                   setFilter(event.target.value);
                 }}
