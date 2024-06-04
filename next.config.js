@@ -238,9 +238,9 @@ function createRewrites(slugs, locale) {
     })
     .flat();
 
-  rewrites.forEach(({ source, destination }) =>
-    console.log('Rewrite:', source, destination)
-  );
+  // rewrites.forEach(({ source, destination }) =>
+  //   console.log('Rewrite:', source, destination)
+  // );
 
   return rewrites;
 }
