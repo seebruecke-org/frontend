@@ -10,6 +10,7 @@ import { getPage } from '@/lib/pages';
 import { getSlugFromI18nNext } from '@/lib/slug';
 import logger from '@/lib/logger';
 import { paginatedPress } from './page/[pageNum]';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function PressOverview({
   news,
@@ -67,6 +68,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 60 * 2,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...globalData,
       initialState,
       news: await news,

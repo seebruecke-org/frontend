@@ -13,6 +13,7 @@ import Pagination from '@/components/Pagination';
 import Link from 'next/link';
 import {getPage} from '@/lib/pages';
 import clsx from "clsx";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export function paginatedNews(news, pagination, pageNum, locale) {
   return (
@@ -78,6 +79,7 @@ export async function getStaticProps({locale, params: {pageNum}}) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale)),
       ...globalData, initialState, news: await news, page, pageNum, pagination: meta.pagination, locale
     }
   };

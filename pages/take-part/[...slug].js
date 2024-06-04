@@ -21,6 +21,7 @@ import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 import StageMedium from '@/components/Stages/Medium';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Actions = dynamic(() => import('@/components/Blocks/Actions'));
 const Breadcrumbs = dynamic(() => import('@/components/Blocks/Breadcrumbs'));
@@ -232,6 +233,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   return {
     revalidate: 60,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...data,
       ...globalData,
       initialState

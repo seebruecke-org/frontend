@@ -5,6 +5,7 @@ import { query as queryGlobalData } from '@/lib/global';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function SearchPage() {
   const { query } = useRouter();
@@ -26,6 +27,7 @@ export async function getStaticProps({ locale }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale)),
       ...globalData,
       initialState
     }

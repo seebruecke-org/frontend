@@ -11,6 +11,7 @@ import PageBody from '@/components/PageBody';
 import Row from '@/components/Form/Row';
 import Textarea from '@/components/Form/Textarea';
 import TextInput from '@/components/Form/TextInput';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function FormPage() {
   const { register, handleSubmit, errors } = useForm();
@@ -68,6 +69,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 20,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...globalData,
       initialState
     }

@@ -11,6 +11,7 @@ import { fetchPaginatedNews } from '@/lib/news';
 import { getPage } from '@/lib/pages';
 import { getSlugFromI18nNext } from '@/lib/slug';
 import { paginatedNews } from './page/[pageNum]';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function NewsOverview({ news, page, pagination, pageNum, locale }) {
   return (
@@ -56,6 +57,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 60 * 2,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...globalData,
       initialState,
       news: await news,

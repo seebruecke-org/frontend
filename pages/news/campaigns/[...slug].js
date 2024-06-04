@@ -15,6 +15,7 @@ import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 
 import { getLastBlockName } from '@/lib/blocks';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function CampaignPage({ content, title, metadata }) {
   const { t } = useTranslation();
@@ -91,6 +92,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   return {
     revalidate: 30,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...data,
       ...globalData,
       initialState

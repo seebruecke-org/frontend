@@ -13,6 +13,7 @@ import Group from '@/components/Teaser/Group';
 import Heading from '@/components/Blocks/Heading';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function ActionPage({
   title,
@@ -102,9 +103,10 @@ export async function getStaticProps({ locale, params: { slug } }) {
   return {
     revalidate: 60 * 30,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...data,
       ...globalData,
-      initialState
+      initialState,
     }
   };
 }

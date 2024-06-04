@@ -12,6 +12,7 @@ import logger from '@/lib/logger';
 import BlockSwitch from '@/components/BlockSwitch';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Breadcrumbs = dynamic(() => import('@/components/Breadcrumbs'));
 
@@ -116,6 +117,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
   return {
     revalidate: 60,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...data,
       ...globalData,
       ...{slugs: slug || ['']},

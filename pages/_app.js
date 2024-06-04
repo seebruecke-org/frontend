@@ -26,17 +26,17 @@ function SBApp({ Component, pageProps = {} }) {
       : null
   });
 
-  useEffect(() => {
-    const trackRouteChange = (url) => {
-      fetch(`/api/track?url=${url}`);
-    };
-
-    router.events.on('routeChangeComplete', trackRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', trackRouteChange);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const trackRouteChange = (url) => {
+  //     fetch(`/api/track?url=${url}`);
+  //   };
+  //
+  //   router.events.on('routeChangeComplete', trackRouteChange);
+  //
+  //   return () => {
+  //     router.events.off('routeChangeComplete', trackRouteChange);
+  //   };
+  // }, []);
 
   return (
     <Provider createStore={createStore}>

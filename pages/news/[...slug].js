@@ -12,6 +12,7 @@ import BlockSwitch from "@/components/BlockSwitch";
 import Heading from "@/components/Blocks/Heading";
 import PageBody from "@/components/PageBody";
 import SEO from "@/components/SEO";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function NewsEntryPage({
                                         title, metadata, content, image, publishedAt, type
@@ -89,6 +90,7 @@ export async function getStaticProps({locale, params: {slug}}) {
 
   return {
     revalidate: 60 * 5, props: {
+      ...(await serverSideTranslations(locale)),
       ...data, ...globalData, initialState
     }
   };

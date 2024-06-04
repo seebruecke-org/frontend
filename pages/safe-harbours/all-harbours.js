@@ -18,6 +18,7 @@ import Form from '@/components/Form';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Country = dynamic(() => import('@/components/Map/Country'));
 const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
@@ -209,6 +210,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 60 * 2,
     props: {
+      ...(await serverSideTranslations(locale)),
       page,
       cities: groups,
       ...globalData,

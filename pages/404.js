@@ -7,6 +7,7 @@ import PageBody from '@/components/PageBody';
 import Richtext from '@/components/Blocks/Richtext';
 import SEO from '@/components/SEO';
 import TeasersSmall from '@/components/Blocks/TeasersSmall';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 export default function Custom404() {
   const { t } = useTranslation('404');
@@ -62,6 +63,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 20,
     props: {
+      ...(await serverSideTranslations(locale)),
       ...globalData,
       initialState
     }

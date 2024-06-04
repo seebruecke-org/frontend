@@ -1,16 +1,16 @@
-import { useRef, useMemo } from 'react';
-import { useTranslation } from 'next-i18next';
+import {useRef, useMemo} from 'react';
+import {useTranslation} from 'next-i18next';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 
-import { createClient } from '@/lib/api';
-import { BLOCK_PREFIX } from '@/lib/constants';
-import { getPage } from '@/lib/pages';
-import { fetchAllGroups } from '@/lib/take-part';
-import { query as queryGlobalData } from '@/lib/global';
-import { getFirstBlockName, getLastBlockName } from '@/lib/blocks';
-import { getSlugFromI18nNext } from '@/lib/slug';
+import {createClient} from '@/lib/api';
+import {BLOCK_PREFIX} from '@/lib/constants';
+import {getPage} from '@/lib/pages';
+import {fetchAllGroups} from '@/lib/take-part';
+import {query as queryGlobalData} from '@/lib/global';
+import {getFirstBlockName, getLastBlockName} from '@/lib/blocks';
+import {getSlugFromI18nNext} from '@/lib/slug';
 import useCityFilter from '@/lib/hooks/useCityFilter';
 import logger from '@/lib/logger';
 
@@ -21,6 +21,7 @@ import PageBody from '@/components/PageBody';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Country = dynamic(() => import('@/components/Map/Country'));
 const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
@@ -34,40 +35,40 @@ const ALLOWED_BLOCKS_TOP = [
 ];
 
 function sortCities(cities) {
-  return cities.sort(({ name: cityAName }, { name: cityBName }) =>
+  return cities.sort(({name: cityAName}, {name: cityBName}) =>
     cityAName.localeCompare(cityBName)
   );
 }
 
-function Cities({ cities }) {
+function Cities({cities}) {
   return (
     <ul className="grid md:grid-cols-2 gap-8 px-6">
       {cities.map((city) => (
         <li key={`city-${city.name}`}>
-          <Group uri={city.uri} name={city.name} />
+          <Group uri={city.uri} name={city.name}/>
         </li>
       ))}
     </ul>
   );
 }
 
-function FederalCountries({ countries }) {
-  const { t } = useTranslation('group');
-  const numberOfCities = countries.reduce((acc, { cities }) => {
+function FederalCountries({countries}) {
+  const {t} = useTranslation('group');
+  const numberOfCities = countries.reduce((acc, {cities}) => {
     acc = acc + cities.length;
 
     return acc;
   }, 0);
 
   if (numberOfCities === countries.length) {
-    const allCities = countries.map(({ cities }) => cities).flat();
+    const allCities = countries.map(({cities}) => cities).flat();
 
-    return <Cities cities={sortCities(allCities)} />;
+    return <Cities cities={sortCities(allCities)}/>;
   }
 
   return (
     <ul className="flex flex-col space-y-10">
-      {countries.map(({ name, uri, cities }) => (
+      {countries.map(({name, uri, cities}) => (
         <li key={`federalCountry-${name}`}>
           <FederalCountry
             count={cities.length}
@@ -77,16 +78,16 @@ function FederalCountries({ countries }) {
             uri={uri}
           />
 
-          <Cities cities={sortCities(cities)} />
+          <Cities cities={sortCities(cities)}/>
         </li>
       ))}
     </ul>
   );
 }
 
-export default function TakePartOverview({ cities: defaultCities, page }) {
-  const { t } = useTranslation('group');
-  const { cities, filter, setFilter } = useCityFilter(defaultCities);
+export default function TakePartOverview({cities: defaultCities, page}) {
+  const {t} = useTranslation('group');
+  const {cities, filter, setFilter} = useCityFilter(defaultCities);
   const mapCities = useMemo(
     () =>
       Object.keys(cities)
@@ -107,7 +108,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
   );
   const citiesListRef = useRef(null);
   const indexFirstBottomBlock = page?.content?.findIndex(
-    ({ __typename }) =>
+    ({__typename}) =>
       !ALLOWED_BLOCKS_TOP.includes(__typename.replace(BLOCK_PREFIX, ''))
   );
   let topBlocks = page?.content;
@@ -126,7 +127,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
       firstBlock={getFirstBlockName(topBlocks)}
       lastBlock={getLastBlockName(bottomBlocks || topBlocks)}
     >
-      <SEO title={page?.title} metadata={page?.metadata} />
+      <SEO title={page?.title} metadata={page?.metadata}/>
 
       <BlockSwitch
         blocks={topBlocks}
@@ -140,7 +141,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
       <div className="grid grid-layout-primary -mt-1">
         <Map
           features={mapCities.map(
-            ({ name, id, uri, coordinates: { geometry } }) => ({
+            ({name, id, uri, coordinates: {geometry}}) => ({
               type: 'Feature',
               properties: {
                 name,
@@ -199,7 +200,7 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
                   key={`country-${countryName}`}
                   className={clsx(countryIndex > 0 && 'mt-12 md:mt-20')}
                 >
-                  <Country name={countryName} uri={cities[countryName].uri} />
+                  <Country name={countryName} uri={cities[countryName].uri}/>
 
                   <FederalCountries
                     countries={Object.keys(cities[countryName].countries)
@@ -215,28 +216,28 @@ export default function TakePartOverview({ cities: defaultCities, page }) {
         </div>
       </div>
 
-      {bottomBlocks && <BlockSwitch blocks={bottomBlocks} />}
+      {bottomBlocks && <BlockSwitch blocks={bottomBlocks}/>}
     </PageBody>
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({locale}) {
   const getElapsed = hirestime();
   const client = createClient();
-  const { initialState, ...globalData } = await queryGlobalData(
+  const {initialState, ...globalData} = await queryGlobalData(
     locale,
     ['group'],
-    { client }
+    {client}
   );
   const pageSlug = getSlugFromI18nNext(
     'take-part/all-groups',
     locale,
     globalData
   );
-  const { format } = globalData._nextI18Next.initialI18nStore[locale];
+  const {format} = globalData._nextI18Next.initialI18nStore[locale];
   const [groups, page] = await Promise.all([
-    await fetchAllGroups(locale, { client }),
-    await getPage(...pageSlug.split('/').reverse(), locale, format, { client })
+    await fetchAllGroups(locale, {client}),
+    await getPage(...pageSlug.split('/').reverse(), locale, format, {client})
   ]);
 
   logger.info({
@@ -249,6 +250,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 60 * 2,
     props: {
+      ...(await serverSideTranslations(locale)),
       page,
       cities: groups,
       ...globalData,
