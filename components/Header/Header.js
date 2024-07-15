@@ -178,7 +178,7 @@ export default function Header({ metaItems, items }) {
                 </a>
             ))}
 
-            <Bookmark />
+            {/*<Bookmark />*/}
 
             {metaItems &&
               metaItems.length > 0 &&
