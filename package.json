@@ -20,6 +20,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+
     "@logtail/node": "^0.1.10",
     "@logtail/winston": "^0.1.10",
     "@mailchimp/mailchimp_marketing": "^3.0.72",
@@ -31,7 +32,6 @@
     "@turf/helpers": "^6.5.0",
     "@urql/exchange-graphcache": "^4.3.6",
     "algoliasearch": "^4.12.0",
-    "autoprefixer": "^10.4.2",
     "body-scroll-lock": "^3.1.5",
     "buffer-image-size": "^0.6.4",
     "clsx": "^1.1.1",
@@ -51,12 +51,11 @@
     "json5": "^2.2.0",
     "mapbox-gl": "^2.6.1",
     "matomo-tracker": "^2.2.4",
-    "next": "^14.2.3",
+    "next": "^14.2.5",
     "next-compose-plugins": "^2.2.1",
     "next-i18next": "^10.2.0",
     "next-pwa": "^5.4.4",
     "next-transpile-modules": "^10.0.1",
-    "postcss": "^8.4.5",
     "postcss-preset-env": "^7.2.2",
     "puppeteer": "^13.0.1",
     "react": "^18.3.1",
@@ -67,7 +66,7 @@
     "react-hot-toast": "^2.2.0",
     "react-intersection-observer": "^8.33.1",
     "react-map-gl": "^6.1.18",
-    "react-markdown": "^5.0.3",
+    "react-markdown": "^9.0.1",
     "react-measure": "^2.5.2",
     "react-modal": "^3.14.4",
     "react-portal": "^4.2.1",
@@ -77,13 +76,13 @@
     "remark-extract-toc": "^1.1.0",
     "remark-parse": "^10.0.1",
     "sass": "^1.71.1",
+    "sass-loader": "^16.0.0",
     "scheduler": "^0.20.2",
     "serialize-error": "^9.0.0",
-    "sharp": "^0.29.3",
+    "sharp": "0.32.6",
     "slugify": "^1.6.5",
     "strip-js": "^1.2.0",
     "swiper": "^6.8.4",
-    "tailwindcss": "^3.0.13",
     "truncate": "^3.0.0",
     "unified": "^10.1.1",
     "urql": "^2.0.6",
@@ -92,17 +91,22 @@
     "zustand": "^3.6.9"
   },
   "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+
     "@babel/core": "^7.16.7",
+    "autoprefixer": "^10.4.19",
     "babel-loader": "^8.2.3",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-preset-react-app": "^10.0.1",
+    "css-loader": "^7.1.2",
     "eslint-config-next": "^14.2.3",
-    "prettier": "^2.5.1"
-  },
-  "prettier": {
-    "arrowParens": "always",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "none"
+    "postcss": "^8.4.38",
+    "postcss-loader": "^8.1.1",
+    "prettier": "^2.5.1",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.3"
   }
 }

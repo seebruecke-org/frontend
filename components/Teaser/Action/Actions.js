@@ -1,24 +1,23 @@
-import { useTranslation } from 'next-i18next';
-import NextLink from 'next/link';
+import { useTranslation } from 'next-i18next'
+import NextLink from 'next/link'
 
 function Wrapper({ slug, children }) {
-  const { t } = useTranslation('slugs');
+  const { t } = useTranslation('slugs')
 
   if (slug) {
     return (
-      (<NextLink
+      <NextLink
         href={`/${t('actions')}/${slug}`}
-        className="block bg-turquoise-300 hover:bg-black hover:text-white px-8 py-10 md:p-10 h-full">
-
+        className="block bg-turquoise-300 hover:bg-black hover:text-white px-8 py-10 md:p-10 h-full"
+      >
         {children}
-
-      </NextLink>)
-    );
+      </NextLink>
+    )
   }
 
   return (
     <div className="bg-turquoise-300 px-7 py-10 md:p-10 h-full">{children}</div>
-  );
+  )
 }
 
 export default function ActionTeaser({ title, meta, intro, slug }) {
@@ -38,5 +37,5 @@ export default function ActionTeaser({ title, meta, intro, slug }) {
         <p className="block font-rubik text-small md:text-xs mt-5">{intro}</p>
       )}
     </Wrapper>
-  );
+  )
 }

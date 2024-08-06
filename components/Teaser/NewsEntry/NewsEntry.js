@@ -1,9 +1,9 @@
-import { useTranslation } from 'next-i18next';
-import clsx from 'clsx';
-import NextLink from 'next/link';
+import { useTranslation } from 'next-i18next'
+import clsx from 'clsx'
+import NextLink from 'next/link'
 
-import Heading from '@/components/Heading';
-import Media from '@/components/Media';
+import Heading from '@/components/Heading'
+import Media from '@/components/Media'
 
 export default function NewsEntry({
   title,
@@ -14,14 +14,14 @@ export default function NewsEntry({
   slug,
   index
 }) {
-  const { t } = useTranslation('news');
-  const { t: ts } = useTranslation('slugs');
-  const translatedType = t(`type.${type}`);
+  const { t } = useTranslation('news')
+  const { t: ts } = useTranslation('slugs')
+  const translatedType = t(`type.${type}`)
 
   return (
     <article className="grid grid-layout-primary col-span-full pt-12 md:pt-20 px-8 md:px-0 relative group overflow-x-hidden">
       {index > 0 && (
-        <span className="col-start-1 md:col-start-2 col-span-full md:col-span-12 h-1 border-b border-gray-300 mb-4 md:mb-12"/>
+        <span className="col-start-1 md:col-start-2 col-span-full md:col-span-12 h-1 border-b border-gray-300 mb-4 md:mb-12" />
       )}
 
       <div className="grid grid-layout-primary gap-8 col-span-full relative">
@@ -49,12 +49,13 @@ export default function NewsEntry({
             {translatedType}
           </header>
 
-          <NextLink href={`/${ts('news')}/${slug}/`} className="group-hover:underline">
-
+          <NextLink
+            href={`/${ts('news')}/${slug}/`}
+            className="group-hover:underline"
+          >
             <Heading level={2} as={3}>
               {title}
             </Heading>
-
           </NextLink>
 
           {excerpt && (
@@ -68,12 +69,11 @@ export default function NewsEntry({
           href={`/${ts('news')}/${slug}/`}
           className="absolute top-0 left-0 h-full w-full z-10 opacity-0 col-start-2 col-span-12"
           tabIndex="-1"
-          aria-hidden>
-
+          aria-hidden
+        >
           <Heading level={3}>{title}</Heading>
-
         </NextLink>
       </div>
     </article>
-  );
+  )
 }

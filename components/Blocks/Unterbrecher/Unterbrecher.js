@@ -1,24 +1,24 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 
-import CTA from '@/components/CTA';
-import Heading from '@/components/Heading';
-import Media from '@/components/Media';
-import StrapiLink from '@/components/StrapiLink';
+import CTA from '@/components/CTA'
+import Heading from '@/components/Heading'
+import Media from '@/components/Media'
+import StrapiLink from '@/components/StrapiLink'
 
-import { blockNameMatches } from '@/lib/blocks';
+import { blockNameMatches } from '@/lib/blocks'
 
-import * as styles from './unterbrecher.module.css';
+import * as styles from './unterbrecher.module.css'
 
 function getBackgroundColor(type) {
   switch (type) {
     case 'action':
-      return 'bg-turquoise-300 text-black';
+      return 'bg-turquoise-300 text-black'
 
     case 'campaign':
-      return 'bg-orange-200 text-black';
+      return 'bg-orange-200 text-black'
   }
 
-  return 'bg-orange-800 text-white';
+  return 'bg-orange-800 text-white'
 }
 
 export default function Unterbrecher({
@@ -31,9 +31,9 @@ export default function Unterbrecher({
   size = 'small',
   blockContext: { previous, next }
 }) {
-  const background = getBackgroundColor(type);
-  const prevIsUntercher = blockNameMatches(previous, 'Unterbrecher');
-  const nextIsUnterbrecher = blockNameMatches(next, 'Unterbrecher');
+  const background = getBackgroundColor(type)
+  const prevIsUntercher = blockNameMatches(previous, 'Unterbrecher')
+  const nextIsUnterbrecher = blockNameMatches(next, 'Unterbrecher')
 
   return (
     <section
@@ -103,9 +103,9 @@ export default function Unterbrecher({
         }}
         className="absolute top-0 left-0 w-full h-full opacity-0 z-20"
         aria-label={title.text}
-        tabindex="-1"
+        tabIndex="-1"
         aria-hidden="true"
       />
     </section>
-  );
+  )
 }

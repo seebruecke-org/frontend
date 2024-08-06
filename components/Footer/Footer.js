@@ -1,18 +1,16 @@
-import { useTranslation } from 'next-i18next';
-import clsx from 'clsx';
-import Image from 'next/image';
+import { useTranslation } from 'next-i18next'
+import clsx from 'clsx'
 
-import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
-import InstagramIcon from '@/public/icons/instagram-brands.svg';
-import Logo from '@/components/Logo';
-import StrapiLink from '@/components/StrapiLink';
-import SavedLocation from './SavedLocation';
-import TwitterIcon from '@/public/icons/twitter-brands.svg';
-import YoutubeIcon from '@/public/icons/youtube-brands.svg';
-import BlueskyIcon from '@/public/icons/bluesky.svg';
+import FacebookIcon from '@/public/icons/facebook-square-brands.svg'
+import InstagramIcon from '@/public/icons/instagram-brands.svg'
+import Logo from '@/components/Logo'
+import StrapiLink from '@/components/StrapiLink'
+import TwitterIcon from '@/public/icons/twitter-brands.svg'
+import YoutubeIcon from '@/public/icons/youtube-brands.svg'
+import BlueskyIcon from '@/public/icons/bluesky.svg'
 
 function SocialMedia({ className = '' }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <div className={clsx('flex space-x-4', className)}>
@@ -51,7 +49,7 @@ function SocialMedia({ className = '' }) {
         <BlueskyIcon className="w-12 h-auto" />
       </a>
     </div>
-  );
+  )
 }
 
 function Menu({ title, items }) {
@@ -72,11 +70,11 @@ function Menu({ title, items }) {
         </ul>
       )}
     </div>
-  );
+  )
 }
 
 export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
@@ -121,10 +119,9 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
                 />
               ))}
             </nav>
-
           </div>
         )}
       </div>
     </footer>
-  );
+  )
 }

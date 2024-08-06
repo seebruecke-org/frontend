@@ -1,40 +1,40 @@
-import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-import NextLink from 'next/link';
+import { useTranslation } from 'next-i18next'
+import { useState } from 'react'
+import dynamic from 'next/dynamic'
+import NextLink from 'next/link'
 
-import BookmarkIcon from '@/public/icons/bookmark-solid.svg';
-import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation';
+import BookmarkIcon from '@/public/icons/bookmark-solid.svg'
+import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation'
 
 const BookmarkLocationModal = dynamic(
   () => import('@/components/Modals/BookmarkLocation'),
   { ssr: false }
-);
+)
 
 function Wrapper({ link, children, onToggle = () => {} }) {
   const className =
-    'flex flex-col bg-white text-black hover:bg-orange-800 hover:text-white rounded-xl p-8 pb-10 text-left';
+    'flex flex-col bg-white text-black hover:bg-orange-800 hover:text-white rounded-xl p-8 pb-10 text-left'
 
-  return <>
-    {link ? (
-      (<NextLink href={link}>
-
-        <div className={className}>{children}</div>
-
-      </NextLink>)
-    ) : (
-      <button type="button" className={className} onClick={onToggle}>
-        {children}
-      </button>
-    )}
-  </>;
+  return (
+    <>
+      {link ? (
+        <NextLink href={link}>
+          <div className={className}>{children}</div>
+        </NextLink>
+      ) : (
+        <button type="button" className={className} onClick={onToggle}>
+          {children}
+        </button>
+      )}
+    </>
+  )
 }
 
 export default function SavedLocation() {
-  const { t } = useTranslation();
-  const [saveLocationOpen, setSaveLocationOpen] = useState(false);
-  const { location } = useBookmarkedLocation();
-  const locationName = location?.name;
+  const { t } = useTranslation()
+  const [saveLocationOpen, setSaveLocationOpen] = useState(false)
+  const { location } = useBookmarkedLocation()
+  const locationName = location?.name
 
   return (
     <>
@@ -59,5 +59,5 @@ export default function SavedLocation() {
         <BookmarkLocationModal onClose={() => setSaveLocationOpen(false)} />
       )}
     </>
-  );
+  )
 }

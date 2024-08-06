@@ -1,12 +1,12 @@
-import NextLink from 'next/link';
+import NextLink from 'next/link'
 
-import FacebookIcon from '@/public/icons/facebook-square-brands.svg';
-import InstagramIcon from '@/public/icons/instagram-brands.svg';
-import Link from '@/components/Richtext/Link';
-import TwitterIcon from '@/public/icons/twitter-brands.svg';
-import YoutubeIcon from '@/public/icons/youtube-brands.svg';
-import MastodonIcon from '@/public/icons/mastodon-brands.svg';
-import BlueskyIcon from '@/public/icons/bluesky.svg';
+import FacebookIcon from '@/public/icons/facebook-square-brands.svg'
+import InstagramIcon from '@/public/icons/instagram-brands.svg'
+import Link from '@/components/Richtext/Link'
+import TwitterIcon from '@/public/icons/twitter-brands.svg'
+import YoutubeIcon from '@/public/icons/youtube-brands.svg'
+import MastodonIcon from '@/public/icons/mastodon-brands.svg'
+import BlueskyIcon from '@/public/icons/bluesky.svg'
 
 export default function ContactBlock({
   email,
@@ -28,7 +28,10 @@ export default function ContactBlock({
 
       {telephone && (
         <li className="w-full">
-          <NextLink href={`tel:${telephone}`} className="font-rubik text-base md:text-medium">
+          <NextLink
+            href={`tel:${telephone}`}
+            className="font-rubik text-base md:text-medium"
+          >
             {telephone}
           </NextLink>
         </li>
@@ -43,44 +46,34 @@ export default function ContactBlock({
 
         {facebook && (
           <NextLink href={facebook} className="hover:text-orange-200">
-
             <FacebookIcon className="w-12 md:w-16 h-auto" />
           </NextLink>
         )}
 
         {instagram && (
-          (<NextLink href={instagram} className="hover:text-orange-200">
-
+          <NextLink href={instagram} className="hover:text-orange-200">
             <InstagramIcon className="w-12 md:w-16 h-auto" />
-
-          </NextLink>)
+          </NextLink>
         )}
 
         {youtube && (
-          (<NextLink href={youtube} className="hover:text-orange-200">
-
+          <NextLink href={youtube} className="hover:text-orange-200">
             <YoutubeIcon className="w-12 md:w-16 h-auto" />
-
-          </NextLink>)
+          </NextLink>
         )}
 
         {mastodon && (
-          (<NextLink href={mastodon} className="hover:text-orange-200">
-
+          <NextLink href={mastodon} className="hover:text-orange-200">
             <MastodonIcon className="w-12 md:w-16 h-auto" />
-
-          </NextLink>)
+          </NextLink>
         )}
 
         {bluesky && (
-          (<NextLink href={bluesky} className="hover:text-orange-200">
-
+          <NextLink href={bluesky} className="hover:text-orange-200">
             <BlueskyIcon className="w-12 md:w-16 h-auto" />
-
-          </NextLink>)
+          </NextLink>
         )}
-
       </li>
     </ul>
-  );
+  )
 }

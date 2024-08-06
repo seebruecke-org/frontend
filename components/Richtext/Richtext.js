@@ -1,9 +1,9 @@
-import Markdown from '@/components/Markdown';
+import Markdown from '@/components/Markdown'
 
-import Heading from '@/components/Blocks/Heading';
-import Link from './Link';
-import List, { ListItem } from './List';
-import Paragraph from './Paragraph';
+import Heading from '@/components/Blocks/Heading'
+import Link from './Link'
+import List, { ListItem } from './List'
+import Paragraph from './Paragraph'
 
 export default function Richtext({
   content,
@@ -12,24 +12,24 @@ export default function Richtext({
   renderers,
   ...props
 }) {
-  const RENDERERS = {
+  const components = {
     // eslint-disable-next-line react/display-name
     heading: ({ level, children }) => {
       return (
         <Heading level={level - 1} scrollMargin={scrollMargin}>
           {children}
         </Heading>
-      );
+      )
     },
 
     // eslint-disable-next-line react/display-name
     link: ({ node: { url }, children }) => {
-      return <Link href={url}>{children}</Link>;
+      return <Link href={url}>{children}</Link>
     },
 
     // eslint-disable-next-line react/display-name
     list: ({ ordered, children }) => {
-      return <List ordered={ordered}>{children}</List>;
+      return <List ordered={ordered}>{children}</List>
     },
 
     // eslint-disable-next-line react/display-name
@@ -38,25 +38,25 @@ export default function Richtext({
         <ListItem>
           <Paragraph size={size}>{children}</Paragraph>
         </ListItem>
-      );
+      )
     },
 
     // eslint-disable-next-line react/display-name
     paragraph: ({ children }) => {
       // Don't wrap images in paragraph tags
       if (children && children.length === 1 && children?.[0]?.props?.src) {
-        return children;
+        return children
       }
 
-      return <Paragraph size={size}>{children}</Paragraph>;
+      return <Paragraph size={size}>{children}</Paragraph>
     },
 
     ...renderers
-  };
+  }
 
   return (
-    <Markdown renderers={RENDERERS} {...props}>
+    <Markdown components={components} {...props}>
       {content}
     </Markdown>
-  );
+  )
 }
