@@ -1,50 +1,52 @@
-import { useTranslation } from 'next-i18next'
-import clsx from 'clsx'
+"use client"
 
-import FacebookIcon from '@/public/icons/facebook-square-brands.svg'
-import InstagramIcon from '@/public/icons/instagram-brands.svg'
-import Logo from '@/components/Logo'
-import StrapiLink from '@/components/StrapiLink'
-import TwitterIcon from '@/public/icons/twitter-brands.svg'
-import YoutubeIcon from '@/public/icons/youtube-brands.svg'
-import BlueskyIcon from '@/public/icons/bluesky.svg'
+import { useTranslation } from "next-i18next"
+import clsx from "clsx"
 
-function SocialMedia({ className = '' }) {
+import FacebookIcon from "@/public/icons/facebook-square-brands.svg"
+import InstagramIcon from "@/public/icons/instagram-brands.svg"
+import Logo from "@/components/Logo"
+import StrapiLink from "@/components/StrapiLink"
+import TwitterIcon from "@/public/icons/twitter-brands.svg"
+import YoutubeIcon from "@/public/icons/youtube-brands.svg"
+import BlueskyIcon from "@/public/icons/bluesky.svg"
+
+function SocialMedia({ className = "" }) {
   const { t } = useTranslation()
 
   return (
-    <div className={clsx('flex space-x-4', className)}>
+    <div className={clsx("flex space-x-4", className)}>
       <a
         href="https://www.facebook.com/SeebrueckeSchafftsichereHaefen/"
-        aria-label={t('footer.social', { network: 'Facebook' })}
+        aria-label={t("footer.social", { network: "Facebook" })}
       >
         <FacebookIcon className="w-12 h-auto" />
       </a>
 
       <a
         href="https://www.instagram.com/seebrueckeoffiziell/"
-        aria-label={t('footer.social', { network: 'Instagram' })}
+        aria-label={t("footer.social", { network: "Instagram" })}
       >
         <InstagramIcon className="w-12 h-auto" />
       </a>
 
       <a
         href="https://twitter.com/_Seebruecke_"
-        aria-label={t('footer.social', { network: 'Twitter' })}
+        aria-label={t("footer.social", { network: "Twitter" })}
       >
         <TwitterIcon className="w-12 h-auto" />
       </a>
 
       <a
         href="https://www.youtube.com/channel/UCpFA2nMmOBnUXi9f37BQqxQ"
-        aria-label={t('footer.social', { network: 'Youtube' })}
+        aria-label={t("footer.social", { network: "Youtube" })}
       >
         <YoutubeIcon className="w-12 h-auto" />
       </a>
 
       <a
         href="https://bsky.app/profile/seebruecke.bsky.social"
-        aria-label={t('footer.social', { network: 'Bluesky' })}
+        aria-label={t("footer.social", { network: "Bluesky" })}
       >
         <BlueskyIcon className="w-12 h-auto" />
       </a>
@@ -92,7 +94,7 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
             <Logo />
 
             <p className="font-rubik text-xs font-rubik-features">
-              {t('footer.tagline')}
+              {t("footer.tagline")}
             </p>
 
             <div className="flex flex-col space-y-6 md:space-y-6 pt-6 md:pt-10">
@@ -100,7 +102,7 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
                 href="https://seebruecke.ch"
                 className="font-rubik text-xs font-rubik-features hover:underline"
               >
-                {t('footer.switzerland')}
+                {t("footer.switzerland")}
               </a>
             </div>
 

@@ -1,29 +1,20 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
-import clsx from 'clsx'
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
+import { useState } from "react"
+import { useTranslation } from "next-i18next"
+import { useRouter } from "next/navigation"
+import clsx from "clsx"
+import dynamic from "next/dynamic"
+import Link from "next/link"
 
-import BarsIcon from '@/public/icons/bars.svg'
-import BookmarkIcon from '@/public/icons/bookmark-regular.svg'
-import BookmarkSolidIcon from '@/public/icons/bookmark-solid.svg'
-import ChevronDownIcon from '@/public/icons/chevron-down-light.svg'
-import ChevronUpIcon from '@/public/icons/chevron-up-light.svg'
-import Logo from '@/components/Logo'
-import StrapiLink from '@/components/StrapiLink'
-import More from './More'
-import SearchIcon from '@/public/icons/search-regular.svg'
-import useBookmarkedLocation from '@/lib/hooks/useBookmarkedLocation.js'
+import BarsIcon from "@/public/icons/bars.svg"
+import ChevronDownIcon from "@/public/icons/chevron-down-light.svg"
+import ChevronUpIcon from "@/public/icons/chevron-up-light.svg"
+import Logo from "@/components/Logo"
+import StrapiLink from "@/components/StrapiLink"
+import More from "./More"
 
-import * as styles from './header.module.css'
-
-const BookmarkLocationModal = dynamic(
-  () => import('@/components/Modals/BookmarkLocation'),
-  { ssr: false }
-)
+import * as styles from "./header.module.css"
 
 function MoreToggle({ onClick = () => {}, isOpen }) {
   const { t } = useTranslation()
@@ -33,12 +24,12 @@ function MoreToggle({ onClick = () => {}, isOpen }) {
     <button
       type="button"
       className={clsx(
-        'font-rubik text-small items-center text-white leading-none p-2',
+        "font-rubik text-small items-center text-white leading-none p-2",
         styles.moreToggle
       )}
       onClick={onClick}
     >
-      {t('header.more')}
+      {t("header.more")}
       <Icon className="w-6 h-6 ml-2" />
     </button>
   )
@@ -49,7 +40,7 @@ function Burger({ onClick = () => {} }) {
     <button
       type="button"
       className={clsx(
-        'font-rubik text-3xs uppercase text-white hover:text-black focus:text-black text-center leading-none ml-8 sm:ml-auto justify-end tracking-wide outline-none',
+        "font-rubik text-3xs uppercase text-white hover:text-black focus:text-black text-center leading-none ml-8 sm:ml-auto justify-end tracking-wide outline-none",
         styles.burger
       )}
       onClick={onClick}
@@ -60,74 +51,21 @@ function Burger({ onClick = () => {} }) {
   )
 }
 
-function Bookmark() {
-  const { t } = useTranslation()
-  const [saveBookmarkLocationOpen, setBookmarkLocationOpen] = useState(false)
-  const { location } = useBookmarkedLocation()
-  const className =
-    'flex items-center flex-nowrap font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2'
-
-  return (
-    <span>
-      {location && location?.link ? (
-        <Link href={location.link} className={className}>
-          <span>{t('header.gotoMyPlace')}</span>
-          <BookmarkSolidIcon className="w-7 h-7 ml-2" />
-        </Link>
-      ) : (
-        <>
-          <button
-            type="button"
-            className={className}
-            onClick={() => setBookmarkLocationOpen(true)}
-          >
-            {t('header.myPlace')}
-            <BookmarkIcon className="w-7 h-7 ml-2" />
-          </button>
-
-          {saveBookmarkLocationOpen && (
-            <BookmarkLocationModal
-              onClose={() => setBookmarkLocationOpen(false)}
-            />
-          )}
-        </>
-      )}
-    </span>
-  )
-}
-
-function Search() {
-  const { t } = useTranslation()
-  const { t: ts } = useTranslation('slugs')
-
-  return (
-    <>
-      <Link
-        href={`/${ts('search')}`}
-        className="flex items-center font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
-      >
-        {t('header.search')}
-        <SearchIcon className="w-7 h-7 ml-2" />
-      </Link>
-    </>
-  )
-}
-
 export default function Header({ metaItems, items }) {
   const { t } = useTranslation()
-  const { asPath, locales } = useRouter()
+  const { asPath, locales = [] } = useRouter()
   const [moreIsOpen, setmoreIsOpen] = useState(false)
 
   const primaryItems = items && items.slice(0, items.length - 1)
   const cta = items && items.slice(items.length - 1)
 
-  function isPartiallyActive(currentPagePath, { url = '' }) {
+  function isPartiallyActive(currentPagePath, { url = "" }) {
     // the homepage needs some special treatment here
-    if (currentPagePath === '/') {
+    if (currentPagePath === "/") {
       return false
     }
 
-    const firstPagePathFragment = currentPagePath.split('/')[1]
+    const firstPagePathFragment = currentPagePath.split("/")[1]
     const slug = firstPagePathFragment
     const currentPathFragmentLocalized = t(slug)
 
@@ -149,14 +87,14 @@ export default function Header({ metaItems, items }) {
           href="#content"
           className="sr-only focus:not-sr-only focus:absolute top-2 left-0 whitespace-nowrap font-rubik font-rubik-features text-2xs uppercase leading-none text-black hover:text-white"
         >
-          {t('header.skipToContent')}
+          {t("header.skipToContent")}
         </a>
 
         <Link
           href="/"
           className={clsx(
             styles.logoContainer,
-            'flex items-end justify-center pl-5 xl:pl-0'
+            "flex items-end justify-center pl-5 xl:pl-0"
           )}
         >
           <Logo className="w-auto h-10 sm:h-12 md:h-14" />
@@ -176,8 +114,6 @@ export default function Header({ metaItems, items }) {
               </a>
             ))}
 
-            <Bookmark />
-
             {metaItems &&
               metaItems.length > 0 &&
               metaItems.map((item) => (
@@ -193,7 +129,7 @@ export default function Header({ metaItems, items }) {
             <div
               className={clsx(
                 styles.primaryItemsContainer,
-                'flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-7 lg:tracking-wider'
+                "flex flex-row justify-around w-full pl-3 sm:pl-10 pr-5 sm:pr-8 md:pl-20 mt-auto md:mt-0 md:pb-7 lg:tracking-wider"
               )}
             >
               {primaryItems.map((item, index) => (
@@ -201,10 +137,10 @@ export default function Header({ metaItems, items }) {
                   key={`menu-main-${item.label}`}
                   link={item}
                   className={clsx(
-                    'font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white',
+                    "font-rubik font-rubik-features text-small md:text-base uppercase font-bold leading-none hover:bg-white",
                     isPartiallyActive(asPath, item) &&
-                      'bg-white text-orange-800',
-                    'hover:text-orange-800 py-2 px-3 whitespace-nowrap',
+                      "bg-white text-orange-800",
+                    "hover:text-orange-800 py-2 px-3 whitespace-nowrap",
                     styles.item,
                     styles[`item--${index + 1}`]
                   )}
@@ -220,7 +156,7 @@ export default function Header({ metaItems, items }) {
                 link={cta[0]}
                 className={clsx(
                   styles.cta,
-                  'font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide self-end lg:ml-7 relative lg:top-1'
+                  "font-rubik font-rubik-features text-2xs uppercase leading-none text-gray-700 hover:text-white hover:bg-black px-7 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide self-end lg:ml-7 relative lg:top-1"
                 )}
               />
 
@@ -236,7 +172,7 @@ export default function Header({ metaItems, items }) {
                             <StrapiLink
                               link={item}
                               className={clsx(
-                                'font-rubik font-rubik-features text-small uppercase font-bold leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-white hover:text-black tracking-wide',
+                                "font-rubik font-rubik-features text-small uppercase font-bold leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap border-gray-600 border-t hover:bg-white hover:text-black tracking-wide",
                                 styles.itemMore,
                                 styles[`item--more-${index + 1}`]
                               )}
@@ -251,7 +187,7 @@ export default function Header({ metaItems, items }) {
                           link={cta[0]}
                           className={clsx(
                             styles.cta,
-                            'font-rubik font-rubik-features text-2xs uppercase leading-none text-black hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide md:hidden'
+                            "font-rubik font-rubik-features text-2xs uppercase leading-none text-black hover:text-white hover:bg-black px-9 md:px-7 bg-white rounded-full whitespace-nowrap sm:tracking-wide md:hidden"
                           )}
                           onClick={() => setmoreIsOpen(false)}
                         />
@@ -262,7 +198,7 @@ export default function Header({ metaItems, items }) {
                           className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide cursor-pointer"
                           onClick={() =>
                             router.push(router.asPath, router.asPath, {
-                              locale: 'de'
+                              locale: "de"
                             })
                           }
                         >
@@ -276,7 +212,7 @@ export default function Header({ metaItems, items }) {
                           className="font-rubik font-rubik-features text-small uppercase leading-none py-9 md:py-5 px-4 sm:mx-20 whitespace-nowrap hover:bg-white hover:text-black tracking-wide cursor-pointer"
                           onClick={() =>
                             router.push(router.asPath, router.asPath, {
-                              locale: 'en'
+                              locale: "en"
                             })
                           }
                         >

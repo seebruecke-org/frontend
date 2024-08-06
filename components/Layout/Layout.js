@@ -9,11 +9,11 @@ export default function Layout({ menus, children }) {
         items={menus?.["header_main"]?.items}
       />
       <main id="content">{children}</main>
-      {/*<Footer*/}
-      {/*  itemsTakePart={menus?.['footer_take_part']}*/}
-      {/*  itemsAbout={menus?.['footer_about']}*/}
-      {/*  itemsMeta={menus?.['footer_meta']}*/}
-      {/*/>*/}
+      <Footer
+        itemsTakePart={menus?.["footer_take_part"]}
+        itemsAbout={menus?.["footer_about"]}
+        itemsMeta={menus?.["footer_meta"]}
+      />
     </div>
   )
 }
