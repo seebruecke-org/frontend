@@ -9,6 +9,7 @@ import StrapiLink from '@/components/StrapiLink';
 import SavedLocation from './SavedLocation';
 import TwitterIcon from '@/public/icons/twitter-brands.svg';
 import YoutubeIcon from '@/public/icons/youtube-brands.svg';
+import MastodonIcon from '@/public/icons/mastodon-brands.svg';
 import BlueskyIcon from '@/public/icons/bluesky.svg';
 
 function SocialMedia({ className = '' }) {
@@ -31,10 +32,10 @@ function SocialMedia({ className = '' }) {
       </a>
 
       <a
-        href="https://twitter.com/_Seebruecke_"
-        aria-label={t('footer.social', { network: 'Twitter' })}
+        href="https://mastodon.social/@seebruecke"
+        aria-label={t('footer.social', { network: 'mastodon' })}
       >
-        <TwitterIcon className="w-12 h-auto" />
+        <MastodonIcon className="w-12 h-auto" />
       </a>
 
       <a
@@ -121,7 +122,6 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
                 />
               ))}
             </nav>
-
           </div>
         )}
       </div>
