@@ -34,6 +34,7 @@ function SocialMedia({ className = '' }) {
       <a
         href="https://mastodon.social/@seebruecke"
         aria-label={t('footer.social', { network: 'mastodon' })}
+        rel="me"
       >
         <MastodonIcon className="w-12 h-auto" />
       </a>
