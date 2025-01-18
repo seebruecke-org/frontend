@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useState, useEffect, memo, useRef } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
@@ -167,7 +167,7 @@ export async function getStaticProps({ locale }) {
   const pageSlug = getSlugFromI18nNext('actions', locale, globalData);
 
   const [actions, page] = await Promise.all([
-    await fetchAllActions("all", format, { client }),
+    await fetchAllActions('all', format, { client }),
     await getPage(pageSlug, undefined, locale, format, { client })
   ]);
 
