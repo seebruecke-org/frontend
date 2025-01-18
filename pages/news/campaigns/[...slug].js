@@ -49,7 +49,7 @@ export default function CampaignPage({ content, title, metadata }) {
 
 export async function getStaticPaths({ defaultLocale }) {
   const client = createClient();
-  const paths = await fetchAllCampaignPaths(defaultLocale, { client });
+  const paths = [];
 
   return {
     fallback: true,
