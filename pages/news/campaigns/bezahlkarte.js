@@ -10,9 +10,9 @@ import logger from '@/lib/logger';
 import BlockSwitch from '@/components/BlockSwitch';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
-import { mapData } from './bezahlkarteMapData';
 import NextLink from 'next/link';
 import { fetchCampaignBySlug } from '@/lib/campaigns';
+import { mapData } from '@/lib/data/bezahlkarteMapData';
 
 const Map = dynamic(() => import('@/components/Map'));
 
