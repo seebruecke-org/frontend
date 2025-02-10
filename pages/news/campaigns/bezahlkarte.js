@@ -33,7 +33,7 @@ export default function TakePartPage({ actions: defaultActions, content }) {
         <MemoizedMap features={mapData} />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-1 md:px-0">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 py-10">
             {mapData.map((value, index) => (
               <li key={`action-${index}`} className="h-full">
                 <NextLink href={value.properties.uri}>
