@@ -25,7 +25,7 @@ export default function GenericPage({ page, slugs }) {
     <PageBody
       firstBlock={getFirstBlockName(page?.content)}
       lastBlock={getLastBlockName(page?.content)}
-      className={slugs?.map(s => 'slug-'+s).join(' ')}
+      className={slugs?.map((s) => 'slug-' + s).join(' ')}
     >
       <SEO title={page?.title} metadata={page?.metadata} />
 
@@ -57,7 +57,7 @@ export async function getStaticPaths({ locales }) {
   const paths = await Promise.all(
     locales.map(async (locale) => {
       const pagePaths = await fetchPagePaths(locale, { client });
-      console.log({pagePaths});
+      // console.log({pagePaths});
       const slugs = await getAllSlugs(locale);
       return pagePaths
         .map((slug) => {
@@ -118,7 +118,7 @@ export async function getStaticProps({ locale, params: { slug } }) {
     props: {
       ...data,
       ...globalData,
-      ...{slugs: slug || ['']},
+      ...{ slugs: slug || [''] },
       initialState
     }
   };
