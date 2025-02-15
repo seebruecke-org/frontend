@@ -13,12 +13,17 @@ import SEO from '@/components/SEO';
 import NextLink from 'next/link';
 import { fetchCampaignBySlug } from '@/lib/campaigns';
 import { mapData } from '@/lib/data/bezahlkarteMapData';
+import { convertToMapData, fetchMap } from '@/lib/map';
 
 const Map = dynamic(() => import('@/components/Map'));
 
 const MemoizedMap = memo(Map);
 
-export default function TakePartPage({ actions: defaultActions, content }) {
+export default function TakePartPage({
+  actions: defaultActions,
+  content,
+  mapData
+}) {
   const { t } = useTranslation();
 
   return (
@@ -62,6 +67,7 @@ export async function getStaticProps({ locale }) {
   const { data } = await fetchCampaignBySlug('bezahlkarte', locale, format, {
     client
   });
+  const mapData = convertToMapData(await fetchMap('bezahlkarte'));
 
   logger.info({
     message: 'timing',
@@ -73,6 +79,7 @@ export async function getStaticProps({ locale }) {
   return {
     revalidate: 60 * 2,
     props: {
+      mapData,
       ...data,
       ...globalData,
       initialState
