@@ -26,6 +26,10 @@ export default function TakePartPage({
 }) {
   const { t } = useTranslation();
 
+  const federal_countries = [
+    ...new Set(mapData.map((l) => l.properties.federal_country.name))
+  ];
+
   return (
     <PageBody
       firstBlock={getFirstBlockName(content)}
@@ -38,16 +42,43 @@ export default function TakePartPage({
         <MemoizedMap features={mapData} />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-5 py-10">
-            {mapData.map((value, index) => (
-              <li key={`action-${index}`} className="h-full">
-                <NextLink href={value.properties.uri}>
-                  <a className="block bg-turquoise-300 hover:bg-black hover:text-white px-8 py-10 md:p-10 h-full">
-                    <h2 className="font-brezel text-medium md:text-large font-bold italic leading-tight mt-2">
-                      {value.properties.name}
-                    </h2>
-                  </a>
-                </NextLink>{' '}
+          <ul className="flex flex-col space-y-10">
+            {federal_countries.map((fc_name) => (
+              <li key={`federal-country-${fc_name}`} className="h-full">
+                <h3 className="font-brezel text-xl font-bold italic leading-none px-8 py-8 md:py-10">
+                  <span class="underline group-hover:text-orange-800">
+                    {' '}
+                    {fc_name}
+                  </span>
+                </h3>
+                <ul className="grid md:grid-cols-2 gap-8 px-6">
+                  {mapData
+                    .filter(
+                      (l) => l.properties.federal_country.name === fc_name
+                    )
+                    .map((value, index) => (
+                      <li key={`action-${index}`} className="h-full">
+                        <NextLink href={value.properties.uri}>
+                          <h4 className="font-brezel text-base font-bold italic">
+                            <a className="bg-orange-200 hover:bg-orange-800 cursor-pointer p-5 flex justify-between">
+                              {value.properties.name}
+                              <svg
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 256 512"
+                                className="w-5 h-auto mr-4 opacity-20"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M24.707 38.101 4.908 57.899c-4.686 4.686-4.686 12.284 0 16.971L185.607 256 4.908 437.13c-4.686 4.686-4.686 12.284 0 16.971L24.707 473.9c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L41.678 38.101c-4.687-4.687-12.285-4.687-16.971 0z"
+                                ></path>
+                              </svg>
+                            </a>
+                          </h4>
+                        </NextLink>{' '}
+                      </li>
+                    ))}
+                </ul>
               </li>
             ))}
           </ul>
