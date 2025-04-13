@@ -25,6 +25,8 @@ export default function ActionPage({
 }) {
   const { t } = useTranslation();
 
+  const full_location = location_detail ? location + ', ' + location_detail : location;
+
   return (
     <PageBody firstBlock="Heading">
       <SEO title={title} metadata={metadata} />
@@ -35,7 +37,7 @@ export default function ActionPage({
         <div className="col-span-full md:col-start-3 md:col-span-7 mt-20 px-1 md:px-0">
           <Action
             title={formattedDateRange}
-            intro={`${location || ''} ${location_detail || ''}`}
+            intro={full_location}
           />
         </div>
       </div>
