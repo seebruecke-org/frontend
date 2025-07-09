@@ -45,11 +45,9 @@ export default function TakePartPage({
           <ul className="flex flex-col space-y-10">
             {federal_countries.map((fc_name) => (
               <li key={`federal-country-${fc_name}`} className="h-full">
-                <h3 className="font-brezel text-xl font-bold italic leading-none px-8 py-8 md:py-10">
-                  <span class="underline group-hover:text-orange-800">
-                    {' '}
-                    {fc_name}
-                  </span>
+                <h3 className="font-brezel italic text-xl font-bold leading-none px-8 py-8 md:py-10">
+                  {' '}
+                  {fc_name}
                 </h3>
                 <ul className="grid md:grid-cols-2 gap-8 px-6">
                   {mapData
