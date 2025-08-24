@@ -20,10 +20,6 @@ services:
         value: cms.seebruecke.org
       - key: NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
         sync: false
-      - key: MATOMO_ENDPOINT
-        sync: false
-      - key: MATOMO_SITE_ID
-        sync: false
       - key: MAILCHIMP_API_KEY
         sync: false
       - key: MAILCHIMP_LIST_ID
