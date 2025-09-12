@@ -23,16 +23,12 @@
     "bookmarkedLocation": "Gemerkter Ort"
   },
 
-  "actions": {
-    "pluralTitle": "Aktionen",
-    "resetFilter": "Filter zurücksetzen"
-  },
-
   "action": {
     "singleTitle": "Aktion",
     "pluralTitle": "Aktionen",
     "organizedBy": "Organisiert von der Lokalgruppe",
-    "filter": "Aktionen filtern ..."
+    "filter": "Aktionen filtern ...",
+    "resetFilter": "Filter zurücksetzen"
   },
 
   "press": {

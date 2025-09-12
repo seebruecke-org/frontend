@@ -61,7 +61,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
       firstBlock={getFirstBlockName(page?.content)}
       lastBlock={getLastBlockName(page?.content)}
     >
-      <SEO title={t('actions.pluralTitle')} />
+      <SEO title={t('action.pluralTitle')} />
 
       <BlockSwitch blocks={page?.content} />
 
@@ -115,7 +115,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                   onClick={() => setFilterValue('')}
                   className="justify-start w-max mt-4 font-rubik text-2xs text-gray-600"
                 >
-                  {t('actions.resetFilter')}
+                  {t('action.resetFilter')}
                 </button>
               )}
             </Row>

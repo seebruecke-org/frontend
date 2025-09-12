@@ -23,16 +23,12 @@
     "bookmarkedLocation": "Bookmarked Location"
   },
 
-  "actions": {
-    "pluralTitle": "Actions",
-    "resetFilter": "Reset filter"
-  },
-
   "action": {
     "singleTitle": "Action",
     "pluralTitle": "Actions",
     "organizedBy": "Organized the by the local group",
-    "filter": "Filter actions ..."
+    "filter": "Filter actions ...",
+    "resetFilter": "Reset filter"
   },
 
   "press": {

@@ -35,7 +35,7 @@ export default function TakePartPage({
       firstBlock={getFirstBlockName(content)}
       lastBlock={getLastBlockName(content)}
     >
-      <SEO title={t('actions.pluralTitle')} />
+      <SEO title={t('action.pluralTitle')} />
       <BlockSwitch blocks={content} />
 
       <div className="grid grid-layout-primary border-gray-400 border-t-2 mt-12 md:mt-24">
