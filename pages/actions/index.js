@@ -128,9 +128,6 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                 className={clsx(index > 0 && 'mt-12 md:mt-20')}
               >
                 <FederalCountry
-                  count={actions[key].length}
-                  singularKicker={t('action.singleTitle')}
-                  pluralKicker={t('action.pluralTitle')}
                   name={key}
                 />
 
