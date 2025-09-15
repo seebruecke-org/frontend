@@ -25,9 +25,10 @@ const Map = dynamic(() => import('@/components/Map'));
 
 function filterActions(actions, term) {
   return Object.keys(actions).reduce((acc, key) => {
+    term = term.toLowerCase();
     const keyedActions = actions[key];
     const matchingActions = keyedActions.filter(
-      ({ location, title }) => location.includes(term) || title.includes(term)
+      ({ location, title }) => location.toLowerCase().includes(term) || title.toLowerCase().includes(term)
     );
 
     if (matchingActions.length > 0) {
