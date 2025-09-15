@@ -25,8 +25,6 @@ export default function ActionPage({
 }) {
   const { t } = useTranslation();
 
-  const full_location = location_detail ? location + ', ' + location_detail : location;
-
   return (
     <PageBody firstBlock="Heading">
       <SEO title={title} metadata={metadata} />
@@ -34,27 +32,26 @@ export default function ActionPage({
       <div className="grid grid-layout-primary">
         <Heading level={1}>{title}</Heading>
 
-        <div className="col-span-full md:col-start-3 md:col-span-7 mt-20 px-1 md:px-0">
+        <div className="col-span-full md:col-start-3 md:col-span-4 mt-20 px-8 md:px-0">
           <Action
-            title={formattedDateRange}
-            intro={full_location}
+            city={location}
+            start={formattedDateRange}
+            address={location_detail}
           />
         </div>
-      </div>
+        {group && group?.city && (
+          <div className="col-span-full md:col-span-5 mt-10 mb-20  md:mt-20">
+            <span className="text-small font-rubik font-semibold uppercase px-8 md:px-0">
+              {t('action.organizedBy')}
+            </span>
 
-      <BlockSwitch blocks={content} />
-
-      {group && group?.city && (
-        <div className="grid grid-layout-primary">
-          <Heading level={2} as={4}>
-            {t('action.organizedBy')}
-          </Heading>
-
-          <div className="col-span-full md:col-start-3 md:col-span-5 px-10 md:px-0 mt-20 mb-20">
-            <Group {...group.city} />
+            <div className="col-span-full px-8 md:px-0 mt-5">
+              <Group {...group.city} />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+      <BlockSwitch blocks={content} />
     </PageBody>
   );
 }

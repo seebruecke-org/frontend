@@ -28,7 +28,8 @@
     "pluralTitle": "Actions",
     "organizedBy": "Organized the by the local group",
     "filter": "Filter actions ...",
-    "resetFilter": "Reset filter"
+    "resetFilter": "Reset filter",
+    "moreInfo": "More info"
   },
 
   "press": {

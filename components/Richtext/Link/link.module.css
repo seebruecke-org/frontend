@@ -1,10 +1,16 @@
-.link {
+.link,
+.whitelink {
   --box-shadow-color: theme('colors.orange.200');
 
   box-shadow: inset 0 -0.7rem var(--box-shadow-color);
 }
 
+.whitelink {
+  --box-shadow-color: theme('colors.white');
+}
+
 @screen md {
+  .whitelink,
   .link {
     box-shadow: inset 0 -1.1rem var(--box-shadow-color);
   }
@@ -14,3 +20,9 @@
 .link:focus {
   --box-shadow-color: theme('colors.orange.800');
 }
+
+a:hover .whitelink,
+a:focus-visible .whitelink {
+  --box-shadow-color: theme('colors.black');
+}
+

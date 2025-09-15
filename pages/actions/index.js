@@ -86,7 +86,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             }))}
         />
 
-        <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
+        <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36 pr-12">
           <Form
             primaryGrid={false}
             className="grid-cols-6"
@@ -98,7 +98,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
               });
             }}
           >
-            <Row primaryGrid={false} className="md:col-span-5">
+            <Row primaryGrid={false}>
               <TextInput
                 name="filter"
                 placeholder={t('action.filter')}
@@ -125,20 +125,25 @@ export default function TakePartPage({ actions: defaultActions, page }) {
             {Object.keys(actions).map((key, index) => (
               <li
                 key={`action-date-${index}`}
-                className={clsx(index > 0 && 'mt-12 md:mt-20')}
               >
-                <FederalCountry
-                  name={key}
-                />
 
-                <ul className="grid grid-cols-1 md:grid-cols-3 gap-10 px-1 md:px-0">
+                <h3 className="font-brezel text-medium font-light italic leading-none px-5 py-10 text-gray-600 relative text-center sticky top-0 bg-white">
+                  <span className="absolute top-2/4 left-0 w-full h-1 border-t border-gray-600" />
+                  <span className="bg-white relative px-16">
+                    {key}
+                  </span>
+                </h3>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-8 px-8 md:px-0">
                   {actions[key].map(
-                    ({ location, start, intro, title, slug }, actionIndex) => (
+                    ({ location, starttime, intro, title, slug, location_detail }, actionIndex) => (
+                      
                       <li key={`action-${actionIndex}`} className="h-full">
                         <Action
-                          title={location}
-                          meta={`${start} ${tf('timePostfix')}`}
-                          intro={intro || title}
+                          city={location}
+                          start={`${starttime} ${tf('timePostfix')}`}
+                          address={location_detail}
+                          title={intro || title}
                           slug={slug}
                         />
                       </li>

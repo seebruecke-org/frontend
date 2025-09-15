@@ -61,12 +61,13 @@ export default function ActionsBlock({ show_map = false, actionsCTA, actions = [
       )}
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-8 md:px-0">
-        {actions.map(({ location, start, intro, title, slug }, index) => (
+        {actions.map(({ location, start, intro, title, slug, location_detail }, index) => (
           <li key={`action-${index}`}>
             <Action
-              title={location}
-              meta={`${start} ${tf('timePostfix')}`}
-              intro={intro || title}
+              city={location}
+              start={`${start} ${tf('timePostfix')}`}
+              address={location_detail}
+              title={intro || title}
               slug={slug}
             />
           </li>
