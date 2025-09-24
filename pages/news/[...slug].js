@@ -14,7 +14,7 @@ import PageBody from "@/components/PageBody";
 import SEO from "@/components/SEO";
 
 export default function NewsEntryPage({
-                                        title, metadata, content, image, publishedAt, type
+                                        title, metadata, content, image, publishedAt, publication_date, type
                                       }) {
   const {t} = useTranslation("news");
   let bp = {};
@@ -43,7 +43,7 @@ export default function NewsEntryPage({
 
     <PageBody lastBlock={getLastBlockName(content)}>
       <div className="grid grid-layout-primary">
-        <Heading level={2} kicker={`${publishedAt} · ${t(`type.${type}`)}`}>
+        <Heading level={2} kicker={`${publication_date ? publication_date : publishedAt} · ${t(`type.${type}`)}`}>
           {title}
         </Heading>
       </div>

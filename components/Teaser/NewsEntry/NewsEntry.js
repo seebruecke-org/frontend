@@ -8,6 +8,7 @@ import Media from '@/components/Media';
 export default function NewsEntry({
   title,
   image,
+  publishedAt,
   publication_date,
   type,
   excerpt = '',
@@ -44,7 +45,7 @@ export default function NewsEntry({
           )}
         >
           <header className="font-rubik text-xs md:text-base text-gray-600 mb-1 uppercase flex">
-            {publication_date}
+            {publication_date ? publication_date : publishedAt}
             <span className="px-3">·</span>
             {translatedType}
           </header>

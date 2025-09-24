@@ -8,6 +8,7 @@ export default `
     title
     slug
     type
+    publishedAt
     publication_date
     image {
       ${FRAGMENT_MEDIA}
