@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo } from 'react';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 import clsx from 'clsx';
@@ -28,22 +28,30 @@ const MemoizedMap = memo(Map);
 function FederalCountries({ countries }) {
   const { t } = useTranslation('group');
 
+  const fedKeys = Object.keys(countries || {}).sort();
+
+  // If every federal-country contains exactly one city, render a flat city list
   if (Object.values(countries).every(cities => cities.length === 1)) {
-    const allCities = Object.values(countries).map(({ cities }) => cities).flat();
+    const allCities = fedKeys.map(key => {
+      const fed = countries[key] || {};
+      const cityName = Object.keys(fed)[0];
+      return { name: cityName, uri: fed[cityName] };
+    });
+
     return <Cities cities={sortCities(allCities)} />;
   }
 
   return (
     <ul className="flex flex-col space-y-10">
-      {Object.keys(countries).map((federalCountryName) => {
-        const cities = Object.keys(countries[federalCountryName]).map(cityName => ({
+      {fedKeys.map((federalCountryName) => {
+        const cities = Object.keys(countries[federalCountryName] || {}).map(cityName => ({
           name: cityName,
           uri: countries[federalCountryName][cityName]
         }));
 
         return (
           <li key={`federalCountry-${federalCountryName}`}>
-            <FederalCountry name={federalCountryName}/>
+            <FederalCountry name={federalCountryName} />
 
             <Cities cities={sortCities(cities)} />
           </li>
@@ -88,25 +96,23 @@ function toCountryFederalCityData(features) {
   const countries = {};
 
   for (const feature of features) {
-    if (!feature.properties)
-      continue;
+    if (!feature || !feature.properties) continue;
 
-    const { name, uri, federal_country: { name: federal, country: { name: country } } } = feature.properties;
+    const props = feature.properties;
+    const cityName = props.name;
+    const uri = props.uri || props.url || '';
+    const federalObj = props.federal_country || {};
+    const federal = federalObj.name;
+    const countryObj = federalObj.country || {};
+    const country = countryObj.name;
 
-    if (!countries[country]) {
-      countries[country] = {
-        [federal]: { [name]: uri }
-      };
-      continue;
-    }
+    if (!cityName || !country || !federal) continue;
 
-    if (!countries[country][federal]) {
-      countries[country][federal] = { [name]: uri };
-      continue;
-    }
-
-    countries[country][federal][name] = uri;
+    if (!countries[country]) countries[country] = {};
+    if (!countries[country][federal]) countries[country][federal] = {};
+    countries[country][federal][cityName] = uri;
   }
+
   return countries;
 }
 
@@ -135,28 +141,20 @@ export default function TakePartPage({
       <BlockSwitch blocks={content} />
 
       <div className="grid grid-layout-primary border-gray-400 border-t-2 mt-12 md:mt-24">
-        <MemoizedMap features={mapData} />
+  <MemoizedMap features={mapData} />
 
         <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
           <ul>
             {Object.keys(countriesFederalCities)
               .sort()
               .map((country, index) => (
-                console.log(country, index),
                 <li
                   key={`c-${country}`}
                   className={clsx(index > 0 && 'mt-12 md:mt-20')}
                 >
                   <Country name={country} uri="" />
 
-                  <FederalCountries
-                    countries={Object.keys(countriesFederalCities[country])
-                      .sort()
-                      .reduce((result, key) => {
-                        result[key] = countriesFederalCities[country][key];
-                        return result;
-                      }, {})}
-                  />
+                  <FederalCountries countries={countriesFederalCities[country]} />
                 </li>
               ))}
           </ul>
