@@ -12,7 +12,6 @@ import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
 import NextLink from 'next/link';
 import { fetchCampaignBySlug } from '@/lib/campaigns';
-import { mapData } from '@/lib/data/bezahlkarteMapData';
 import { convertToMapData, fetchMap } from '@/lib/map';
 
 const Map = dynamic(() => import('@/components/Map'));
