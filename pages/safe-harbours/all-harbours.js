@@ -2,8 +2,7 @@ import { getPage } from '@/lib/pages';
 import { fetchAllSafeHarbours } from '@/lib/take-part';
 import { query as queryGlobalData } from '@/lib/global';
 import { useTranslation } from 'next-i18next';
-import { memo, useRef } from 'react';
-import clsx from 'clsx';
+import { memo, useRef, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import hirestime from 'hirestime';
 
@@ -18,8 +17,8 @@ import Form from '@/components/Form';
 import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
+import MapList from '@/components/MapList';
 
-const Country = dynamic(() => import('@/components/Map/Country'));
 const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
 const Map = dynamic(() => import('@/components/Map'));
 const MemoizedMap = memo(Map);
@@ -27,19 +26,13 @@ const MemoizedMap = memo(Map);
 export default function SafeHarboursOverview({ cities: defaultCities, page }) {
   const { t } = useTranslation('safe-harbour');
   const { cities, filter, setFilter } = useCityFilter(defaultCities);
-  const mapCities = Object.keys(cities)
-    .map((countryName) => {
-      const federalCountryNames = Object.keys(cities[countryName].countries);
-
-      return federalCountryNames
-        .map(
-          (federalCountryName) =>
-            cities[countryName].countries[federalCountryName].cities
-        )
+  const mapCities = useMemo(() => {
+      if (!cities) return [];
+  
+      return cities
+        .map((country) => (country?.federalCountries || []).map((fc) => fc?.cities || []).flat())
         .flat();
-    })
-    .flat();
-  const citiesListRef = useRef(null);
+    }, [cities]);
 
   return (
     <article>
@@ -71,10 +64,6 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             className="grid-cols-6"
             onSubmit={(event) => {
               event.preventDefault();
-
-              citiesListRef?.current?.scrollIntoView({
-                behavior: 'smooth'
-              });
             }}
           >
             <Row primaryGrid={false} className="md:col-span-5">
@@ -99,81 +88,59 @@ export default function SafeHarboursOverview({ cities: defaultCities, page }) {
             </Row>
           </Form>
 
-          <ul ref={citiesListRef}>
-            {Object.keys(cities)
-              .sort()
-              .map((countryName, countryIndex) => (
-                <li
-                  key={`country-${countryName}`}
-                  className={clsx(countryIndex > 0 && 'mt-12 md:mt-20')}
-                >
-                  <Country name={countryName} />
+          <MapList countries={cities} renderItem={(countries) => (
+            <ul className="flex flex-col space-y-10">
+              {countries
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((country) => (
+                  <li key={`federalCountry-${country.name}`}>
+                    <FederalCountry
+                      count={country.cities.length}
+                      singularKicker={t('singleTitle')}
+                      pluralKicker={t('pluralTitle')}
+                      name={country.name}
+                      uri={country.uri}
+                    />
 
-                  <ul className="flex flex-col space-y-10">
-                    {Object.keys(cities[countryName].countries)
-                      .sort()
-                      .map((federalCountryName) => (
-                        <li key={`federalCountry-${federalCountryName}`}>
-                          <FederalCountry
-                            count={
-                              cities[countryName].countries[federalCountryName]
-                                .cities.length
+                    <ul className="grid md:grid-cols-2 gap-8 px-6">
+                      {country.cities
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .map(
+                          ({
+                            name,
+                            safe_harbour: {
+                              demands_count,
+                              demands_fullfilled,
+                              since,
+                              uri
                             }
-                            singularKicker={t('singleTitle')}
-                            pluralKicker={t('pluralTitle')}
-                            name={federalCountryName}
-                            uri={
-                              cities[countryName].countries[federalCountryName]
-                                .uri
+                          }) => {
+                            let description = t('demand.fullfilledFrom', {
+                              fullfilled: demands_fullfilled,
+                              count: demands_count
+                            });
+
+                            if (demands_fullfilled === null) {
+                              description = t('demand.stateUnknown');
                             }
-                          />
 
-                          <ul className="grid md:grid-cols-2 gap-8 px-6">
-                            {cities[countryName].countries[
-                              federalCountryName
-                            ].cities
-                              .sort(
-                                ({ name: cityAName }, { name: cityBName }) =>
-                                  cityAName.localeCompare(cityBName)
-                              )
-                              .map(
-                                ({
-                                  name,
-                                  safe_harbour: {
-                                    demands_count,
-                                    demands_fullfilled,
-                                    since,
-                                    uri
-                                  }
-                                }) => {
-                                  let description = t('demand.fullfilledFrom', {
-                                    fullfilled: demands_fullfilled,
-                                    count: demands_count
-                                  });
-
-                                  if (demands_fullfilled === null) {
-                                    description = t('demand.stateUnknown');
-                                  }
-
-                                  return (
-                                    <li key={`city-${name}`}>
-                                      <SafeHarbour
-                                        uri={uri}
-                                        name={name}
-                                        description={description}
-                                        since={since}
-                                      />
-                                    </li>
-                                  );
-                                }
-                              )}
-                          </ul>
-                        </li>
-                      ))}
-                  </ul>
-                </li>
-              ))}
-          </ul>
+                            return (
+                              <li key={`city-${name}`}>
+                                <SafeHarbour
+                                  uri={uri}
+                                  name={name}
+                                  description={description}
+                                  since={since}
+                                />
+                              </li>
+                            );
+                          }
+                        )}
+                    </ul>
+                  </li>
+                ))}
+            </ul>
+          )}></MapList>
         </div>
       </div>
     </article>

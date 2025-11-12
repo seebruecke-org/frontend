@@ -11,89 +11,33 @@ import logger from '@/lib/logger';
 import BlockSwitch from '@/components/BlockSwitch';
 import PageBody from '@/components/PageBody';
 import SEO from '@/components/SEO';
-import Group from '@/components/Teaser/Group';
+import MapList from '@/components/MapList';
 
 import { fetchCampaignBySlug } from '@/lib/campaigns';
 import { convertToMapData, fetchMap } from '@/lib/map';
 
-
-
 const Map = dynamic(() => import('@/components/Map'));
-const Country = dynamic(() => import('@/components/Map/Country'));
-const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
-
 const MemoizedMap = memo(Map);
-
-// TODO das ist doppelt
-function FederalCountries({ countries }) {
-  const { t } = useTranslation('group');
-
-  const fedKeys = Object.keys(countries || {}).sort();
-
-  // If every federal-country contains exactly one city, render a flat city list
-  if (Object.values(countries).every(cities => cities.length === 1)) {
-    const allCities = fedKeys.map(key => {
-      const fed = countries[key] || {};
-      const cityName = Object.keys(fed)[0];
-      return { name: cityName, uri: fed[cityName] };
-    });
-
-    return <Cities cities={sortCities(allCities)} />;
-  }
-
-  return (
-    <ul className="flex flex-col space-y-10">
-      {fedKeys.map((federalCountryName) => {
-        const cities = Object.keys(countries[federalCountryName] || {}).map(cityName => ({
-          name: cityName,
-          uri: countries[federalCountryName][cityName]
-        }));
-
-        return (
-          <li key={`federalCountry-${federalCountryName}`}>
-            <FederalCountry name={federalCountryName} />
-
-            <Cities cities={sortCities(cities)} />
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-// TODO das ist doppelt
-function sortCities(cities) {
-  return cities.sort(({ name: cityAName }, { name: cityBName }) =>
-    cityAName.localeCompare(cityBName)
-  );
-}
-
-// Todo das ist doppelt
-function Cities({ cities }) {
-  return (
-    <ul className="grid md:grid-cols-2 gap-8 px-6">
-      {cities.map((city) => (
-        <li key={`city-${city.name}`}>
-          <Group uri={city.uri} name={city.name} />
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 /* Transforms map data into a nested structure of countries, federal countries, and cities
   Example output:
-  {
-    "Germany": {
-      "Bavaria": {
-        "Munich": { name: "Munich", uri: "http://..." },
-        "Nuremberg": { name: "Nuremberg", uri: "http://..." }
-      },
-    },
-  }
+  [
+    {
+      name: "Germany",
+      federalCountries: [
+        {
+          name: "Bavaria",
+          cities: [
+            { name: "Munich", uri: "http://..." },
+            { name: "Nuremberg", uri: "http://..." }
+          ]
+        }
+      ]
+    }
+  ]
 */
 function toCountryFederalCityData(features) {
-  const countries = {};
+  const countries = [];
 
   for (const feature of features) {
     if (!feature || !feature.properties) continue;
@@ -108,9 +52,19 @@ function toCountryFederalCityData(features) {
 
     if (!cityName || !country || !federal) continue;
 
-    if (!countries[country]) countries[country] = {};
-    if (!countries[country][federal]) countries[country][federal] = {};
-    countries[country][federal][cityName] = uri;
+    let countryEntry = countries.find(c => c.name === country);
+    if (!countryEntry) {
+      countryEntry = { name: country, federalCountries: [] };
+      countries.push(countryEntry);
+    }
+
+    let federalEntry = countryEntry.federalCountries.find(f => f.name === federal);
+    if (!federalEntry) {
+      federalEntry = { name: federal, cities: [] };
+      countryEntry.federalCountries.push(federalEntry);
+    }
+
+    federalEntry.cities.push({ name: cityName, uri });
   }
 
   return countries;
@@ -141,24 +95,8 @@ export default function TakePartPage({
       <BlockSwitch blocks={content} />
 
       <div className="grid grid-layout-primary border-gray-400 border-t-2 mt-12 md:mt-24">
-  <MemoizedMap features={mapData} />
-
-        <div className="col-span-full md:col-start-7 md:col-span-8 pb-10 md:pb-36">
-          <ul>
-            {Object.keys(countriesFederalCities)
-              .sort()
-              .map((country, index) => (
-                <li
-                  key={`c-${country}`}
-                  className={clsx(index > 0 && 'mt-12 md:mt-20')}
-                >
-                  <Country name={country} uri="" />
-
-                  <FederalCountries countries={countriesFederalCities[country]} />
-                </li>
-              ))}
-          </ul>
-        </div>
+        <MemoizedMap features={mapData} />
+        <MapList countries={countriesFederalCities}></MapList>
       </div>
     </PageBody>
   );
