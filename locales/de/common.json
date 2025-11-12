@@ -99,5 +99,9 @@
 
   "logo": {
     "label": "SEEBRÜCKE Logo"
+  },
+
+  "map": {
+    "bezahlkarte": "Bezahlkarte Tauschaktionen"
   }
 }
