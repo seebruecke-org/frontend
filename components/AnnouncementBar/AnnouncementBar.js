@@ -7,7 +7,7 @@ export default function AnnouncementBar() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const hasAnnouncementParam = params.has('with_announcement');
+    const hasAnnouncementParam = true; //params.has('with_announcement');
 
     if (hasAnnouncementParam) {
       setShouldShowAnnouncement(true);
