@@ -3,5 +3,6 @@ export default `
     label
     locale
     url
+    hard_link
   }
 `;

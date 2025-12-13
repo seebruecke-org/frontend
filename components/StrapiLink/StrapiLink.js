@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function StrapiLink({ link, children, locale, ...props }, ref) {
   let linkProps = link;
-  if (linkProps.locale !== "context") {
+  if (linkProps.locale !== 'context') {
     locale = linkProps.locale;
   }
   if (!linkProps.url) {
@@ -15,7 +15,7 @@ function StrapiLink({ link, children, locale, ...props }, ref) {
     );
   }
 
-  if (linkProps.url.startsWith('#')) {
+  if (linkProps.url.startsWith('#') || linkProps.hard_link) {
     return (
       <a href={linkProps.url} {...props} ref={ref}>
         {linkProps.label}
