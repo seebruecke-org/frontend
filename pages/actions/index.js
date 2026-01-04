@@ -20,7 +20,6 @@ import Row from '@/components/Form/Row';
 import SEO from '@/components/SEO';
 import TextInput from '@/components/Form/TextInput';
 
-const FederalCountry = dynamic(() => import('@/components/Map/FederalCountry'));
 const Map = dynamic(() => import('@/components/Map'));
 
 function filterActions(actions, term) {
