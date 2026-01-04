@@ -33,6 +33,7 @@ export async function sideloadData(
       'slug',
       'intro',
       'start',
+      'hide_start_time',
       'end',
       'slug',
       'location',
@@ -47,9 +48,9 @@ export async function sideloadData(
   const { actions = [] } = await fetchAPI(query, options);
   const endrichedActions =
     actions &&
-    actions.map(({ coordinates, start, end, ...action }) => ({
+    actions.map(({ coordinates, start, hide_start_time, end, ...action }) => ({
       ...action,
-      start: formatTime(start, formatting.dateTime),
+      start: formatTime(start, hide_start_time ? formatting.date : formatting.dateTime),
       end: formatTime(end, formatting.dateTime),
       coordinates: toMapboxCoordinates(coordinates)
     }));

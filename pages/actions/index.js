@@ -141,7 +141,7 @@ export default function TakePartPage({ actions: defaultActions, page }) {
                       <li key={`action-${actionIndex}`} className="h-full">
                         <Action
                           city={location}
-                          start={`${starttime} ${tf('timePostfix')}`}
+                          start={starttime && `${starttime} ${tf('timePostfix')}`}
                           address={location_detail}
                           title={intro || title}
                           slug={slug}
