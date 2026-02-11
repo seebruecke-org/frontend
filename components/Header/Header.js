@@ -112,7 +112,7 @@ function Search() {
   );
 }
 
-export default function Header({ metaItems, items }) {
+export default function Header({ metaItems, items, localizations }) {
   const { t } = useTranslation();
   const { asPath, locales } = useRouter();
   const [moreIsOpen, setmoreIsOpen] = useState(false);
@@ -167,15 +167,11 @@ export default function Header({ metaItems, items }) {
         <nav className="flex flex-col w-full relative">
           <div className="md:flex-row md:space-x-3 md:justify-self-end md:ml-auto pr-64 hidden md:flex md:mb-2 pt-5">
             {locales.map((locale) => (
-                <a className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
-                   href="javascript:void(0);"
-                   onClick={
-                     () => router.push(router.asPath, router.asPath, { locale })
-                   }
-
-                >
-                  {locale}
-                </a>
+                <Link href={(localizations && localizations[locale]) ? localizations[locale] : "/" } locale={locale}>
+                  <a className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2">
+                    {locale}
+                  </a>
+                </Link>
             ))}
 
             {/*<Bookmark />*/}

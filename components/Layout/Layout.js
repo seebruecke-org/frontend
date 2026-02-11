@@ -2,13 +2,14 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import AnnouncementBar from '@/components/AnnouncementBar';
 
-export default function Layout({ menus, children }) {
+export default function Layout({ menus, children, localizations }) {
   return (
     <div className="flex flex-col flex-1 min-h-screen">
       <AnnouncementBar />
       <Header
         metaItems={menus?.['header_meta']?.items}
         items={menus?.['header_main']?.items}
+        localizations={localizations}
       />
       <main id="content">{children}</main>
       <Footer

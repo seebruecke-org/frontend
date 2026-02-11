@@ -6,6 +6,7 @@ import { fetchLatestActionPaths } from '@/lib/actions';
 import { query as queryGlobalData } from '@/lib/global';
 import { fetchActionBySlug } from '@/lib/actions';
 import logger from '@/lib/logger';
+import { getLocalizedSlug } from '@/lib/slug';
 
 import Action from '@/components/Teaser/Action';
 import BlockSwitch from '@/components/BlockSwitch';
@@ -78,6 +79,11 @@ export async function getStaticProps({ locale, params: { slug } }) {
   const { format } = globalData._nextI18Next.initialI18nStore[locale];
   const { data } = await fetchActionBySlug(slug, locale, format, { client });
 
+  const localizations = {};
+  for (const loc of data?.localizations || []) {
+    localizations[loc.locale] = `/${await getLocalizedSlug("actions", loc.locale)}/${loc.slug}`;
+  }
+
   if (data === null) {
     logger.error({
       message: '404',
@@ -103,7 +109,8 @@ export async function getStaticProps({ locale, params: { slug } }) {
     props: {
       ...data,
       ...globalData,
-      initialState
+      initialState,
+      localizations
     }
   };
 }

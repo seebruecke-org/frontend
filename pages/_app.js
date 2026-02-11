@@ -29,7 +29,7 @@ function SBApp({ Component, pageProps = {} }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
 
-      <Layout menus={menus}>
+      <Layout menus={menus} localizations={pageProps.localizations}>
         <Toaster />
         <Component {...props} />
       </Layout>
