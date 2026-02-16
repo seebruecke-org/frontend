@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { BOOKMARKED_LOCATION_COOKIE_NAME } from '@/lib/constants';
 import { useCreateStore, Provider } from '@/lib/store/zustand';
 import Layout from '@/components/Layout';
+import FacebookPixel from '@/components/FacebookPixel';
 
 import '@/styles/tailwind.css';
 import '@/styles/spende.css';
@@ -28,7 +29,7 @@ function SBApp({ Component, pageProps = {} }) {
       <Head>
         <link rel="manifest" href="/manifest.json" />
       </Head>
-
+      <FacebookPixel />
       <Layout menus={menus}>
         <Toaster />
         <Component {...props} />
