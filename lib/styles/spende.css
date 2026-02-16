@@ -5,6 +5,12 @@
   --white: rgba(255, 255, 255, 1);
   --grid-primary: calc(48vw - 60rem) repeat(12, 1fr) calc(48vw - 60rem);
 }
+
+html:has(.slug-l) .bg-orange-200.text-black.w-full,
+html:has(.slug-l) header nav
+{
+    display: none;
+}
 html[lang=de] .slug-spenden *, html[lang=de] .slug-winterspende2023 * {
   hyphens: manual;
 }
