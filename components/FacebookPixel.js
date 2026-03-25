@@ -36,7 +36,7 @@ const FacebookPixel = () => {
       'https://connect.facebook.net/en_US/fbevents.js'
     );
 
-    window.fbq('init', '2250513878773856');
+    window.fbq('init', '958198517157410');
     window.fbq('track', 'PageView');
     window._fbPixelInitialized = true;
     console.log('FP initialized successfully');
@@ -64,7 +64,7 @@ const FacebookPixel = () => {
         height="1"
         width="1"
         style={{ display: 'none' }}
-        src="https://www.facebook.com/tr?id=2250513878773856&ev=PageView&noscript=1"
+        src="https://www.facebook.com/tr?id=958198517157410&ev=PageView&noscript=1"
       />
     </noscript>
   );
