@@ -39,7 +39,36 @@ const FacebookPixel = () => {
     window.fbq('init', '958198517157410');
     window.fbq('track', 'PageView');
     window._fbPixelInitialized = true;
-    console.log('FP initialized successfully');
+    console.log('FP initialized with purchase part successfully');
+
+    // track a purchase if we are on a page like:
+    // https://www.seebruecke.org/danke-seite-dauer/?amount=%amount%&project=%project%&product=spende&email=%email%
+    let argStr = window.location.href.split("?")[1];
+    if (argStr) {
+      let argArr = argStr.split("&");
+      let amountVal = null;
+      let productVal = null;
+      for (let i = 0; i < argArr.length; i++) {
+        let keyVal = argArr[i].split("=");
+        if (keyVal[0] === "amount") {
+          amountVal = keyVal[1];
+        }
+        if (keyVal[0] === "product") {
+          productVal = keyVal[1];
+        }
+      }
+
+      if (amountVal && (productVal === "spende")) {
+        console.log("tracking " + amountVal + " purchase!");
+        window.fbq('track', 'Purchase', {
+          value: amountVal,
+          currency: 'EUR',
+          content_ids: [],
+          content_type: 'product',
+          num_items: 1
+        });
+      }
+    }
   }, []);
 
   useEffect(() => {
