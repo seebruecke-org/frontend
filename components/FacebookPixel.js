@@ -44,7 +44,7 @@ const FacebookPixel = () => {
     // track a purchase if we are on a page like:
     // https://www.seebruecke.org/danke-seite-dauer/?amount=%amount%&project=%project%&product=spende&email=%email%
     let argStr = window.location.href.split("?")[1];
-    if (argStr) {
+    if (argStr && (window.location.pathname.indexOf("/danke-seite") == 0)) {
       let argArr = argStr.split("&");
       let amountVal = null;
       let productVal = null;
