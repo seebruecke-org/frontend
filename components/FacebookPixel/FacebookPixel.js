@@ -3,8 +3,13 @@ import { useRouter } from 'next/router';
 
 const FacebookPixel = () => {
   const router = useRouter();
+  const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
 
   useEffect(() => {
+    if (!pixelId) {
+      return;
+    }
+
     // Check if already initialized
     if (window.fbq && window._fbPixelInitialized) {
       console.log('FP already initialized');
@@ -36,7 +41,7 @@ const FacebookPixel = () => {
       'https://connect.facebook.net/en_US/fbevents.js'
     );
 
-    window.fbq('init', '958198517157410');
+    window.fbq('init', pixelId);
     window.fbq('track', 'PageView');
     window._fbPixelInitialized = true;
     console.log('FP initialized with purchase part successfully');
@@ -72,6 +77,10 @@ const FacebookPixel = () => {
   }, []);
 
   useEffect(() => {
+    if (!pixelId) {
+      return;
+    }
+
     // Track page view on route change
     const handleRouteChange = () => {
       if (window.fbq) {
@@ -87,13 +96,17 @@ const FacebookPixel = () => {
     };
   }, [router.events]);
 
+  if (!pixelId) {
+    return null;
+  }
+
   return (
     <noscript>
       <img
         height="1"
         width="1"
         style={{ display: 'none' }}
-        src="https://www.facebook.com/tr?id=958198517157410&ev=PageView&noscript=1"
+        src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
       />
     </noscript>
   );
