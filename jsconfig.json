@@ -8,6 +8,7 @@
       "@/styles/*": ["lib/styles/*"],
       "@/public/*": ["public/*"],
       "@/locales/*": ["locales/*"]
-    }
+    },
+    "jsx": "react"
   }
 }
