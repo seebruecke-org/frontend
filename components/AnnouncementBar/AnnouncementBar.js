@@ -30,6 +30,11 @@ export default function AnnouncementBar() {
     return null;
   }
 
+  // remove announcement bar at the top on thank you page
+  if (window.location.pathname.indexOf("/danke-seite-dauer") > -1) {
+    return null;
+  }
+
   return (
     <div className="bg-orange-200 text-black w-full">
       <div className="max-w-wide mx-auto">
