@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
-import { getFullClientUrl } from '@/lib/url';
 import Form from '@/components/Form';
 import Button from '@/components/Form/Button';
 import Checkbox from '@/components/Form/Checkbox';
@@ -14,20 +13,24 @@ export default function Newsletter({ title, intro }) {
   });
   const { t } = useTranslation();
   const onSubmit = async function (data) {
-    const result = await fetch(getFullClientUrl('/api/newsletter/subscribe'), {
-      method: 'post',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
     const toast = (await import('react-hot-toast')).default;
 
-    if (result.ok) {
-      toast.success(t('newsletter.form.success'));
-      reset();
-    } else {
+    try {
+      const result = await fetch('/api/newsletter/subscribe', {
+        method: 'post',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (result.ok) {
+        toast.success(t('newsletter.form.success'));
+        reset();
+      } else {
+        toast.error(t('newsletter.form.error'));
+      }
+    } catch (err) {
       toast.error(t('newsletter.form.error'));
     }
   };

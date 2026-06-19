@@ -13,7 +13,7 @@ import FacebookPixel from '@/components/FacebookPixel';
 
 import '@/styles/tailwind.css';
 import '@/styles/spende.css';
-import 'swiper/bundle';
+import 'swiper/swiper-bundle.css';
 
 const CookieConsent = dynamic(() => import('react-cookie-consent'), {
   ssr: false

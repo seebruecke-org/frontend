@@ -1,21 +1,43 @@
 import { useTranslation } from 'next-i18next';
 import { useEffect, useRef } from 'react';
 
+const SCRIPT_ID = 'fundraisingbox-script';
+
 export default function Fundraisingbox({ scriptUrl }) {
   const { t } = useTranslation();
 
-  const scriptRoot = useRef(); // gets assigned to a root node
-  const script = `<script type='text/javascript' src=${scriptUrl} ></script>`;
+  const scriptRoot = useRef(); // gets assigned to the root node the widget injects into
 
   useEffect(() => {
-    // creates a document range (grouping of nodes in the document is my understanding)
-    // in this case we instantiate it as empty, on purpose
-    const range = document.createRange();
-    // creates a mini-document (light weight version), in our range with our script in it
-    const documentFragment = range.createContextualFragment(script);
-    // appends it to our script root - so it renders in the correct location
-    scriptRoot.current.append(documentFragment);
-  });
+    if (!scriptUrl || !scriptRoot.current) {
+      return undefined;
+    }
+
+    // Only ever inject the widget once. Without this guard the script was
+    // re-appended on every render (e.g. on menu changes), which loaded the
+    // box multiple times and could leave it failing to initialise.
+    if (document.getElementById(SCRIPT_ID)) {
+      return undefined;
+    }
+
+    const script = document.createElement('script');
+    script.id = SCRIPT_ID;
+    script.type = 'text/javascript';
+    script.src = scriptUrl;
+    script.async = true;
+    script.onerror = () => {
+      console.error(
+        '[Fundraisingbox] failed to load widget script:',
+        scriptUrl
+      );
+    };
+
+    scriptRoot.current.append(script);
+
+    return () => {
+      script.remove();
+    };
+  }, [scriptUrl]);
 
   return (
     <div>

@@ -26,14 +26,21 @@ export default async function handler(req, res) {
 
     return res.json({});
   } catch (err) {
-    let message = {
-      error: 'Something went wrong'
-    };
+    const body = err?.response?.body;
 
-    if (process.env.NODE_ENV !== 'production') {
-      message = err.response.body;
+    // Log the real cause so production failures are diagnosable.
+    console.error('[newsletter/subscribe] Mailchimp error:', body || err);
+
+    // An already-subscribed address is not a real error for the user.
+    if (body?.title === 'Member Exists') {
+      return res.json({});
     }
 
-    return res.status(err.status || 400).json(message);
+    const message =
+      process.env.NODE_ENV !== 'production' && body
+        ? body
+        : { error: 'Something went wrong' };
+
+    return res.status(err?.status || 400).json(message);
   }
 }
