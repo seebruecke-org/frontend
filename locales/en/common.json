@@ -42,7 +42,9 @@
 
   "fundraisingbox": {
     "activateJS": "Please activate JavaScript to donate.",
-    "logoAlt": "Fundraisingbox Logo"
+    "logoAlt": "Fundraisingbox Logo",
+    "loadError": "The donation form could not be loaded.",
+    "retry": "Try again"
   },
 
   "modal": {
