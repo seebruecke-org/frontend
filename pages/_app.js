@@ -27,9 +27,26 @@ function SBApp({ Component, pageProps = {} }) {
   const router = useRouter();
   const isEnglish = router.locale === 'en' || router.asPath.startsWith('/en');
 
+  // only allow tracking on a few well defined pages
+  const [thisPageWantsToTrack, setThisPageWantsToTrack] = useState(false);
+  const pagesThatWantToTrack = [
+    // TODO: actually use the correct pages here
+    "/danke-seite",
+    "/einzelspende",
+    "/en/single-donation"
+  ];
+
+  // if we do want to do tracking, ask for consent
   const [hasTrackingConsent, setHasTrackingConsent] = useState(false);
 
   useEffect(() => {
+    for (let i = 0; i < pagesThatWantToTrack.length; i++) {
+      if (window.location.pathname.indexOf(pagesThatWantToTrack[i]) == 0) {
+        setThisPageWantsToTrack(true);
+        break;
+      }
+    }
+
     const consent = Cookies.get('tracking_consent');
     if (consent === 'true') {
       setHasTrackingConsent(true);
@@ -49,14 +66,14 @@ function SBApp({ Component, pageProps = {} }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
 
-      {hasTrackingConsent && <FacebookPixel />}
+      {thisPageWantsToTrack && hasTrackingConsent && <FacebookPixel />}
 
       <Layout menus={menus}>
         <Toaster />
         <Component {...props} />
       </Layout>
 
-      <CookieConsent
+      {thisPageWantsToTrack && <CookieConsent
         location="bottom"
         buttonText={isEnglish ? 'Accept' : 'Akzeptieren'}
         declineButtonText={
@@ -96,7 +113,7 @@ function SBApp({ Component, pageProps = {} }) {
             {isEnglish ? 'Privacy Policy' : 'Datenschutzerklärung'}
           </a>
         </div>
-      </CookieConsent>
+      </CookieConsent>}
     </Provider>
   );
 }
