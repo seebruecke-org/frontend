@@ -30,10 +30,18 @@ function SBApp({ Component, pageProps = {} }) {
   // only allow tracking on a few well defined pages
   const [thisPageWantsToTrack, setThisPageWantsToTrack] = useState(false);
   const pagesThatWantToTrack = [
-    // TODO: actually use the correct pages here
-    "/danke-seite",
+    "/brief",
+    "/danke-seite-dauer",
     "/einzelspende",
-    "/en/single-donation"
+    "/einzelspende-eid",
+    "/foerdern2026",
+    "/spenden",
+    "/spenden/einzelspende",
+    "/spenden/unternehmensspende",
+    "/spenden-meta-a",
+    "/spenden-meta-b",
+    "/en/donate",
+    "/en/single-donation",
   ];
 
   // if we do want to do tracking, ask for consent
