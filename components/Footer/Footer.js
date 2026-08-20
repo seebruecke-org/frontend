@@ -80,6 +80,14 @@ function Menu({ title, items }) {
 export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
   const { t } = useTranslation();
 
+  // remove broken srcset pagewide
+  window.setTimeout(function() {
+    let imgs = document.getElementsByTagName("img");
+    for (let i = 0; i < imgs.length; i++) {
+      imgs[i].srcset = "";
+    }
+  }, 500);
+
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
       <div className="grid gap-y-20 gap-x-10 grid-cols-1 md:grid-cols-12 max-w-wide w-full">
