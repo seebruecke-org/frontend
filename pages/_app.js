@@ -48,6 +48,17 @@ function SBApp({ Component, pageProps = {} }) {
   const [hasTrackingConsent, setHasTrackingConsent] = useState(false);
 
   useEffect(() => {
+    // remove broken srcset pagewide
+    for (let repeatFor = 1; repeatFor < 3; repeatFor++) {
+      window.setTimeout(function() {
+        let imgs = document.getElementsByTagName("img");
+        console.log("Removing srcset from " + imgs.length + " images...");
+        for (let i = 0; i < imgs.length; i++) {
+          imgs[i].srcset = "";
+        }
+      }, 500*repeatFor);
+    }
+
     for (let i = 0; i < pagesThatWantToTrack.length; i++) {
       if (window.location.pathname.indexOf(pagesThatWantToTrack[i]) == 0) {
         setThisPageWantsToTrack(true);
