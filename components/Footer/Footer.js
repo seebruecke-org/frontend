@@ -89,7 +89,7 @@ export default function Footer({ itemsTakePart, itemsAbout, itemsMeta }) {
         imgs[i].srcset = "";
       }
     }, 500);
-  }
+  };
 
   return (
     <footer className="flex justify-center justify-self-end mt-auto bg-gray-700 text-white py-20 px-8 md:px-0">
