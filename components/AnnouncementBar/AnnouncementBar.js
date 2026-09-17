@@ -36,7 +36,7 @@ export default function AnnouncementBar() {
   }
 
   return (
-    <div className="bg-orange-200 text-black w-full">
+    <div className="bg-orange-200 text-black w-full hidden">
       <div className="max-w-wide mx-auto">
         {/* Toggle Bar */}
         <button
