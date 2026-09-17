@@ -49,7 +49,7 @@ function SBApp({ Component, pageProps = {} }) {
 
   useEffect(() => {
     // remove broken srcset pagewide
-    for (let repeatFor = 1; repeatFor < 3; repeatFor++) {
+    for (let repeatFor = 1; repeatFor < 5; repeatFor++) {
       window.setTimeout(function() {
         let imgs = document.getElementsByTagName("img");
         console.log("Removing srcset from " + imgs.length + " images...");
