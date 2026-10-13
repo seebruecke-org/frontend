@@ -139,6 +139,74 @@ export default function Header({ metaItems, items }) {
     return url.endsWith(normalizedPagePath);
   }
 
+  const handleLocaleSwitch = (locale) => {
+    let newPath = router.asPath;
+    console.log("BEFORE newPath: " + newPath + " new locale: " + locale);
+    if (newPath) {
+      // if newPath ends with a trailing slash, drop it
+      if (newPath.length > 1) {
+        if (newPath.substring(newPath.length - 1) === "/") {
+          newPath = newPath.substring(0, newPath.length - 1);
+        }
+      }
+      // switch over known slugs
+      let switchPaths = {
+        "de": {
+          "/join-us": "/mach-mit",
+          "/join-us/local-groups": "/mach-mit/lokalgruppen",
+          "/actions": "/aktionen",
+          "/material": "/material",
+          "/safe-harbours": "/sichere-haefen",
+          "/safe-harbours/all-harbours": "/sichere-haefen/haefen",
+          "/safe-harbours/demands": "/sichere-haefen/forderungen",
+          // "": "/sichere-haefen/how-to",
+          "/safe-harbours/contact-2": "/sichere-haefen/kontakt-2",
+          // "/news": "",
+          "/about-us": "/ueber-uns",
+          "/about-us/campaigns": "/ueber-uns/kampagnen",
+          // "": "/ueber-uns/werkzeugkoffer",
+          // "": "/events-1",
+          "/donate": "/spenden",
+          "/donate/einzelspende": "/spenden/einzelspende",
+          "/donate/unternehmensspende": "/spenden/unternehmensspende",
+          // "": "/spenden/spendenaktion",
+          "/press": "/presse",
+          // "": "/newsletter",
+          "/privacy": "/datenschutz",
+          "/imprint": "/impressum",
+        },
+        "en": {
+          "/mach-mit": "/join-us",
+          "/mach-mit/lokalgruppen": "/join-us/local-groups",
+          "/aktionen": "/actions",
+          "/material": "/material",
+          "/sichere-haefen": "/safe-harbours",
+          "/sichere-haefen/haefen": "/safe-harbours/all-harbours",
+          "/sichere-haefen/forderungen": "/safe-harbours/demands",
+          // "/sichere-haefen/how-to": "",
+          "/sichere-haefen/kontakt-2": "/safe-harbours/contact-2",
+          // "": "/news",
+          "/ueber-uns": "/about-us",
+          "/ueber-uns/kampagnen": "/about-us/campaigns",
+          // "/ueber-uns/werkzeugkoffer": "",
+          // "/events-1": "",
+          "/spenden": "/donate",
+          "/spenden/einzelspende": "/donate/einzelspende",
+          "/spenden/unternehmensspende": "/donate/unternehmensspende",
+          // "/spenden/spendenaktion": "",
+          "/presse": "/press",
+          // "/newsletter": "",
+          "/datenschutz": "/privacy",
+          "/impressum": "/imprint",
+        }
+      };
+      if (switchPaths[locale] && switchPaths[locale][newPath]) {
+        newPath = switchPaths[locale][newPath];
+      }
+    }
+    console.log("AFTER newPath: " + newPath + " new locale: " + locale);
+    router.push(newPath, newPath, { locale })
+  }
 
   const router = useRouter()
 
@@ -170,7 +238,7 @@ export default function Header({ metaItems, items }) {
                 <a className="font-rubik font-rubik-features text-xs uppercase leading-none text-black hover:text-white p-2"
                    href="javascript:void(0);"
                    onClick={
-                     () => router.push(router.asPath, router.asPath, { locale })
+                     () => {handleLocaleSwitch(locale)}
                    }
 
                 >
