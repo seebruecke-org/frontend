@@ -141,7 +141,6 @@ export default function Header({ metaItems, items }) {
 
   const handleLocaleSwitch = (locale) => {
     let newPath = router.asPath;
-    console.log("BEFORE newPath: " + newPath + " new locale: " + locale);
     if (newPath) {
       // if newPath ends with a trailing slash, drop it
       if (newPath.length > 1) {
@@ -204,7 +203,6 @@ export default function Header({ metaItems, items }) {
         newPath = switchPaths[locale][newPath];
       }
     }
-    console.log("AFTER newPath: " + newPath + " new locale: " + locale);
     router.push(newPath, newPath, { locale })
   }
 
